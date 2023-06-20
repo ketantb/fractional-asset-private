@@ -1,0 +1,32 @@
+.filterbox-wrap {
+    width: 80%;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.filterbox-wrap .dropdown {}
+
+.filterbox-wrap .dropdown .btn {
+    width: 50%;
+    margin-top: 4rem;
+    letter-spacing: 6px;
+}
+
+
+.filterbox-wrap .dropdown-menu {
+    width: 50%;
+}
+
+.filterbox-wrap .dropdown-menu div {
+    cursor: pointer;
+    height: 2rem;
+}
+
+.filterbox-wrap .dropdown-menu div:hover {
+    background-color: lightgrey;
+}
+
+.filterbox-wrap .dropdown-menu div p {
+    padding-left: 1rem;
+    text-transform: capitalize;
+}
