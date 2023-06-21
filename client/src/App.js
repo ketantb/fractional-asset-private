@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -15,14 +15,25 @@ import Carform from "./components/product-forms/car-form/CarForm";
 import Landform from "./components/product-forms/land-form/LandForm";
 import Jewelryform from "./components/product-forms/jewelry-form/JewelryForm";
 import Artform from "./components/product-forms/art-form/ArtForm";
+import ResortForm from "./components/product-forms/resort-form/ResortForm";
+import VillaForm from "./components/product-forms/villa-form/VillaForm";
 
 //products landing pages
 import PropertyPage from "./components/products-landingPages/property/Property";
 import CarPage from "./components/products-landingPages/car/Car";
+import YachtPage from "./components/products-landingPages/yacht/Yacht";
+import VillaPage from "./components/products-landingPages/villa/villa";
+import ArtPage from "./components/products-landingPages/art/art";
+import JewelleryPage from "./components/products-landingPages/jewellery/jewellery";
+import ResortPage from "./components/products-landingPages/resort/ResortPage";
+
 // products details page
+import ResortVillaApartmentDetails from "./components/products-view-details/villa-details/villa-details";
+import ArtGallery from "./components/products-landingPages/art/art-gallery/art-gallery";
 
 //MY PROFILE SECTION
 import MyProfile from "./components/my-profile-section/my-profile/MyProfile";
+
 //my profile childs
 import AdminDetails from "./components/my-profile-section/admin-details/AdminDetails";
 import Listings from "./components/my-profile-section/listings/Listings";
@@ -39,23 +50,67 @@ import Footer from "./components/footer/Footer";
 import Reducer from "./reducer/Reducer";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import YachtPage from "./components/products-landingPages/yacht/Yacht";
-import VillaPage from "./components/products-landingPages/villa/villa";
-import VillaDetails from "./components/products-view-details/villa-details/villa-details";
-import ArtPage from "./components/products-landingPages/art/art";
-import ArtGallery from "./components/products-landingPages/art/art-gallery/art-gallery";
-import JewelleryPage from "./components/products-landingPages/jewellery/jewellery";
-import ResortForm from "./components/product-forms/resort-form/ResortForm";
-import VillaForm from "./components/product-forms/villa-form/VillaForm";
+
+//extra components
+import axios from "./helpers/axios";
+import PreLoader from "./pre-loaders/PreLoader";
 
 function App() {
   const [auth, setAuth] = useState("");
   const store = createStore(Reducer);
+
+  //get collections from backend
+  const [collectionNames, setCollectionNames] = useState([]);
+  const getCollections = async () => {
+    try {
+      const response = await axios.get("/property-collections");
+      console.log(response);
+      const arr = response.data.collectionList.map((name) => name.slice(0, -9));
+      setCollectionNames(arr);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  React.useEffect(() => {
+    getCollections();
+    console.log("collection names=>", collectionNames);
+  }, []);
+
+  const [collectionForms, setCollectionForms] = useState([]);
+  const [landingPagesArr, setLandingPagesArr] = useState([]);
+  useEffect(() => {
+    if (collectionNames.length !== 0) {
+      //form links
+      const collectionFormArr = collectionNames.map((name) => ({
+        [name]: `/${name}-form`,
+      }));
+      setCollectionForms(collectionFormArr);
+
+      //landing pages links
+      const collectionPagesArr = collectionNames.map((name) => ({
+        [name]: `/${name}-page`,
+      }));
+      setLandingPagesArr(collectionPagesArr);
+    }
+    // eslint-disable-next-line
+  }, [collectionNames]);
+
+  if (!collectionNames) {
+    return <PreLoader />;
+  }
+
   return (
     <>
       <Provider store={store}>
         <Toaster position="top-center" reverseOrder={false} />
-        <AppNavbar auth={auth} setAuth={setAuth} />
+        <AppNavbar
+          auth={auth}
+          setAuth={setAuth}
+          collectionNames={collectionNames}
+          collectionForms={collectionForms}
+          landingPagesArr={landingPagesArr}
+        />
         <div className="component-wraps">
           <Routes>
             <Route path="/" element={<Home />}></Route>
@@ -68,7 +123,7 @@ function App() {
             <Route path="/yacht-form" element={<Yachtform />}></Route>
             <Route path="/car-form" element={<Carform />}></Route>
             <Route path="/art-form" element={<Artform />}></Route>
-            <Route path="/jewelry-form" element={<Jewelryform />}></Route>
+            <Route path="/jewellery-form" element={<Jewelryform />}></Route>
             <Route path="/land-form" element={<Landform />}></Route>
             <Route path="/resort-form" element={<ResortForm />}></Route>
             <Route path="/villa-form" element={<VillaForm />}></Route>
@@ -83,6 +138,7 @@ function App() {
             <Route path="/art-page" element={<ArtPage />}></Route>
             <Route path="/art-page/gallery" element={<ArtGallery />}></Route>
             <Route path="/jewellery-page" element={<JewelleryPage />}></Route>
+            <Route path="/resort-page" element={<ResortPage />}></Route>
             {/* landing pages  end*/}
 
             {/* my profile page roues */}
@@ -93,7 +149,7 @@ function App() {
             {/* my profile page routes end */}
 
             {/*Product Details*/}
-            <Route path="/villa-details" element={<VillaDetails />}></Route>
+            <Route path="/villa-details" element={<ResortVillaApartmentDetails />}></Route>
             {/*Product Details*/}
 
             {/*footer componenets */}

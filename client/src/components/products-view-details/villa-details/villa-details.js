@@ -5,7 +5,7 @@ import overviewIcon from '../../../assets/overview_icon.svg'
 import locationIcon from '../../../assets/location_icon_property.svg'
 import trainIcon from '../../../assets/hbits_villa_railway_icon.svg'
 
-const VillaDetails = () => {
+const ResortVillaApartmentDetails = () => {
     const images = [{
         id: 1,
         src: "https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -166,4 +166,4 @@ const VillaDetails = () => {
     )
 }
 
-export default VillaDetails
+export default ResortVillaApartmentDetails

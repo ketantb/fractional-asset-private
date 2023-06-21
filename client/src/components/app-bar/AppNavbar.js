@@ -1,25 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./AppNavbar.css";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-// eslint-disable-next-line
-// import logo from '../../assets/logo.png';
+
 import { FaAlignJustify } from "react-icons/fa";
 import { Icon } from "react-icons-kit";
 import { cross } from "react-icons-kit/icomoon/cross";
 
-const fractionalTypes = [
-  { property: "land", pagelink: "/land-form" },
-  { property: "yacht", pagelink: "/yacht-form" },
-  { property: "jewellery", pagelink: "/jewelry-form" },
-  { property: "cars", pagelink: "/car-form" },
-  { property: "art", pagelink: "/art-form" },
-  { property: "apartment", pagelink: "/apartment-form" },
-  { property: "resort", pagelink: "/resort-form" },
-  { property: "villa", pagelink: "/villa-form" },
-];
-
-const AppNavbar = ({ auth, setAuth }) => {
+const AppNavbar = ({ auth, setAuth, collectionForms, landingPagesArr }) => {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
@@ -27,25 +15,6 @@ const AppNavbar = ({ auth, setAuth }) => {
     setAuth(token);
     //eslint-disable-next-line
   }, [token]);
-
-  /* navbar changing its color   */
-  // const [navBackground, setNavBackground] = useState('lightblue');
-  //handle scroll
-  // const handleScroll = () => {
-  //   if (window.pageYOffset > 20) {
-  //     setNavBackground('rgba(225,157,24,255)');
-  //   } else {
-  //     setNavBackground('rgba(225,157,24,255)');
-  //   }
-  // }
-  //useffect
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
-  // ***navbar changin its color ends
 
   /*  handling responsive navbar */
   const [showNavbar, setShowNavbar] = useState("none");
@@ -62,25 +31,45 @@ const AppNavbar = ({ auth, setAuth }) => {
   };
   /*   handling responsive navbar ends */
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="app-bar" style={{ backgroundColor: " rgba(0,0,0,1)" }}>
       {/* desktop view navbar */}
+
       <div className="desktop-section">
         <section className="appbar-col-1">
-          <Typography
-            className="title"
-            onClick={() => navigate("/")}
-            style={{ cursor: "pointer", fontSize: "0.7rem" }}
-          >
-            FRACTIONAL ASSETS
-          </Typography>
-          {/* <div className='logoWrapper' onClick={() => navigate('/')}><img src={logo} alt='banner' />
-          </div> */}
+          {/* dropdown for various landing pages */}
+          <div className="dropdown " id="landing-pages-dropdown">
+            <button
+              className="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style={{
+                backgroundColor: "transparent",
+                border: "0",
+                letterSpacing: "3px",
+              }}
+            >
+              FRACTIONAL PROPERTIES
+            </button>
+            <div className="dropdown-menu" style={{ backgroundColor: "black" }}>
+              {landingPagesArr.map((obj, index) => {
+                const formName = Object.keys(obj)[0];
+                const formLink = Object.values(obj)[0];
+
+                return (
+                  <div key={index + 1} onClick={() => navigate(formLink)}>
+                    <p>{formName}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          {/* dropdown for various landing pages ends */}
         </section>
+
         <section className="appbar-col-2">
           <Box className="col-2-box">
             <Button className="btn-item" onClick={() => navigate("/")}>
@@ -99,7 +88,7 @@ const AppNavbar = ({ auth, setAuth }) => {
               FAQ
             </Button>
 
-            {/* dropdown for varios properties */}
+            {/* dropdown for varios property forms */}
             <div className="dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
@@ -121,19 +110,19 @@ const AppNavbar = ({ auth, setAuth }) => {
                 className="dropdown-menu"
                 style={{ backgroundColor: "black" }}
               >
-                {fractionalTypes.map((type, index) => {
+                {collectionForms.map((obj, index) => {
+                  const formName = Object.keys(obj)[0];
+                  const formLink = Object.values(obj)[0];
+
                   return (
-                    <div
-                      key={index + 1}
-                      onClick={() => navigate(type.pagelink)}
-                    >
-                      <p>{type.property}</p>
+                    <div key={index + 1} onClick={() => navigate(formLink)}>
+                      <p>{formName}</p>
                     </div>
                   );
                 })}
               </div>
             </div>
-            {/* dropdown for varios properties ends */}
+            {/* dropdown for varios property forms end */}
 
             {auth ? (
               <Button
@@ -222,28 +211,11 @@ const AppNavbar = ({ auth, setAuth }) => {
           >
             FAQs
           </Button>
+
           <Button
             className="btn-item"
             onClick={() => {
-              navigate("/buy-property");
-              handleCloseNavbar();
-            }}
-          >
-            BUY
-          </Button>
-          <Button
-            className="btn-item"
-            onClick={() => {
-              navigate("/rent-property");
-              handleCloseNavbar();
-            }}
-          >
-            RENT
-          </Button>
-          <Button
-            className="btn-item"
-            onClick={() => {
-              navigate("/property-form");
+              navigate("/apartment-form");
               handleCloseNavbar();
             }}
           >
@@ -254,7 +226,7 @@ const AppNavbar = ({ auth, setAuth }) => {
               className="btn-item"
               style={{ padding: "0rem", marginTop: "0.1rem" }}
               onClick={() => {
-                navigate("/my-property");
+                navigate("/my-profile");
                 handleCloseNavbar();
               }}
             >
