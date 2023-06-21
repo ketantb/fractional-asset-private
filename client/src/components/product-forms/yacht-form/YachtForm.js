@@ -144,7 +144,7 @@ const Yachtform = () => {
           <FaHandPointDown />
         </div>
         <Typography className="title" style={{ marginLeft: "0.5rem" }}>
-          SELL OR BUY YOUR YACHT HERE FOR FREE
+          SELL OR BUY YOUR PROPERTY HERE FOR FREE
         </Typography>
       </div>
 

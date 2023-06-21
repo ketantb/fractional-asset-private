@@ -145,7 +145,7 @@ const Carform = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>CAR</Typography>
+          <Typography>CAR DETAILS</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <CarDetails carData={carData} setCarData={setCarData} />

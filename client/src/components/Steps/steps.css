@@ -58,3 +58,16 @@
     font-weight: bold;
     margin-right: 10px;
 }
+
+@media screen and (max-width: 600px) {
+    .step-wrapper>h2 {
+        font-size: 28px;
+        font-weight: 500;
+        margin-bottom: 3rem;
+    }
+
+    .step {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+}

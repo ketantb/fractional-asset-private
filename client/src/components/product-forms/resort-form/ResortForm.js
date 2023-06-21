@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./ArtForm.css";
+import "./PropertyForm.css";
 import axios from "../../../helpers/axios";
-// import axios from 'axios'
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -11,33 +10,41 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
-import ArtDetails from "./ArtFormSteps/ArtDetails";
-import ArtAdditionalInfo from "./ArtFormSteps/ArtAdditionalInfo";
+import PropertyDetails from "./propertyFormSteps/PropertyDetails";
+import Amenities from "./propertyFormSteps/Amenities";
+import Locality from "./propertyFormSteps/Locality";
+import AdditionalInfo from "./propertyFormSteps/AdditionalInfo";
 
 import { FaHandPointDown } from "react-icons/fa";
 
-const Artform = () => {
+const ResortForm = () => {
   const navigate = useNavigate();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   //PROPERTY DETAILS
-  const [artData, setArtData] = useState({
+  const [propertyData, setPropertyData] = useState({
     propertyAdType: "",
-    artistName: "",
-    artworkTitle: "",
-    medium: "",
-    year: "",
-    dimensions: "",
-    dimensionUnit: "",
-    framed: "",
-    condition: "",
+    resortName: "",
+    propertyAge: "",
+    area: "",
+    bedroom: "",
+    bathroom: "",
     rentPrice: "",
     totalShares: "",
     availableShares: "",
     perSharePrice: "",
   });
+  //LOCATION DETAILS
+  const [locality, setLocality] = useState({
+    street: "",
+    landmark: "",
+    city: "",
+    pin: "",
+    state: "",
+    nearbyPlaces: "",
+  });
+  //AMINTIES
+  const [aminities, setAminities] = useState([]);
+  const [newAminity, setNewAminity] = useState("");
 
   //UPLOAD PHOTOS
   const [images, setImages] = useState([]);
@@ -50,8 +57,8 @@ const Artform = () => {
   //ADDITIONL INFORMATION
   const [additionalDetails, setAdditionalDetails] = useState("");
 
-  const token = localStorage.getItem("token");
   //HANDLE SUBMIT
+  const token = localStorage.getItem("token");
   const handleUploadImages = async (e) => {
     e.preventDefault();
     if (images.length === 0) {
@@ -66,7 +73,7 @@ const Artform = () => {
       await axios
         .post(process.env.REACT_APP_CLOUDINARY_URL, imgData)
         .then((resp) => {
-          // console.log(resp);
+          console.log(resp);
           arr.push(resp.data.secure_url);
         })
         .catch((err) => console.log(err));
@@ -80,17 +87,19 @@ const Artform = () => {
   };
 
   const handlePost = async () => {
+    toast.loading("Uploading images. Please wait");
+
     const data = {
-      ...artData,
+      ...propertyData,
+      ...locality,
+      aminities: aminities,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
     };
     console.log("data before posting", data);
 
     try {
-      toast.loading("Uploading images. Please wait");
-
-      const response = await axios.post("/art-form", data, {
+      const response = await axios.post("/resort-form", data, {
         headers: {
           authorization: token,
         },
@@ -99,11 +108,10 @@ const Artform = () => {
       if (response.data.success) {
         console.log("data saved in db", response);
         toast.dismiss();
+        navigate("/my-profile");
         toast.success("Property posted successfully");
-        navigate("/listings");
       } else {
         toast.error();
-        console.log(response);
       }
     } catch (err) {
       console.log(err);
@@ -119,7 +127,7 @@ const Artform = () => {
 
   return (
     <div className="property-form-wrapper">
-      {/* <form onSubmit={handleSubmit}> */}
+      {/* <form onSubmit={handlePost}> */}
       <div style={{ display: "flex" }}>
         <div>
           <FaHandPointDown />
@@ -137,13 +145,51 @@ const Artform = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>ART DETAILS</Typography>
+          <Typography>RESORT DETAILS</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ArtDetails artData={artData} setArtData={setArtData} />
+          <PropertyDetails
+            propertyData={propertyData}
+            setPropertyData={setPropertyData}
+          />
         </AccordionDetails>
       </Accordion>
       {/* section 1 ends */}
+
+      {/* section 2 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>AMINITIES</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Amenities
+            aminities={aminities}
+            setAminities={setAminities}
+            newAminity={newAminity}
+            setNewAminity={setNewAminity}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2 ends */}
+
+      {/* section 3 */}
+      <Accordion>
+        <AccordionSummary
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+          expandIcon={"+"}
+        >
+          <Typography>LOCALITY</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Locality locality={locality} setLocality={setLocality} />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 3 ends */}
 
       {/* section 4 */}
       <Accordion>
@@ -152,7 +198,7 @@ const Artform = () => {
           id="panel2a-header"
           expandIcon={"+"}
         >
-          <Typography>UPLOAD ART IMAGES</Typography>
+          <Typography>UPLOAD PROPERTY IMAGES</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div className="upload-image-form-wrapper">
@@ -187,10 +233,10 @@ const Artform = () => {
           <Typography>ADDITIONAL INFORMATION</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ArtAdditionalInfo
+          <AdditionalInfo
             additionalDetails={additionalDetails}
             setAdditionalDetails={setAdditionalDetails}
-          ></ArtAdditionalInfo>
+          />
         </AccordionDetails>
       </Accordion>
       {/* section 5 ends */}
@@ -203,4 +249,4 @@ const Artform = () => {
     </div>
   );
 };
-export default Artform;
+export default ResortForm;

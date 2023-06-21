@@ -147,7 +147,7 @@ const Landform = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>LAND</Typography>
+          <Typography>LAND DETAILS</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <LandDetails LandData={LandData} setLandData={setLandData} />

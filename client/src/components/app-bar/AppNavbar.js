@@ -14,7 +14,9 @@ const fractionalTypes = [
   { property: "jewellery", pagelink: "/jewelry-form" },
   { property: "cars", pagelink: "/car-form" },
   { property: "art", pagelink: "/art-form" },
-  { property: "Resident & Commercial", pagelink: "/property-form" },
+  { property: "apartment", pagelink: "/apartment-form" },
+  { property: "resort", pagelink: "/resort-form" },
+  { property: "villa", pagelink: "/villa-form" },
 ];
 
 const AppNavbar = ({ auth, setAuth }) => {

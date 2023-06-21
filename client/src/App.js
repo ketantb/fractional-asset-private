@@ -45,6 +45,8 @@ import VillaDetails from "./components/products-view-details/villa-details/villa
 import ArtPage from "./components/products-landingPages/art/art";
 import ArtGallery from "./components/products-landingPages/art/art-gallery/art-gallery";
 import JewelleryPage from "./components/products-landingPages/jewellery/jewellery";
+import ResortForm from "./components/product-forms/resort-form/ResortForm";
+import VillaForm from "./components/product-forms/villa-form/VillaForm";
 
 function App() {
   const [auth, setAuth] = useState("");
@@ -68,6 +70,8 @@ function App() {
             <Route path="/art-form" element={<Artform />}></Route>
             <Route path="/jewelry-form" element={<Jewelryform />}></Route>
             <Route path="/land-form" element={<Landform />}></Route>
+            <Route path="/resort-form" element={<ResortForm />}></Route>
+            <Route path="/villa-form" element={<VillaForm />}></Route>
             {/* </Route> */}
             {/* Product Form Routes end*/}
 

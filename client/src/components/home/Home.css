@@ -48,3 +48,25 @@
     font-size: 45px;
     font-weight: 500;
 }
+
+@media screen and (max-width: 600px){
+    .home-banner img{
+        height: 75vh;
+        width: 100%;
+    }
+    .home-banner h2{
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 3rem;
+        width: 70%;
+     }
+     .home-banner h2 span{
+        font-size: 22px;
+        margin-top: 25px;
+    }
+    .featured-category-header h2{
+        font-size: 28px;
+        font-weight: 500;
+    }
+
+}

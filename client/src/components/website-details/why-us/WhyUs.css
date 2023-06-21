@@ -8,6 +8,15 @@
     margin-top: 5rem;
 }
 
+.whyus-wrapper h2 {
+    width: 100%;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 45px;
+    font-weight: 500;
+    margin-bottom: 4rem;
+}
+
 .whyus-wrapper .title {
     text-align: center;
     font-family: 'Playfair Display', serif;
@@ -37,11 +46,11 @@
     box-shadow: rgba(1, 7, 45, 0.25) 0px 30px 60px -0px inset, rgba(186, 220, 249, 0.3) 0px 18px 36px -18px inset;
 }
 
-.whyus-wrapper .card-wrapper-inner .card:nth-child(2){
+.whyus-wrapper .card-wrapper-inner .card:nth-child(2) {
     padding-top: 0px;
 }
 
-.whyus-wrapper .card-wrapper-inner .card:nth-child(2) .para{
+.whyus-wrapper .card-wrapper-inner .card:nth-child(2) .para {
     margin-top: 2.5rem;
 }
 
@@ -176,6 +185,11 @@
         background-color: black;
         color: white;
     }
+}
 
-
+@media screen and (max-width: 600px){
+    .whyus-wrapper h2 {
+        font-size: 28px;
+        margin-bottom: 3rem;
+    }
 }

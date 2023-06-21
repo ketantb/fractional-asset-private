@@ -144,7 +144,7 @@ const ApartmentForm = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>PROPERTY</Typography>
+          <Typography>APARTMENT DETAILS</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <PropertyDetails
