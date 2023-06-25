@@ -1,5 +1,5 @@
 .car-card {
-  width: 23%;
+  width: 22%;
   margin-top: 1rem;
   border: 1px solid lightgrey;
   position: relative;
@@ -68,6 +68,83 @@
   margin-top: 0.5rem;
 }
 
-.view-car-images-icon{
+.view-car-images-icon {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .car-card {
+    width: 99%;
+    margin: auto;
+    margin-top: 1rem;
+    border: 1px solid lightgrey;
+    position: relative;
+  }
+
+  .car-card .car-image {
+    width: 100%;
+    height: 20rem;
+    position: relative;
+  }
+
+  .car-card .last-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .car-card .car-details {
+    padding: 0.5rem;
+  }
+  .car-card .car-details .car-details-head {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .car-card .more-details {
+    position: absolute;
+    bottom: 23%;
+    right: 0;
+    width: 90%;
+    height: fit-content;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+      rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+      rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    background-color: white;
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+  }
+
+  .car-card .more-details table {
+    /* border: 1px solid black; */
+    width: 100%;
+  }
+  .car-card .more-details table tr {
+    border-bottom: 1px solid lightgrey;
+  }
+  .car-card .more-details table tr:last-child {
+    border: 0;
+  }
+
+  .car-card .more-details table tr td {
+    width: 50%;
+    padding: 0px 0.5rem;
+  }
+  .car-card .more-details table tr td:last-child {
+    padding-left: 1rem;
+  }
+
+  .first-column {
+    flex: 0 0 40%; /* Adjust the width of the first card */
+  }
+
+  .car-card .btn {
+    width: 8.5rem;
+  }
+
+  .car-card .last-row {
+    margin-top: 0.5rem;
+  }
+
+  .view-car-images-icon {
+    cursor: pointer;
+  }
 }

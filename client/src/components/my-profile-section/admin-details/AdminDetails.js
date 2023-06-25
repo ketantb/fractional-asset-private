@@ -5,7 +5,6 @@ import PreLoader from "../../../pre-loaders/PreLoader";
 
 const AdminDetails = () => {
   const [adminDetails, setAdminDetails] = useState(null);
-  const [firstName, setFirstName] = useState("");
   const token = localStorage.getItem("token");
   //get user details
   const getAdminDetails = async () => {
@@ -15,8 +14,8 @@ const AdminDetails = () => {
           authorization: token,
         },
       });
+      console.log(adminDetails);
       setAdminDetails(response.data.userData[0]);
-      setFirstName(response.data.userData[0].name.slice(0, 1));
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +30,9 @@ const AdminDetails = () => {
 
   return (
     <div className="admin-wrap">
-      <div className="row1"></div>
+      <div className="row1">
+        <h1>{adminDetails.name}</h1>
+      </div>
     </div>
   );
 };

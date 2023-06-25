@@ -28,8 +28,8 @@ const SellRow = ({ data, getData }) => {
       const response = await axios.delete(`/delete/${id}`);
       console.log(response);
       toast.dismiss();
-      toast.success("Deleted successfully");
       getData();
+      toast.success("Deleted successfully");
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +37,7 @@ const SellRow = ({ data, getData }) => {
   return (
     <tr className="sell-row">
       <td data-label="Posted-on">{data.postedOn}</td>
-      <td data-label="Type">{data.productType}</td>
+      <td data-label="Type">{data.propertyType}</td>
       <td data-label="Total Shares">{data.totalShares}</td>
       <td data-label="Price per Share">{data.perSharePrice}</td>
       {data.availableShares === 0 ? (

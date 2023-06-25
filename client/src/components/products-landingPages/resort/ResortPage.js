@@ -2,26 +2,28 @@ import React, { useEffect, useState } from "react";
 import "./ResortPage.css";
 import Resort from "../../mini-cards/resort/Resort";
 import axios from "../../../helpers/axios";
+import PreLoader from "../../../pre-loaders/PreLoader";
 
 const ResortPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const [resortData, setReosrtData] = useState([]);
   //get all resortData
   const getData = async () => {
     try {
       const response = await axios.get("/listing-all-resort");
-      console.log(response.data.list);
-      setReosrtData(response.data.list);
+      console.log(response.data.allresorts);
+      setReosrtData(response.data.allresorts);
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     getData();
   }, []);
+
+  if (!resortData) {
+    return <PreLoader />;
+  }
 
   return (
     <>
@@ -37,15 +39,9 @@ const ResortPage = () => {
       </div>
 
       <div className="resort-card-wrap">
-        {resortData
-          .filter((resort) => {
-            if (resort.propertyAdType === "sell") {
-              return resort;
-            }
-          })
-          .map((data, i) => {
-            return <Resort data={data} />;
-          })}
+        {resortData.map((data, i) => {
+          return <Resort data={data} />;
+        })}
       </div>
     </>
   );
