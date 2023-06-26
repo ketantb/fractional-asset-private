@@ -34,10 +34,10 @@ const MyProfile = () => {
               <p>PROPERTY LISTINGS</p>
             </button>
           </Link>
-          <Link to="/listings">
+          <Link to="/notifications">
             <button>
               <MdNotifications className="icon" />
-              <p>NOTIFICATIONS (0)</p>
+              <p>NOTIFICATIONS </p>
             </button>
           </Link>
           <Link to="/listings">

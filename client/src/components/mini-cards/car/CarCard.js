@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CarCard.css";
 import { BiRupee } from "react-icons/bi";
 import { BiImages } from "react-icons/bi";
 //modal for resever share form
 import ReserveShares from "../../modal/reserveShares/ReserveShares";
+import RentContactForm from "../../modal/rentContactForm/RentContactForm";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import ViewProductImages from "../view-product-images/view-product-images";
@@ -19,21 +20,30 @@ const CarCard = ({ car }) => {
   };
 
   //view images modal
-  const [openImg, setImgOpen] = useState(false)
+  const [openImg, setImgOpen] = useState(false);
   const openImagesModal = () => {
-    setImgOpen(true)
-  }
+    setImgOpen(true);
+  };
   const closeImagesModal = () => {
-    setImgOpen(false)
-  }
+    setImgOpen(false);
+  };
 
-  // handle modal
+  // handle reserve shares form modal
   const [open, setOpen] = useState(false);
   const handleOpenModal = () => {
     setOpen(true);
   };
   const handleCloseModal = () => {
     setOpen(false);
+  };
+
+  //handle rent contact form
+  const [openContact, setOpenContact] = useState(false);
+  const handleOpenContactModal = () => {
+    setOpenContact(true);
+  };
+  const handleCloseContactModal = () => {
+    setOpenContact(false);
   };
 
   return (
@@ -60,6 +70,7 @@ const CarCard = ({ car }) => {
               className="btn btn-success"
               onMouseEnter={openMoreDetails}
               onMouseLeave={closeMoreDetails}
+              style={{ width: "9rem" }}
             >
               View Details
             </button>
@@ -88,6 +99,7 @@ const CarCard = ({ car }) => {
                 className="btn btn-danger"
                 id="reserve-btn"
                 onClick={handleOpenModal}
+                style={{ width: "9rem" }}
               >
                 Reserve Shares
               </button>
@@ -97,7 +109,13 @@ const CarCard = ({ car }) => {
               </button>
             )
           ) : (
-            <button className="btn btn-danger">Contact</button>
+            <button
+              className="btn btn-danger"
+              onClick={handleOpenContactModal}
+              style={{ width: "9rem" }}
+            >
+              Contact
+            </button>
           )}
         </div>
       </div>
@@ -141,6 +159,7 @@ const CarCard = ({ car }) => {
                     <BiRupee />
                   </span>
                   {car.rentPrice}
+                  {`/day`}
                 </td>
               </tr>
             ) : (
@@ -168,21 +187,30 @@ const CarCard = ({ car }) => {
         </div>
       ) : null}
 
-      <>
-        <Modal open={open} onClose={handleCloseModal} center>
-          <ReserveShares
-            totalShares={car.totalShares}
-            availableShares={car.availableShares}
-            perSharePrice={car.perSharePrice}
-            handleCloseModal={handleCloseModal}
-            details={car}
-          />
-        </Modal>
-      </>
+      {/* reserve share modal */}
+      <Modal open={open} onClose={handleCloseModal} center id="modal">
+        <ReserveShares
+          totalShares={car.totalShares}
+          availableShares={car.availableShares}
+          perSharePrice={car.perSharePrice}
+          handleCloseModal={handleCloseModal}
+          details={car}
+        />
+      </Modal>
+
+      {/* image modal */}
       <Modal open={openImg} onClose={closeImagesModal} center>
-        <ViewProductImages 
-         images={car.imgArr}
-         closeImagesModal = {closeImagesModal}
+        <ViewProductImages
+          images={car.imgArr}
+          closeImagesModal={closeImagesModal}
+        />
+      </Modal>
+
+      {/* contact modal */}
+      <Modal open={openContact} onClose={handleCloseContactModal} center>
+        <RentContactForm
+          handleCloseContactModal={handleCloseContactModal}
+          details={car}
         />
       </Modal>
     </div>

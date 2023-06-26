@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 2rem auto;
   width: 75%;
 }
 
@@ -61,6 +61,7 @@
 
 @media screen and (max-width: 480px){
   .testimonial-slider {
+    margin-top: 5rem;
      width: 100%;
   }
 }

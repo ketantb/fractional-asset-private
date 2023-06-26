@@ -1,13 +1,13 @@
 const initialData = {
-  filterPropertyName: "",
+  data: null,
 };
 
 const Reducer = (state = initialData, action) => {
   switch (action.type) {
-    case "filter_property_name":
+    case "getData":
       return {
         ...state,
-        filterPropertyName: action.payload.filterPropertyName,
+        data: action.payload.data,
       };
     default: {
       return state;

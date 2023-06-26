@@ -19,16 +19,20 @@ import ResortForm from "./components/product-forms/resort-form/ResortForm";
 import VillaForm from "./components/product-forms/villa-form/VillaForm";
 
 //products landing pages
-import PropertyPage from "./components/products-landingPages/property/Property";
+import ApartmentPage from "./components/products-landingPages/apartment/Apartment";
 import CarPage from "./components/products-landingPages/car/Car";
 import YachtPage from "./components/products-landingPages/yacht/Yacht";
 import VillaPage from "./components/products-landingPages/villa/villa";
 import ArtPage from "./components/products-landingPages/art/art";
 import JewelleryPage from "./components/products-landingPages/jewellery/jewellery";
 import ResortPage from "./components/products-landingPages/resort/ResortPage";
+import WareHousePage from "./components/products-landingPages/warehouse/Warehouse";
+import ShopPage from "./components/products-landingPages/shop/Shop";
+import ParkingPage from "./components/products-landingPages/parking/Parking";
+import StartUpPage from "./components/products-landingPages/startup/Startup";
 
 // products details page
-import ResortVillaApartmentDetails from "./components/products-view-details/villa-details/villa-details";
+import ResortVillaApartmentDetails from "./components/products-view-details/villa-resort-apartment-details/villa-resort-apartment-details";
 import ArtGallery from "./components/products-landingPages/art/art-gallery/art-gallery";
 
 //MY PROFILE SECTION
@@ -37,6 +41,7 @@ import MyProfile from "./components/my-profile-section/my-profile/MyProfile";
 //my profile childs
 import AdminDetails from "./components/my-profile-section/admin-details/AdminDetails";
 import Listings from "./components/my-profile-section/listings/Listings";
+import Notifications from "./components/my-profile-section/notification/Notifications";
 
 //website details
 import AboutUs from "./components/website-details/aboutus/AboutUs";
@@ -66,6 +71,7 @@ function App() {
       const response = await axios.get("/property-collections");
       console.log(response);
       const arr = response.data.collectionList.map((name) => name.slice(0, -9));
+      arr.sort();
       setCollectionNames(arr);
     } catch (err) {
       console.log(err);
@@ -131,7 +137,7 @@ function App() {
             {/* Product Form Routes end*/}
 
             {/* landing pages */}
-            <Route path="/property-page" element={<PropertyPage />}></Route>
+            <Route path="/apartment-page" element={<ApartmentPage />} />
             <Route path="/yacht-page" element={<YachtPage />}></Route>
             <Route path="/car-page" element={<CarPage />}></Route>
             <Route path="/villa-page" element={<VillaPage />}></Route>
@@ -139,17 +145,25 @@ function App() {
             <Route path="/art-page/gallery" element={<ArtGallery />}></Route>
             <Route path="/jewellery-page" element={<JewelleryPage />}></Route>
             <Route path="/resort-page" element={<ResortPage />}></Route>
+            <Route path="/warehouse-page" element={<WareHousePage />}></Route>
+            <Route path="/shop-page" element={<ShopPage />}></Route>
+            <Route path="/parking-page" element={<ParkingPage />}></Route>
+            <Route path="/startup-page" element={<StartUpPage />}></Route>
             {/* landing pages  end*/}
 
             {/* my profile page roues */}
             <Route element={<MyProfile />}>
               <Route path="/my-profile" element={<AdminDetails />}></Route>
               <Route path="/listings" element={<Listings />}></Route>
+              <Route path="/notifications" element={<Notifications />}></Route>
             </Route>
             {/* my profile page routes end */}
 
             {/*Product Details*/}
-            <Route path="/villa-details" element={<ResortVillaApartmentDetails />}></Route>
+            <Route
+              path="/villa-resort-apartment-details/:propertyid"
+              element={<ResortVillaApartmentDetails />}
+            ></Route>
             {/*Product Details*/}
 
             {/*footer componenets */}

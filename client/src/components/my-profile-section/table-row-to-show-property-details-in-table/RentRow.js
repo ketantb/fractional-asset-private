@@ -54,7 +54,7 @@ const RentRow = ({ data, getData }) => {
   return (
     <tr className="rent-row">
       <td data-label="posted-on">{data.postedOn}</td>
-      <td data-label="Type">{data.productType}</td>
+      <td data-label="Type">{data.propertyType}</td>
       <td data-label="Rental Price">{data.rentPrice}</td>
       <td data-label="Action">
         <div>
