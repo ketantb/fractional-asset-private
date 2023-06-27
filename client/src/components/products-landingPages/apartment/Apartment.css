@@ -1,19 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
+
 .apartment-page-container .bg-image {
-  background-image: url("https://images.pexels.com/photos/565324/pexels-photo-565324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-  background-position: center center;
-  background-size: cover;
   height: 720px;
+  margin-bottom: 0;
   position: relative;
-  margin-bottom: 5rem;
+  background-size: cover;
+  background-position: center center;
+  background-image: url("https://images.pexels.com/photos/565324/pexels-photo-565324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 }
+
 .apartment-page-container section h4 {
-  padding-left: 1rem;
+  color: #334155;
+  padding-left: 20px;
+  font-family: 'Domine', serif;
 }
-.apartment-page-container .apartment-card-container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  background-color: white;
+
+.apartment-page-container>section {
   margin-top: 2rem;
+}
+
+.apartment-card-container {
+  display: grid;
+  margin: 0 20px;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  background-color: #f1f5f9;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width: 700px) {
+  .apartment-card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
