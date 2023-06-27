@@ -3,6 +3,55 @@
   display: flex;
 }
 
+.yacht-r2-container{
+  color: #ffff;
+  text-align: center;
+}
+
+.yacht-r2-container > div > h1{
+  font-family: 'Playfair Display', serif;
+  padding-top: 25px;
+}
+
+.yacht-r2-container > div > section{
+  margin-top: 100px;
+  display: flex;
+  height: 525px;
+  /* border: 1px solid red; */
+}
+
+.yacht-r2-container > div > section > .yacht-r2-container-lb{
+  /* margin-top: 100px; */
+}
+
+.yacht-r2-container > div > section > .yacht-r2-container-lb > p{
+   height: 47%;
+}
+
+.yacht-r2-container > div > section > .yacht-r2-container-rb{
+  /* padding-top: 35px; */
+}
+
+.yacht-r2-container > div > section > .yacht-r2-container-rb > h2{
+  height: 50%;
+  /* border: 1px solid red; */
+}
+
+.yacht-r2-container > div > section > .yacht-r2-container-rb > p{
+  /* border: 1px solid red; */
+  margin-top: 25px;
+  height: 50%;
+}
+
+.yacht-r2-container div > section > div > p{
+  padding: 0 25px;
+}
+
+.row2-lb-yacht-image{
+  width: 100%;
+  height: 50%;
+}
+
 .yacht-image-container {
   width: 50%;
   /* border: 1px solid black; */
@@ -80,4 +129,10 @@
   padding: 10px 5px;
   width: 250px;
   border: 1px solid #ffff;
+}
+
+@media screen and (max-width: 900px){
+  .yacht-r2-container > div > section{
+    flex-direction: column;
+  }
 }

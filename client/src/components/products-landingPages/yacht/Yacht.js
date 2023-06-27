@@ -57,7 +57,19 @@ const YachtPage = () => {
             purus, ut facilisis tellus iaculis nec.
           </p>
           <p>
-            <button>Contact Us</button>
+            Nullam at mauris non elit auctor ullamcorper. Phasellus efficitur
+            risus nec semper tincidunt. Nam sit amet mauris ullamcorper,
+            lobortis justo id, consectetur ipsum. Suspendisse pulvinar auctor
+            purus, ut facilisis tellus iaculis nec.
+          </p>
+          <p>
+            <button
+              onClick={() => {
+                navigate("/enquiry");
+              }}
+            >
+              Contact Us
+            </button>
           </p>
         </div>
         <div className="yacht-image-container">

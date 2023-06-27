@@ -26,7 +26,10 @@ import VillaPage from "./components/products-landingPages/villa/villa";
 import ArtPage from "./components/products-landingPages/art/art";
 import JewelleryPage from "./components/products-landingPages/jewellery/jewellery";
 import ResortPage from "./components/products-landingPages/resort/ResortPage";
-import ShopPage from "./components/products-landingPages/shop/shop";
+import WareHousePage from "./components/products-landingPages/warehouse/Warehouse";
+import ShopPage from "./components/products-landingPages/shop/Shop";
+import ParkingPage from "./components/products-landingPages/parking/Parking";
+import StartUpPage from "./components/products-landingPages/startup/Startup";
 
 // products details page
 import ResortVillaApartmentDetails from "./components/products-view-details/villa-resort-apartment-details/villa-resort-apartment-details";
@@ -46,6 +49,9 @@ import FAQs from "./components/website-details/FaqPage/FAQs";
 import EnquirySection from "./components/website-details/enquiryContactSection/EnquirySection";
 import HowItWorks from "./components/website-details/how-it-works/HowItWorks";
 
+//channel partner
+import ChannelPartner from "./components/channel-partner/channel-partner";
+
 import Footer from "./components/footer/Footer";
 
 //reducer components
@@ -56,6 +62,7 @@ import { Provider } from "react-redux";
 //extra components
 import axios from "./helpers/axios";
 import PreLoader from "./pre-loaders/PreLoader";
+import BecomeAChannelPartner from "./components/channel-partner/become-a-channel-partner/become-a-channel-partner";
 
 function App() {
   const [auth, setAuth] = useState("");
@@ -142,7 +149,10 @@ function App() {
             <Route path="/art-page/gallery" element={<ArtGallery />}></Route>
             <Route path="/jewellery-page" element={<JewelleryPage />}></Route>
             <Route path="/resort-page" element={<ResortPage />}></Route>
+            <Route path="/warehouse-page" element={<WareHousePage />}></Route>
             <Route path="/shop-page" element={<ShopPage />}></Route>
+            <Route path="/parking-page" element={<ParkingPage />}></Route>
+            <Route path="/startup-page" element={<StartUpPage />}></Route>
             {/* landing pages  end*/}
 
             {/* my profile page roues */}
@@ -159,6 +169,14 @@ function App() {
               element={<ResortVillaApartmentDetails />}
             ></Route>
             {/*Product Details*/}
+
+            {/* channel partner route */}
+            <Route path="/channel-partner" element={<ChannelPartner />} />
+            <Route
+              path="/become-a-channel-partner"
+              element={<BecomeAChannelPartner />}
+            />
+            {/* channel partner route */}
 
             {/*footer componenets */}
             <Route path="/enquiry" element={<EnquirySection />} />

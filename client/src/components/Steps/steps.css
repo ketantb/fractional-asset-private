@@ -1,5 +1,6 @@
 .step-wrapper {
-    margin-top: 6rem;
+    margin-top: 5rem;
+    /* border: 1px solid black; */
 }
 
 .step-wrapper>h2 {

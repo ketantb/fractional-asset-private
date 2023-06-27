@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
+
 .howitworks-step-container {
     display: flex;
     flex-wrap: wrap;
@@ -9,35 +11,41 @@
 }
 
 .howitworks-header {
+    margin-top: 3rem;
     text-align: center;
-    margin-top: 6rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
-.howitworks-header h2 {}
+.howitworks-header h2 {
+    font-size: 50px;
+    color: #334155;
+    font-family: 'Domine', serif;
+}
 
 .howitworks-header p {
+    width: 1000px;
     font-size: 20px;
-    font-weight: 500px;
-    margin-top: 3rem;
+    margin-top: 1rem;
     padding: 0px 25px;
+    font-weight: 500px;
 }
 
 .steps-container {
+    width: 80%;
     flex-wrap: wrap;
     display: flex;
-    width: 80%;
 }
 
 .step {
     width: 350px;
     height: 250px;
     display: flex;
-    flex-direction: column;
-    text-align: center;
     padding-top: 0px;
-    /* border: 1px solid black; */
+    text-align: center;
+    border-radius: 5px;
     padding-right: 15px;
+    flex-direction: column;
+    background-color: #f1f5f9;
 }
 
 .step-icon {
@@ -55,9 +63,9 @@
 }
 
 .step-description {
-    text-align: justify;
-    font-size: 16px;
     color: #888;
+    font-size: 16px;
+    text-align: center;
 }
 
 /* Media queries for responsiveness */
@@ -67,19 +75,24 @@
         justify-content: center;
     }
 
-    /* .step {
-        flex-direction: column;
-        text-align: center;
+    .step {
+        margin: 10px;
     }
 
-    .step-icon {
-        margin-bottom: 10px;
-    } */
+    .howitworks-header {
+        margin-bottom: 1rem;
+    }
+    
+    .howitworks-header h2 {
+        font-size: 40px;
+    }
+
     .howitworks-header p {
-        font-size: 18px;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 15px;
         padding: 0px 0px;
     }
-
 }
 
 @media screen and (max-width: 480px) {
@@ -88,6 +101,6 @@
     }
 
     .step {
-        width: 100%;
+        width: 95%;
     }
 }
