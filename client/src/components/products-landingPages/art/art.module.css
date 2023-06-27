@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.main {
+    overflow-x: hidden;
+}
+
+.subjectMatter>h1 {
+    width: 500px;
+    margin: 0 auto;
+    font-size: 55px;
+    color: #2563eb;
+    margin-top: 150px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+}
+
+.subjectMatter>h1 span {
+    color: #1e40af;
+    font-weight: bolder;
+    font-family: 'Fraunces', serif;
+}
+
+/* About Particle */
+
+.aboutParticle {
+    display: flex;
+    color: #1e293b;
+    align-items: center;
+    margin: 150px 100px;
+    justify-content: space-evenly;
+}
+
+.aboutParticle>div {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.aboutParticle>div h1 {
+    line-height: 1;
+    font-size: 110px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Fraunces', serif;
+}
+
+.aboutParticle>div>p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.aboutParticle>div>div {
+    display: flex;
+}
+
+.aboutParticle>div a {
+    display: flex;
+    color: #1e293b;
+    margin-right: 15px;
+    align-items: center;
+    text-decoration: none;
+}
+
+.aboutParticle>div a p {
+    margin-left: 3px;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.aboutParticle>p {
+    width: 550px;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* About Foundation */
+
+.aboutFoundation {
+    margin: 150px 100px;
+    display: flex;
+    color: #1e293b;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.aboutFoundation h1 {
+    line-height: 1;
+    font-size: 110px;
+    margin-bottom: 30px;
+    font-family: 'Fraunces', serif;
+}
+
+.aboutFoundation p {
+    width: 1000px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 1200px) {
+    .aboutParticle {
+        flex-direction: column;
+    }
+
+    .aboutParticle>div {
+        margin-bottom: 30px;
+    }
+
+    .aboutFoundation p {
+        width: 680px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .subjectMatter>h1 {
+        width: 90%;
+        font-size: 50px;
+    }
+
+    .aboutParticle>div h1,
+    .aboutFoundation h1 {
+        font-size: 75px;
+    }
+
+    .aboutParticle>p,
+    .aboutFoundation p {
+        width: 450px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .subjectMatter>h1 {
+        font-size: 40px;
+    }
+
+    .aboutParticle>div h1,
+    .aboutFoundation h1 {
+        font-size: 50px;
+    }
+
+    .aboutParticle>p,
+    .aboutFoundation p {
+        width: 350px;
+        font-size: 15px;
+    }
+}

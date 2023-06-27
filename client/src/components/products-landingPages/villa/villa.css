@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
+
+.villa-page-container .bg-image {
+  height: 720px;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-image: url("../../../assets/villa.jpg");
+}
+
+.villa-page-container > section {
+  margin-top: 2rem;
+}
+
+.villa-page-container section h4 {
+  color: #334155;
+  padding-left: 20px;
+  font-family: 'Domine', serif;
+}
+
+.villa-card-container {
+  display: grid;
+  margin: 0 20px;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  background-color: #f1f5f9;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width: 700px) {
+  .villa-card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

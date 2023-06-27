@@ -1,0 +1,45 @@
+.rentcontact-form-wrap {
+  width: 30rem;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+.rentcontact-form-wrap .form-group {
+  margin-bottom: 20px;
+}
+
+.rentcontact-form-wrap .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.rentcontact-form-wrap .form-group input,
+.rentcontact-form-wrap .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.rentcontact-form-wrap .form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.rentcontact-form-wrap .form-group button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .rentcontact-form-wrap {
+    width: 100%;
+    padding: 1rem 20px;
+  }
+}

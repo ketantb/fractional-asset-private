@@ -1,0 +1,14 @@
+.admin-wrap {
+}
+.admin-wrap .row1 h5 {
+  text-align: center;
+}
+
+.admin-wrap .row1 {
+  /* border: 1px solid black; */
+  width: 40%;
+  height: 15rem;
+  padding: 1rem;
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  border-radius: 1rem;
+}

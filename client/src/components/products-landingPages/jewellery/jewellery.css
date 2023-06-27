@@ -1,0 +1,13 @@
+.jewellery-page-wrapper{
+  background-color: rgb(173, 171, 171);
+}
+
+.jewellery-bg-image {
+  background-image: url("https://cdnb.artstation.com/p/assets/images/images/024/495/977/large/ankur-aggarwal-jewel1.jpg?1582619594");
+  background-position: center center;
+  background-size: cover;
+  height: 720px;
+  position: relative;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}

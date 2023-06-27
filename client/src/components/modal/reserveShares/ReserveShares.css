@@ -1,0 +1,76 @@
+.reserveShare-form-wrap {
+  padding: 1rem;
+  margin-top: 2rem;
+  background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+}
+.reserveShare-form-wrap form .section1,
+.reserveShare-form-wrap form .section2 {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reserveShare-form-wrap form .section2 {
+  margin-top: 1rem;
+}
+.reserveShare-form-wrap form .section1 input,
+.reserveShare-form-wrap form .section2 input {
+  width: 50%;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.reserveShare-form-wrap .section3 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.reserveShare-form-wrap .section3 p {
+  font-size: 1.1rem;
+}
+
+.reserveShare-form-wrap .section4 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.reserveShare-form-wrap .section4 label {
+  font-size: 1.2rem;
+}
+
+.reserveShare-form-wrap .section4 select {
+  width: 7rem;
+}
+
+.reserveShare-form-wrap .section6 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.reserveShare-form-wrap .section6 p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.reserveShare-form-wrap .section5 {
+  display: flex;
+  justify-content: center;
+}
+
+.reserveShare-form-wrap .section5 button {
+  margin-top: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .reserveShare-form-wrap .section4 label {
+    font-size: 1.2rem;
+    width: 70%;
+  }
+
+  .reserveShare-form-wrap .section4 select {
+    width: 7rem;
+  }
+}

@@ -1,0 +1,38 @@
+.main {
+    margin-top: 5rem;
+}
+
+.main>div {
+    margin: 0 auto;
+    margin-top: 100px;
+    width: fit-content;
+}
+
+.cards {
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cards img {
+    width: 350px;
+    height: 350px;
+    transition: .3s;
+}
+
+.cards img:hover {
+    transform: scale(1.025);
+}
+
+.galleryData {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.sale, .title1, .price1, .quantity1 {
+    font-size: small;
+    font-weight: 800;
+    color: #1e293b;
+}
