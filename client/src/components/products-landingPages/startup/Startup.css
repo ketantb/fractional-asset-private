@@ -6,14 +6,3 @@
     position: relative;
     margin-bottom: 5rem;
   }
-  .villa-page-container section h4 {
-    padding-left: 1rem;
-  }
-  .villa-page-container .villa-card-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    background-color: white;
-    margin-top: 2rem;
-  }
