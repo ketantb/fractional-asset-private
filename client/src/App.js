@@ -26,6 +26,7 @@ import VillaPage from "./components/products-landingPages/villa/villa";
 import ArtPage from "./components/products-landingPages/art/art";
 import JewelleryPage from "./components/products-landingPages/jewellery/jewellery";
 import ResortPage from "./components/products-landingPages/resort/ResortPage";
+import ShopPage from "./components/products-landingPages/shop/shop";
 
 // products details page
 import ResortVillaApartmentDetails from "./components/products-view-details/villa-resort-apartment-details/villa-resort-apartment-details";
@@ -141,6 +142,7 @@ function App() {
             <Route path="/art-page/gallery" element={<ArtGallery />}></Route>
             <Route path="/jewellery-page" element={<JewelleryPage />}></Route>
             <Route path="/resort-page" element={<ResortPage />}></Route>
+            <Route path="/shop-page" element={<ShopPage />}></Route>
             {/* landing pages  end*/}
 
             {/* my profile page roues */}

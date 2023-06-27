@@ -6,14 +6,23 @@
   position: relative;
   margin-bottom: 5rem;
 }
+
 .villa-page-container section h4 {
   padding-left: 1rem;
 }
-.villa-page-container .villa-card-container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  background-color: white;
-  margin-top: 2rem;
+
+.villa-card-container {
+  width: 90%;
+  display: grid;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  background-color: #f1f5f9;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width: 700px) {
+  .villa-card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

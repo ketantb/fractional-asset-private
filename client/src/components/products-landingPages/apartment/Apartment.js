@@ -3,6 +3,8 @@ import "./Apartment.css";
 import ApartmentCard from "../../mini-cards/apartment/apartmentCard";
 import axios from "../../../helpers/axios";
 import PreLoader from "../../../pre-loaders/PreLoader";
+import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
+import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
 
 const ApartmentPage = () => {
   //get all apartments
@@ -25,38 +27,44 @@ const ApartmentPage = () => {
   }
 
   return (
-    <div className="apartment-page-container">
-      <div className="bg-image"></div>
+    <>
+      <div className="apartment-page-container">
+        <div className="bg-image"></div>
 
-      {apartmentData.length !== 0 ? (
-        <section>
-          <h4>FRACTIONAL APARTMENTS</h4>
-          <div className="apartment-card-container">
-            {apartmentData
-              .filter((apartment) => {
-                if (apartment.propertyAdType === "sell") {
-                  return apartment;
-                }
-              })
-              .map((apartment) => {
-                return <ApartmentCard apartment={apartment} />;
-              })}
-          </div>
-          <h4>RENTAL APARTMENTS</h4>
-          <div className="apartment-card-container">
-            {apartmentData
-              .filter((apartment) => {
-                if (apartment.propertyAdType === "rent") {
-                  return apartment;
-                }
-              })
-              .map((apartment) => {
-                return <ApartmentCard apartment={apartment} />;
-              })}
-          </div>
-        </section>
-      ) : null}
-    </div>
+        <DLBrochure />
+
+        {apartmentData.length !== 0 ? (
+          <section>
+            <h4>FRACTIONAL APARTMENTS</h4>
+            <div className="apartment-card-container">
+              {apartmentData
+                .filter((apartment) => {
+                  if (apartment.propertyAdType === "sell") {
+                    return apartment;
+                  }
+                })
+                .map((apartment) => {
+                  return <ApartmentCard apartment={apartment} />;
+                })}
+            </div>
+            <h4>RENTAL APARTMENTS</h4>
+            <div className="apartment-card-container">
+              {apartmentData
+                .filter((apartment) => {
+                  if (apartment.propertyAdType === "rent") {
+                    return apartment;
+                  }
+                })
+                .map((apartment) => {
+                  return <ApartmentCard apartment={apartment} />;
+                })}
+            </div>
+          </section>
+        ) : null}
+      </div>
+
+      <HowItWorksSteps />
+    </>
   );
 };
 

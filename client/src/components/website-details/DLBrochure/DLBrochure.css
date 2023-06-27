@@ -1,0 +1,54 @@
+.brochure-slider {
+    margin: 25px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+}
+
+.brochure-slider img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.brochure-overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.brochure-overlay h1 {
+    width: 700px;
+    color: #fff;
+    font-size: 50px;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .brochure-overlay h1 {
+        width: 500px;
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .brochure-overlay h1 {
+        width: 300px;
+        font-size: 30px;
+    }
+}
+
+.brochure-overlay button {
+    border: 0;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 5px;
+    background-color: #eab308;
+}

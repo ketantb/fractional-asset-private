@@ -3,6 +3,8 @@ import "./ResortPage.css";
 import Resort from "../../mini-cards/resort/Resort";
 import axios from "../../../helpers/axios";
 import PreLoader from "../../../pre-loaders/PreLoader";
+import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
+import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
 
 const ResortPage = () => {
   const [resortData, setReosrtData] = useState([]);
@@ -28,6 +30,9 @@ const ResortPage = () => {
   return (
     <>
       <div className="resortBanner"></div>
+
+      <DLBrochure />
+
       <div className="home-content">
         <div className="content-wrapper" data-aos="zoom-in" data-aos-delay="80">
           <h4>
@@ -43,6 +48,8 @@ const ResortPage = () => {
           return <Resort data={data} />;
         })}
       </div>
+
+      <HowItWorksSteps />
     </>
   );
 };
