@@ -1,0 +1,133 @@
+.channel-partner-form-wrapper {
+    width: 80%;
+    margin: 150px auto 0 auto;
+    border: 2px solid #d08c04;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.channel-partner-form-wrapper h4 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.channel-partner-form {
+    width: 100%;
+}
+
+.channel-partner-form>section {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.channel-partner-form .cp-form-input-text {
+    width: 100%;
+    border: 1px solid rgb(194, 193, 193);
+    border-radius: 10px;
+    padding-left: 15px;
+    height: 40px;
+}
+
+.channel-partner-form input:focus {
+    outline: 1px solid rgb(159, 159, 159);
+}
+
+.channel-partner-form>section select:focus {
+    outline: 1px solid rgb(159, 159, 159);
+}
+
+.channel-partner-form>section select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgb(194, 193, 193);
+    outline: none;
+    border-radius: 10px;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.channel-partner-form>section>div>section>label {
+    font-family: 'Playfair Display', serif;
+    color: black;
+    font-size: 15px;
+}
+
+.channel-partner-form>section>div>section>label>span {
+    margin-left: 5px;
+    font-size: 25px;
+    color: red;
+}
+
+.channel-partner-form>.cp-form-input-type-file-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.channel-partner-form>.cp-form-input-type-file-wrapper div {
+    width: 100%;
+}
+
+.cp-form-input-type-file-1-n-3 {
+    width: 95%;
+    border: 1px solid rgb(196, 196, 196);
+}
+
+.cp-form-input-type-file-2-n-4 {
+    width: 100%;
+    border: 1px solid rgb(196, 196, 196);
+}
+
+.cp-form-input-type-checkbox {
+    margin-right: 15px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+.cp-form-checkbox-section{
+    display: flex;
+}
+
+.channel-partner-form>section:nth-last-child(2) > div >label {
+    color: black;
+    font-weight: 500;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.channel-partner-form>section:last-child>button {
+    margin-top: 15px;
+    width: 100%;
+    height: 50px;
+    background-color: #d08c04;
+    color: #ffff;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0px 15px;
+}
+
+@media screen and (max-width: 900px) {
+    .channel-partner-form>.cp-form-input-type-file-wrapper {
+        display: block;
+    }
+
+    .cp-form-input-type-file-1-n-3 {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .channel-partner-form-wrapper {
+        width: 90%;
+        padding: 25px;
+    }
+}

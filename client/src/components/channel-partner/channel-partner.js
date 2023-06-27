@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import ChannelPartnerSlider from './channel-partner-slider/channel-partner-slider'
 import './channel-partner.css'
 
 const ChannelPartner = () => {
+    const navigate = useNavigate();
     return (
         <div className="channel-partner-wrapper">
             <section className="channel-partner-ub">
@@ -32,7 +34,10 @@ const ChannelPartner = () => {
                     <ChannelPartnerSlider />
                 </div>
                 <div className="become-channel-partner-btn-container">
-                    <button className="become-channel-partner-btn">
+                    <button 
+                    onClick={() => navigate('/become-a-channel-partner')}
+                    className="become-channel-partner-btn"
+                    >
                         BECOME A CHANNEL PARTNER
                     </button>
                 </div>

@@ -62,6 +62,7 @@ import { Provider } from "react-redux";
 //extra components
 import axios from "./helpers/axios";
 import PreLoader from "./pre-loaders/PreLoader";
+import BecomeAChannelPartner from "./components/channel-partner/become-a-channel-partner/become-a-channel-partner";
 
 function App() {
   const [auth, setAuth] = useState("");
@@ -153,7 +154,7 @@ function App() {
             <Route path="/parking-page" element={<ParkingPage />}></Route>
             <Route path="/startup-page" element={<StartUpPage />}></Route>
             {/* landing pages  end*/}
-  
+
             {/* my profile page roues */}
             <Route element={<MyProfile />}>
               <Route path="/my-profile" element={<AdminDetails />}></Route>
@@ -171,6 +172,8 @@ function App() {
 
             {/* channel partner route */}
             <Route path="/channel-partner" element={<ChannelPartner />} />
+            <Route path="/become-a-channel-partner" element={<BecomeAChannelPartner />} />
+            {/* channel partner route */}
 
             {/*footer componenets */}
             <Route path="/enquiry" element={<EnquirySection />} />
