@@ -49,6 +49,9 @@ import FAQs from "./components/website-details/FaqPage/FAQs";
 import EnquirySection from "./components/website-details/enquiryContactSection/EnquirySection";
 import HowItWorks from "./components/website-details/how-it-works/HowItWorks";
 
+//channel partner
+import ChannelPartner from "./components/channel-partner/channel-partner";
+
 import Footer from "./components/footer/Footer";
 
 //reducer components
@@ -150,7 +153,7 @@ function App() {
             <Route path="/parking-page" element={<ParkingPage />}></Route>
             <Route path="/startup-page" element={<StartUpPage />}></Route>
             {/* landing pages  end*/}
-
+  
             {/* my profile page roues */}
             <Route element={<MyProfile />}>
               <Route path="/my-profile" element={<AdminDetails />}></Route>
@@ -165,6 +168,9 @@ function App() {
               element={<ResortVillaApartmentDetails />}
             ></Route>
             {/*Product Details*/}
+
+            {/* channel partner route */}
+            <Route path="/channel-partner" element={<ChannelPartner />} />
 
             {/*footer componenets */}
             <Route path="/enquiry" element={<EnquirySection />} />

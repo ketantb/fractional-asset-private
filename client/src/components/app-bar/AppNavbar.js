@@ -81,6 +81,17 @@ const AppNavbar = ({ auth, setAuth, collectionForms, landingPagesArr }) => {
             >
               How It Works
             </Button>
+
+            <Button
+              className="btn-item"
+              onClick={() => {
+                navigate("/channel-partner");
+                handleCloseNavbar();
+              }}
+            >
+              Channel Partner
+            </Button>
+
             <Button className="btn-item" onClick={() => navigate("/aboutus")}>
               About Us
             </Button>
@@ -202,6 +213,17 @@ const AppNavbar = ({ auth, setAuth, collectionForms, landingPagesArr }) => {
           >
             About Us
           </Button>
+
+          <Button
+            className="btn-item"
+            onClick={() => {
+              navigate("/channel-partner");
+              handleCloseNavbar();
+            }}
+          >
+            Channel Partner
+          </Button>
+
           <Button
             className="btn-item"
             onClick={() => {
