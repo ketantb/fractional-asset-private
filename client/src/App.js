@@ -27,7 +27,7 @@ import ArtPage from "./components/products-landingPages/art/art";
 import JewelleryPage from "./components/products-landingPages/jewellery/jewellery";
 import ResortPage from "./components/products-landingPages/resort/ResortPage";
 import WareHousePage from "./components/products-landingPages/warehouse/Warehouse";
-import ShopPage from "./components/products-landingPages/shop/Shop";
+import ShopPage from "./components/products-landingPages/shop/shop";
 import ParkingPage from "./components/products-landingPages/parking/Parking";
 import StartUpPage from "./components/products-landingPages/startup/Startup";
 
@@ -172,7 +172,10 @@ function App() {
 
             {/* channel partner route */}
             <Route path="/channel-partner" element={<ChannelPartner />} />
-            <Route path="/become-a-channel-partner" element={<BecomeAChannelPartner />} />
+            <Route
+              path="/become-a-channel-partner"
+              element={<BecomeAChannelPartner />}
+            />
             {/* channel partner route */}
 
             {/*footer componenets */}
