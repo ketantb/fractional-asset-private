@@ -115,6 +115,13 @@
     padding: 0px 15px;
 }
 
+.validation-err{
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: red;
+}
+
 @media screen and (max-width: 900px) {
     .channel-partner-form>.cp-form-input-type-file-wrapper {
         display: block;

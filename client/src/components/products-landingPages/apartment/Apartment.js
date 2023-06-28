@@ -14,7 +14,7 @@ const ApartmentPage = () => {
       const response = await axios.get("/listing-all-apartment");
       console.log(response.data.list);
       setapartmentData(response.data.list);
-    } catch (err) {}
+    } catch (err) { }
   };
 
   useEffect(() => {
@@ -31,8 +31,6 @@ const ApartmentPage = () => {
       <div className="apartment-page-container">
         <div className="bg-image"></div>
 
-        <DLBrochure />
-
         {apartmentData.length !== 0 ? (
           <section>
             <h4>FRACTIONAL APARTMENTS</h4>
@@ -47,6 +45,9 @@ const ApartmentPage = () => {
                   return <ApartmentCard apartment={apartment} />;
                 })}
             </div>
+
+            <DLBrochure />
+
             <h4>RENTAL APARTMENTS</h4>
             <div className="apartment-card-container">
               {apartmentData
