@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
+
 import "./Apartment.css";
-import ApartmentCard from "../../mini-cards/apartment/apartmentCard";
 import axios from "../../../helpers/axios";
 import PreLoader from "../../../pre-loaders/PreLoader";
 import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
+import ApartmentCard from "../../mini-cards/apartment/apartmentCard";
 import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
 
 const ApartmentPage = () => {
   //get all apartments
-  const [apartmentData, setapartmentData] = useState([]);
+  const [apartmentData, setApartmentData] = useState([]);
   const getData = async () => {
     try {
       const response = await axios.get("/listing-all-apartment");
       console.log(response.data.list);
-      setapartmentData(response.data.list);
-    } catch (err) { }
+      setApartmentData(response.data.list);
+    } catch (err) {}
   };
 
   useEffect(() => {

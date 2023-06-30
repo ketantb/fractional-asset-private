@@ -30,9 +30,6 @@ const VillaPage = () => {
     <>
       <div className="villa-page-container">
         <div className="bg-image"></div>
-
-        <DLBrochure />
-
         {villaData.length !== 0 ? (
           <section>
             <h4>FRACTIONAL VILLAS</h4>
@@ -47,6 +44,9 @@ const VillaPage = () => {
                   return <VillaContainer villa={villa} />;
                 })}
             </div>
+
+            <DLBrochure />
+
             <h4>RENTAL VILLAS</h4>
             <div className="villa-card-container">
               {villaData

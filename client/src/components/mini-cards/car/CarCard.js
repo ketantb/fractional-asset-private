@@ -19,15 +19,6 @@ const CarCard = ({ car }) => {
     setMoreDetailsShow(false);
   };
 
-  //view images modal
-  const [openImg, setImgOpen] = useState(false);
-  const openImagesModal = () => {
-    setImgOpen(true);
-  };
-  const closeImagesModal = () => {
-    setImgOpen(false);
-  };
-
   // handle reserve shares form modal
   const [open, setOpen] = useState(false);
   const handleOpenModal = () => {
@@ -47,145 +38,166 @@ const CarCard = ({ car }) => {
   };
 
   return (
-    <div className="car-card" data-aos="fade-down">
-      <div
-        className="car-image"
+    <div className="car-card">
+      <section
+        className="car-card-ub"
         style={{
           backgroundImage: `url(${car.imgArr[0]})`,
-          backgroundPosition: "center center",
           backgroundSize: "cover",
+          backgroundPosition: "center",
+          width: "100%",
+          // Set the desired height
         }}
       >
-        <span className="view-car-images-icon">
-          <BiImages onClick={openImagesModal} />
-        </span>
-      </div>
-      <div className="car-details">
-        <div className="car-details-head">
-          <h5 className="manufacturer" style={{ textTransform: "capitalize" }}>
-            {car.model}, {car.manufacturer}
-          </h5>
-          <div>
-            <button
-              className="btn btn-success"
-              onMouseEnter={openMoreDetails}
-              onMouseLeave={closeMoreDetails}
-              style={{ width: "9rem" }}
-            >
-              View Details
+        <div className=" details-btn-wrap">
+          <button
+            className="btn btn-warning view-car-details-btn"
+            onMouseEnter={openMoreDetails}
+            onMouseLeave={closeMoreDetails}
+          >
+            View More
+          </button>
+        </div>
+      </section>
+      <section className="footer-section">
+        <div
+          style={{
+            textTransform: "capitalize",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "serif",
+              paddingLeft: " 1rem",
+              paddingRight: " 1rem",
+            }}
+          >
+            {car.landmark || "Car Landmark"}, {car.city || "Car City"},{" "}
+            {car.state || "Car State"}
+          </div>
+          {car.propertyAdType === "rent" ? (
+            <div>
+              {car.rentPrice}
+              <span
+                style={{
+                  opacity: ".5",
+                  marginLeft: ".5rem",
+                  marginRight: ".5rem",
+                }}
+              >{`/month`}</span>
+            </div>
+          ) : null}
+        </div>
+        {car.propertyAdType === "sell" ? (
+          <section className="car-card-lb">
+            <div>
+              <section>
+                <p>Total Shares</p>
+                <p className="dummy-border"></p>
+                <p>{car.totalShares}</p>
+              </section>
+              <div className="dummy-vertical"></div>
+              <section>
+                <p>Availabe Shares</p>
+                <p className="dummy-border"></p>
+                <p>{car.availableShares}</p>
+              </section>
+              <div className="dummy-vertical"></div>
+              <section>
+                <p>Price / Share</p>
+                <p className="dummy-border"></p>
+                <p>{car.perSharePrice}</p>
+              </section>
+            </div>
+          </section>
+        ) : null}
+
+        {car.propertyAdType === "sell" ? (
+          <div className="reserve-share-btn-wrap">
+            <button className="btn btn-success" onClick={handleOpenModal}>
+              RESERVE SHARES
             </button>
           </div>
-        </div>
-        <div className="last-row">
-          {car.propertyAdType === "rent" ? (
-            <h5 className="price">
-              <span>
-                <BiRupee />
-              </span>
-              {car.rentPrice}
-            </h5>
-          ) : (
-            <h5 className="price">
-              <span>
-                <BiRupee />
-              </span>
-              {car.perSharePrice}
-            </h5>
-          )}
-
-          {car.propertyAdType === "sell" ? (
-            car.availableShares !== 0 ? (
-              <button
-                className="btn btn-danger"
-                id="reserve-btn"
-                onClick={handleOpenModal}
-                style={{ width: "9rem" }}
-              >
-                Reserve Shares
-              </button>
-            ) : (
-              <button className="btn btn-danger" style={{ fontWeight: "bold" }}>
-                SOLD OUT !
-              </button>
-            )
-          ) : (
+        ) : (
+          <div className="contact-btn-wrap">
             <button
-              className="btn btn-danger"
+              className="btn btn-success"
               onClick={handleOpenContactModal}
-              style={{ width: "9rem" }}
             >
-              Contact
+              CONTACT
             </button>
-          )}
-        </div>
-      </div>
+          </div>
+        )}
 
-      {moreDetailsShow ? (
-        <div className="more-details">
-          <table>
-            <tr>
-              <td>Mileage</td>
-              <td>{car.mileage}</td>
-            </tr>
-            <tr>
-              <td>engineType</td>
-              <td>{car.engineType}</td>
-            </tr>
-            <tr>
-              <td>fuelType</td>
-              <td>{car.fuelType}</td>
-            </tr>
-            <tr>
-              <td>transmission</td>
-              <td>{car.transmission}</td>
-            </tr>
-            <tr>
-              <td>vinNumber</td>
-              <td>{car.vinNumber}</td>
-            </tr>
-            <tr>
-              <td>exteriorColor</td>
-              <td>{car.mileage}</td>
-            </tr>
-            <tr>
-              <td>interiorColor</td>
-              <td>{car.interiorColor}</td>
-            </tr>
-            {car.propertyAdType === "rent" ? (
+        {moreDetailsShow ? (
+          <div className="car-more-details">
+            <table>
               <tr>
-                <td>Rent Price</td>
-                <td>
-                  <span>
-                    <BiRupee />
-                  </span>
-                  {car.rentPrice}
-                  {`/day`}
-                </td>
+                <td>Mileage</td>
+                <td>{car.mileage}</td>
               </tr>
-            ) : (
-              <>
+              <tr>
+                <td>engineType</td>
+                <td>{car.engineType}</td>
+              </tr>
+              <tr>
+                <td>fuelType</td>
+                <td>{car.fuelType}</td>
+              </tr>
+              <tr>
+                <td>transmission</td>
+                <td>{car.transmission}</td>
+              </tr>
+              <tr>
+                <td>vinNumber</td>
+                <td>{car.vinNumber}</td>
+              </tr>
+              <tr>
+                <td>exteriorColor</td>
+                <td>{car.mileage}</td>
+              </tr>
+              <tr>
+                <td>interiorColor</td>
+                <td>{car.interiorColor}</td>
+              </tr>
+              {car.propertyAdType === "rent" ? (
                 <tr>
-                  <td>Total Shares</td>
-                  <td>{car.totalShares}</td>
-                </tr>
-                <tr>
-                  <td>Available Shares</td>
-                  <td>{car.availableShares}</td>
-                </tr>
-                <tr>
-                  <td>1 Share Price</td>
+                  <td>Rent Price</td>
                   <td>
                     <span>
                       <BiRupee />
                     </span>
-                    {car.perSharePrice}
+                    {car.rentPrice}
+                    {`/day`}
                   </td>
                 </tr>
-              </>
-            )}
-          </table>
-        </div>
-      ) : null}
+              ) : (
+                <>
+                  <tr>
+                    <td>Total Shares</td>
+                    <td>{car.totalShares}</td>
+                  </tr>
+                  <tr>
+                    <td>Available Shares</td>
+                    <td>{car.availableShares}</td>
+                  </tr>
+                  <tr>
+                    <td>1 Share Price</td>
+                    <td>
+                      <span>
+                        <BiRupee />
+                      </span>
+                      {car.perSharePrice}
+                    </td>
+                  </tr>
+                </>
+              )}
+            </table>
+          </div>
+        ) : null}
+      </section>
 
       {/* reserve share modal */}
       <Modal open={open} onClose={handleCloseModal} center id="modal">
@@ -195,14 +207,6 @@ const CarCard = ({ car }) => {
           perSharePrice={car.perSharePrice}
           handleCloseModal={handleCloseModal}
           details={car}
-        />
-      </Modal>
-
-      {/* image modal */}
-      <Modal open={openImg} onClose={closeImagesModal} center>
-        <ViewProductImages
-          images={car.imgArr}
-          closeImagesModal={closeImagesModal}
         />
       </Modal>
 
