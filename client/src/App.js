@@ -22,9 +22,9 @@ import VillaForm from "./components/product-forms/villa-form/VillaForm";
 import ApartmentPage from "./components/products-landingPages/apartment/Apartment";
 import CarPage from "./components/products-landingPages/car/Car";
 import YachtPage from "./components/products-landingPages/yacht/Yacht";
-import VillaPage from "./components/products-landingPages/villa/villa";
-import ArtPage from "./components/products-landingPages/art/art";
-import JewelleryPage from "./components/products-landingPages/jewellery/jewellery";
+import ArtPage from "./components/products-landingPages/art/Art";
+import VillaPage from "./components/products-landingPages/villa/Villa"
+import JewelleryPage from "./components/products-landingPages/jewellery/Jewellery";
 import ResortPage from "./components/products-landingPages/resort/ResortPage";
 import WareHousePage from "./components/products-landingPages/warehouse/Warehouse";
 import ShopPage from "./components/products-landingPages/shop/Shop";

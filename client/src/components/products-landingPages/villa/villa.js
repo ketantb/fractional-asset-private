@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./villa.css";
+import "./Villa.css";
 import VillaContainer from "../../mini-cards/villa/villacard";
 import axios from "../../../helpers/axios";
 import PreLoader from "../../../pre-loaders/PreLoader";
@@ -14,7 +14,7 @@ const VillaPage = () => {
       const response = await axios.get("/listing-all-villa");
       console.log(response.data.list);
       setVillaData(response.data.list);
-    } catch (err) { }
+    } catch (err) {}
   };
 
   useEffect(() => {
@@ -30,10 +30,6 @@ const VillaPage = () => {
     <>
       <div className="villa-page-container">
         <div className="bg-image"></div>
-<<<<<<< HEAD
-
-=======
->>>>>>> fb2f3306d8b11b94c3715e8ce74ccbddb693dd33
         {villaData.length !== 0 ? (
           <section>
             <h4>FRACTIONAL VILLAS</h4>
