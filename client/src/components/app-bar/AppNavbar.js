@@ -98,6 +98,12 @@ const AppNavbar = ({
           How It Works
         </div>
         <div
+          className="subcol2-2 navbar-item"
+          onClick={() => navigate("/channel-partner")}
+        >
+          Channel Partner
+        </div>
+        <div
           className="subcol2-3 navbar-item"
           onClick={() => navigate("/aboutus")}
         >
