@@ -59,19 +59,28 @@
   padding-top: 2rem;
 }
 
+/*  */
+
 .apartment-card-lb div {
   display: flex;
-  justify-content: space-evenly;
-  /* border: 1px solid black; */
+  margin: auto 2rem;
+  font-family: serif;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apartment-card-lb div .dummy-vertical {
+  width: 1px;
+  height: 75px;
+  background-color: #cbd5e1;
 }
 
 .apartment-card-lb div section {
-  border-right: 1px solid lightgrey;
-  padding: 0.5rem;
   text-align: center;
 }
 
 .apartment-card-lb div section p:first-child {
+  color: #334155;
   font-size: 0.9rem;
 }
 
@@ -80,6 +89,14 @@
     font-size: small;
   }
 }
+
+.apartment-card-lb div section p:last-child {
+  color: #334155;
+  margin-bottom: 0;
+  font-family: serif;
+}
+
+/*  */
 
 .apartment-card-lb div section:last-child {
   border: 0;

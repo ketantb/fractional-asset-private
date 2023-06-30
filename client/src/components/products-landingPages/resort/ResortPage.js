@@ -1,52 +1,83 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import "./ResortPage.css";
-import Resort from "../../mini-cards/resort/Resort";
 import axios from "../../../helpers/axios";
 import PreLoader from "../../../pre-loaders/PreLoader";
+import ResortCard from "../../mini-cards/resort/ResortCard";
 import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
 import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
 
 const ResortPage = () => {
-  const [resortData, setReosrtData] = useState([]);
-  //get all resortData
+  //get all apartments
+  const [apartmentData, setApartmentData] = useState([]);
   const getData = async () => {
     try {
-      const response = await axios.get("/listing-all-resort");
-      console.log(response.data.allresorts);
-      setReosrtData(response.data.allresorts);
-    } catch (err) {
-      console.log(err);
-    }
+      const response = await axios.get("/listing-all-apartment");
+      console.log(response.data.list);
+      setApartmentData(response.data.list);
+    } catch (err) {}
   };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     getData();
   }, []);
 
-  if (!resortData) {
+  if (!apartmentData) {
     return <PreLoader />;
   }
 
   return (
     <>
-      <div className="resortBanner"></div>
+      <div className="resort-page-container">
+        <div className="bg-image"></div>
 
-      <DLBrochure />
-
-      <div className="home-content">
-        <div className="content-wrapper" data-aos="zoom-in" data-aos-delay="80">
-          <h4>
-            Discover fractional Resorts, a prestigious collection of independent
-            luxury hotels & resorts India. A world of unrivalled luxury and
-            hospitality. Check out our beautiful properties right away!
-          </h4>
+        <div className="home-content">
+          <div
+            className="content-wrapper"
+            data-aos="zoom-in"
+            data-aos-delay="80"
+          >
+            <h4>
+              Discover fractional Resorts, a prestigious collection of
+              independent luxury hotels & resorts India. A world of unrivalled
+              luxury and hospitality. Check out our beautiful properties right
+              away!
+            </h4>
+          </div>
         </div>
-      </div>
 
-      <div className="resort-card-wrap">
-        {resortData.map((data, i) => {
-          return <Resort data={data} />;
-        })}
+        {apartmentData.length !== 0 ? (
+          <section>
+            <h4>FRACTIONAL RESORTS</h4>
+            <div className="resort-card-container">
+              {apartmentData
+                .filter((apartment) => {
+                  if (apartment.propertyAdType === "sell") {
+                    return apartment;
+                  }
+                })
+                .map((apartment) => {
+                  return <ResortCard apartment={apartment} />;
+                })}
+            </div>
+
+            <DLBrochure />
+
+            <h4>RENTAL RESORTS</h4>
+            <div className="resort-card-container">
+              {apartmentData
+                .filter((apartment) => {
+                  if (apartment.propertyAdType === "rent") {
+                    return apartment;
+                  }
+                })
+                .map((apartment) => {
+                  return <ResortCard apartment={apartment} />;
+                })}
+            </div>
+          </section>
+        ) : null}
       </div>
 
       <HowItWorksSteps />

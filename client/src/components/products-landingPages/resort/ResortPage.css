@@ -1,33 +1,68 @@
-.resortBanner {
-    background: url("https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    background-position: center, center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 40rem;
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
+
+.resort-page-container .bg-image {
+  margin-bottom: 0;
+  position: relative;
+  background-size: cover;
+  height: calc(100vh - 5rem);
+  background-position: center center;
+  background-image: url("https://images.pexels.com/photos/565324/pexels-photo-565324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+.resort-page-container section h4 {
+  color: #334155;
+  margin-left: 20px;
+  font-family: 'Domine', serif;
+}
+
+.resort-page-container>section {
+  margin-top: 2rem;
+}
+
+.resort-card-container {
+  display: grid;
+  margin: 0 20px;
+  border-radius: 10px;
+  background-color: #f1f5f9;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width: 700px) {
+  .resort-card-container {
+    grid-template-columns: repeat(1, 1fr);
   }
-  
-  /* video heading geomanist */
-  
-  .home-content {
-    padding: 1rem 1rem;
-    margin-bottom: 0;
-  }
-  
-  .home-content .content-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  
+}
+
+/* video heading geomanist */
+
+.home-content {
+  margin-bottom: 0;
+  color: #64748b;
+  padding-top: 2rem;
+}
+
+.home-content .content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-content .content-wrapper h4 {
+  width: 1020px;
+  margin: auto;
+  line-height: 1.75;
+  text-align: center;
+}
+
+@media screen and (max-width: 1075px) {
   .home-content .content-wrapper h4 {
-    width: 75%;
-    margin: auto;
-    padding: 2rem;
-    line-height: 3rem;
-    text-align: center;
+    width: 90%;
+    font-size: 20px;
+    line-height: 1.5;
   }
-  
-  .resort-card-wrap {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 550px) {
+  .home-content .content-wrapper h4 {
+    font-size: 18px;
   }
+}

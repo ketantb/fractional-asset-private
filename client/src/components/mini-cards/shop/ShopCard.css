@@ -1,38 +1,38 @@
-.villa-card {
+.shop-card {
   margin: 2rem;
   border-radius: 1rem;
   background-color: #ffff;
 }
 
-.villa-card-ub {
+.shop-card-ub {
   display: flex;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   justify-content: space-between;
 }
 
-.villa-card-ub div {
+.shop-card-ub div {
   margin-top: 60%;
   /* border: 1px solid red; */
   width: 100%;
 }
 
-.villa-card-ub .details-btn-wrap {
+.shop-card-ub .details-btn-wrap {
   /* border: 1px solid black; */
   display: flex;
   justify-content: flex-end;
 }
 
-.villa-card-ub div .view-villa-details-btn {
+.shop-card-ub div .view-shop-details-btn {
   width: 7rem;
   margin: .5rem;
 }
 
-.villa-card-ub p img {
+.shop-card-ub p img {
   width: 100%;
 }
 
-.villa-card-ub .villa-name {
+.shop-card-ub .shop-name {
   color: black;
   text-shadow: 2px 2px 2px white;
   font-size: 17px;
@@ -41,17 +41,17 @@
   margin-top: 3rem;
 }
 
-.villa-card-ub .villa-location {
+.shop-card-ub .shop-location {
   color: #ffff;
   font-size: 14px;
   font-weight: 500;
 }
 
-.villa-card {
+.shop-card {
   height: fit-content;
 }
 
-.villa-card-lb {
+.shop-card-lb {
   height: 25%;
   background-color: #ffff;
   border-bottom-left-radius: 10px;
@@ -61,7 +61,7 @@
 
 /*  */
 
-.villa-card-lb div {
+.shop-card-lb div {
   display: flex;
   margin: auto 2rem;
   font-family: serif;
@@ -69,28 +69,28 @@
   justify-content: space-between;
 }
 
-.villa-card-lb div .dummy-vertical {
+.shop-card-lb div .dummy-vertical {
   width: 1px;
   height: 75px;
   background-color: #cbd5e1;
 }
 
-.villa-card-lb div section {
+.shop-card-lb div section {
   text-align: center;
 }
 
-.villa-card-lb div section p:first-child {
+.shop-card-lb div section p:first-child {
   color: #334155;
   font-size: 0.9rem;
 }
 
 @media screen and (max-width: 700px) {
-  .villa-card-lb div section p:first-child {
+  .shop-card-lb div section p:first-child {
     font-size: small;
   }
 }
 
-.villa-card-lb div section p:last-child {
+.shop-card-lb div section p:last-child {
   color: #334155;
   margin-bottom: 0;
   font-family: serif;
@@ -98,46 +98,46 @@
 
 /*  */
 
-.villa-card-lb div section:last-child {
+.shop-card-lb div section:last-child {
   border: 0;
 }
 
-.villa-card-lb div:last-child {
+.shop-card-lb div:last-child {
   display: flex;
 }
 
-.villa-card-lb div:last-child section {
+.shop-card-lb div:last-child section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.villa-card-lb div:last-child section .dummy-border {
+.shop-card-lb div:last-child section .dummy-border {
   height: 1px;
   width: 75%;
   background-color: goldenrod;
 }
 
-.villa-card .footer-section {
+.shop-card .footer-section {
   background-color: white;
 }
 
-.villa-card .footer-section>div {
+.shop-card .footer-section>div {
   margin-top: 1rem;
 }
 
-.villa-card .reserve-share-btn-wrap {
+.shop-card .reserve-share-btn-wrap {
   width: 100%;
 }
 
-.villa-card .reserve-share-btn-wrap button {
+.shop-card .reserve-share-btn-wrap button {
   width: 100%;
 }
 
-.villa-card .contact-btn-wrap {
+.shop-card .contact-btn-wrap {
   width: 100%;
 }
 
-.villa-card .contact-btn-wrap button {
+.shop-card .contact-btn-wrap button {
   width: 100%;
 }

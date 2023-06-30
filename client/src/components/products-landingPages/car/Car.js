@@ -49,7 +49,9 @@ const CarPage = () => {
 
         {/* section 2 */}
         <div className="row2 why-section">
-          <h2>WHY FRACTIONAL CARS?</h2>
+          <h2>
+            Why Fractional Cars<span>?</span>
+          </h2>
           <div className="cards-wrap">
             <div className="card" data-aos="zoom-in">
               <div className="icon-wrap">
@@ -112,7 +114,7 @@ const CarPage = () => {
 
         {/* section 3 */}
         <h1 className="section3-heading">
-          Let's compare Renting with Co-owning a car!
+          Let's compare Renting with Co-owning a car<span>!</span>
         </h1>
 
         <div className="section3">
@@ -149,36 +151,37 @@ const CarPage = () => {
         <div className="down-arrow">
           <AiOutlineArrowDown className="icon" />
         </div>
-        {/* section 4 */}
-        <h3 className="only-heading">BUY FRACTIONAL CARS</h3>
-        <div className="all-cars-wrapper">
-          {allCars
-            .filter((car) => {
-              if (car.propertyAdType === "sell") {
-                return car;
-              }
-            })
-            .map((car, i) => {
-              return <CarCard key={i} car={car} />;
-            })}
-        </div>
-        {/* section 4 ends */}
 
-        {/* section 5 */}
-        <h3 className="only-heading">RENTAL CARS</h3>
+        {/* CAR - Fractional & Rental */}
+        {allCars.length !== 0 ? (
+          <section className="car-cards">
+            <h4>FRACTIONAL CARS</h4>
+            <div className="car-card-container">
+              {allCars
+                .filter((car) => {
+                  if (car.propertyAdType === "sell") {
+                    return car;
+                  }
+                })
+                .map((car) => {
+                  return <CarCard car={car} />;
+                })}
+            </div>
 
-        <div className="all-cars-wrapper">
-          {allCars
-            .filter((car) => {
-              if (car.propertyAdType === "rent") {
-                return car;
-              }
-            })
-            .map((car, i) => {
-              return <CarCard key={i} car={car} />;
-            })}
-        </div>
-        {/* section 5 ends */}
+            <h4>RENTAL CARS</h4>
+            <div className="car-card-container">
+              {allCars
+                .filter((car) => {
+                  if (car.propertyAdType === "rent") {
+                    return car;
+                  }
+                })
+                .map((car) => {
+                  return <CarCard car={car} />;
+                })}
+            </div>
+          </section>
+        ) : null}
       </div>
     </>
   );
