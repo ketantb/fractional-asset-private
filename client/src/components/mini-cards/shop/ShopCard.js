@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "./villacard.css";
+import "react-responsive-modal/styles.css";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "react-responsive-modal";
+
+import "./ShopCard.css";
 import ReserveShares from "../../modal/reserveShares/ReserveShares";
 import RentContactForm from "../../modal/rentContactForm/RentContactForm";
-import { Modal } from "react-responsive-modal";
-import "react-responsive-modal/styles.css";
 
-const VillaContainer = ({ villa }) => {
+const ShopCard = ({ apartment }) => {
   const navigate = useNavigate();
 
   //view more
@@ -33,11 +34,11 @@ const VillaContainer = ({ villa }) => {
   };
 
   return (
-    <div className="villa-card">
+    <div className="shop-card">
       <section
-        className="villa-card-ub"
+        className="shop-card-ub"
         style={{
-          backgroundImage: `url(${villa.imgArr[0]})`,
+          backgroundImage: `url(${apartment.imgArr[0]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           width: "100%",
@@ -46,8 +47,8 @@ const VillaContainer = ({ villa }) => {
       >
         <div className=" details-btn-wrap">
           <button
-            className="btn btn-warning view-villa-details-btn"
-            onClick={() => viewMore(villa._id)}
+            className="btn btn-warning view-shop-details-btn"
+            onClick={() => viewMore(apartment._id)}
           >
             View More
           </button>
@@ -68,11 +69,11 @@ const VillaContainer = ({ villa }) => {
               paddingRight: " 1rem",
             }}
           >
-            {villa.landmark}, {villa.city}, {villa.state}
+            {apartment.landmark}, {apartment.city}, {apartment.state}
           </div>
-          {villa.propertyAdType === "rent" ? (
+          {apartment.propertyAdType === "rent" ? (
             <div>
-              {villa.rentPrice}
+              {apartment.rentPrice}
               <span
                 style={{
                   opacity: ".5",
@@ -83,31 +84,31 @@ const VillaContainer = ({ villa }) => {
             </div>
           ) : null}
         </div>
-        {villa.propertyAdType === "sell" ? (
-          <section className="villa-card-lb">
+        {apartment.propertyAdType === "sell" ? (
+          <section className="shop-card-lb">
             <div>
               <section>
                 <p>Total Shares</p>
                 <p className="dummy-border"></p>
-                <p>{villa.totalShares}</p>
+                <p>{apartment.totalShares}</p>
               </section>
               <div className="dummy-vertical"></div>
               <section>
                 <p>Availabe Shares</p>
                 <p className="dummy-border"></p>
-                <p>{villa.availableShares}</p>
+                <p>{apartment.availableShares}</p>
               </section>
               <div className="dummy-vertical"></div>
               <section>
                 <p>Price / Share</p>
                 <p className="dummy-border"></p>
-                <p>{villa.perSharePrice}</p>
+                <p>{apartment.perSharePrice}</p>
               </section>
             </div>
           </section>
         ) : null}
 
-        {villa.propertyAdType === "sell" ? (
+        {apartment.propertyAdType === "sell" ? (
           <div className="reserve-share-btn-wrap">
             <button className="btn btn-success" onClick={handleOpenModal}>
               RESERVE SHARES
@@ -127,11 +128,11 @@ const VillaContainer = ({ villa }) => {
       {/* reserve share modal */}
       <Modal open={open} onClose={handleCloseModal} center id="modal">
         <ReserveShares
-          totalShares={villa.totalShares}
-          availableShares={villa.availableShares}
-          perSharePrice={villa.perSharePrice}
+          totalShares={apartment.totalShares}
+          availableShares={apartment.availableShares}
+          perSharePrice={apartment.perSharePrice}
           handleCloseModal={handleCloseModal}
-          details={villa}
+          details={apartment}
         />
       </Modal>
 
@@ -139,11 +140,11 @@ const VillaContainer = ({ villa }) => {
       <Modal open={openContact} onClose={handleCloseContactModal} center>
         <RentContactForm
           handleCloseContactModal={handleCloseContactModal}
-          details={villa}
+          details={apartment}
         />
       </Modal>
     </div>
   );
 };
 
-export default VillaContainer;
+export default ShopCard;

@@ -1,150 +1,177 @@
 .car-card {
-  width: 22%;
-  margin-top: 1rem;
-  border: 1px solid lightgrey;
-  position: relative;
+  margin: 2rem;
+  border-radius: 1rem;
+  background-color: #ffff;
 }
 
-.car-card .car-image {
+.car-card-ub {
+  display: flex;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  justify-content: space-between;
+}
+
+.car-card-ub div {
   width: 100%;
-  height: 20rem;
-  position: relative;
+  margin-top: 60%;
 }
 
-.car-card .last-row {
+.car-card-ub .details-btn-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
-.car-card .car-details {
-  padding: 0.5rem;
-}
-.car-card .car-details .car-details-head {
-  display: flex;
-  justify-content: space-between;
+.car-card-ub div .view-car-details-btn {
+  width: 7rem;
+  margin: .5rem;
 }
 
-.car-card .more-details {
-  position: absolute;
-  bottom: 23%;
-  right: 0;
-  width: 90%;
+.car-card-ub p img {
+  width: 100%;
+}
+
+.car-card-ub .car-name {
+  color: black;
+  text-shadow: 2px 2px 2px white;
+  font-size: 17px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 3rem;
+}
+
+.car-card-ub .car-location {
+  color: #ffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.car-card {
   height: fit-content;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  background-color: white;
-  padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
 
-.car-card .more-details table {
-  /* border: 1px solid black; */
-  width: 100%;
+.car-card-lb {
+  height: 25%;
+  background-color: #ffff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top: 2rem;
 }
-.car-card .more-details table tr {
-  border-bottom: 1px solid lightgrey;
+
+/*  */
+
+.car-card-lb div {
+  display: flex;
+  margin: auto 2rem;
+  font-family: serif;
+  align-items: center;
+  justify-content: space-between;
 }
-.car-card .more-details table tr:last-child {
+
+.car-card-lb div .dummy-vertical {
+  width: 1px;
+  height: 75px;
+  background-color: #cbd5e1;
+}
+
+.car-card-lb div section {
+  text-align: center;
+}
+
+.car-card-lb div section p:first-child {
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 700px) {
+  .car-card-lb div section p:first-child {
+    font-size: small;
+  }
+}
+
+.car-card-lb div section p:last-child {
+  color: #334155;
+  margin-bottom: 0;
+  font-family: serif;
+}
+
+/*  */
+
+.car-card-lb div section:last-child {
   border: 0;
 }
 
-.car-card .more-details table tr td {
+.car-card-lb div:last-child {
+  display: flex;
+}
+
+.car-card-lb div:last-child section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.car-card-lb div:last-child section .dummy-border {
+  width: 75%;
+  height: 1px;
+  background-color: goldenrod;
+}
+
+.car-card .footer-section {
+  position: relative;
+  background-color: white;
+}
+
+.car-card .footer-section>div {
+  margin-top: 1rem;
+}
+
+.car-card .reserve-share-btn-wrap {
+  width: 100%;
+}
+
+.car-card .reserve-share-btn-wrap button {
+  width: 100%;
+}
+
+.car-card .contact-btn-wrap {
+  width: 100%;
+}
+
+.car-card .contact-btn-wrap button {
+  width: 100%;
+}
+
+/* View Details Section */
+
+.car-more-details {
+  right: .5rem;
+  bottom: -62px;
+  border-radius: 5px;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  background-color: #fff7ed;
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.car-more-details table {
+  width: 100%;
+}
+
+.car-more-details table tr {
+  border-bottom: 1px solid lightgrey;
+}
+
+.car-more-details table tr:last-child {
+  border: 0;
+}
+
+.car-more-details table tr td {
   width: 50%;
   padding: 0px 0.5rem;
 }
-.car-card .more-details table tr td:last-child {
+
+.car-more-details table tr td:last-child {
   padding-left: 1rem;
-}
-
-.first-column {
-  flex: 0 0 40%; /* Adjust the width of the first card */
-}
-
-.car-card .btn {
-  width: 8.5rem;
-}
-
-.car-card .last-row {
-  margin-top: 0.5rem;
-}
-
-.view-car-images-icon {
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 600px) {
-  .car-card {
-    width: 99%;
-    margin: auto;
-    margin-top: 1rem;
-    border: 1px solid lightgrey;
-    position: relative;
-  }
-
-  .car-card .car-image {
-    width: 100%;
-    height: 20rem;
-    position: relative;
-  }
-
-  .car-card .last-row {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .car-card .car-details {
-    padding: 0.5rem;
-  }
-  .car-card .car-details .car-details-head {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .car-card .more-details {
-    position: absolute;
-    bottom: 23%;
-    right: 0;
-    width: 90%;
-    height: fit-content;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-      rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-      rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-    background-color: white;
-    padding: 0.5rem 0.5rem 1rem 0.5rem;
-  }
-
-  .car-card .more-details table {
-    /* border: 1px solid black; */
-    width: 100%;
-  }
-  .car-card .more-details table tr {
-    border-bottom: 1px solid lightgrey;
-  }
-  .car-card .more-details table tr:last-child {
-    border: 0;
-  }
-
-  .car-card .more-details table tr td {
-    width: 50%;
-    padding: 0px 0.5rem;
-  }
-  .car-card .more-details table tr td:last-child {
-    padding-left: 1rem;
-  }
-
-  .first-column {
-    flex: 0 0 40%; /* Adjust the width of the first card */
-  }
-
-  .car-card .btn {
-    width: 8.5rem;
-  }
-
-  .car-card .last-row {
-    margin-top: 0.5rem;
-  }
-
-  .view-car-images-icon {
-    cursor: pointer;
-  }
 }

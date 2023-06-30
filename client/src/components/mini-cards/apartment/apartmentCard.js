@@ -56,12 +56,18 @@ const ApartmentCard = ({ apartment }) => {
       <section className="footer-section">
         <div
           style={{
-            textTransform: "capitalize",
             display: "flex",
+            textTransform: "capitalize",
             justifyContent: "space-between",
           }}
         >
-          <div style={{ paddingLeft: " 1rem", paddingRight: " 1rem" }}>
+          <div
+            style={{
+              fontFamily: "serif",
+              paddingLeft: "1rem",
+              paddingRight: "1rem",
+            }}
+          >
             {apartment.landmark}, {apartment.city}, {apartment.state}
           </div>
           {apartment.propertyAdType === "rent" ? (
@@ -81,17 +87,19 @@ const ApartmentCard = ({ apartment }) => {
           <section className="apartment-card-lb">
             <div>
               <section>
-                <p>TOTAL SHARES</p>
+                <p>Total Shares</p>
                 <p className="dummy-border"></p>
                 <p>{apartment.totalShares}</p>
               </section>
+              <div className="dummy-vertical"></div>
               <section>
-                <p>AVAILABLE SHARES</p>
+                <p>Availabe Shares</p>
                 <p className="dummy-border"></p>
                 <p>{apartment.availableShares}</p>
               </section>
+              <div className="dummy-vertical"></div>
               <section>
-                <p>PRICE PER SHARE</p>
+                <p>Price / Share</p>
                 <p className="dummy-border"></p>
                 <p>{apartment.perSharePrice}</p>
               </section>

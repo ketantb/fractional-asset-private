@@ -30,7 +30,10 @@ const VillaPage = () => {
     <>
       <div className="villa-page-container">
         <div className="bg-image"></div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> fb2f3306d8b11b94c3715e8ce74ccbddb693dd33
         {villaData.length !== 0 ? (
           <section>
             <h4>FRACTIONAL VILLAS</h4>
