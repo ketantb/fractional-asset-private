@@ -1,0 +1,78 @@
+.edit-form-wrap h6 {
+  text-transform: capitalize;
+}
+.edit-form-wrap .form-row,
+.edit-form-wrap .images-wrap {
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 2px 2px 5px 2px rgb(231, 231, 231);
+}
+.edit-form-wrap .form-row section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+.edit-form-wrap .form-row:nth-child(3) section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.edit-form-wrap .form-row:nth-child(3) section p {
+  padding: 0.5rem;
+}
+
+.edit-form-wrap .update-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.edit-form-wrap .images-wrap {
+  margin-top: 2rem;
+}
+
+.edit-form-wrap .images-wrap section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.edit-form-wrap .images-wrap section div {
+  position: relative;
+}
+
+.edit-form-wrap .images-wrap section div .imgwrap {
+  width: 12rem;
+  height: 10rem;
+}
+
+.edit-form-wrap .images-wrap section div .icon {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+}
+
+.edit-form-wrap .images-wrap section div img {
+  width: 100%;
+  height: 100%;
+}
+
+.edit-form-wrap .images-wrap .images-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.edit-form-wrap .images-wrap .images-wrapper .uploaded-images {
+  width: 12rem;
+  height: 10rem;
+}
+
+.edit-form-wrap .images-wrap .images-wrapper .uploaded-images img {
+  width: 100%;
+  height: 100%;
+}

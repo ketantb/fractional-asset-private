@@ -29,7 +29,10 @@
     margin-bottom: 40px;
     width: 30%;
     height: 300px;
-    /* border: 1px solid black; */
+}
+
+.step > div > h2{
+    padding-top: 15px;
 }
 
 .step-title {

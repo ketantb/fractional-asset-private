@@ -6,6 +6,7 @@ const ShopPage = () => {
   return (
     <>
       <div className="shop-page-wrapper">
+        <div className="bg-image"></div>
         <DLBrochure />
         <HowItWorksSteps />
       </div>

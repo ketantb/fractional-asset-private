@@ -14,7 +14,7 @@ const VillaPage = () => {
       const response = await axios.get("/listing-all-villa");
       console.log(response.data.list);
       setVillaData(response.data.list);
-    } catch (err) {}
+    } catch (err) { }
   };
 
   useEffect(() => {
@@ -31,8 +31,6 @@ const VillaPage = () => {
       <div className="villa-page-container">
         <div className="bg-image"></div>
 
-        <DLBrochure />
-
         {villaData.length !== 0 ? (
           <section>
             <h4>FRACTIONAL VILLAS</h4>
@@ -47,6 +45,9 @@ const VillaPage = () => {
                   return <VillaContainer villa={villa} />;
                 })}
             </div>
+
+            <DLBrochure />
+
             <h4>RENTAL VILLAS</h4>
             <div className="villa-card-container">
               {villaData

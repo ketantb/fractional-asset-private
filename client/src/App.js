@@ -64,19 +64,42 @@ import axios from "./helpers/axios";
 import PreLoader from "./pre-loaders/PreLoader";
 import BecomeAChannelPartner from "./components/channel-partner/become-a-channel-partner/become-a-channel-partner";
 
+//edit forms
+import ApartmentEdit from "./components/edit-forms/apartment/Apartment";
+import VillaEdit from "./components/edit-forms/villa/Villa";
+import ResortEdit from "./components/edit-forms/resort/Resort";
+import ShopEdit from "./components/edit-forms/shop/Shop";
+import CarEdit from "./components/edit-forms/car/car";
+//edit form ends
+
 function App() {
   const [auth, setAuth] = useState("");
   const store = createStore(Reducer);
 
   //get collections from backend
   const [collectionNames, setCollectionNames] = useState([]);
+  const [realEstateArr, setRealEstateArr] = useState([]);
+  const [otherCategoryArr, setOtherCategoryArr] = useState([]);
+
   const getCollections = async () => {
     try {
       const response = await axios.get("/property-collections");
-      console.log(response);
+      // console.log(response);
       const arr = response.data.collectionList.map((name) => name.slice(0, -9));
       arr.sort();
       setCollectionNames(arr);
+
+      const realestateArr = arr
+        .filter((name) =>
+          ["apartment", "villa", "shop", "resort", "land"].includes(name)
+        )
+        .sort();
+      setRealEstateArr(realestateArr);
+
+      const otherCategoryArr = arr.filter(
+        (name) => !realestateArr.includes(name)
+      );
+      setOtherCategoryArr(otherCategoryArr);
     } catch (err) {
       console.log(err);
     }
@@ -87,24 +110,7 @@ function App() {
     console.log("collection names=>", collectionNames);
   }, []);
 
-  const [collectionForms, setCollectionForms] = useState([]);
-  const [landingPagesArr, setLandingPagesArr] = useState([]);
-  useEffect(() => {
-    if (collectionNames.length !== 0) {
-      //form links
-      const collectionFormArr = collectionNames.map((name) => ({
-        [name]: `/${name}-form`,
-      }));
-      setCollectionForms(collectionFormArr);
 
-      //landing pages links
-      const collectionPagesArr = collectionNames.map((name) => ({
-        [name]: `/${name}-page`,
-      }));
-      setLandingPagesArr(collectionPagesArr);
-    }
-    // eslint-disable-next-line
-  }, [collectionNames]);
 
   if (!collectionNames) {
     return <PreLoader />;
@@ -117,9 +123,9 @@ function App() {
         <AppNavbar
           auth={auth}
           setAuth={setAuth}
+          realEstateArr={realEstateArr}
+          otherCategoryArr={otherCategoryArr}
           collectionNames={collectionNames}
-          collectionForms={collectionForms}
-          landingPagesArr={landingPagesArr}
         />
         <div className="component-wraps">
           <Routes>
@@ -183,6 +189,19 @@ function App() {
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
+
+            {/*  edit forms*/}
+            <Route
+              path="/apartment-edit/:id"
+              element={<ApartmentEdit />}
+            ></Route>
+            <Route path="/villa-edit/:id" element={<VillaEdit />}></Route>
+            <Route path="/resort-edit/:id" element={<ResortEdit />}></Route>
+            <Route path="/shop-edit/:id" element={<ShopEdit />}></Route>
+            <Route path="/car-edit/:id" element={<CarEdit />}></Route>
+
+            {/*  edit forms ends*/}
+
           </Routes>
         </div>
         <Footer />
