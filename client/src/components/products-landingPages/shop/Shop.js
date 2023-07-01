@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import "./shop.css";
+import "./Shop.css";
 import axios from "../../../helpers/axios";
 import ShopCard from "../../mini-cards/shop/ShopCard";
 import PreLoader from "../../../pre-loaders/PreLoader";

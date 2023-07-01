@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./villa.css";
+import "./Villa.css";
 import VillaContainer from "../../mini-cards/villa/villacard";
 import axios from "../../../helpers/axios";
 import PreLoader from "../../../pre-loaders/PreLoader";

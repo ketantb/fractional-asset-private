@@ -4,7 +4,7 @@ import axios from "../../../helpers/axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "@mui/material";
+import { Button, Modal } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -17,8 +17,29 @@ import AdditionalInfo from "./propertyFormSteps/AdditionalInfo";
 
 import { FaHandPointDown } from "react-icons/fa";
 
+import Box from '@mui/material/Box';
+import RealEstatePreviewPage from "../real-estate-previewpage/real-estate-previewpage";
+
 const ApartmentForm = () => {
   const navigate = useNavigate();
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    height: '100vh',
+    width: '90%',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    overflow: 'scroll'
+  };
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   //PROPERTY DETAILS
   const [propertyData, setPropertyData] = useState({
@@ -58,6 +79,7 @@ const ApartmentForm = () => {
 
   //HANDLE SUBMIT
   const token = localStorage.getItem("token");
+  //HANDLE SUBMIT
   const handleUploadImages = async (e) => {
     e.preventDefault();
     if (images.length === 0) {
@@ -86,8 +108,6 @@ const ApartmentForm = () => {
   };
 
   const handlePost = async () => {
-    toast.loading("Uploading images. Please wait");
-
     const data = {
       ...propertyData,
       ...locality,
@@ -98,6 +118,7 @@ const ApartmentForm = () => {
     console.log("data before posting", data);
 
     try {
+      toast.loading("Uploading images. Please wait");
       const response = await axios.post("/apartment-form", data, {
         headers: {
           authorization: token,
@@ -110,7 +131,8 @@ const ApartmentForm = () => {
         navigate("/my-profile");
         toast.success("Property posted successfully");
       } else {
-        toast.error();
+        toast.dismiss();
+        toast.error("Please signin to your account to post your property");
       }
     } catch (err) {
       console.log(err);
@@ -240,11 +262,34 @@ const ApartmentForm = () => {
       </Accordion>
       {/* section 5 ends */}
 
-      <Button type="submit" className="btn" onClick={handleUploadImages}>
+      {/* <Button type="submit" className="btn" onClick={handleUploadImages}>
         POST
-      </Button>
+      </Button> */}
 
       {/* </form> */}
+
+
+      <Button onClick={handleOpen}>Preview</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <RealEstatePreviewPage
+            propertyData={propertyData}
+            locality={locality}
+            images={images}
+            aminities={aminities}
+            additionalDetails={additionalDetails}
+            handleClose={handleClose}
+            handleUploadImages={handleUploadImages}
+          />
+        </Box>
+      </Modal>
+
+
     </div>
   );
 };

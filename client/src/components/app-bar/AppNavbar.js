@@ -1,292 +1,176 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./AppNavbar.css";
-import { Box, Button } from "@mui/material";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-import { FaAlignJustify } from "react-icons/fa";
-import { Icon } from "react-icons-kit";
-import { cross } from "react-icons-kit/icomoon/cross";
-
-const AppNavbar = ({ auth, setAuth, collectionForms, landingPagesArr }) => {
+const AppNavbar = ({
+  auth,
+  setAuth,
+  realEstateArr,
+  otherCategoryArr,
+  collectionNames,
+}) => {
   const navigate = useNavigate();
-
   const token = localStorage.getItem("token");
   useEffect(() => {
     setAuth(token);
+    console.log(collectionNames);
     //eslint-disable-next-line
   }, [token]);
 
-  /*  handling responsive navbar */
-  const [showNavbar, setShowNavbar] = useState("none");
-  // eslint-disable-next-line
-  const [navbarHidden, setNavbarHidden] = useState(true);
-  //funtion to show or hide navbar on clicking menu icon
-  const handleOpenNavbar = () => {
-    setShowNavbar("block");
-    setNavbarHidden(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showNestedDropdown, setShowNestedDropdown] = useState(false);
+
+  //NAVIGATE TO LANDING PAGE
+  const navigateToLandingPage = (name) => {
+    navigate(`${name}-page`);
+    setShowDropdown(false);
   };
-  const handleCloseNavbar = () => {
-    setShowNavbar("none");
-    setNavbarHidden(false);
+  const handleNonRealEstateForms = (name) => {
+    navigate(`${name}-form`); // Replace "/next-page" with the actual route you want to navigate to
+    setShowDropdown(false);
   };
-  /*   handling responsive navbar ends */
+
+  const handleRealEstateForm = (name) => {
+    // navigate(`/nested-next-page/${option}`); // Replace "/nested-next-page" with the actual route for the nested dropdown option
+    navigate(`${name}-form`); // Replace "/nested-next-page" with the actual route for the nested dropdown option
+    setShowDropdown(false);
+    setShowNestedDropdown(false);
+  };
+
+  //close post property dropdown on clicking anywhere window
+  const dropdownRef = useRef(null);
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+        setShowNestedDropdown(false);
+      }
+    };
+
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+  //close post property dropdown on clicking anywhere window ends
 
   return (
-    <div className="app-bar" style={{ backgroundColor: " rgba(0,0,0,1)" }}>
-      {/* desktop view navbar */}
-
-      <div className="desktop-section">
-        <section className="appbar-col-1">
-          {/* dropdown for various landing pages */}
-          <div className="dropdown " id="landing-pages-dropdown">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style={{
-                backgroundColor: "transparent",
-                border: "0",
-                letterSpacing: "3px",
-              }}
-            >
-              FRACTIONAL PROPERTIES
-            </button>
-            <div className="dropdown-menu" style={{ backgroundColor: "black" }}>
-              {landingPagesArr.map((obj, index) => {
-                const formName = Object.keys(obj)[0];
-                const formLink = Object.values(obj)[0];
-
+    <div className="app-navbar-wrap">
+      {/* LANDING PAGE DROPDOWN */}
+      <div className="dropdown col1 " id="landing-pages-dropdown">
+        <button
+          className="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          style={{
+            backgroundColor: "transparent",
+            border: "0",
+            letterSpacing: "3px",
+          }}
+        >
+          FRACTIONAL PROPERTIES
+        </button>
+        <div className="dropdown-menu" style={{ backgroundColor: "black" }}>
+          {collectionNames.map((name, index) => {
+            return (
+              <div key={index + 1} onClick={() => navigateToLandingPage(name)}>
+                <p>{name}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {/* LANDING PAGE DROPDOWN ENDS */}
+      <div className="col2" ref={dropdownRef}>
+        <div className="subcol2-1 navbar-item" onClick={() => navigate("/")}>
+          Home
+        </div>
+        <div
+          className="subcol2-2 navbar-item"
+          onClick={() => navigate("/how-it-works")}
+        >
+          How It Works
+        </div>
+        <div
+          className="subcol2-2 navbar-item"
+          onClick={() => navigate("/channel-partner")}
+        >
+          Channel Partner
+        </div>
+        <div
+          className="subcol2-3 navbar-item"
+          onClick={() => navigate("/aboutus")}
+        >
+          About Us
+        </div>
+        <div className="subcol2-4 navbar-item" onClick={() => navigate("/faqs")}>
+          Faq
+        </div>
+        <div className="subcol2-5 navbar-item">
+          <p onClick={() => setShowDropdown(!showDropdown)}>
+            Post Property
+            <MdKeyboardArrowDown />
+          </p>
+          {showDropdown && (
+            <ul className="submenu">
+              <li onClick={() => setShowNestedDropdown(!showNestedDropdown)}>
+                <span style={{ borderBottom: "1px solid lightgrey" }}>
+                  REAL ESTATE
+                  <MdKeyboardArrowRight />
+                </span>
+                {showNestedDropdown && (
+                  <ul className="nested-submenu">
+                    {realEstateArr.map((name, i) => {
+                      return (
+                        <li onClick={() => handleRealEstateForm(name)}>
+                          {name}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
+              {otherCategoryArr.map((name, i) => {
                 return (
-                  <div key={index + 1} onClick={() => navigate(formLink)}>
-                    <p>{formName}</p>
-                  </div>
+                  <li onClick={() => handleNonRealEstateForms(name)}>{name}</li>
                 );
               })}
-            </div>
-          </div>
-          {/* dropdown for various landing pages ends */}
-        </section>
-
-        <section className="appbar-col-2">
-          <Box className="col-2-box">
-            <Button className="btn-item" onClick={() => navigate("/")}>
-              Home
-            </Button>
-            <Button
-              className="btn-item"
-              onClick={() => navigate("/how-it-works")}
-            >
-              How It Works
-            </Button>
-
-            <Button
-              className="btn-item"
-              onClick={() => {
-                navigate("/channel-partner");
-                handleCloseNavbar();
-              }}
-            >
-              Channel Partner
-            </Button>
-
-            <Button className="btn-item" onClick={() => navigate("/aboutus")}>
-              About Us
-            </Button>
-            <Button className="btn-item" onClick={() => navigate("/faqs")}>
-              FAQ
-            </Button>
-
-            {/* dropdown for varios property forms */}
-            <div className="dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                style={{
-                  backgroundColor: "transparent",
-                  border: "0",
-                  fontWeight: "bold",
-                  letterSpacing: "3px",
-                }}
-              >
-                POST PROPERTY
-              </button>
-              <div
-                className="dropdown-menu"
-                style={{ backgroundColor: "black" }}
-              >
-                {collectionForms.map((obj, index) => {
-                  const formName = Object.keys(obj)[0];
-                  const formLink = Object.values(obj)[0];
-
-                  return (
-                    <div key={index + 1} onClick={() => navigate(formLink)}>
-                      <p>{formName}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            {/* dropdown for varios property forms end */}
-
-            {auth ? (
-              <Button
-                className="btn-item"
-                onClick={() => {
-                  navigate("/my-profile");
-                }}
-              >
-                MY PROFILE
-              </Button>
-            ) : null}
-            {auth ? (
-              <Button
-                className="btn-item"
-                onClick={() => {
-                  localStorage.clear();
-                  navigate("/");
-                }}
-              >
-                LOGOUT
-              </Button>
-            ) : (
-              <Button className="btn-item" onClick={() => navigate("/signin")}>
-                LOGIN
-              </Button>
-            )}
-          </Box>
-
-          <div
-            className="menu"
-            onClick={handleOpenNavbar}
-            style={{ color: "white" }}
-          >
-            <FaAlignJustify />
-          </div>
-        </section>
-      </div>
-
-      {/* mobile view navbar */}
-      <div className="right-side-navbar" style={{ display: showNavbar }}>
-        <Box
-          className="col-2-box"
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          <div>
-            <Icon
-              icon={cross}
-              size={15}
-              style={{ float: "right", paddingRight: "1rem" }}
-              onClick={handleCloseNavbar}
-            />
-          </div>
-          <Button
-            className="btn-item"
-            onClick={() => {
-              navigate("/");
-              handleCloseNavbar();
-            }}
-          >
-            Home
-          </Button>
-          <Button
-            className="btn-item"
-            onClick={() => {
-              navigate("/how-it-works");
-              handleCloseNavbar();
-            }}
-          >
-            How It Works
-          </Button>
-          <Button
-            className="btn-item"
-            onClick={() => {
-              navigate("/aboutus");
-              handleCloseNavbar();
-            }}
-          >
-            About Us
-          </Button>
-
-          <Button
-            className="btn-item"
-            onClick={() => {
-              navigate("/channel-partner");
-              handleCloseNavbar();
-            }}
-          >
-            Channel Partner
-          </Button>
-
-          <Button
-            className="btn-item"
-            onClick={() => {
-              navigate("/faqs");
-              handleCloseNavbar();
-            }}
-          >
-            FAQs
-          </Button>
-
-          <Button
-            className="btn-item"
-            onClick={() => {
-              navigate("/apartment-form");
-              handleCloseNavbar();
-            }}
-          >
-            POST PROPERTY
-          </Button>
-          {auth ? (
-            <Button
-              className="btn-item"
-              style={{ padding: "0rem", marginTop: "0.1rem" }}
-              onClick={() => {
-                navigate("/my-profile");
-                handleCloseNavbar();
-              }}
-            >
-              MY PROPERTY
-            </Button>
-          ) : null}
-          {auth ? (
-            <Button
-              className="btn-item"
-              onClick={() => {
-                localStorage.clear();
-                navigate("/");
-                handleCloseNavbar();
-              }}
-              style={{
-                padding: "0rem",
-                marginTop: "0.4rem",
-                marginBottom: "1rem",
-              }}
-            >
-              LOGOUT
-            </Button>
-          ) : (
-            <Button
-              className="btn-item"
-              onClick={() => {
-                navigate("/signin");
-                handleCloseNavbar();
-              }}
-              style={{ padding: "0rem", marginTop: "0rem" }}
-            >
-              LOGIN
-            </Button>
+            </ul>
           )}
-        </Box>
+        </div>
+        {auth ? (
+          <div
+            className="subcol2-6 navbar-item"
+            onClick={() => navigate("/my-profile")}
+          >
+            My Profile
+          </div>
+        ) : null}
+        {auth ? (
+          <div
+            className="subcol2-7 navbar-item"
+            onClick={() => {
+              localStorage.clear();
+              navigate("/");
+            }}
+          >
+            Logout
+          </div>
+        ) : (
+          <div
+            className="subcol2-7 navbar-item"
+            onClick={() => navigate("/signin")}
+          >
+            Login
+          </div>
+        )}
       </div>
-
-      {/* mobile view navbar ends */}
     </div>
   );
 };

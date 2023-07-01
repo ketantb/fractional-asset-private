@@ -6,7 +6,7 @@
   background-size: cover;
   height: calc(100vh - 5rem);
   background-position: center center;
-  background-image: url("https://images.pexels.com/photos/565324/pexels-photo-565324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://hbits.co/assets/images/home-banner.webp?auto=format&fit=max&w=1920");
 }
 
 .apartment-page-container section h4 {

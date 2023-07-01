@@ -1,0 +1,9 @@
+.edit-form-wrap {
+  width: 60%;
+}
+.edit-form-wrap .row1 {
+  margin-top: 7rem;
+}
+.edit-form-wrap .row1 h5 {
+  text-transform: uppercase;
+}

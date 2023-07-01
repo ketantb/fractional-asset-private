@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./jewellery.css";
+import "./Jewellery.css";
 import axios from "../../../helpers/axios";
 import { useNavigate } from "react-router-dom";
 import JewellerySteps from "./jewellery-steps/jewellery-steps";
