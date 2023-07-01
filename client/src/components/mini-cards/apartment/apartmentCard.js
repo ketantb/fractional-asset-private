@@ -6,9 +6,9 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import RentContactForm from "../../modal/rentContactForm/RentContactForm";
 
-const ApartmentCard = ({ apartment }) => {
+const ApartmentCard = ({ apartment, getData }) => {
   const navigate = useNavigate();
-
+  console.log("getData from apartmentCard => ", getData)
   //view more
   const viewMore = (propertyid) => {
     navigate(`/villa-resort-apartment-details/${propertyid}`);
@@ -127,6 +127,7 @@ const ApartmentCard = ({ apartment }) => {
       {/* reserve share modal */}
       <Modal open={open} onClose={handleCloseModal} center id="modal">
         <ReserveShares
+          getData = {getData}
           totalShares={apartment.totalShares}
           availableShares={apartment.availableShares}
           perSharePrice={apartment.perSharePrice}

@@ -1,8 +1,10 @@
 import './booksitevisitform.css'
 import { useState } from "react"
 import FormControl from '@mui/material/FormControl';
+import { toast } from "react-hot-toast";
 import { FormLabel, TextField, Button } from '@mui/material'
 import { RxCross1 } from 'react-icons/rx';
+import Swal from 'sweetalert2'
 
 const BookSiteVisitForm = ({ handleClose }) => {
     const [siteVisitForm, setSiteVisitForm] = useState({ name: '', email: '', phoneno: '', date: '', time: '' })
@@ -13,6 +15,20 @@ const BookSiteVisitForm = ({ handleClose }) => {
     const postSiteVisitForm = (e) => {
         e.preventDefault()
         console.log(siteVisitForm)
+        if(!siteVisitForm.name || !siteVisitForm.email || !siteVisitForm.phoneno || !siteVisitForm.date || !siteVisitForm.time){
+            toast.error("all fields are mandatory for site visit!");
+            return
+        }
+        Swal.fire({
+            title: 'Thankyou for Booking site Visit! We will get back to you soon!',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+        handleClose();
     }
 
     return (

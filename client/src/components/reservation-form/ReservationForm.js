@@ -11,7 +11,7 @@ const ReservationForm = ({ reservationForm, setReservationForm }) => {
     }
 
     const handleReservation = async () => {
-        console.log(reservationForm)
+        console.log("reserve share form => ",reservationForm)
         const token = localStorage.getItem('token')
         if (token) {
             try {
