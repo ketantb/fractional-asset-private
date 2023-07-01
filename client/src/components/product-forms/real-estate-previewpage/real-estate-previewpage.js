@@ -86,6 +86,8 @@ const RealEstatePreviewPage = ({ propertyData, locality, images, aminities, addi
 
             <div className='property-form-preview-property-details'>
                 <h4>Property Details</h4>
+                <p>RERA ID: {propertyData.reraId}</p>
+                {/* <p>Property ID: {propertyData.propertyId}</p> */}
                 <p>Total Bedrooms: {propertyData.bedroom}</p>
                 <p>Total Bathrooms: {propertyData.bathroom}</p>
             </div>

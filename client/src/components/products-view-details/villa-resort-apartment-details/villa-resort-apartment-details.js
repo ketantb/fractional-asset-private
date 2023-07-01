@@ -5,8 +5,28 @@ import overviewIcon from "../../../assets/overview_icon.svg";
 import facilityIcon from "../../../assets/towel-rack.png";
 import axios from "../../../helpers/axios";
 import { useParams } from "react-router-dom";
+import { Modal, Box } from "@mui/material";
+import BookSiteVisitForm from "./book site visit/booksitevisitform";
 
 const ResortVillaApartmentDetails = () => {
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    height: '60vh',
+    width: '100%',
+    bgcolor: '#ffff',
+    borderRadius: '7px',
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const { propertyid } = useParams();
 
   const [data, setData] = useState([]);
@@ -33,6 +53,10 @@ const ResortVillaApartmentDetails = () => {
     window.scrollTo(0, 0);
     getData();
   }, []);
+
+  const siteVisitRequest = async () => {
+
+  }
 
   return (
     <div className="villa-details-container">
@@ -179,6 +203,26 @@ const ResortVillaApartmentDetails = () => {
             })}
           </div>
         </div>
+      </section>
+
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="book-site-visit-popup-modal"
+      >
+        <Box sx={style}>
+          <BookSiteVisitForm handleClose={handleClose}/>
+        </Box>
+      </Modal>
+
+
+      <section className="book-site-visit-btn-wrapper">
+        <button onClick={handleOpen}>
+          Book a site visit
+        </button>
       </section>
     </div>
   );

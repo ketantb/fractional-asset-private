@@ -222,8 +222,8 @@ const AssetContainer = () => {
                         <p>Own your dream car in your budget</p>
                     </div>
                 </section>
-                <section className='asset-cards'>
-                    <div className='face front' onClick={() => { navigate('/property-page') }}
+                <section className='asset-cards' onClick={() => { navigate('/apartment-page') }}>
+                    <div className='face front' 
                         style={{
                             background: 'url(https://images.pexels.com/photos/87223/pexels-photo-87223.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
                             backgroundPosition: 'center center'
@@ -233,7 +233,7 @@ const AssetContainer = () => {
                                 <img className='asset-face-icons' src={apartment} alt='luxury-yacht' />
                             </p>
                             <p>
-                                Fractional Appartment
+                                Fractional Apartment
                             </p>
                         </section>
                     </div>
@@ -242,13 +242,13 @@ const AssetContainer = () => {
                             <img className='asset-face-icons' src={apartment} alt='luxury-yacht' />
                         </p>
                         <p>
-                            Fractional Appartment
+                            Fractional Apartment
                         </p>
                         <p>Own your dream car in your budget</p>
                     </div>
                 </section>
-                <section className='asset-cards'>
-                    <div className='face front' onClick={() => { navigate('/property') }}
+                <section className='asset-cards'  onClick={() => { navigate('/shop-page') }}>
+                    <div className='face front'
                         style={{
                             background: 'url(https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
                             backgroundPosition: 'center center'
