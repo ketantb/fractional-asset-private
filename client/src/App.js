@@ -17,6 +17,7 @@ import Jewelryform from "./components/product-forms/jewelry-form/JewelryForm";
 import Artform from "./components/product-forms/art-form/ArtForm";
 import ResortForm from "./components/product-forms/resort-form/ResortForm";
 import VillaForm from "./components/product-forms/villa-form/VillaForm";
+import ShopForm from "./components/product-forms/shop-form/ShopForm";
 
 //products landing pages
 import ApartmentPage from "./components/products-landingPages/apartment/Apartment";
@@ -143,6 +144,7 @@ function App() {
             <Route path="/land-form" element={<Landform />}></Route>
             <Route path="/resort-form" element={<ResortForm />}></Route>
             <Route path="/villa-form" element={<VillaForm />}></Route>
+            <Route path="/shop-form" element={<ShopForm />}></Route>
             {/* </Route> */}
             {/* Product Form Routes end*/}
 

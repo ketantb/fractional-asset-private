@@ -14,7 +14,6 @@ const Locality = ({ locality, setLocality }) => {
     setLocality(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
 
-
   return (
     <div className='locality-details-wrapper'>
 

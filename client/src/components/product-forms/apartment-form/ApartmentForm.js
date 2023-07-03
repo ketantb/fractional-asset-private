@@ -44,9 +44,22 @@ const ApartmentForm = () => {
 
   //PROPERTY DETAILS
   const [propertyData, setPropertyData] = useState({
-    propertyAdType: "",
+    apartmentName: "",
+    propertyAdType: "sell",
+    propertyId: "",
     propertyAge: "",
     area: "",
+    floorNo: "",
+    possessionStatus: "",
+    totalFloors: "",
+    totalLifts: "",
+    facing: "",
+    carpetArea: "",
+    flooringType: "",
+    waterAvailability: "",
+    statusOfElectricity: "",
+    totalBalconies: "",
+    typeOfOwnership: "",
     bedroom: 0,
     bathroom: 0,
     rentPrice: 0,
@@ -56,7 +69,6 @@ const ApartmentForm = () => {
     sellerType: "",
     sellerName: "",
     reraId: "",
-    propertyId: "",
   });
   //LOCATION DETAILS
   const [locality, setLocality] = useState({

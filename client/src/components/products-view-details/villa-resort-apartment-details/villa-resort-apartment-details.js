@@ -65,12 +65,12 @@ const ResortVillaApartmentDetails = () => {
           <span>
             <MdLocationPin />
           </span>
-          {data.landmark}, {data.city}, {data.state}
+          {data.landmark}, {data.city}, {data.state}, {data.pin}
         </h4>
         <div className="villa-details-table">
           <section>
             <p>Seller</p>
-            <p className="villa-details-table-value">Mane</p>
+            <p className="villa-details-table-value">{data.sellerName}</p>
           </section>
           <div className="villa-details-table-dummy-border"></div>
           <section>
@@ -114,12 +114,12 @@ const ResortVillaApartmentDetails = () => {
             </thead>
             <tbody>
               <tr>
-                <td data-label="Seller">Mane</td>
+                <td data-label="Seller">{data.sellerName}</td>
                 <td data-label="Property Age">
                   {data.propertyAge ? data.propertyAge : <p>not given</p>}
                 </td>
                 <td data-label="Property Area">
-                  {data.propertyArea ? data.propertyArea : <p>not given</p>}
+                  {data.area ? <p>{data.area} sq ft</p> : <p>not given</p>}
                 </td>
                 <td data-label="Total Shares">{data.totalShares}</td>
                 <td data-label="Available Shares">
@@ -159,6 +159,44 @@ const ResortVillaApartmentDetails = () => {
           })}
         </div>
       </section>
+
+      <section className="villa-details-r2-more-details">
+        <h4>More Details</h4>
+        <div>
+          <section>
+            <p>Furnishing</p>
+            <p>{data.furnishing}</p>
+          </section>
+        </div>
+        <div>
+          <section>
+            <p></p>
+          </section>
+        </div>
+        <div>{data.bathroom} <span>Bathroom</span></div>
+        <div>{data.bedroom} <span>bedroom</span></div>
+      </section>
+
+      <section className="villa-details-r2-about-seller">
+        <h4>About Seller</h4>
+        <div className="villa-details-r2-about-seller-table">
+          <section>
+            <p>Seller </p>
+            <p>{data.sellerName}</p>
+          </section>
+          <section>
+            <p>Seller Type</p>
+            <p>{data.sellerType}</p>
+          </section>
+          {data.sellerType != "owner" ?
+            <section>
+              <p>Seller Rera ID</p>
+              <p id='seller-rera-id'>{data.reraId}</p>
+            </section>
+            : null}
+        </div>
+      </section>
+
       <section className="villa-details-r3">
         <div className="overview">
           <h4>
@@ -214,7 +252,7 @@ const ResortVillaApartmentDetails = () => {
         className="book-site-visit-popup-modal"
       >
         <Box sx={style}>
-          <BookSiteVisitForm handleClose={handleClose}/>
+          <BookSiteVisitForm handleClose={handleClose} sellerId={data.sellerId} propertyId={data._id} />
         </Box>
       </Modal>
 

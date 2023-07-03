@@ -219,6 +219,48 @@
   margin: auto
 }
 
+.villa-details-r2-more-details{
+  margin-top: 3rem;
+  border: 1px solid black;
+  width: 100%;
+  padding: 25px 15px;
+  border-radius: 7px;
+}
+
+.villa-details-r2-about-seller{
+  margin-top: 3rem;
+  /* border: 1px solid black; */
+  width: 100%;
+  padding: 25px 15px;
+  border-radius: 7px;
+}
+
+.villa-details-r2-about-seller > h4{
+  margin-bottom: 1rem;
+}
+
+.villa-details-r2-about-seller-table{
+  text-transform: capitalize;
+  /* border: 1px solid black; */
+  width: 100%
+}
+
+.villa-details-r2-about-seller-table section{
+  display: flex;
+  align-items: center;
+}
+
+.villa-details-r2-about-seller-table section p:first-child{
+  /* border: 1px solid black; */
+  width: 125px;
+  margin-right: 25px;
+}
+
+.villa-details-r2-about-seller-table section #seller-rera-id{
+  background-color: rgb(152, 252, 219);
+  padding: 5px 15px;
+}
+
 /* mobile view table ends */
 
 @media only screen and (max-width: 680px) {
