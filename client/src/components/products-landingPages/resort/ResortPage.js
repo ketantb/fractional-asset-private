@@ -64,7 +64,7 @@ const ResortPage = () => {
 
             <DLBrochure />
 
-            <h4>RENTAL RESORTS</h4>
+            <h4>Manage RESORTS</h4>
             <div className="resort-card-container">
               {apartmentData
                 .filter((apartment) => {

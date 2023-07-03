@@ -7,18 +7,18 @@ import axios from "../../../helpers/axios";
 import { useParams } from "react-router-dom";
 import { Modal, Box } from "@mui/material";
 import BookSiteVisitForm from "./book site visit/booksitevisitform";
+import MoreDetails from "./components/moreDetails/MoreDetails";
 
 const ResortVillaApartmentDetails = () => {
-
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    height: '60vh',
-    width: '100%',
-    bgcolor: '#ffff',
-    borderRadius: '7px',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    height: "60vh",
+    width: "100%",
+    bgcolor: "#ffff",
+    borderRadius: "7px",
     boxShadow: 24,
     p: 4,
   };
@@ -54,9 +54,7 @@ const ResortVillaApartmentDetails = () => {
     getData();
   }, []);
 
-  const siteVisitRequest = async () => {
-
-  }
+  const siteVisitRequest = async () => {};
 
   return (
     <div className="villa-details-container">
@@ -159,44 +157,7 @@ const ResortVillaApartmentDetails = () => {
           })}
         </div>
       </section>
-
-      <section className="villa-details-r2-more-details">
-        <h4>More Details</h4>
-        <div>
-          <section>
-            <p>Furnishing</p>
-            <p>{data.furnishing}</p>
-          </section>
-        </div>
-        <div>
-          <section>
-            <p></p>
-          </section>
-        </div>
-        <div>{data.bathroom} <span>Bathroom</span></div>
-        <div>{data.bedroom} <span>bedroom</span></div>
-      </section>
-
-      <section className="villa-details-r2-about-seller">
-        <h4>About Seller</h4>
-        <div className="villa-details-r2-about-seller-table">
-          <section>
-            <p>Seller </p>
-            <p>{data.sellerName}</p>
-          </section>
-          <section>
-            <p>Seller Type</p>
-            <p>{data.sellerType}</p>
-          </section>
-          {data.sellerType != "owner" ?
-            <section>
-              <p>Seller Rera ID</p>
-              <p id='seller-rera-id'>{data.reraId}</p>
-            </section>
-            : null}
-        </div>
-      </section>
-
+      <MoreDetails data={data} />
       <section className="villa-details-r3">
         <div className="overview">
           <h4>
@@ -242,7 +203,16 @@ const ResortVillaApartmentDetails = () => {
           </div>
         </div>
       </section>
-
+      <section>
+        <section className="map-wrapper">
+          <h5>Locate on map</h5>
+          <iframe
+            id="mapIframe"
+            src={`https://maps.google.com/maps?q=${data.street},${data.landmark},${data.city}, ${data.state}&hl=es;&output=embed`}
+            title="locationOnMap"
+          ></iframe>
+        </section>
+      </section>
 
       <Modal
         open={open}
@@ -252,15 +222,16 @@ const ResortVillaApartmentDetails = () => {
         className="book-site-visit-popup-modal"
       >
         <Box sx={style}>
-          <BookSiteVisitForm handleClose={handleClose} sellerId={data.sellerId} propertyId={data._id} />
+          <BookSiteVisitForm
+            handleClose={handleClose}
+            sellerId={data.sellerId}
+            propertyId={data._id}
+          />
         </Box>
       </Modal>
 
-
       <section className="book-site-visit-btn-wrapper">
-        <button onClick={handleOpen}>
-          Book a site visit
-        </button>
+        <button onClick={handleOpen}>Book a site visit</button>
       </section>
     </div>
   );

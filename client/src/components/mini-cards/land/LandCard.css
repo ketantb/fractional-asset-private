@@ -1,0 +1,143 @@
+.land-card {
+    margin: 2rem;
+    border-radius: 1rem;
+    background-color: #ffff;
+}
+
+.land-card-ub {
+    display: flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    justify-content: space-between;
+}
+
+.land-card-ub div {
+    margin-top: 60%;
+    /* border: 1px solid red; */
+    width: 100%;
+}
+
+.land-card-ub .details-btn-wrap {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.land-card-ub div .view-land-details-btn {
+    width: 7rem;
+    margin: .5rem;
+}
+
+.land-card-ub p img {
+    width: 100%;
+}
+
+.land-card-ub .land-name {
+    color: black;
+    text-shadow: 2px 2px 2px white;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+.land-card-ub .land-location {
+    color: #ffff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.land-card {
+    height: fit-content;
+}
+
+.land-card-lb {
+    height: 25%;
+    background-color: #ffff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 2rem;
+}
+
+/*  */
+
+.land-card-lb div {
+    display: flex;
+    margin: auto 2rem;
+    font-family: serif;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.land-card-lb div .dummy-vertical {
+    width: 1px;
+    height: 75px;
+    background-color: #cbd5e1;
+}
+
+.land-card-lb div section {
+    text-align: center;
+}
+
+.land-card-lb div section p:first-child {
+    color: #334155;
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 700px) {
+    .land-card-lb div section p:first-child {
+        font-size: small;
+    }
+}
+
+.land-card-lb div section p:last-child {
+    color: #334155;
+    margin-bottom: 0;
+    font-family: serif;
+}
+
+/*  */
+
+.land-card-lb div section:last-child {
+    border: 0;
+}
+
+.land-card-lb div:last-child {
+    display: flex;
+}
+
+.land-card-lb div:last-child section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.land-card-lb div:last-child section .dummy-border {
+    height: 1px;
+    width: 75%;
+    background-color: goldenrod;
+}
+
+.land-card .footer-section {
+    background-color: white;
+}
+
+.land-card .footer-section>div {
+    margin-top: 1rem;
+}
+
+.land-card .reserve-share-btn-wrap {
+    width: 100%;
+}
+
+.land-card .reserve-share-btn-wrap button {
+    width: 100%;
+}
+
+.land-card .contact-btn-wrap {
+    width: 100%;
+}
+
+.land-card .contact-btn-wrap button {
+    width: 100%;
+}

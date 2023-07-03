@@ -22,8 +22,8 @@ const DLBrochure = () => {
     <>
       <div className="brochure-slider">
         <Slider {...settings}>
-          <img src={adora1} />
-          <img src={adora2} />
+          <img src={adora1} alt="adora1" />
+          <img src={adora2} alt="adora2" />
         </Slider>
         <div className="brochure-overlay">
           <h1>Dream Holiday Home Ownership For 1/11th The Cost</h1>
