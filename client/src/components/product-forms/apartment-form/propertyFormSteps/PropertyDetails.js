@@ -27,9 +27,61 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
     }
   }, [propertyData.propertyAdType]);
 
+  //conditional rendering for seller type for reraId
+  const [sellerTypeStatus, setSellerTypeStatus] = useState(false);
+  useEffect(() => {
+    if (
+      propertyData.sellerType === "agent" ||
+      propertyData.sellerType === "builder"
+    ) {
+      console.log(propertyData.sellerType);
+      setSellerTypeStatus(true);
+    } else {
+      setSellerTypeStatus(false);
+    }
+  }, [propertyData.sellerType]);
+
   return (
     <div className="property-details-wrapper">
       <FormControl className="form-field">
+        <FormControl className="form-field">
+          <FormLabel className="">Seller Type</FormLabel>
+          <select
+            name="sellerType"
+            value={propertyData.sellerType}
+            onChange={handleInputs}
+          >
+            <option value="">Select</option>
+            <option value="broker">Broker</option>
+            <option value="agent">Agent</option>
+            <option value="builder">Builder</option>
+          </select>
+        </FormControl>
+
+        <FormControl className="form-field">
+          <TextField
+            id="standard-basic"
+            label="Seller Name"
+            variant="standard"
+            name="sellerName"
+            value={propertyData.sellerName}
+            onChange={handleInputs}
+          />
+        </FormControl>
+
+        {sellerTypeStatus ? (
+          <FormControl className="form-field">
+            <TextField
+              id="standard-basic"
+              label="Rera Id"
+              variant="standard"
+              name="reraId"
+              value={propertyData.reraId}
+              onChange={handleInputs}
+            />
+          </FormControl>
+        ) : null}
+
         <FormLabel id="demo-row-radio-buttons-group-label">
           Property Ad Type
         </FormLabel>
@@ -70,6 +122,18 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           onChange={handleInputs}
         />
       </FormControl>
+
+      {/* <FormControl className="form-field">
+        <TextField
+          type="number"
+          id="standard-basic"
+          label="Property ID"
+          variant="standard"
+          name="propertyId"
+          value={propertyData.propertyId}
+          onChange={handleInputs}
+        />
+      </FormControl> */}
 
       <FormControl className="form-field">
         <TextField

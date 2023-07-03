@@ -4,13 +4,17 @@ import axios from "../../../helpers/axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { BiRupee } from "react-icons/bi";
+
 const ReserveShares = ({
   totalShares,
   availableShares,
   perSharePrice,
   handleCloseModal,
   details,
+  getData,
 }) => {
+
+  console.log("getData from ReserveShares => ", getData)
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -22,37 +26,42 @@ const ReserveShares = ({
     type: details.productType,
   });
   const [total, setTotal] = useState(perSharePrice);
-  const [calTotalShares, setCalTotalShares] = useState("");
-  const [calAvailShares, setCalAvailShares] = useState("");
-  const [investmentAmount, setInvestmentAmount] = useState("");
-  const [fractionalOwnership, setFractionalOwnership] = useState("");
-
-  const calculateFractionalOwnership = () => {
-    const fractionalOwnership =
-      (investmentAmount / totalShares) * availableShares;
-    setFractionalOwnership(fractionalOwnership.toFixed(2));
-  };
 
   //handle inputs
   const handleInputs = (params) => (e) => {
     setFormData((prevState) => ({ ...prevState, [params]: e.target.value }));
   };
 
-  //handle submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    toast.loading("Reserving your shares");
+  //update shares
+  const updateShares = async (id) => {
+    const sharesData = { noOfShares: formData.noOfShares };
+    console.log(formData.noOfShares);
+    await axios.patch(`/update-shares/${id}`, sharesData)
+      .then((response) => {
+        console.log("response => ", response)
+        getData()
+      })
+      .catch((err) => {
+        console.log("err => ", err)
+      })
+  };
 
+  //handle submit
+  const handleSubmit = async (e, id) => {
+    e.preventDefault();
     try {
+      toast.loading("Reserving your shares");
+
       const response = await axios.post("/reserve-shares", formData);
       console.log(response);
       if (response.data.success) {
-        console.log(formData);
         toast.dismiss();
+        console.log(formData);
+        updateShares(id);
+        navigate("/apartment-page");
         handleCloseModal();
         toast.success("Thank you! Your shares are reserved");
       } else {
-        toast.dismiss();
         const errors = response.data.errors;
         for (let err of errors) {
           toast.error(err.msg);
@@ -73,7 +82,7 @@ const ReserveShares = ({
     <div className="reserveShare-form-wrap">
       <h3>RESERVE YOUR SHARES NOW</h3>
       <p>Personal details</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e, details._id)}>
         <div className="section1">
           <input
             type="text"

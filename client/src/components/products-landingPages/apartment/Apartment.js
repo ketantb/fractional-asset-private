@@ -11,11 +11,19 @@ const ApartmentPage = () => {
   //get all apartments
   const [apartmentData, setApartmentData] = useState([]);
   const getData = async () => {
-    try {
-      const response = await axios.get("/listing-all-apartment");
+    await axios.get("/listing-all-apartment")
+    .then((response) => {
       console.log(response.data.list);
       setApartmentData(response.data.list);
-    } catch (err) {}
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    // try {
+    //   const response = await axios.get("/listing-all-apartment");
+    //   console.log(response.data.list);
+    //   setApartmentData(response.data.list);
+    // } catch (err) {}
   };
 
   useEffect(() => {
@@ -58,7 +66,7 @@ const ApartmentPage = () => {
                   }
                 })
                 .map((apartment) => {
-                  return <ApartmentCard apartment={apartment} />;
+                  return <ApartmentCard apartment={apartment} getData={getData}/>;
                 })}
             </div>
           </section>

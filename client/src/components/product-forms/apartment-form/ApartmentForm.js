@@ -19,6 +19,7 @@ import { FaHandPointDown } from "react-icons/fa";
 
 import Box from '@mui/material/Box';
 import RealEstatePreviewPage from "../real-estate-previewpage/real-estate-previewpage";
+import Swal from 'sweetalert2'
 
 const ApartmentForm = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const ApartmentForm = () => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     height: '100vh',
-    width: '90%',
+    width: '75%',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -46,12 +47,16 @@ const ApartmentForm = () => {
     propertyAdType: "",
     propertyAge: "",
     area: "",
-    bedroom: "",
-    bathroom: "",
-    rentPrice: "",
-    totalShares: "",
-    availableShares: "",
-    perSharePrice: "",
+    bedroom: 0,
+    bathroom: 0,
+    rentPrice: 0,
+    totalShares: 0,
+    availableShares: 0,
+    perSharePrice: 0,
+    sellerType: "",
+    sellerName: "",
+    reraId: "",
+    propertyId: "",
   });
   //LOCATION DETAILS
   const [locality, setLocality] = useState({
@@ -128,8 +133,18 @@ const ApartmentForm = () => {
       if (response.data.success) {
         console.log("data saved in db", response);
         toast.dismiss();
+        handleClose();
+        // toast.success("Property posted successfully");
+        Swal.fire({
+          title: 'Your Property Advertisement is under screening! We will get back to you soon',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         navigate("/my-profile");
-        toast.success("Property posted successfully");
       } else {
         toast.dismiss();
         toast.error("Please signin to your account to post your property");
