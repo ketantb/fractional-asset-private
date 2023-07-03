@@ -8,6 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { TextField } from "@mui/material";
 
+
 const LandDetails = ({ LandData, setLandData }) => {
   //HANDLE INPUTS
   const handleInputs = (e) => {
@@ -68,13 +69,34 @@ const LandDetails = ({ LandData, setLandData }) => {
       </FormControl>
 
       <FormControl className="form-field">
+        <FormLabel className="">Type of Ownership</FormLabel>
+        <select name="typeOfOwnership" value={LandData.typeOfOwnership} onChange={handleInputs}>
+          <option value="">Select</option>
+          <option value="freehold">Freehold</option>
+          <option value="lease">Lease</option>
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
         <TextField
           type="number"
           id="standard-basic"
-          label="Dimensions"
+          label="Dimension(Length)"
           variant="standard"
-          name="dimensions"
-          value={LandData.dimensions}
+          name="dimensionLength"
+          value={LandData.dimensionLength}
+          onChange={handleInputs}
+        />
+      </FormControl>
+
+      <FormControl className="form-field">
+        <TextField
+          type="number"
+          id="standard-basic"
+          label="Dimension(Breadth)"
+          variant="standard"
+          name="dimensionBreadth"
+          value={LandData.dimensionBreadth}
           onChange={handleInputs}
         />
       </FormControl>
@@ -96,19 +118,19 @@ const LandDetails = ({ LandData, setLandData }) => {
         <TextField
           type="number"
           id="standard-basic"
-          label="Lot Size"
+          label="Plot Size"
           variant="standard"
-          name="lotSize"
-          value={LandData.lotSize}
+          name="plotSize"
+          value={LandData.plotSize}
           onChange={handleInputs}
         />
       </FormControl>
 
       <FormControl className="form-field">
-        <FormLabel className="">Lot Size Unit</FormLabel>
+        <FormLabel className="">Plot Size Unit</FormLabel>
         <select
-          name="lotSizeUnit"
-          value={LandData.lotSizeUnit}
+          name="plotSizeUnit"
+          value={LandData.plotSizeUnit}
           onChange={handleInputs}
         >
           <option value="">Select</option>
@@ -132,10 +154,20 @@ const LandDetails = ({ LandData, setLandData }) => {
       </FormControl>
 
       <FormControl className="form-field">
+        <FormLabel className="">Boundary</FormLabel>
+        <select name="boundary" value={LandData.boundary} onChange={handleInputs}>
+          <option value="">Select</option>
+          <option value="NA">NA</option>
+          <option value="barbed-wire-boundary">Barbed Wire Boundary</option>
+          <option value="wall-boundary">Wall Boundary</option>
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
         <TextField
           type="text"
           id="standard-basic"
-          label="Zone Access"
+          label="Road Access"
           variant="standard"
           name="roadAccess"
           value={LandData.roadAccess}

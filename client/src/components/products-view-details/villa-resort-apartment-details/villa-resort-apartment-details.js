@@ -63,12 +63,12 @@ const ResortVillaApartmentDetails = () => {
           <span>
             <MdLocationPin />
           </span>
-          {data.landmark}, {data.city}, {data.state}
+          {data.landmark}, {data.city}, {data.state}, {data.pin}
         </h4>
         <div className="villa-details-table">
           <section>
             <p>Seller</p>
-            <p className="villa-details-table-value">Mane</p>
+            <p className="villa-details-table-value">{data.sellerName}</p>
           </section>
           <div className="villa-details-table-dummy-border"></div>
           <section>
@@ -112,12 +112,12 @@ const ResortVillaApartmentDetails = () => {
             </thead>
             <tbody>
               <tr>
-                <td data-label="Seller">Mane</td>
+                <td data-label="Seller">{data.sellerName}</td>
                 <td data-label="Property Age">
                   {data.propertyAge ? data.propertyAge : <p>not given</p>}
                 </td>
                 <td data-label="Property Area">
-                  {data.propertyArea ? data.propertyArea : <p>not given</p>}
+                  {data.area ? <p>{data.area} sq ft</p> : <p>not given</p>}
                 </td>
                 <td data-label="Total Shares">{data.totalShares}</td>
                 <td data-label="Available Shares">
@@ -222,7 +222,11 @@ const ResortVillaApartmentDetails = () => {
         className="book-site-visit-popup-modal"
       >
         <Box sx={style}>
-          <BookSiteVisitForm handleClose={handleClose} />
+          <BookSiteVisitForm
+            handleClose={handleClose}
+            sellerId={data.sellerId}
+            propertyId={data._id}
+          />
         </Box>
       </Modal>
 
