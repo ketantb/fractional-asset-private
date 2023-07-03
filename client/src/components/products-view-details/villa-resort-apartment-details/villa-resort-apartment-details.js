@@ -7,7 +7,7 @@ import axios from "../../../helpers/axios";
 import { useParams } from "react-router-dom";
 import { Modal, Box } from "@mui/material";
 import BookSiteVisitForm from "./book site visit/booksitevisitform";
-import MoreDetails from "./components/MoreDetails";
+import MoreDetails from "./components/moreDetails/MoreDetails";
 
 const ResortVillaApartmentDetails = () => {
   const style = {
