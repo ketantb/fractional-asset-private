@@ -7,18 +7,18 @@ import axios from "../../../helpers/axios";
 import { useParams } from "react-router-dom";
 import { Modal, Box } from "@mui/material";
 import BookSiteVisitForm from "./book site visit/booksitevisitform";
+import MoreDetails from "./components/MoreDetails";
 
 const ResortVillaApartmentDetails = () => {
-
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    height: '60vh',
-    width: '100%',
-    bgcolor: '#ffff',
-    borderRadius: '7px',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    height: "60vh",
+    width: "100%",
+    bgcolor: "#ffff",
+    borderRadius: "7px",
     boxShadow: 24,
     p: 4,
   };
@@ -54,9 +54,7 @@ const ResortVillaApartmentDetails = () => {
     getData();
   }, []);
 
-  const siteVisitRequest = async () => {
-
-  }
+  const siteVisitRequest = async () => {};
 
   return (
     <div className="villa-details-container">
@@ -159,6 +157,7 @@ const ResortVillaApartmentDetails = () => {
           })}
         </div>
       </section>
+      <MoreDetails data={data} />
       <section className="villa-details-r3">
         <div className="overview">
           <h4>
@@ -204,7 +203,16 @@ const ResortVillaApartmentDetails = () => {
           </div>
         </div>
       </section>
-
+      <section>
+        <section className="map-wrapper">
+          <h5>Locate on map</h5>
+          <iframe
+            id="mapIframe"
+            src={`https://maps.google.com/maps?q=${data.street},${data.landmark},${data.city}, ${data.state}&hl=es;&output=embed`}
+            title="locationOnMap"
+          ></iframe>
+        </section>
+      </section>
 
       <Modal
         open={open}
@@ -214,15 +222,12 @@ const ResortVillaApartmentDetails = () => {
         className="book-site-visit-popup-modal"
       >
         <Box sx={style}>
-          <BookSiteVisitForm handleClose={handleClose}/>
+          <BookSiteVisitForm handleClose={handleClose} />
         </Box>
       </Modal>
 
-
       <section className="book-site-visit-btn-wrapper">
-        <button onClick={handleOpen}>
-          Book a site visit
-        </button>
+        <button onClick={handleOpen}>Book a site visit</button>
       </section>
     </div>
   );

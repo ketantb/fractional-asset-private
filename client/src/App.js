@@ -23,13 +23,14 @@ import ApartmentPage from "./components/products-landingPages/apartment/Apartmen
 import CarPage from "./components/products-landingPages/car/Car";
 import YachtPage from "./components/products-landingPages/yacht/Yacht";
 import ArtPage from "./components/products-landingPages/art/Art";
-import VillaPage from "./components/products-landingPages/villa/Villa"
+import VillaPage from "./components/products-landingPages/villa/Villa";
 import JewelleryPage from "./components/products-landingPages/jewellery/Jewellery";
 import ResortPage from "./components/products-landingPages/resort/ResortPage";
 import WareHousePage from "./components/products-landingPages/warehouse/Warehouse";
 import ShopPage from "./components/products-landingPages/shop/Shop";
 import ParkingPage from "./components/products-landingPages/parking/Parking";
 import StartUpPage from "./components/products-landingPages/startup/Startup";
+import LandPage from "./components/products-landingPages/land/Land";
 
 // products details page
 import ResortVillaApartmentDetails from "./components/products-view-details/villa-resort-apartment-details/villa-resort-apartment-details";
@@ -110,8 +111,6 @@ function App() {
     console.log("collection names=>", collectionNames);
   }, []);
 
-
-
   if (!collectionNames) {
     return <PreLoader />;
   }
@@ -157,6 +156,7 @@ function App() {
             <Route path="/resort-page" element={<ResortPage />}></Route>
             <Route path="/warehouse-page" element={<WareHousePage />}></Route>
             <Route path="/shop-page" element={<ShopPage />}></Route>
+            <Route path="/land-page" element={<LandPage />} />
             <Route path="/parking-page" element={<ParkingPage />}></Route>
             <Route path="/startup-page" element={<StartUpPage />}></Route>
             {/* landing pages  end*/}
@@ -201,7 +201,6 @@ function App() {
             <Route path="/car-edit/:id" element={<CarEdit />}></Route>
 
             {/*  edit forms ends*/}
-
           </Routes>
         </div>
         <Footer />

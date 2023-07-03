@@ -420,8 +420,23 @@
   }
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
   .book-site-visit-popup-modal {
     width: 90%;
   }
 }
+
+
+/* map wrapper */
+.villa-details-container .map-wrapper {
+  width: 100%;
+  height: 20rem;
+  margin-top: 2rem;
+}
+
+.villa-details-container .map-wrapper iframe {
+  width: 100%;
+  height: 18rem;
+}
+
+/* map wrapper ends */
