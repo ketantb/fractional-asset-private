@@ -78,7 +78,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           <FormControl className="form-field">
             <TextField
               id="standard-basic"
-              label="Rera Id"
+              label="Builder/ Broker Rera Id"
               variant="standard"
               name="reraId"
               value={propertyData.reraId}

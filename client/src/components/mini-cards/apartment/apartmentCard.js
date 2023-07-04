@@ -8,7 +8,6 @@ import RentContactForm from "../../modal/rentContactForm/RentContactForm";
 
 const ApartmentCard = ({ apartment, getData }) => {
   const navigate = useNavigate();
-  console.log("getData from apartmentCard => ", getData)
   //view more
   const viewMore = (propertyid) => {
     navigate(`/villa-resort-apartment-details/${propertyid}`);

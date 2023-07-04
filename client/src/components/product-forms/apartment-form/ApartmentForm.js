@@ -91,6 +91,14 @@ const ApartmentForm = () => {
     setImages([...images, ...e.target.files]);
   };
 
+  //UPLOAD 360 VIEW IMAGES
+  const [view360images, setView360images] = useState([]);
+  const [img360Url, setImg360Url] = useState(false);
+  const [final360ImgArr, setFinal360ImgArr] = useState([]);
+  const handleFile360Change = (e) => {
+    setView360images([...view360images, ...e.target.files]);
+  };
+
   //ADDITIONL INFORMATION
   const [additionalDetails, setAdditionalDetails] = useState("");
 
@@ -100,7 +108,11 @@ const ApartmentForm = () => {
   const handleUploadImages = async (e) => {
     e.preventDefault();
     if (images.length === 0) {
-      toast.error("No Image Chosen !");
+      toast.error("Add property images !");
+      return;
+    }
+    if (view360images.length === 0) {
+      toast.error("Add 360degree view image of property !");
       return;
     }
     let arr = [];
@@ -119,10 +131,28 @@ const ApartmentForm = () => {
     console.log(arr);
     setFinalImgArr(arr);
 
+    // 360 view images
+    let images360arr = [];
+    for (let i = 0; i < view360images.length; i++) {
+      const imgData = new FormData();
+      imgData.append("upload_preset", "insta_clone");
+      imgData.append("file", view360images[i]);
+      await axios
+        .post(process.env.REACT_APP_CLOUDINARY_URL, imgData)
+        .then((resp) => {
+          console.log(resp);
+          images360arr.push(resp.data.secure_url);
+        })
+        .catch((err) => console.log(err));
+    }
+    console.log(images360arr);
+    setFinal360ImgArr(images360arr);
     if (arr.length !== 0) {
       setImgUrl(true);
+      setImg360Url(true);
     }
   };
+
 
   const handlePost = async () => {
     const data = {
@@ -131,6 +161,7 @@ const ApartmentForm = () => {
       aminities: aminities,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
+      view360ImgArr: final360ImgArr
     };
     console.log("data before posting", data);
 
@@ -250,7 +281,6 @@ const ApartmentForm = () => {
         </AccordionSummary>
         <AccordionDetails>
           <div className="upload-image-form-wrapper">
-            <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
             <form>
               <input
                 type="file"
@@ -261,6 +291,34 @@ const ApartmentForm = () => {
             </form>
             <div className="images-wrapper">
               {images.map((image) => (
+                <div className="uploaded-images" key={image}>
+                  <img src={URL.createObjectURL(image)} alt="" width="100" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </AccordionDetails>
+
+        {/* upload 360 view images */}
+        <AccordionSummary
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+          expandIcon={"+"}
+        >
+          <Typography>UPLOAD 360degree VIEW IMAGE</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div className="upload-image-form-wrapper">
+            <form>
+              <input
+                type="file"
+                name="view360images"
+                multiple
+                onChange={handleFile360Change}
+              />
+            </form>
+            <div className="images-wrapper">
+              {view360images.map((image) => (
                 <div className="uploaded-images" key={image}>
                   <img src={URL.createObjectURL(image)} alt="" width="100" />
                 </div>

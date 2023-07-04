@@ -12,18 +12,26 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
 import { FaHandPointDown } from "react-icons/fa";
-import LandUtilities from "./landFormSteps/landUtilities";
-import LandDetails from "./landFormSteps/landDetails";
-import LandLocality from "./landFormSteps/landLocality";
-import LandAdditionalInfo from "./landFormSteps/landAdditionalInfo";
+import LandUtilities from "./landFormSteps/LandUtilities";
+import LandDetails from "./landFormSteps/LandDetails";
+import LandLocality from "./landFormSteps/LandLocality";
+import LandAdditionalInfo from "./landFormSteps/LandAdditionalInfo";
+import { nanoid } from 'nanoid'
+import WhyInvestInThisLand from "./landFormSteps/WhyInvest";
+import Swal from 'sweetalert2'
+import LandApprovals from "./landFormSteps/Approvals";
 
 const Landform = () => {
   const navigate = useNavigate();
 
   //PROPERTY DETAILS
   const [LandData, setLandData] = useState({
-    propertyAdType: "",
+    cornerPlot: "",
+    sellerType: "",
+    // propertyAdType: "",
     landType: "",
+    reraId: "",
+    propertyId: "",
     dimensionLength: "",
     dimensionBreadth: "",
     dimensionsUnit: "",
@@ -47,12 +55,21 @@ const Landform = () => {
     state: "",
     nearbyPlaces: "",
   });
+
+  //WHY INVEST IN THIS PROJECT
+  const [whyInvest, setWhyInvest] = useState([]);
+  const [whyInvestFactors, setWhyInvestFactors] = useState("");
+
   //AMINTIES
   const [utilities, setUtilities] = useState([]);
   const [newUtility, setNewUtility] = useState("");
 
+  //APPROVALS
+  const [approvals, setApprovals] = useState([]);
+  const [newApprovals, setNewApprovals] = useState("");
+
   //ADDITIONL INFORMATION
-  const [additionalDetails, setadditionalDetails] = useState("");
+  const [additionalDetails, setAdditionalDetails] = useState("");
 
   //UPLOAD PHOTOS
   const [images, setImages] = useState([]);
@@ -70,6 +87,7 @@ const Landform = () => {
       toast.error("No Image Chosen !");
       return;
     }
+    toast.loading("Uploading images. Please wait");
     let arr = [];
     for (let i = 0; i < images.length; i++) {
       const imgData = new FormData();
@@ -81,8 +99,13 @@ const Landform = () => {
           // console.log(resp);
           arr.push(resp.data.secure_url);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          toast.dismiss()
+          toast.err("An error occoured! please try after some time!")
+        })
     }
+    toast.dismiss()
     console.log(arr);
     setFinalImgArr(arr);
 
@@ -92,18 +115,20 @@ const Landform = () => {
   };
 
   const handlePost = async () => {
+    const uniqueId = nanoid(5)
     const data = {
       ...LandData,
       ...landLocality,
+      whyInvestHere: whyInvest,
+      approvals: approvals,
       utilities: utilities,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
+      uniqueId: uniqueId
     };
     console.log("data before posting", data);
-
     try {
-      toast.loading("Uploading images. Please wait");
-
+      toast.loading("Posting Data. Please wait");
       const response = await axios.post("/land-form", data, {
         headers: {
           authorization: token,
@@ -113,14 +138,28 @@ const Landform = () => {
       if (response.data.success) {
         console.log("data saved in db", response);
         toast.dismiss();
-        toast.success("Property posted successfully");
-        navigate("/listings");
+        Swal.fire({
+          title: 'Your Property Advertisement is under screening! We will get back to you soon',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+        navigate("/my-profile");
+        // toast.success("Property posted successfully");
       } else {
-        toast.error();
+        console.log(response.data);
+        toast.error(response.data.message);
+        toast.dismiss();
       }
     } catch (err) {
       console.log(err);
+      toast.dismiss();
+      toast.err("An error occoured! please try after some time!")
     }
+    setImgUrl(false);
   };
 
   useEffect(() => {
@@ -177,6 +216,46 @@ const Landform = () => {
         </AccordionDetails>
       </Accordion>
       {/* section 2 ends */}
+
+      {/* section 2.5 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>WHY INVEST IN THIS PROJECT</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <WhyInvestInThisLand
+            whyInvest={whyInvest}
+            setWhyInvest={setWhyInvest}
+            whyInvestFactors={whyInvestFactors}
+            setWhyInvestFactors={setWhyInvestFactors}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.5 ends */}
+
+      {/* section 2.5 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>APPROVALS</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <LandApprovals
+            newApprovals={newApprovals} 
+            setNewApprovals={setNewApprovals} 
+            approvals={approvals} 
+            setApprovals={setApprovals} 
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.5 ends */}
 
       {/* section 3 */}
       <Accordion>
@@ -240,7 +319,7 @@ const Landform = () => {
         <AccordionDetails>
           <LandAdditionalInfo
             additionalDetails={additionalDetails}
-            setadditionalDetails={setadditionalDetails}
+            setAdditionalDetails={setAdditionalDetails}
           />
         </AccordionDetails>
       </Accordion>

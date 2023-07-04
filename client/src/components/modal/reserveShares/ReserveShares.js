@@ -14,7 +14,7 @@ const ReserveShares = ({
   getData,
 }) => {
 
-  console.log("getData from ReserveShares => ", getData)
+  // console.log("grandchild => ", getData)
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -43,6 +43,7 @@ const ReserveShares = ({
       })
       .catch((err) => {
         console.log("err => ", err)
+        getData();
       })
   };
 

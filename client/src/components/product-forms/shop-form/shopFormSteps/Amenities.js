@@ -22,7 +22,7 @@ const Amenities = ({ newAminity, setNewAminity, aminities, setAminities }) => {
     <div className='aminities-wrapper'>
       <div>
         <TextField type='text' size='small' name='aminities' value={newAminity}
-          onChange={(e) => setNewAminity(e.target.value)} label='Aminity' />
+          onChange={(e) => setNewAminity(e.target.value)} label='Facility' />
         <Button onClick={handleAminityarray}>Add</Button>
         <div>
           {

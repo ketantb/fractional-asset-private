@@ -20,11 +20,6 @@ const ApartmentPage = () => {
       .catch((err) => {
         console.log(err)
       })
-    // try {
-    //   const response = await axios.get("/listing-all-apartment");
-    //   console.log(response.data.list);
-    //   setApartmentData(response.data.list);
-    // } catch (err) {}
   };
 
   useEffect(() => {
@@ -52,7 +47,7 @@ const ApartmentPage = () => {
                   }
                 })
                 .map((apartment) => {
-                  return <ApartmentCard apartment={apartment} />;
+                  return <ApartmentCard apartment={apartment} getData={getData}/>;
                 })}
             </div>
 
