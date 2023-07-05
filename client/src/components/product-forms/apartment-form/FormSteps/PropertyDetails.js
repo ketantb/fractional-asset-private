@@ -552,6 +552,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             spellCheck="false"
             type="number"
             id="totalShares"
+            name="totalShares"
             label="Total Shares"
             sx={{ width: "250px" }}
             helperText="Please enter total shares"
@@ -565,6 +566,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             spellCheck="false"
             type="number"
             id="availableShares"
+            name="availableShares"
             label="Available Shares"
             sx={{ width: "250px" }}
             helperText="Please enter available shares"
@@ -577,6 +579,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             size="small"
             spellCheck="false"
             id="perSharePrice"
+            name="perSharePrice"
             label="Price/Share"
             sx={{ width: "250px" }}
             helperText="Please enter price/share"
@@ -589,6 +592,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             size="small"
             spellCheck="false"
             id="rentPrice"
+            name="rentPrice"
             label="Rent Price"
             sx={{ width: "250px" }}
             helperText="Please enter rent price"

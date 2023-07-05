@@ -5,6 +5,25 @@ export const apartmentPropertyConfig = [
     helperText: "Please enter seller name",
   },
   {
+    id: "sellerType",
+    label: "Seller Type",
+    helperText: "Please enter price/share",
+    options: [
+      {
+        value: "owner",
+        label: "Owner",
+      },
+      {
+        value: "broker",
+        label: "Broker",
+      },
+      {
+        value: "builder",
+        label: "Builder",
+      },
+    ],
+  },
+  {
     id: "apartmentName",
     label: "Apartment Name",
     helperText: "Please enter apartment name",
@@ -61,25 +80,6 @@ export const apartmentPropertyConfig = [
     label: "Total Lifts",
     helperText: "Please enter total lifts",
     type: "number",
-  },
-  {
-    id: "sellerType",
-    label: "Seller Type",
-    helperText: "Please enter price/share",
-    options: [
-      {
-        value: "owner",
-        label: "Owner",
-      },
-      {
-        value: "broker",
-        label: "Broker",
-      },
-      {
-        value: "builder",
-        label: "Builder",
-      },
-    ],
   },
   {
     id: "propertyAge",
@@ -146,11 +146,7 @@ export const apartmentPropertyConfig = [
       {
         value: "rare powercut",
         label: "Rare powercut",
-      },
-      {
-        value: "builder",
-        label: "Builder",
-      },
+      }
     ],
   },
   {

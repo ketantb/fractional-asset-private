@@ -54,8 +54,6 @@ const ResortVillaApartmentDetails = () => {
     getData();
   }, []);
 
-  const siteVisitRequest = async () => {};
-
   return (
     <div className="villa-details-container">
       <section className="villa-details-r1">
@@ -67,33 +65,45 @@ const ResortVillaApartmentDetails = () => {
         </h4>
         <div className="villa-details-table">
           <section>
-            <p>Seller</p>
-            <p className="villa-details-table-value">{data.sellerName}</p>
+            <p>Seller Type</p>
+            <p className="villa-details-table-value">
+              {data.sellerType || "---"}
+            </p>
           </section>
           <div className="villa-details-table-dummy-border"></div>
           <section>
-            <p>Property Age</p>
-            <p className="villa-details-table-value">{data.propertyAge}</p>
+            <p>Seller Name</p>
+            <p className="villa-details-table-value">
+              {data.sellerName || "---"}
+            </p>
           </section>
           <p className="villa-details-table-dummy-border"></p>
           <section>
-            <p>Property Area</p>
-            <p className="villa-details-table-value">{data.area} sq ft</p>
+            <p>Posted On</p>
+            <p className="villa-details-table-value">
+              {data.postedOn || "---"}
+            </p>
           </section>
           <p className="villa-details-table-dummy-border"></p>
           <section>
             <p>Total Shares</p>
-            <p className="villa-details-table-value">{data.totalShares}</p>
+            <p className="villa-details-table-value">
+              {data.totalShares || "---"}
+            </p>
           </section>
           <p className="villa-details-table-dummy-border"></p>
           <section>
             <p>Available Shares</p>
-            <p className="villa-details-table-value">{data.availableShares}</p>
+            <p className="villa-details-table-value">
+              {data.availableShares || "---"}
+            </p>
           </section>
           <p className="villa-details-table-dummy-border"></p>
           <section>
             <p>Price Per Share</p>
-            <p className="villa-details-table-value">{data.perSharePrice}</p>
+            <p className="villa-details-table-value">
+              {data.perSharePrice || "---"}
+            </p>
           </section>
         </div>
 
@@ -102,9 +112,9 @@ const ResortVillaApartmentDetails = () => {
           <table>
             <thead>
               <tr>
-                <th scope="col">Seller</th>
-                <th scope="col">Property Age</th>
-                <th scope="col">Property Area</th>
+                <th scope="col">Seller Type</th>
+                <th scope="col">Seller Name</th>
+                <th scope="col">Posted On</th>
                 <th scope="col">Total Shares</th>
                 <th scope="col">Available Shares</th>
                 <th scope="col">Price Per Share</th>
@@ -112,23 +122,15 @@ const ResortVillaApartmentDetails = () => {
             </thead>
             <tbody>
               <tr>
-                <td data-label="Seller">{data.sellerName}</td>
-                <td data-label="Property Age">
-                  {data.propertyAge ? data.propertyAge : <p>not given</p>}
-                </td>
-                <td data-label="Property Area">
-                  {data.area ? <p>{data.area} sq ft</p> : <p>not given</p>}
-                </td>
-                <td data-label="Total Shares">{data.totalShares}</td>
+                <td data-label="Seller">{data.sellerType || "---"}</td>
+                <td data-label="Seller Type">{data.sellerType || "---"}</td>
+                <td data-label="Posted On">{data.postedOn || "---"}</td>
+                <td data-label="Total Shares">{data.totalShares || "---"}</td>
                 <td data-label="Available Shares">
-                  {data.availableShares ? (
-                    data.availableShares
-                  ) : (
-                    <p>not given</p>
-                  )}
+                  {data.availableShares || "---"}
                 </td>
                 <td data-label="Price Per Share">
-                  {data.perSharePrice ? data.perSharePrice : <p>not given</p>}
+                  {data.perSharePrice || "---"}
                 </td>
               </tr>
             </tbody>
@@ -185,6 +187,7 @@ const ResortVillaApartmentDetails = () => {
             </p>
           )}
         </div>
+        {/* facilities & aminities */}
         <div className="facility-outer-wrap">
           <h4>
             <span>
@@ -203,6 +206,18 @@ const ResortVillaApartmentDetails = () => {
           </div>
         </div>
       </section>
+      {/* why invest here */}
+      <section className="villa-details-r3">
+        <h4>
+          <span>
+            <img src={overviewIcon} alt="overview-img-icon" />
+          </span>
+          Why Invest Here?
+        </h4>
+        <p>{data.whyInvestHere || "---"}</p>
+      </section>
+
+      {/* map location */}
       <section>
         <section className="map-wrapper">
           <h5>Locate on map</h5>
