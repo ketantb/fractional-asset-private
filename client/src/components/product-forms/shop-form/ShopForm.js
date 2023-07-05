@@ -10,12 +10,15 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
-import PropertyDetails from "./propertyFormSteps/PropertyDetails";
-import Amenities from "./propertyFormSteps/Amenities";
-import Locality from "./propertyFormSteps/Locality";
-import AdditionalInfo from "./propertyFormSteps/AdditionalInfo";
+import ShopDetails from "./shopFormSteps/ShopDetails";
+import Amenities from "./shopFormSteps/Amenities";
+import Locality from "./shopFormSteps/Locality";
+import AdditionalInfo from "./shopFormSteps/AdditionalInfo";
 
 import { FaHandPointDown } from "react-icons/fa";
+import WhyInvestInThisShop from "./shopFormSteps/WhyInvest";
+import ShopSuitableFor from "./shopFormSteps/ShopSuitableFor";
+import { nanoid } from 'nanoid'
 
 const ShopForm = () => {
   const navigate = useNavigate();
@@ -24,16 +27,42 @@ const ShopForm = () => {
   }, []);
 
   //PROPERTY DETAILS
-  const [propertyData, setPropertyData] = useState({
+  const [shopData, setShopData] = useState({
+    shopType: "",
+    apartmentName: "",
+    cornerShop: "",
     sellerName: "",
+    typeOfOwnership: "",
+    propertyId: "",
+    possessionStatus: "",
+    totalFloors: "",
+    totalLifts: "",
+    transactionType: "",
+    pantry: "",
+    floorNo: "",
+    totalFloors: "",
+    totalLifts: "",
+    facing: "",
+    carpetArea: "",
+    flooringType: "",
+    waterAvailability: "",
+    statusOfElectricity: "",
     propertyAdType: "",
     propertyAge: "",
+    totalBalconies: "",
+    typeOfOwnership: "",
+    sellerType: "",
     area: "",
     rentPrice: "",
     totalShares: "",
     availableShares: "",
     perSharePrice: "",
+    reraId: "",
+    loading: "",
+    mainRoadFacing: "",
+    widthOfEntranceInFeets: ""
   });
+
   //LOCATION DETAILS
   const [locality, setLocality] = useState({
     street: "",
@@ -43,9 +72,18 @@ const ShopForm = () => {
     state: "",
     nearbyPlaces: "",
   });
+
   //AMINTIES
   const [aminities, setAminities] = useState([]);
   const [newAminity, setNewAminity] = useState("");
+
+  //WHY INVEST IN THIS PROJECT
+  const [whyInvest, setWhyInvest] = useState([]);
+  const [whyInvestFactors, setWhyInvestFactors] = useState("");
+
+  //SHOP SUITABLE FOR
+  const [suitableFor, setSuitableFor] = useState([]);
+  const [suitableFactors, setSuitableFactors] = useState("");
 
   //UPLOAD PHOTOS
   const [images, setImages] = useState([]);
@@ -53,6 +91,14 @@ const ShopForm = () => {
   const [finalImgArr, setFinalImgArr] = useState([]);
   const handleFileChange = (e) => {
     setImages([...images, ...e.target.files]);
+  };
+
+  //UPLOAD 360 VIEW IMAGES
+  const [view360images, setView360images] = useState([]);
+  const [img360Url, setImg360Url] = useState(false);
+  const [final360ImgArr, setFinal360ImgArr] = useState([]);
+  const handleFile360Change = (e) => {
+    setView360images([...view360images, ...e.target.files]);
   };
 
   //ADDITIONL INFORMATION
@@ -89,13 +135,16 @@ const ShopForm = () => {
 
   const handlePost = async () => {
     toast.loading("Uploading images. Please wait");
-
+    const uniqueId = nanoid(5)
     const data = {
-      ...propertyData,
+      ...shopData,
       ...locality,
       aminities: aminities,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
+      whyInvestHere: whyInvest,
+      view360ImgArr: final360ImgArr,
+      uniqueId: uniqueId
     };
     console.log("data before posting", data);
 
@@ -134,7 +183,7 @@ const ShopForm = () => {
           <FaHandPointDown />
         </div>
         <Typography className="title" style={{ marginLeft: "0.5rem" }}>
-          SELL OR BUY YOUR PROPERTY HERE FOR FREE
+          SELL OR BUY YOUR SHOP HERE FOR FREE
         </Typography>
       </div>
 
@@ -149,9 +198,9 @@ const ShopForm = () => {
           <Typography>SHOP DETAILS</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <PropertyDetails
-            propertyData={propertyData}
-            setPropertyData={setPropertyData}
+          <ShopDetails
+            shopData={shopData}
+            setShopData={setShopData}
           />
         </AccordionDetails>
       </Accordion>
@@ -164,7 +213,7 @@ const ShopForm = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>AMINITIES</Typography>
+          <Typography>FACILITIES</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Amenities
@@ -176,6 +225,46 @@ const ShopForm = () => {
         </AccordionDetails>
       </Accordion>
       {/* section 2 ends */}
+
+      {/* section 2.5 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>WHY INVEST IN THIS PROJECT</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <WhyInvestInThisShop
+            whyInvest={whyInvest}
+            setWhyInvest={setWhyInvest}
+            whyInvestFactors={whyInvestFactors}
+            setWhyInvestFactors={setWhyInvestFactors}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.5 ends */}
+
+      {/* section 2.6 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>SHOP SUITABLE FOR</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <ShopSuitableFor
+            suitableFactors={suitableFactors}
+            setSuitableFactors={setSuitableFactors}
+            suitableFor={suitableFor}
+            setSuitableFor={setSuitableFor}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.6 ends */}
 
       {/* section 3 */}
       <Accordion>
@@ -203,7 +292,6 @@ const ShopForm = () => {
         </AccordionSummary>
         <AccordionDetails>
           <div className="upload-image-form-wrapper">
-            <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
             <form>
               <input
                 type="file"
@@ -214,6 +302,34 @@ const ShopForm = () => {
             </form>
             <div className="images-wrapper">
               {images.map((image) => (
+                <div className="uploaded-images" key={image}>
+                  <img src={URL.createObjectURL(image)} alt="" width="100" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </AccordionDetails>
+
+        {/* upload 360 view images */}
+        <AccordionSummary
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+          expandIcon={"+"}
+        >
+          <Typography>UPLOAD 360degree VIEW IMAGE</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div className="upload-image-form-wrapper">
+            <form>
+              <input
+                type="file"
+                name="view360images"
+                multiple
+                onChange={handleFile360Change}
+              />
+            </form>
+            <div className="images-wrapper">
+              {view360images.map((image) => (
                 <div className="uploaded-images" key={image}>
                   <img src={URL.createObjectURL(image)} alt="" width="100" />
                 </div>

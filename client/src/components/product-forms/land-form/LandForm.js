@@ -12,18 +12,26 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
 import { FaHandPointDown } from "react-icons/fa";
-import LandUtilities from "./landFormSteps/landUtilities";
-import LandDetails from "./landFormSteps/landDetails";
-import LandLocality from "./landFormSteps/landLocality";
-import LandAdditionalInfo from "./landFormSteps/landAdditionalInfo";
+import LandUtilities from "./landFormSteps/LandUtilities";
+import LandDetails from "./landFormSteps/LandDetails";
+import LandLocality from "./landFormSteps/LandLocality";
+import LandAdditionalInfo from "./landFormSteps/LandAdditionalInfo";
+import { nanoid } from 'nanoid'
+import WhyInvestInThisLand from "./landFormSteps/WhyInvest";
+import Swal from 'sweetalert2'
+import LandApprovals from "./landFormSteps/Approvals";
 
 const Landform = () => {
   const navigate = useNavigate();
 
   //PROPERTY DETAILS
   const [LandData, setLandData] = useState({
-    propertyAdType: "",
+    cornerPlot: "",
+    sellerType: "",
+    // propertyAdType: "",
     landType: "",
+    reraId: "",
+    propertyId: "",
     dimensionLength: "",
     dimensionBreadth: "",
     dimensionsUnit: "",
@@ -47,12 +55,29 @@ const Landform = () => {
     state: "",
     nearbyPlaces: "",
   });
+
+  //WHY INVEST IN THIS PROJECT
+  const [whyInvest, setWhyInvest] = useState([]);
+  const [whyInvestFactors, setWhyInvestFactors] = useState("");
+
   //AMINTIES
   const [utilities, setUtilities] = useState([]);
   const [newUtility, setNewUtility] = useState("");
 
+  //APPROVALS
+  const [approvals, setApprovals] = useState([]);
+  const [newApprovals, setNewApprovals] = useState("");
+
+  //UPLOAD 360 VIEW IMAGES
+  const [view360images, setView360images] = useState([]);
+  const [img360Url, setImg360Url] = useState(false);
+  const [final360ImgArr, setFinal360ImgArr] = useState([]);
+  const handleFile360Change = (e) => {
+    setView360images([...view360images, ...e.target.files]);
+  };
+
   //ADDITIONL INFORMATION
-  const [additionalDetails, setadditionalDetails] = useState("");
+  const [additionalDetails, setAdditionalDetails] = useState("");
 
   //UPLOAD PHOTOS
   const [images, setImages] = useState([]);
@@ -67,7 +92,11 @@ const Landform = () => {
   const handleUploadImages = async (e) => {
     e.preventDefault();
     if (images.length === 0) {
-      toast.error("No Image Chosen !");
+      toast.error("Add property images !");
+      return;
+    }
+    if (view360images.length === 0) {
+      toast.error("Add 360degree view image of property !");
       return;
     }
     let arr = [];
@@ -78,7 +107,7 @@ const Landform = () => {
       await axios
         .post(process.env.REACT_APP_CLOUDINARY_URL, imgData)
         .then((resp) => {
-          // console.log(resp);
+          console.log(resp);
           arr.push(resp.data.secure_url);
         })
         .catch((err) => console.log(err));
@@ -86,24 +115,44 @@ const Landform = () => {
     console.log(arr);
     setFinalImgArr(arr);
 
+    // 360 view images
+    let images360arr = [];
+    for (let i = 0; i < view360images.length; i++) {
+      const imgData = new FormData();
+      imgData.append("upload_preset", "insta_clone");
+      imgData.append("file", view360images[i]);
+      await axios
+        .post(process.env.REACT_APP_CLOUDINARY_URL, imgData)
+        .then((resp) => {
+          console.log(resp);
+          images360arr.push(resp.data.secure_url);
+        })
+        .catch((err) => console.log(err));
+    }
+    console.log(images360arr);
+    setFinal360ImgArr(images360arr);
     if (arr.length !== 0) {
       setImgUrl(true);
+      setImg360Url(true);
     }
   };
 
   const handlePost = async () => {
+    const uniqueId = nanoid(5)
     const data = {
       ...LandData,
       ...landLocality,
+      whyInvestHere: whyInvest,
+      approvals: approvals,
       utilities: utilities,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
+      view360ImgArr: final360ImgArr,
+      uniqueId: uniqueId
     };
     console.log("data before posting", data);
-
     try {
-      toast.loading("Uploading images. Please wait");
-
+      toast.loading("Posting Data. Please wait");
       const response = await axios.post("/land-form", data, {
         headers: {
           authorization: token,
@@ -113,14 +162,28 @@ const Landform = () => {
       if (response.data.success) {
         console.log("data saved in db", response);
         toast.dismiss();
-        toast.success("Property posted successfully");
-        navigate("/listings");
+        Swal.fire({
+          title: 'Your Property Advertisement is under screening! We will get back to you soon',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+        navigate("/my-profile");
+        // toast.success("Property posted successfully");
       } else {
-        toast.error();
+        console.log(response.data);
+        toast.error(response.data.message);
+        toast.dismiss();
       }
     } catch (err) {
       console.log(err);
+      toast.dismiss();
+      toast.err("An error occoured! please try after some time!")
     }
+    setImgUrl(false);
   };
 
   useEffect(() => {
@@ -178,6 +241,46 @@ const Landform = () => {
       </Accordion>
       {/* section 2 ends */}
 
+      {/* section 2.5 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>WHY INVEST IN THIS PROJECT</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <WhyInvestInThisLand
+            whyInvest={whyInvest}
+            setWhyInvest={setWhyInvest}
+            whyInvestFactors={whyInvestFactors}
+            setWhyInvestFactors={setWhyInvestFactors}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.5 ends */}
+
+      {/* section 2.5 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>APPROVALS</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <LandApprovals
+            newApprovals={newApprovals}
+            setNewApprovals={setNewApprovals}
+            approvals={approvals}
+            setApprovals={setApprovals}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.5 ends */}
+
       {/* section 3 */}
       <Accordion>
         <AccordionSummary
@@ -203,11 +306,10 @@ const Landform = () => {
           id="panel2a-header"
           expandIcon={"+"}
         >
-          <Typography>UPLOAD LAND IMAGES</Typography>
+          <Typography>UPLOAD PROPERTY IMAGES</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div className="upload-image-form-wrapper">
-            <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
             <form>
               <input
                 type="file"
@@ -218,6 +320,34 @@ const Landform = () => {
             </form>
             <div className="images-wrapper">
               {images.map((image) => (
+                <div className="uploaded-images" key={image}>
+                  <img src={URL.createObjectURL(image)} alt="" width="100" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </AccordionDetails>
+
+        {/* upload 360 view images */}
+        <AccordionSummary
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+          expandIcon={"+"}
+        >
+          <Typography>UPLOAD 360degree VIEW IMAGE</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div className="upload-image-form-wrapper">
+            <form>
+              <input
+                type="file"
+                name="view360images"
+                multiple
+                onChange={handleFile360Change}
+              />
+            </form>
+            <div className="images-wrapper">
+              {view360images.map((image) => (
                 <div className="uploaded-images" key={image}>
                   <img src={URL.createObjectURL(image)} alt="" width="100" />
                 </div>
@@ -240,7 +370,7 @@ const Landform = () => {
         <AccordionDetails>
           <LandAdditionalInfo
             additionalDetails={additionalDetails}
-            setadditionalDetails={setadditionalDetails}
+            setAdditionalDetails={setAdditionalDetails}
           />
         </AccordionDetails>
       </Accordion>

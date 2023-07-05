@@ -10,21 +10,39 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
-import PropertyDetails from "./propertyFormSteps/PropertyDetails";
+import VillaDetails from "./propertyFormSteps/VillaDetails";
 import Amenities from "./propertyFormSteps/Amenities";
 import Locality from "./propertyFormSteps/Locality";
 import AdditionalInfo from "./propertyFormSteps/AdditionalInfo";
 
 import { FaHandPointDown } from "react-icons/fa";
+import { nanoid } from 'nanoid'
+import WhyInvestInThisVilla from "./propertyFormSteps/WhyInvest";
+import VillaApprovals from "./propertyFormSteps/Approvals";
 
 const VillaForm = () => {
   const navigate = useNavigate();
 
   //PROPERTY DETAILS
-  const [propertyData, setPropertyData] = useState({
+  const [villaData, setVillaData] = useState({
+    sellerType: "",
+    sellerName: "",
+    reraId: "",
+    villaName: "",
+    propertyId: "",
     propertyAdType: "",
     propertyAge: "",
     area: "",
+    possessionStatus: "",
+    totalFloors: "",
+    totalLifts: "",
+    facing: "",
+    carpetArea: "",
+    flooringType: "",
+    waterAvailability: "",
+    statusOfElectricity: "",
+    totalBalconies: "",
+    typeOfOwnership: "",
     bedroom: "",
     bathroom: "",
     rentPrice: "",
@@ -41,9 +59,18 @@ const VillaForm = () => {
     state: "",
     nearbyPlaces: "",
   });
+
   //AMINTIES
   const [aminities, setAminities] = useState([]);
   const [newAminity, setNewAminity] = useState("");
+
+  //WHY INVEST IN THIS PROJECT
+  const [whyInvest, setWhyInvest] = useState([]);
+  const [whyInvestFactors, setWhyInvestFactors] = useState("");
+
+  //APPROVALS
+  const [approvals, setApprovals] = useState([]);
+  const [newApprovals, setNewApprovals] = useState("");
 
   //UPLOAD PHOTOS
   const [images, setImages] = useState([]);
@@ -51,6 +78,14 @@ const VillaForm = () => {
   const [finalImgArr, setFinalImgArr] = useState([]);
   const handleFileChange = (e) => {
     setImages([...images, ...e.target.files]);
+  };
+
+  //UPLOAD 360 VIEW IMAGES
+  const [view360images, setView360images] = useState([]);
+  const [img360Url, setImg360Url] = useState(false);
+  const [final360ImgArr, setFinal360ImgArr] = useState([]);
+  const handleFile360Change = (e) => {
+    setView360images([...view360images, ...e.target.files]);
   };
 
   //ADDITIONL INFORMATION
@@ -61,7 +96,11 @@ const VillaForm = () => {
   const handleUploadImages = async (e) => {
     e.preventDefault();
     if (images.length === 0) {
-      toast.error("No Image Chosen !");
+      toast.error("Add property images !");
+      return;
+    }
+    if (view360images.length === 0) {
+      toast.error("Add 360degree view image of property !");
       return;
     }
     let arr = [];
@@ -80,20 +119,39 @@ const VillaForm = () => {
     console.log(arr);
     setFinalImgArr(arr);
 
+    // 360 view images
+    let images360arr = [];
+    for (let i = 0; i < view360images.length; i++) {
+      const imgData = new FormData();
+      imgData.append("upload_preset", "insta_clone");
+      imgData.append("file", view360images[i]);
+      await axios
+        .post(process.env.REACT_APP_CLOUDINARY_URL, imgData)
+        .then((resp) => {
+          console.log(resp);
+          images360arr.push(resp.data.secure_url);
+        })
+        .catch((err) => console.log(err));
+    }
+    console.log(images360arr);
+    setFinal360ImgArr(images360arr);
     if (arr.length !== 0) {
       setImgUrl(true);
+      setImg360Url(true);
     }
   };
 
   const handlePost = async () => {
     toast.loading("Uploading images. Please wait");
-
+    const uniqueId = nanoid(5)
     const data = {
-      ...propertyData,
+      ...villaData,
       ...locality,
       aminities: aminities,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
+      view360ImgArr: final360ImgArr,
+      uniqueId: uniqueId
     };
     console.log("data before posting", data);
 
@@ -147,9 +205,9 @@ const VillaForm = () => {
           <Typography>VILLA DETAILS</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <PropertyDetails
-            propertyData={propertyData}
-            setPropertyData={setPropertyData}
+          <VillaDetails
+            villaData={villaData}
+            setVillaData={setVillaData}
           />
         </AccordionDetails>
       </Accordion>
@@ -174,6 +232,46 @@ const VillaForm = () => {
         </AccordionDetails>
       </Accordion>
       {/* section 2 ends */}
+
+      {/* section 2.5 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>AMINITIES</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <WhyInvestInThisVilla
+            whyInvest={whyInvest}
+            setWhyInvest={setWhyInvest}
+            whyInvestFactors={whyInvestFactors}
+            setWhyInvestFactors={setWhyInvestFactors}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.5 ends */}
+
+      {/* section 2.6 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>APPROVALS</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <VillaApprovals
+            newApprovals={newApprovals}
+            setNewApprovals={setNewApprovals}
+            approvals={approvals}
+            setApprovals={setApprovals}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.6 ends */}
 
       {/* section 3 */}
       <Accordion>
@@ -201,7 +299,6 @@ const VillaForm = () => {
         </AccordionSummary>
         <AccordionDetails>
           <div className="upload-image-form-wrapper">
-            <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
             <form>
               <input
                 type="file"
@@ -212,6 +309,34 @@ const VillaForm = () => {
             </form>
             <div className="images-wrapper">
               {images.map((image) => (
+                <div className="uploaded-images" key={image}>
+                  <img src={URL.createObjectURL(image)} alt="" width="100" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </AccordionDetails>
+
+        {/* upload 360 view images */}
+        <AccordionSummary
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+          expandIcon={"+"}
+        >
+          <Typography>UPLOAD 360degree VIEW IMAGE</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div className="upload-image-form-wrapper">
+            <form>
+              <input
+                type="file"
+                name="view360images"
+                multiple
+                onChange={handleFile360Change}
+              />
+            </form>
+            <div className="images-wrapper">
+              {view360images.map((image) => (
                 <div className="uploaded-images" key={image}>
                   <img src={URL.createObjectURL(image)} alt="" width="100" />
                 </div>

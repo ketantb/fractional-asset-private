@@ -28,9 +28,23 @@ const LandDetails = ({ LandData, setLandData }) => {
     }
   }, [LandData.propertyAdType]);
 
+  //conditional rendering for seller type for reraId
+  const [sellerTypeStatus, setSellerTypeStatus] = useState(false);
+  useEffect(() => {
+    if (
+      LandData.sellerType === "broker" ||
+      LandData.sellerType === "builder"
+    ) {
+      console.log(LandData.sellerType);
+      setSellerTypeStatus(true);
+    } else {
+      setSellerTypeStatus(false);
+    }
+  }, [LandData.sellerType]);
+
   return (
     <div className="property-details-wrapper">
-      <FormControl className="form-field">
+      {/* <FormControl className="form-field">
         <FormLabel id="demo-row-radio-buttons-group-label">
           Property Ad Type
         </FormLabel>
@@ -44,7 +58,34 @@ const LandDetails = ({ LandData, setLandData }) => {
           <FormControlLabel value="rent" control={<Radio />} label="Rent" />
           <FormControlLabel value="sell" control={<Radio />} label="Sell" />
         </RadioGroup>
+      </FormControl> */}
+
+      <FormControl className="form-field">
+        <FormLabel className="">Seller Type</FormLabel>
+        <select
+          name="sellerType"
+          value={LandData.sellerType}
+          onChange={handleInputs}
+        >
+          <option value="">Select</option>
+          <option value="owner">Owner</option>
+          <option value="broker">Broker</option>
+          <option value="builder">Builder</option>
+        </select>
       </FormControl>
+
+      {sellerTypeStatus ? (
+        <FormControl className="form-field">
+          <TextField
+            id="standard-basic"
+            label="Builder/Broker Rera Id"
+            variant="standard"
+            name="reraId"
+            value={LandData.reraId}
+            onChange={handleInputs}
+          />
+        </FormControl>
+      ) : null}
 
       <FormControl className="form-field">
         <FormLabel>Land Type</FormLabel>
@@ -75,6 +116,17 @@ const LandDetails = ({ LandData, setLandData }) => {
           <option value="freehold">Freehold</option>
           <option value="lease">Lease</option>
         </select>
+      </FormControl>
+
+      <FormControl className="form-field">
+        <TextField
+          id="standard-basic"
+          label="Property Id"
+          variant="standard"
+          name="propertyId"
+          value={LandData.propertyId}
+          onChange={handleInputs}
+        />
       </FormControl>
 
       <FormControl className="form-field">
@@ -160,6 +212,15 @@ const LandDetails = ({ LandData, setLandData }) => {
           <option value="NA">NA</option>
           <option value="barbed-wire-boundary">Barbed Wire Boundary</option>
           <option value="wall-boundary">Wall Boundary</option>
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
+        <FormLabel className="">Corner Plot</FormLabel>
+        <select name="boundary" value={LandData.cornerPlot} onChange={handleInputs}>
+          <option value="">Select</option>
+          <option value={true}>YES</option>
+          <option value={false}>NO</option>
         </select>
       </FormControl>
 
