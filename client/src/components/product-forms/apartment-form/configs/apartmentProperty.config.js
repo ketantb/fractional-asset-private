@@ -107,11 +107,11 @@ export const apartmentPropertyConfig = [
     options: [
       {
         value: "fully-furnished",
-        label: "Owner",
+        label: "Fully-furnished",
       },
       {
         value: "semi-furnished",
-        label: "Broker",
+        label: "Semi-furnished",
       },
       {
         value: "unfurnished",
