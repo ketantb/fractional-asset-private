@@ -264,6 +264,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
       <section className="inputs-section">
         <TextField
           size="small"
+          spellCheck="false"
           name="sellerName"
           label="Seller Name"
           sx={{ width: "250px" }}
@@ -273,6 +274,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           name="apartmentName"
           label="Apartment Name"
           sx={{ width: "250px" }}
@@ -282,6 +284,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           name="propertyId"
           label="Property ID"
           sx={{ width: "250px" }}
@@ -291,6 +294,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           type="number"
           name="area"
           label="Property Area"
@@ -301,6 +305,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           type="number"
           name="bedroom"
           label="Bedrooms"
@@ -311,6 +316,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           type="number"
           name="bathroom"
           label="Bathrooms"
@@ -321,6 +327,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           type="number"
           name="carpetArea"
           label="Carpet Area"
@@ -331,6 +338,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           type="number"
           name="totalBalconies"
           label="Total Balconies"
@@ -341,6 +349,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           type="number"
           name="totalFloors"
           label="Total Floors"
@@ -351,6 +360,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           type="number"
           name="floorNo"
           label="Floor Number"
@@ -361,6 +371,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           type="number"
           name="totalLifts"
           label="Total Lifts"
@@ -372,6 +383,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="sellerType"
           label="Seller Type"
           sx={{ width: "250px" }}
@@ -388,6 +400,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="propertyAge"
           label="Property Age"
           sx={{ width: "250px" }}
@@ -404,6 +417,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="furnishing"
           label="Furnishing"
           sx={{ width: "250px" }}
@@ -420,6 +434,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="possessionStatus"
           label="Possession Status"
           sx={{ width: "250px" }}
@@ -436,6 +451,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="statusOfElectricity"
           label="Electricity Status"
           sx={{ width: "250px" }}
@@ -452,6 +468,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="typeOfOwnership"
           label="Ownership Type"
           sx={{ width: "250px" }}
@@ -468,6 +485,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="flooringType"
           label="Flooring Type"
           sx={{ width: "250px" }}
@@ -484,6 +502,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="waterAvailability"
           label="Water Availability"
           sx={{ width: "250px" }}
@@ -500,6 +519,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           select
           size="small"
+          spellCheck="false"
           name="facing"
           label="Facing Direction"
           sx={{ width: "250px" }}
@@ -517,6 +537,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         {sellerTypeStatus ? (
           <TextField
             size="small"
+            spellCheck="false"
             id="reraId"
             label="Builder/ Broker Rera Id"
             sx={{ width: "250px" }}
@@ -528,6 +549,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         {!rentStatus ? (
           <TextField
             size="small"
+            spellCheck="false"
             type="number"
             id="totalShares"
             label="Total Shares"
@@ -540,6 +562,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         {!rentStatus ? (
           <TextField
             size="small"
+            spellCheck="false"
             type="number"
             id="availableShares"
             label="Available Shares"
@@ -552,6 +575,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         {!rentStatus ? (
           <TextField
             size="small"
+            spellCheck="false"
             id="perSharePrice"
             label="Price/Share"
             sx={{ width: "250px" }}
@@ -563,6 +587,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         {rentStatus ? (
           <TextField
             size="small"
+            spellCheck="false"
             id="rentPrice"
             label="Rent Price"
             sx={{ width: "250px" }}

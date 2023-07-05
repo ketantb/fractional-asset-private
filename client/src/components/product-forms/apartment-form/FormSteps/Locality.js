@@ -14,6 +14,7 @@ const Locality = ({ locality, setLocality }) => {
       <section className="inputs-section">
         <TextField
           size="small"
+          spellCheck="false"
           name="street"
           label="Street"
           helperText="Please enter street"
@@ -23,6 +24,7 @@ const Locality = ({ locality, setLocality }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           name="landmark"
           label="Landmark"
           helperText="Please enter landmark"
@@ -32,6 +34,7 @@ const Locality = ({ locality, setLocality }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           name="city"
           label="City"
           helperText="Please enter city"
@@ -41,6 +44,7 @@ const Locality = ({ locality, setLocality }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           name="pin"
           label="Pincode"
           helperText="Please enter pincode"
@@ -50,6 +54,7 @@ const Locality = ({ locality, setLocality }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           name="state"
           label="State"
           helperText="Please enter state"
@@ -59,6 +64,7 @@ const Locality = ({ locality, setLocality }) => {
         />
         <TextField
           size="small"
+          spellCheck="false"
           name="nearbyPlaces"
           label="Nearby Places"
           helperText="Please enter nearby places"
