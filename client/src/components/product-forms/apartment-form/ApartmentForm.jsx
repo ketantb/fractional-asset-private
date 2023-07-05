@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import { nanoid } from "nanoid";
 import { toast } from "react-hot-toast";
 import axios from "../../../helpers/axios";
 import { useState, useEffect } from "react";
@@ -15,8 +16,11 @@ import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import "./ApartmentForm.css";
 import Locality from "./FormSteps/Locality";
 import Amenities from "./FormSteps/Aminities";
+import WhyInvest from "./FormSteps/WhyInvest";
+import Approvals from "./FormSteps/Approvals";
 import AdditionalInfo from "./FormSteps/AdditiionalInfo";
 import PropertyDetails from "./FormSteps/PropertyDetails";
+import AdditionalRooms from "./FormSteps/AdditionalRooms";
 
 import RealEstatePreviewPage from "../real-estate-previewpage/real-estate-previewpage";
 
@@ -65,6 +69,7 @@ const ApartmentForm = () => {
     totalFloors: "",
     totalLifts: "",
     facing: "",
+    overlooking: "",
     carpetArea: "",
     flooringType: "",
     waterAvailability: "",
@@ -93,6 +98,15 @@ const ApartmentForm = () => {
   //AMINTIES
   const [aminities, setAminities] = useState([]);
   const [newAminity, setNewAminity] = useState("");
+  //APPROVALS
+  const [approvals, setApprovals] = useState([]);
+  const [newApprovals, setNewApprovals] = useState("");
+  //ADDITIONAL ROOMS
+  const [additionalRooms, setAdditionalRooms] = useState([]);
+  const [newAdditionalRooms, setNewAdditionalRooms] = useState("");
+  //WHY INVEST IN THIS PROJECT
+  const [whyInvest, setWhyInvest] = useState([]);
+  const [whyInvestFactors, setWhyInvestFactors] = useState("");
   //UPLOAD PROPERTY IMAGES
   const [images, setImages] = useState([]);
   const [imgUrl, setImgUrl] = useState(false);
@@ -167,13 +181,18 @@ const ApartmentForm = () => {
     }
   };
   const handlePost = async () => {
+    const uniqueId = nanoid(5);
     const data = {
       ...propertyData,
       ...locality,
       aminities: aminities,
+      additionalRooms: additionalRooms,
+      approvals: approvals,
+      whyInvestHere: whyInvest,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
       view360ImgArr: final360ImgArr,
+      uniqueId: uniqueId,
     };
     console.log("data before posting", data);
     try {
@@ -293,6 +312,63 @@ const ApartmentForm = () => {
               aria-controls="panel4d-content"
               id="panel4d-header"
             >
+              <Typography>Why Invest</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <WhyInvest
+                whyInvest={whyInvest}
+                setWhyInvest={setWhyInvest}
+                whyInvestFactors={whyInvestFactors}
+                setWhyInvestFactors={setWhyInvestFactors}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel5"}
+            onChange={handleChange("panel5")}
+          >
+            <AccordionSummary
+              aria-controls="panel5d-content"
+              id="panel5d-header"
+            >
+              <Typography>Approvals</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Approvals
+                newApprovals={newApprovals}
+                setNewApprovals={setNewApprovals}
+                approvals={approvals}
+                setApprovals={setApprovals}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel6"}
+            onChange={handleChange("panel6")}
+          >
+            <AccordionSummary
+              aria-controls="panel6d-content"
+              id="panel6d-header"
+            >
+              <Typography>Additional Rooms</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <AdditionalRooms
+                newAdditionalRooms={newAdditionalRooms}
+                setNewAdditionalRooms={setNewAdditionalRooms}
+                additionalRooms={additionalRooms}
+                setAdditionalRooms={setAdditionalRooms}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel7"}
+            onChange={handleChange("panel7")}
+          >
+            <AccordionSummary
+              aria-controls="panel7d-content"
+              id="panel7d-header"
+            >
               <Typography>Upload Property Images</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -323,13 +399,13 @@ const ApartmentForm = () => {
             </AccordionDetails>
           </Accordion>
           <Accordion
-            expanded={expanded === "panel5"}
-            onChange={handleChange("panel5")}
+            expanded={expanded === "panel8"}
+            onChange={handleChange("panel8")}
           >
             {/* upload 360 view images */}
             <AccordionSummary
-              aria-controls="panel5a-content"
-              id="panel5a-header"
+              aria-controls="panel8a-content"
+              id="panel8a-header"
             >
               <Typography>Upload 360degree View Image</Typography>
             </AccordionSummary>
@@ -358,12 +434,12 @@ const ApartmentForm = () => {
             </AccordionDetails>
           </Accordion>
           <Accordion
-            expanded={expanded === "panel6"}
-            onChange={handleChange("panel6")}
+            expanded={expanded === "panel9"}
+            onChange={handleChange("panel9")}
           >
             <AccordionSummary
-              aria-controls="panel6d-content"
-              id="panel6d-header"
+              aria-controls="panel9d-content"
+              id="panel9d-header"
             >
               <Typography>Additional Information</Typography>
             </AccordionSummary>

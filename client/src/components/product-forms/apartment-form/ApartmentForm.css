@@ -37,12 +37,12 @@
 /* Form Steps */
 
 .form-steps.property-details {
-    height: 204px;
+    height: 118px;
     overflow-y: scroll;
 }
 
 .form-steps.property-details::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
 }
 
 .form-steps.property-details::-webkit-scrollbar-track {
@@ -51,11 +51,11 @@
 
 .form-steps.property-details::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: rgba(3, 102, 214, 0.2);
+    background-color: rgba(3, 102, 214, 0.3);
 }
 
 .form-steps.property-details::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(3, 102, 214, 0.3);
+    background-color: rgba(3, 102, 214, 0.5);
 }
 
 .form-steps .inputs-section {
