@@ -19,6 +19,8 @@ import { FaHandPointDown } from "react-icons/fa";
 import { nanoid } from 'nanoid'
 import WhyInvestInThisVilla from "./propertyFormSteps/WhyInvest";
 import VillaApprovals from "./propertyFormSteps/Approvals";
+import VillaAdditionalRooms from "./propertyFormSteps/AdditionalRooms";
+import AdditionalRooms from "./propertyFormSteps/AdditionalRooms";
 
 const VillaForm = () => {
   const navigate = useNavigate();
@@ -37,6 +39,7 @@ const VillaForm = () => {
     totalFloors: "",
     totalLifts: "",
     facing: "",
+    overlooking: "",
     carpetArea: "",
     flooringType: "",
     waterAvailability: "",
@@ -71,6 +74,10 @@ const VillaForm = () => {
   //APPROVALS
   const [approvals, setApprovals] = useState([]);
   const [newApprovals, setNewApprovals] = useState("");
+
+  //ADDITIONAL ROOMS
+  const [additionalRooms, setAdditionalRooms] = useState([]);
+  const [newAdditionalRooms, setNewAdditionalRooms] = useState("");
 
   //UPLOAD PHOTOS
   const [images, setImages] = useState([]);
@@ -148,6 +155,9 @@ const VillaForm = () => {
       ...villaData,
       ...locality,
       aminities: aminities,
+      whyInvestHere: whyInvest,
+      approvals: approvals,
+      additionalRooms: additionalRooms,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
       view360ImgArr: final360ImgArr,
@@ -272,6 +282,24 @@ const VillaForm = () => {
         </AccordionDetails>
       </Accordion>
       {/* section 2.6 ends */}
+
+      <Accordion
+      >
+        <AccordionSummary
+          aria-controls="panel6d-content"
+          id="panel6d-header"
+        >
+          <Typography>Additional Rooms</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <AdditionalRooms
+            newAdditionalRooms={newAdditionalRooms}
+            setNewAdditionalRooms={setNewAdditionalRooms}
+            additionalRooms={additionalRooms}
+            setAdditionalRooms={setAdditionalRooms}
+          />
+        </AccordionDetails>
+      </Accordion>
 
       {/* section 3 */}
       <Accordion>

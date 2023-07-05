@@ -6,6 +6,7 @@ import PreLoader from "../../../pre-loaders/PreLoader";
 import ResortCard from "../../mini-cards/resort/ResortCard";
 import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
 import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
+import hotelresortlogo from "../../../assets/hotel-resort.png";
 
 const ResortPage = () => {
   //get all apartments
@@ -30,7 +31,20 @@ const ResortPage = () => {
   return (
     <>
       <div className="resort-page-container">
-        <div className="bg-image"></div>
+        <div className="bg-image">
+        <div className="content" data-aos="fade-up">
+            <h4>
+              <div>
+                <img src={hotelresortlogo} alt="" />
+              </div>
+              Welcome to Fractional Resorts, where dreams come to life and
+              cherished memories are made. Nestled in the breathtaking beauty,
+              our exquisite resort offers an unparalleled oasis of relaxation,
+              adventure, and indulgence. Discover a world-class experience that
+              will captivate your senses and leave you longing to return.
+            </h4>
+          </div>
+        </div>
 
         <div className="home-content">
           <div

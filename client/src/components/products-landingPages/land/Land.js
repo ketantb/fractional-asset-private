@@ -7,6 +7,7 @@ import LandCard from "../../mini-cards/land/LandCard";
 import PreLoader from "../../../pre-loaders/PreLoader";
 import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
 import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
+import landSticker from "../../../assets/location-pin.png";
 
 const LandPage = () => {
   const navigate = useNavigate();
@@ -38,8 +39,11 @@ const LandPage = () => {
     <>
       <div className="land-page-container">
         <div className="bg-image">
-        <div className="content">
+        <div className="content" data-aos="fade-up">
             <h4>
+              <div>
+                <img src={landSticker} alt="" />
+              </div>
               Looking to invest in your future? Don't miss this incredible
               opportunity to own your own piece of land! We have a wide
               selection of premium real estate land for sale, perfectly suited

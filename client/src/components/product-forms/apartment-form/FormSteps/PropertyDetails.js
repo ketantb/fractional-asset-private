@@ -43,7 +43,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         {apartmentPropertyConfig.map((i, j) => (
           <TextField
             key={j}
-            id={i.id}
+            name={i.id}
             size="small"
             label={i.label}
             sx={{ width: "250px" }}
@@ -62,6 +62,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         {sellerTypeStatus ? (
           <TextField
             size="small"
+            name="reraId"
             id="reraId"
             label="Builder/ Broker Rera Id"
             sx={{ width: "250px" }}
@@ -75,6 +76,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             size="small"
             type="number"
             id="totalShares"
+            name="totalShares"
             label="Total Shares"
             sx={{ width: "250px" }}
             helperText="Please enter total shares"
@@ -87,6 +89,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             size="small"
             type="number"
             id="availableShares"
+            name="availableShares"
             label="Available Shares"
             sx={{ width: "250px" }}
             helperText="Please enter available shares"
@@ -98,6 +101,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           <TextField
             size="small"
             id="perSharePrice"
+            name="perSharePrice"
             label="Price/Share"
             sx={{ width: "250px" }}
             helperText="Please enter price/share"
@@ -109,6 +113,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           <TextField
             size="small"
             id="rentPrice"
+            name="rentPrice"
             label="Rent Price"
             sx={{ width: "250px" }}
             helperText="Please enter rent price"

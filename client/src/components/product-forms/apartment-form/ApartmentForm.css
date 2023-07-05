@@ -37,8 +37,9 @@
 /* Form Steps */
 
 .form-steps.property-details {
-    height: 118px;
+    height: 154px;
     overflow-y: scroll;
+    padding-top: 5px;
 }
 
 .form-steps.property-details::-webkit-scrollbar {
