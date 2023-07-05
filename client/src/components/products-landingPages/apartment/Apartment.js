@@ -7,6 +7,7 @@ import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
 import ApartmentCard from "../../mini-cards/apartment/apartmentCard";
 import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
 import HowFractionalApartmentWorksVideo from "./how-it-works-video/how-it-works";
+import apartmentStikcer from "../../../assets/buildings.png";
 
 const ApartmentPage = () => {
   //get all apartments
@@ -34,7 +35,20 @@ const ApartmentPage = () => {
   return (
     <>
       <div className="apartment-page-container">
-        <div className="bg-image"></div>
+        <div className="bg-image">
+        <div className="content" data-aos="fade-up">
+            <h4>
+              <div>
+                <img src={apartmentStikcer} alt="" />
+              </div>
+              Welcome to Fractional Apartments, where luxury, convenience, and
+              comfort come together to create an exceptional living experience.
+              We proudly offer a range of stylish and modern apartments designed
+              to suit your lifestyle and provide you with a sanctuary you'll be
+              proud to call home. to meet your needs and aspirations.
+            </h4>
+          </div>
+        </div>
 
         {apartmentData.length !== 0 ? (
           <section>

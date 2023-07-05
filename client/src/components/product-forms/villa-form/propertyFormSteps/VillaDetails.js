@@ -8,10 +8,10 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { TextField } from "@mui/material";
 
-const PropertyDetails = ({ propertyData, setPropertyData }) => {
+const VillaDetails = ({ villaData, setVillaData }) => {
   //HANDLE INPUTS
   const handleInputs = (e) => {
-    setPropertyData((prevState) => ({
+    setVillaData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -19,36 +19,36 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
 
   const [rentStatus, setRentStatus] = useState(false);
   useEffect(() => {
-    if (propertyData.propertyAdType === "rent") {
+    if (villaData.propertyAdType === "rent") {
       setRentStatus(true);
     } else {
       console.log("you selected sell ad type");
       setRentStatus(false);
     }
-  }, [propertyData.propertyAdType]);
+  }, [villaData.propertyAdType]);
 
   //conditional rendering for seller type for reraId
   const [sellerTypeStatus, setSellerTypeStatus] = useState(false);
   useEffect(() => {
     if (
-      propertyData.sellerType === "broker" ||
-      propertyData.sellerType === "builder"
+      villaData.sellerType === "broker" ||
+      villaData.sellerType === "builder"
     ) {
-      console.log(propertyData.sellerType);
+      console.log(villaData.sellerType);
       setSellerTypeStatus(true);
     } else {
       setSellerTypeStatus(false);
     }
-  }, [propertyData.sellerType]);
+  }, [villaData.sellerType]);
 
   return (
     <div className="property-details-wrapper">
-      {/* <FormControl className="form-field"> */}
+
       <FormControl className="form-field">
         <FormLabel className="">Seller Type</FormLabel>
         <select
           name="sellerType"
-          value={propertyData.sellerType}
+          value={villaData.sellerType}
           onChange={handleInputs}
         >
           <option value="">Select</option>
@@ -64,19 +64,9 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           label="Seller Name"
           variant="standard"
           name="sellerName"
-          value={propertyData.sellerName}
+          value={villaData.sellerName}
           onChange={handleInputs}
         />
-      </FormControl>
-
-      <FormControl className="form-field">
-        <TextField id="standard-basic" label="Seller Name" variant="standard"
-          name="overlooking" value={propertyData.overlooking} onChange={handleInputs} />
-      </FormControl>
-
-      <FormControl className="form-field">
-        <TextField id="standard-basic" label="Apartment Name" variant="standard"
-          name="apartmentName" value={propertyData.apartmentName} onChange={handleInputs} />
       </FormControl>
 
       {sellerTypeStatus ? (
@@ -86,20 +76,26 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             label="Builder/ Broker Rera Id"
             variant="standard"
             name="reraId"
-            value={propertyData.reraId}
+            value={villaData.reraId}
             onChange={handleInputs}
           />
         </FormControl>
       ) : null}
 
-      {/* <FormLabel id="demo-row-radio-buttons-group-label">
+      <FormControl className="form-field">
+        <TextField id="standard-basic" label="Villa Name" variant="standard"
+          name="villaName" value={villaData.villaName} onChange={handleInputs} />
+      </FormControl>
+
+      {/* <FormControl className="form-field">
+        <FormLabel id="demo-row-radio-buttons-group-label">
           Property Ad Type
         </FormLabel>
         <RadioGroup
           row
           aria-labelledby="demo-row-radio-buttons-group-label"
           name="propertyAdType"
-          value={propertyData.propertyAdType}
+          value={villaData.propertyAdType}
           onChange={handleInputs}
         >
           <FormControlLabel value="rent" control={<Radio />} label="Rent" />
@@ -108,10 +104,21 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
       </FormControl> */}
 
       <FormControl className="form-field">
+        <TextField
+          id="standard-basic"
+          label="Property ID"
+          variant="standard"
+          name="propertyId"
+          value={villaData.propertyId}
+          onChange={handleInputs}
+        />
+      </FormControl>
+
+      <FormControl className="form-field">
         <FormLabel className="">Property Age</FormLabel>
         <select
           name="propertyAge"
-          value={propertyData.propertyAge}
+          value={villaData.propertyAge}
           onChange={handleInputs}
         >
           <option value="">Select</option>
@@ -128,20 +135,69 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           label="Property Area"
           variant="standard"
           name="area"
-          value={propertyData.area}
+          value={villaData.area}
           onChange={handleInputs}
         />
       </FormControl>
 
       <FormControl className="form-field">
-        <TextField
-          id="standard-basic"
-          label="Property ID"
-          variant="standard"
-          name="propertyId"
-          value={propertyData.propertyId}
-          onChange={handleInputs}
-        />
+        <TextField type="number" id="standard-basic" label="Carpet Area" variant="standard"
+          name="carpetArea" value={villaData.carpetArea} onChange={handleInputs} />
+      </FormControl>
+
+      <FormControl className="form-field">
+        <FormLabel className="">Type of Flooring</FormLabel>
+        <select name="flooringType" value={villaData.flooringType} onChange={handleInputs}>
+          <option value="">Select</option>
+          <option value="marble">Marble</option>
+          <option value="tiles">Tiles</option>
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
+        <TextField type="number" id="standard-basic" label="Total Balconies" variant="standard"
+          name="totalBalconies" value={villaData.totalBalconies} onChange={handleInputs} />
+      </FormControl>
+
+      <FormControl className="form-field">
+        <FormLabel className="">Water Availability</FormLabel>
+        <select name="waterAvailability" value={villaData.waterAvailability} onChange={handleInputs}>
+          {[...Array(25)].map((hour, index) => {
+            return (<option value={index}>{index}<span> hours</span></option>)
+          })}
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
+        <FormLabel className="">Status of Electricity</FormLabel>
+        <select name="statusOfElectricity" value={villaData.statusOfElectricity} onChange={handleInputs}>
+          <option value="">Select</option>
+          <option value="no powercut">No Powercut</option>
+          <option value="rare powercut">Rare Powercut</option>
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
+        <FormLabel className="">Possession Status</FormLabel>
+        <select name="possessionStatus" value={villaData.possessionStatus} onChange={handleInputs}>
+          <option value="">Select</option>
+          <option value="ready to move">Ready to move</option>
+          <option value="under construction">Under construction</option>
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
+        <FormLabel className="">Type of Ownership</FormLabel>
+        <select name="typeOfOwnership" value={villaData.typeOfOwnership} onChange={handleInputs}>
+          <option value="">Select</option>
+          <option value="freehold">Freehold</option>
+          <option value="lease">Lease</option>
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
+        <TextField type="number" id="standard-basic" label="Total Floors" variant="standard"
+          name="totalFloors" value={villaData.totalFloors} onChange={handleInputs} />
       </FormControl>
 
       <FormControl className="form-field">
@@ -151,110 +207,19 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           label="Bedrooms"
           variant="standard"
           name="bedroom"
-          value={propertyData.bedroom}
+          value={villaData.bedroom}
           onChange={handleInputs}
         />
-      </FormControl>
-
-      <FormControl className="form-field">
-        <TextField
-          type="number"
-          id="standard-basic"
-          label="Bathrooms"
-          variant="standard"
-          name="bathroom"
-          value={propertyData.bathroom}
-          onChange={handleInputs}
-        />
-      </FormControl>
-
-      <FormControl className="form-field">
-        <FormLabel className="">Furnishing</FormLabel>
-        <select
-          name="furnishing"
-          value={propertyData.furnishing}
-          onChange={handleInputs}
-        >
-          <option value="">Select</option>
-          <option value="fully-furnished">Fully furnished</option>
-          <option value="semi-furnished">Semi furnished</option>
-          <option value="unfurnished">Unfurnished</option>
-        </select>
-      </FormControl>
-
-      <FormControl className="form-field">
-        <TextField type="number" id="standard-basic" label="Carpet Area" variant="standard"
-          name="carpetArea" value={propertyData.carpetArea} onChange={handleInputs} />
-      </FormControl>
-
-      <FormControl className="form-field">
-        <TextField type="number" id="standard-basic" label="Total Balconies" variant="standard"
-          name="totalBalconies" value={propertyData.totalBalconies} onChange={handleInputs} />
-      </FormControl>
-
-      <FormControl className="form-field">
-        <FormLabel className="">Possession Status</FormLabel>
-        <select name="possessionStatus" value={propertyData.possessionStatus} onChange={handleInputs}>
-          <option value="">Select</option>
-          <option value="ready to move">Ready to move</option>
-          <option value="under construction">Under construction</option>
-        </select>
-      </FormControl>
-
-      <FormControl className="form-field">
-        <FormLabel className="">Type of Ownership</FormLabel>
-        <select name="typeOfOwnership" value={propertyData.typeOfOwnership} onChange={handleInputs}>
-          <option value="">Select</option>
-          <option value="freehold">Freehold</option>
-          <option value="lease">Lease</option>
-        </select>
-      </FormControl>
-
-      <FormControl className="form-field">
-        <FormLabel className="">Status of Electricity</FormLabel>
-        <select name="statusOfElectricity" value={propertyData.statusOfElectricity} onChange={handleInputs}>
-          <option value="">Select</option>
-          <option value="no powercut">No Powercut</option>
-          <option value="rare powercut">Rare Powercut</option>
-        </select>
-      </FormControl>
-
-      <FormControl className="form-field">
-        <FormLabel className="">Water Availability</FormLabel>
-        <select name="waterAvailability" value={propertyData.waterAvailability} onChange={handleInputs}>
-          {[...Array(25)].map((hour, index) => {
-            return (<option value={index}>{index}<span> hours</span></option>)
-          })}
-        </select>
-      </FormControl>
-
-      <FormControl className="form-field">
-        <FormLabel className="">Type of Flooring</FormLabel>
-        <select name="flooringType" value={propertyData.flooringType} onChange={handleInputs}>
-          <option value="">Select</option>
-          <option value="marble">Marble</option>
-          <option value="tiles">Tiles</option>
-        </select>
-      </FormControl>
-
-      <FormControl className="form-field">
-        <TextField type="number" id="standard-basic" label="Floor Number" variant="standard"
-          name="floorNo" value={propertyData.floorNo} onChange={handleInputs} />
-      </FormControl>
-
-      <FormControl className="form-field">
-        <TextField type="number" id="standard-basic" label="Total Floors" variant="standard"
-          name="totalFloors" value={propertyData.totalFloors} onChange={handleInputs} />
       </FormControl>
 
       <FormControl className="form-field">
         <TextField type="number" id="standard-basic" label="Total Lifts" variant="standard"
-          name="totalLifts" value={propertyData.totalLifts} onChange={handleInputs} />
+          name="totalLifts" value={villaData.totalLifts} onChange={handleInputs} />
       </FormControl>
 
       <FormControl className="form-field">
         <FormLabel className="">Facing Direction</FormLabel>
-        <select name="facing" value={propertyData.facing} onChange={handleInputs}>
+        <select name="facing" value={villaData.facing} onChange={handleInputs}>
           <option value="">Select</option>
           <option value="north">North</option>
           <option value="north-east">North-East</option>
@@ -264,6 +229,32 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           <option value="south-west">South-West</option>
           <option value="west">West</option>
           <option value="north-west">North-West</option>
+        </select>
+      </FormControl>
+
+      <FormControl className="form-field">
+        <TextField
+          type="number"
+          id="standard-basic"
+          label="Bathrooms"
+          variant="standard"
+          name="bathroom"
+          value={villaData.bathroom}
+          onChange={handleInputs}
+        />
+      </FormControl>
+
+      <FormControl className="form-field">
+        <FormLabel className="">Furnishing</FormLabel>
+        <select
+          name="furnishing"
+          value={villaData.furnishing}
+          onChange={handleInputs}
+        >
+          <option value="">Select</option>
+          <option value="fully-furnished">Fully furnished</option>
+          <option value="semi-furnished">Semi furnished</option>
+          <option value="unfurnished">Unfurnished</option>
         </select>
       </FormControl>
 
@@ -277,7 +268,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             label="Total shares"
             variant="standard"
             name="totalShares"
-            value={propertyData.totalShares}
+            value={villaData.totalShares}
             onChange={handleInputs}
           />
         </FormControl>
@@ -291,7 +282,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             label="Available Shares"
             variant="standard"
             name="availableShares"
-            value={propertyData.availableShares}
+            value={villaData.availableShares}
             onChange={handleInputs}
           />
         </FormControl>
@@ -304,7 +295,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             label="Price Per Share"
             variant="standard"
             name="perSharePrice"
-            value={propertyData.perSharePrice}
+            value={villaData.perSharePrice}
             onChange={handleInputs}
           />
         </FormControl>
@@ -317,7 +308,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             label="Rent Price"
             variant="standard"
             name="rentPrice"
-            value={propertyData.rentPrice}
+            value={villaData.rentPrice}
             onChange={handleInputs}
           />
         </FormControl>
@@ -326,4 +317,4 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
   );
 };
 
-export default PropertyDetails;
+export default VillaDetails;

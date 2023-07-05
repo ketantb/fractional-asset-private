@@ -18,6 +18,7 @@ import AdditionalInfo from "./shopFormSteps/AdditionalInfo";
 import { FaHandPointDown } from "react-icons/fa";
 import WhyInvestInThisShop from "./shopFormSteps/WhyInvest";
 import ShopSuitableFor from "./shopFormSteps/ShopSuitableFor";
+import { nanoid } from 'nanoid'
 
 const ShopForm = () => {
   const navigate = useNavigate();
@@ -134,7 +135,7 @@ const ShopForm = () => {
 
   const handlePost = async () => {
     toast.loading("Uploading images. Please wait");
-
+    const uniqueId = nanoid(5)
     const data = {
       ...shopData,
       ...locality,
@@ -142,7 +143,8 @@ const ShopForm = () => {
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
       whyInvestHere: whyInvest,
-      view360ImgArr: final360ImgArr
+      view360ImgArr: final360ImgArr,
+      uniqueId: uniqueId
     };
     console.log("data before posting", data);
 

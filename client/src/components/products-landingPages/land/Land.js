@@ -37,7 +37,16 @@ const LandPage = () => {
   return (
     <>
       <div className="land-page-container">
-        <div className="bg-image"></div>
+        <div className="bg-image">
+        <div className="content">
+            <h4>
+              Looking to invest in your future? Don't miss this incredible
+              opportunity to own your own piece of land! We have a wide
+              selection of premium real estate land for sale, perfectly suited
+              to meet your needs and aspirations.
+            </h4>
+          </div>
+        </div>
 
         {landData.length !== 0 ? (
           <section>

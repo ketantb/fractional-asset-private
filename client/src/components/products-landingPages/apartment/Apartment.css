@@ -9,6 +9,22 @@
   background-image: url("https://hbits.co/assets/images/home-banner.webp?auto=format&fit=max&w=1920");
 }
 
+.apartment-page-container .bg-image .content {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  text-align: justify;
+  width: 80%;
+}
+.apartment-page-container .bg-image .content h4 {
+  font-size: 2rem;
+  background: -webkit-linear-gradient(rgb(253, 253, 253), rgb(239, 200, 165));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0px rgb(0, 0, 0);
+  font-family: "calibri";
+}
+
 .apartment-page-container section h4 {
   color: #334155;
   margin-left: 20px;

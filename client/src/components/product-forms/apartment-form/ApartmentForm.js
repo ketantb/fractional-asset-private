@@ -20,6 +20,10 @@ import { FaHandPointDown } from "react-icons/fa";
 import Box from '@mui/material/Box';
 import RealEstatePreviewPage from "../real-estate-previewpage/real-estate-previewpage";
 import Swal from 'sweetalert2'
+import { nanoid } from 'nanoid'
+import WhyInvestInThisApartment from "./propertyFormSteps/WhyInvest";
+import ApartmentApprovals from "./propertyFormSteps/Approvals";
+import ApartmentAdditionalRooms from "./propertyFormSteps/AdditionalRooms";
 
 const ApartmentForm = () => {
   const navigate = useNavigate();
@@ -54,6 +58,7 @@ const ApartmentForm = () => {
     totalFloors: "",
     totalLifts: "",
     facing: "",
+    overlooking: "",
     carpetArea: "",
     flooringType: "",
     waterAvailability: "",
@@ -79,9 +84,22 @@ const ApartmentForm = () => {
     state: "",
     nearbyPlaces: "",
   });
+
   //AMINTIES
   const [aminities, setAminities] = useState([]);
   const [newAminity, setNewAminity] = useState("");
+
+  //APPROVALS
+  const [approvals, setApprovals] = useState([]);
+  const [newApprovals, setNewApprovals] = useState("");
+
+  //ADDITIONAL ROOMS
+  const [additionalRooms, setAdditionalRooms] = useState([]);
+  const [newAdditionalRooms, setNewAdditionalRooms] = useState("");
+
+  //WHY INVEST IN THIS PROJECT
+  const [whyInvest, setWhyInvest] = useState([]);
+  const [whyInvestFactors, setWhyInvestFactors] = useState("");
 
   //UPLOAD PHOTOS
   const [images, setImages] = useState([]);
@@ -155,13 +173,18 @@ const ApartmentForm = () => {
 
 
   const handlePost = async () => {
+    const uniqueId = nanoid(5)
     const data = {
       ...propertyData,
       ...locality,
       aminities: aminities,
+      additionalRooms: additionalRooms,
+      approvals: approvals,
+      whyInvestHere: whyInvest,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
-      view360ImgArr: final360ImgArr
+      view360ImgArr: final360ImgArr,
+      uniqueId: uniqueId
     };
     console.log("data before posting", data);
 
@@ -254,6 +277,66 @@ const ApartmentForm = () => {
         </AccordionDetails>
       </Accordion>
       {/* section 2 ends */}
+
+      {/* section 2.5 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>AMINITIES</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <WhyInvestInThisApartment
+            whyInvest={whyInvest}
+            setWhyInvest={setWhyInvest}
+            whyInvestFactors={whyInvestFactors}
+            setWhyInvestFactors={setWhyInvestFactors}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.5 ends */}
+
+      {/* section 2.6 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>APPROVALS</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <ApartmentApprovals
+            newApprovals={newApprovals}
+            setNewApprovals={setNewApprovals}
+            approvals={approvals}
+            setApprovals={setApprovals}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.6 ends */}
+
+      {/* section 2.7 */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={"+"}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>APPROVALS</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <ApartmentAdditionalRooms
+            newAdditionalRooms={newAdditionalRooms}
+            setNewAdditionalRooms={setNewAdditionalRooms}
+            additionalRooms={additionalRooms} 
+            setAdditionalRooms={setAdditionalRooms}
+          />
+        </AccordionDetails>
+      </Accordion>
+      {/* section 2.7 ends */}
 
       {/* section 3 */}
       <Accordion>
