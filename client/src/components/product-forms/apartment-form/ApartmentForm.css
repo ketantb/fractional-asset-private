@@ -38,8 +38,8 @@
 
 .form-steps.property-details {
     height: 154px;
-    overflow-y: scroll;
     padding-top: 5px;
+    overflow-y: scroll;
 }
 
 .form-steps.property-details::-webkit-scrollbar {

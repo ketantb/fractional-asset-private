@@ -150,7 +150,7 @@ const AppNavbar = ({
         <div className="subcol2-4 navbar-item" onClick={() => navigate("/faq")}>
           Faq
         </div>
-        <div className="subcol2-5 navbar-item">
+        <div className="subcol2-5 navbar-item" style={{ marginTop: "1rem" }}>
           <p onClick={() => setShowDropdown(!showDropdown)}>
             Post Property
             <MdKeyboardArrowDown />
