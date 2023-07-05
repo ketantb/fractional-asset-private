@@ -539,7 +539,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             size="small"
             spellCheck="false"
             id="reraId"
-            label="Builder/ Broker Rera Id"
+            label="Builder/Broker Rera Id"
             sx={{ width: "250px" }}
             helperText="Please enter rera id"
             value={propertyData.reraId}
