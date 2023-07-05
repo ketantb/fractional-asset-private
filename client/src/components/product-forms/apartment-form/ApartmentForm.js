@@ -450,9 +450,11 @@ const ApartmentForm = () => {
               />
             </AccordionDetails>
           </Accordion>
+          <div className="preview-button">
+            <Button onClick={handleOpen}>Preview</Button>
+          </div>
         </main>
       </main>
-      <Button onClick={handleOpen}>Preview</Button>
       <Modal
         open={open}
         onClose={handleClose}
