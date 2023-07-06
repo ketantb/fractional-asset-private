@@ -1,40 +1,77 @@
-import React, { useEffect, useState } from "react";
-import "./PropertyForm.css";
-import axios from "../../../helpers/axios";
+import Swal from "sweetalert2";
+import { nanoid } from "nanoid";
 import { toast } from "react-hot-toast";
+import axios from "../../../helpers/axios";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "@mui/material";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import MuiAccordion from "@mui/material/Accordion";
+import { Box, Button, Modal } from "@mui/material";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 
-import VillaDetails from "./propertyFormSteps/VillaDetails";
-import Amenities from "./propertyFormSteps/Amenities";
-import Locality from "./propertyFormSteps/Locality";
-import AdditionalInfo from "./propertyFormSteps/AdditionalInfo";
+import "./ApartmentForm.css";
+import Locality from "./FormSteps/Locality";
+import Amenities from "./FormSteps/Aminities";
+import WhyInvest from "./FormSteps/WhyInvest";
+import Approvals from "./FormSteps/Approvals";
+import AdditionalInfo from "./FormSteps/AdditiionalInfo";
+import PropertyDetails from "./FormSteps/PropertyDetails";
+import AdditionalRooms from "./FormSteps/AdditionalRooms";
 
-import { FaHandPointDown } from "react-icons/fa";
-import { nanoid } from 'nanoid'
-import WhyInvestInThisVilla from "./propertyFormSteps/WhyInvest";
-import VillaApprovals from "./propertyFormSteps/Approvals";
-import VillaAdditionalRooms from "./propertyFormSteps/AdditionalRooms";
-import AdditionalRooms from "./propertyFormSteps/AdditionalRooms";
+import RealEstatePreviewPage from "../real-estate-previewpage/real-estate-previewpage";
 
-const VillaForm = () => {
+const Accordion = styled((props) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  "&:before": {
+    display: "none",
+    backgroundColor: "transparent",
+  },
+}));
+const AccordionSummary = styled((props) => (
+  <MuiAccordionSummary
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
+    {...props}
+  />
+))(({ theme }) => ({
+  flexDirection: "row-reverse",
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    transform: "rotate(90deg)",
+  },
+  "& .MuiAccordionSummary-content": {
+    marginLeft: theme.spacing(1),
+  },
+  backgroundColor: "transparent",
+}));
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  backgroundColor: "transparent",
+}));
+
+const ApartmentForm = ({ auth, setAuth }) => {
+  // message to login
+  const [loginMsg, setLoginMsg] = useState(false);
+  // store token
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    setAuth(token);
+  }, []);
+  // {{{{{{{{{{ HOOKS START
   const navigate = useNavigate();
-
+  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState("panel1");
   //PROPERTY DETAILS
-  const [villaData, setVillaData] = useState({
-    sellerType: "",
-    sellerName: "",
-    reraId: "",
-    villaName: "",
+  const [propertyData, setPropertyData] = useState({
+    apartmentName: "",
+    propertyAdType: "sell",
     propertyId: "",
-    propertyAdType: "",
     propertyAge: "",
     area: "",
+    floorNo: "",
     possessionStatus: "",
     totalFloors: "",
     totalLifts: "",
@@ -46,14 +83,17 @@ const VillaForm = () => {
     statusOfElectricity: "",
     totalBalconies: "",
     typeOfOwnership: "",
-    bedroom: "",
-    bathroom: "",
-    rentPrice: "",
-    totalShares: "",
-    availableShares: "",
-    perSharePrice: "",
+    bedroom: 0,
+    bathroom: 0,
+    rentPrice: 0,
+    totalShares: 0,
+    availableShares: 0,
+    perSharePrice: 0,
+    sellerType: "",
+    sellerName: "",
+    reraId: "",
   });
-  //LOCATION DETAILS
+  //LOCALITY
   const [locality, setLocality] = useState({
     street: "",
     landmark: "",
@@ -62,44 +102,43 @@ const VillaForm = () => {
     state: "",
     nearbyPlaces: "",
   });
-
   //AMINTIES
   const [aminities, setAminities] = useState([]);
   const [newAminity, setNewAminity] = useState("");
-
-  //WHY INVEST IN THIS PROJECT
-  const [whyInvest, setWhyInvest] = useState([]);
-  const [whyInvestFactors, setWhyInvestFactors] = useState("");
-
   //APPROVALS
   const [approvals, setApprovals] = useState([]);
   const [newApprovals, setNewApprovals] = useState("");
-
   //ADDITIONAL ROOMS
   const [additionalRooms, setAdditionalRooms] = useState([]);
   const [newAdditionalRooms, setNewAdditionalRooms] = useState("");
-
-  //UPLOAD PHOTOS
+  //WHY INVEST IN THIS PROJECT
+  const [whyInvest, setWhyInvest] = useState([]);
+  const [whyInvestFactors, setWhyInvestFactors] = useState("");
+  //UPLOAD PROPERTY IMAGES
   const [images, setImages] = useState([]);
   const [imgUrl, setImgUrl] = useState(false);
   const [finalImgArr, setFinalImgArr] = useState([]);
+  //UPLOAD 360 VIEW IMAGES
+  const [img360Url, setImg360Url] = useState(false);
+  const [view360images, setView360images] = useState([]);
+  const [final360ImgArr, setFinal360ImgArr] = useState([]);
+  //ADDITIONL INFORMATION
+  const [additionalDetails, setAdditionalDetails] = useState("");
+  // HOOKS END }}}}}}}}}}
+
+  // {{{{{{{{{{ HANDLERS START
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
   const handleFileChange = (e) => {
     setImages([...images, ...e.target.files]);
   };
-
-  //UPLOAD 360 VIEW IMAGES
-  const [view360images, setView360images] = useState([]);
-  const [img360Url, setImg360Url] = useState(false);
-  const [final360ImgArr, setFinal360ImgArr] = useState([]);
   const handleFile360Change = (e) => {
     setView360images([...view360images, ...e.target.files]);
   };
-
-  //ADDITIONL INFORMATION
-  const [additionalDetails, setAdditionalDetails] = useState("");
-
   //HANDLE SUBMIT
-  const token = localStorage.getItem("token");
   const handleUploadImages = async (e) => {
     e.preventDefault();
     if (images.length === 0) {
@@ -125,7 +164,6 @@ const VillaForm = () => {
     }
     console.log(arr);
     setFinalImgArr(arr);
-
     // 360 view images
     let images360arr = [];
     for (let i = 0; i < view360images.length; i++) {
@@ -147,258 +185,313 @@ const VillaForm = () => {
       setImg360Url(true);
     }
   };
-
   const handlePost = async () => {
-    toast.loading("Uploading images. Please wait");
-    const uniqueId = nanoid(5)
+    const uniqueId = nanoid(5);
     const data = {
-      ...villaData,
+      ...propertyData,
       ...locality,
       aminities: aminities,
-      whyInvestHere: whyInvest,
-      approvals: approvals,
       additionalRooms: additionalRooms,
+      approvals: approvals,
+      whyInvestHere: whyInvest,
       imgArr: finalImgArr,
       additionalDetails: additionalDetails,
       view360ImgArr: final360ImgArr,
-      uniqueId: uniqueId
+      uniqueId: uniqueId,
     };
     console.log("data before posting", data);
-
     try {
-      const response = await axios.post("/villa-form", data, {
+      toast.loading("Uploading images. Please wait");
+      const response = await axios.post("/apartment-form", data, {
         headers: {
           authorization: token,
         },
       });
-
       if (response.data.success) {
         console.log("data saved in db", response);
         toast.dismiss();
+        handleClose();
+        // toast.success("Property posted successfully");
+        Swal.fire({
+          title:
+            "Your Property Advertisement is under screening! We will get back to you soon",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
         navigate("/my-profile");
-        toast.success("Property posted successfully");
       } else {
-        toast.error();
+        toast.dismiss();
+        toast.error("Please signin to your account to post your property");
       }
     } catch (err) {
       console.log(err);
     }
   };
-
   useEffect(() => {
     if (imgUrl) {
       handlePost();
-    }
-    // eslint-disable-next-line
+    } // eslint-disable-next-line
   }, [imgUrl]);
+  // HANDLERS END }}}}}}}}}}
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    height: "100vh",
+    width: "75%",
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+    overflow: "scroll",
+  };
 
   return (
-    <div className="property-form-wrapper">
-      {/* <form onSubmit={handlePost}> */}
-      <div style={{ display: "flex" }}>
-        <div>
-          <FaHandPointDown />
-        </div>
-        <Typography className="title" style={{ marginLeft: "0.5rem" }}>
-          SELL OR BUY YOUR PROPERTY HERE FOR FREE
-        </Typography>
-      </div>
-
-      {/* section1 */}
-      <Accordion>
-        <AccordionSummary
-          className="accordian"
-          expandIcon={"+"}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>VILLA DETAILS</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <VillaDetails
-            villaData={villaData}
-            setVillaData={setVillaData}
-          />
-        </AccordionDetails>
-      </Accordion>
-      {/* section 1 ends */}
-
-      {/* section 2 */}
-      <Accordion>
-        <AccordionSummary
-          expandIcon={"+"}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>AMINITIES</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Amenities
-            aminities={aminities}
-            setAminities={setAminities}
-            newAminity={newAminity}
-            setNewAminity={setNewAminity}
-          />
-        </AccordionDetails>
-      </Accordion>
-      {/* section 2 ends */}
-
-      {/* section 2.5 */}
-      <Accordion>
-        <AccordionSummary
-          expandIcon={"+"}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>AMINITIES</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <WhyInvestInThisVilla
-            whyInvest={whyInvest}
-            setWhyInvest={setWhyInvest}
-            whyInvestFactors={whyInvestFactors}
-            setWhyInvestFactors={setWhyInvestFactors}
-          />
-        </AccordionDetails>
-      </Accordion>
-      {/* section 2.5 ends */}
-
-      {/* section 2.6 */}
-      <Accordion>
-        <AccordionSummary
-          expandIcon={"+"}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>APPROVALS</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <VillaApprovals
-            newApprovals={newApprovals}
-            setNewApprovals={setNewApprovals}
-            approvals={approvals}
-            setApprovals={setApprovals}
-          />
-        </AccordionDetails>
-      </Accordion>
-      {/* section 2.6 ends */}
-
-      <Accordion
+    <>
+      <main className="apartment-form-wrapper">
+        <main className="apartment-form-container">
+          <section>
+            <span>Sell or Buy Property for Free</span>
+            <br />
+            {!auth ? (
+              <span
+                style={{
+                  fontSize: "1rem",
+                  color: "red",
+                  letterSpacing: ".2rem",
+                }}
+              >
+                Please login to your seller account to list property.
+              </span>
+            ) : null}
+          </section>
+          <Accordion
+            expanded={expanded === "panel1"}
+            onChange={handleChange("panel1")}
+          >
+            <AccordionSummary
+              aria-controls="panel1d-content"
+              id="panel1d-header"
+            >
+              <Typography>Apartment Details</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <PropertyDetails
+                propertyData={propertyData}
+                setPropertyData={setPropertyData}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel2"}
+            onChange={handleChange("panel2")}
+          >
+            <AccordionSummary
+              aria-controls="panel2d-content"
+              id="panel2d-header"
+            >
+              <Typography>Locality</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Locality locality={locality} setLocality={setLocality} />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel3"}
+            onChange={handleChange("panel3")}
+          >
+            <AccordionSummary
+              aria-controls="panel3d-content"
+              id="panel3d-header"
+            >
+              <Typography>Aminities</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Amenities
+                aminities={aminities}
+                setAminities={setAminities}
+                newAminity={newAminity}
+                setNewAminity={setNewAminity}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel4"}
+            onChange={handleChange("panel4")}
+          >
+            <AccordionSummary
+              aria-controls="panel4d-content"
+              id="panel4d-header"
+            >
+              <Typography>Why Invest</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <WhyInvest
+                whyInvest={whyInvest}
+                setWhyInvest={setWhyInvest}
+                whyInvestFactors={whyInvestFactors}
+                setWhyInvestFactors={setWhyInvestFactors}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel5"}
+            onChange={handleChange("panel5")}
+          >
+            <AccordionSummary
+              aria-controls="panel5d-content"
+              id="panel5d-header"
+            >
+              <Typography>Approvals</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Approvals
+                newApprovals={newApprovals}
+                setNewApprovals={setNewApprovals}
+                approvals={approvals}
+                setApprovals={setApprovals}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel6"}
+            onChange={handleChange("panel6")}
+          >
+            <AccordionSummary
+              aria-controls="panel6d-content"
+              id="panel6d-header"
+            >
+              <Typography>Additional Rooms</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <AdditionalRooms
+                newAdditionalRooms={newAdditionalRooms}
+                setNewAdditionalRooms={setNewAdditionalRooms}
+                additionalRooms={additionalRooms}
+                setAdditionalRooms={setAdditionalRooms}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel7"}
+            onChange={handleChange("panel7")}
+          >
+            <AccordionSummary
+              aria-controls="panel7d-content"
+              id="panel7d-header"
+            >
+              <Typography>Upload Property Images</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className="upload-image-form-wrapper">
+                {/* <p style={{ color: "#64748b", marginBottom: "20px" }}>
+                You can upload upto 8 images only
+              </p> */}
+                <form>
+                  <input
+                    type="file"
+                    name="images"
+                    multiple
+                    onChange={handleFileChange}
+                  />
+                </form>
+                <div className="images-wrapper">
+                  {images.map((image) => (
+                    <div className="uploaded-images" key={image}>
+                      <img
+                        src={URL.createObjectURL(image)}
+                        alt=""
+                        width="100"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel8"}
+            onChange={handleChange("panel8")}
+          >
+            {/* upload 360 view images */}
+            <AccordionSummary
+              aria-controls="panel8a-content"
+              id="panel8a-header"
+            >
+              <Typography>Upload 360degree View Image</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className="upload-image-form-wrapper">
+                <form>
+                  <input
+                    type="file"
+                    name="view360images"
+                    multiple
+                    onChange={handleFile360Change}
+                  />
+                </form>
+                <div className="images-wrapper">
+                  {view360images.map((image) => (
+                    <div className="uploaded-images" key={image}>
+                      <img
+                        src={URL.createObjectURL(image)}
+                        alt=""
+                        width="100"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel9"}
+            onChange={handleChange("panel9")}
+          >
+            <AccordionSummary
+              aria-controls="panel9d-content"
+              id="panel9d-header"
+            >
+              <Typography>Additional Information</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <AdditionalInfo
+                additionalDetails={additionalDetails}
+                setAdditionalDetails={setAdditionalDetails}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <div className="preview-button">
+            <Button onClick={handleOpen}>Preview</Button>
+          </div>
+        </main>
+      </main>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
-        <AccordionSummary
-          aria-controls="panel6d-content"
-          id="panel6d-header"
-        >
-          <Typography>Additional Rooms</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <AdditionalRooms
-            newAdditionalRooms={newAdditionalRooms}
-            setNewAdditionalRooms={setNewAdditionalRooms}
-            additionalRooms={additionalRooms}
-            setAdditionalRooms={setAdditionalRooms}
-          />
-        </AccordionDetails>
-      </Accordion>
-
-      {/* section 3 */}
-      <Accordion>
-        <AccordionSummary
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          expandIcon={"+"}
-        >
-          <Typography>LOCALITY</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Locality locality={locality} setLocality={setLocality} />
-        </AccordionDetails>
-      </Accordion>
-      {/* section 3 ends */}
-
-      {/* section 4 */}
-      <Accordion>
-        <AccordionSummary
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          expandIcon={"+"}
-        >
-          <Typography>UPLOAD PROPERTY IMAGES</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <div className="upload-image-form-wrapper">
-            <form>
-              <input
-                type="file"
-                name="images"
-                multiple
-                onChange={handleFileChange}
-              />
-            </form>
-            <div className="images-wrapper">
-              {images.map((image) => (
-                <div className="uploaded-images" key={image}>
-                  <img src={URL.createObjectURL(image)} alt="" width="100" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </AccordionDetails>
-
-        {/* upload 360 view images */}
-        <AccordionSummary
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-          expandIcon={"+"}
-        >
-          <Typography>UPLOAD 360degree VIEW IMAGE</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <div className="upload-image-form-wrapper">
-            <form>
-              <input
-                type="file"
-                name="view360images"
-                multiple
-                onChange={handleFile360Change}
-              />
-            </form>
-            <div className="images-wrapper">
-              {view360images.map((image) => (
-                <div className="uploaded-images" key={image}>
-                  <img src={URL.createObjectURL(image)} alt="" width="100" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </AccordionDetails>
-      </Accordion>
-      {/* section 4 ends */}
-
-      {/* section 5 */}
-      <Accordion>
-        <AccordionSummary
-          expandIcon={"+"}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>ADDITIONAL INFORMATION</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <AdditionalInfo
+        <Box sx={style}>
+          <RealEstatePreviewPage
+            propertyData={propertyData}
+            locality={locality}
+            images={images}
+            aminities={aminities}
             additionalDetails={additionalDetails}
-            setAdditionalDetails={setAdditionalDetails}
+            handleClose={handleClose}
+            handleUploadImages={handleUploadImages}
           />
-        </AccordionDetails>
-      </Accordion>
-      {/* section 5 ends */}
-
-      <Button type="submit" className="btn" onClick={handleUploadImages}>
-        POST
-      </Button>
-
-      {/* </form> */}
-    </div>
+        </Box>
+      </Modal>
+    </>
   );
 };
-export default VillaForm;
+
+export default ApartmentForm;

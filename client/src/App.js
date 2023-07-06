@@ -135,7 +135,10 @@ function App() {
 
             {/* Product Form Routes */}
             {/* <Route element={<ProductFormRoute />}> */}
-            <Route path="/apartment-form" element={<ApartmentForm />}></Route>
+            <Route
+              path="/apartment-form"
+              element={<ApartmentForm auth={auth} setAuth={setAuth} />}
+            ></Route>
             <Route path="/yacht-form" element={<Yachtform />}></Route>
             <Route path="/car-form" element={<Carform />}></Route>
             <Route path="/art-form" element={<Artform />}></Route>
