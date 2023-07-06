@@ -526,7 +526,7 @@ const ApartmentEdit = () => {
               </div>
             );
           })}
-          {imgArr?.map((img, i) => {
+          {img360Arr?.map((img, i) => {
             return (
               <div>
                 <div className="imgwrap">

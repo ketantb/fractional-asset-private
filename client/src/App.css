@@ -1,16 +1,14 @@
 * {
-    margin: 0rem;
-    padding: 0rem;
-    box-sizing: border-box;
+  margin: 0rem;
+  padding: 0rem;
+  box-sizing: border-box;
 }
-
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-
 .component-wraps {
-    margin-top: 5rem;
-    margin-bottom: 0rem;
+  margin-top: 10rem;
+  margin-bottom: 0rem;
 }
