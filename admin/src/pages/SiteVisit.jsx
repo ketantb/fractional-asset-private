@@ -49,7 +49,7 @@ const SiteVisit = () => {
       icon: (
         <BsFillHousesFill
           onClick={() => navigate("/site-visit")}
-          className="text-xl text-red-500"
+          className="text-xl text-blue-500"
         />
       ),
       name: "Site Visit",
@@ -58,7 +58,7 @@ const SiteVisit = () => {
       icon: (
         <AiOutlineUsergroupAdd
           onClick={() => navigate("/seller-accounts")}
-          className="text-xl text-red-500"
+          className="text-xl text-blue-500"
         />
       ),
       name: "Seller Accounts",
@@ -67,7 +67,7 @@ const SiteVisit = () => {
       icon: (
         <TiTickOutline
           onClick={() => navigate("/home")}
-          className="text-xl text-red-500"
+          className="text-xl text-green-500"
         />
       ),
       name: "Property Verifications",
