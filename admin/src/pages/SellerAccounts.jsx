@@ -80,21 +80,6 @@ const SellerAccounts = () => {
         <Loading />
       ) : (
         <>
-          <header
-            className="header-wrap"
-            style={{ height: "2rem", margin: "2rem 1rem " }}
-          >
-            <h1
-              style={{
-                color: "white",
-                fontSize: "1.5rem",
-                paddingLeft: "4rem",
-                letterSpacing: ".5rem",
-              }}
-            >
-              SELLER ACCOUNTS
-            </h1>
-          </header>
           <div className="block 2xl:xl:hidden">
             <Cards data={sellerAccounts} />
           </div>
@@ -103,6 +88,9 @@ const SellerAccounts = () => {
           </div>
         </>
       )}
+      <span className="fixed bottom-[31px] right-20 text-blue-500 font-serif">
+        SELLER ACCOUNTS
+      </span>
       <SpeedDial
         ariaLabel=""
         sx={{ position: "absolute", bottom: 16, right: 16 }}
