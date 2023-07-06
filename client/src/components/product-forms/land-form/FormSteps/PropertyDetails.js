@@ -226,6 +226,17 @@ const facing = [
   },
 ];
 
+const dimensionsUnit = [
+  {
+    value: "sq-m",
+    label: "sq-m",
+  },
+  {
+    value: "sq-ft",
+    label: "sq-ft",
+  },
+];
+
 const PropertyDetails = ({ propertyData, setPropertyData }) => {
   // HOOKS
   const [rentStatus, setRentStatus] = useState(false);
@@ -263,6 +274,23 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
     <form className="form-steps property-details">
       <section className="inputs-section">
         <TextField
+          select
+          size="small"
+          spellCheck="false"
+          name="sellerType"
+          label="Seller Type"
+          sx={{ width: "250px" }}
+          helperText="Please select seller type"
+          value={propertyData.sellerType}
+          onChange={handleInputs}
+        >
+          {sellerType.map((i) => (
+            <MenuItem key={i.value} value={i.value}>
+              {i.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <TextField
           size="small"
           spellCheck="false"
           name="sellerName"
@@ -275,10 +303,10 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           size="small"
           spellCheck="false"
-          name="villaName"
-          label="Villa Name"
+          name="landName"
+          label="Land Name"
           sx={{ width: "250px" }}
-          helperText="Please enter villa name"
+          helperText="Please enter land name"
           value={propertyData.apartmentName}
           onChange={handleInputs}
         />
@@ -304,57 +332,63 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           onChange={handleInputs}
         />
         <TextField
+          select
+          size="small"
+          spellCheck="false"
+          name="dimensionsUnit"
+          label="Unit of Dimension"
+          sx={{ width: "250px" }}
+          helperText="Please select unit type"
+          value={propertyData.dimensionsUnit}
+          onChange={handleInputs}
+        >
+          {dimensionsUnit.map((i) => (
+            <MenuItem key={i.value} value={i.value}>
+              {i.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <TextField
           size="small"
           spellCheck="false"
           type="number"
-          name="bedroom"
-          label="Bedrooms"
+          name="lotSize"
+          label="Lot Size"
           sx={{ width: "250px" }}
-          helperText="Please enter bedrooms"
-          value={propertyData.bedroom}
+          helperText="Please enter   lot size"
+          value={propertyData.lotSize}
           onChange={handleInputs}
         />
         <TextField
           size="small"
           spellCheck="false"
           type="number"
-          name="bathroom"
-          label="Bathrooms"
+          name="zoning"
+          label="Zoning"
           sx={{ width: "250px" }}
-          helperText="Please enter bathrooms"
-          value={propertyData.bathroom}
+          helperText="Please enter zoning"
+          value={propertyData.zoning}
           onChange={handleInputs}
         />
         <TextField
           size="small"
           spellCheck="false"
           type="number"
-          name="carpetArea"
-          label="Carpet Area"
+          name="dimensionLength"
+          label="Length"
           sx={{ width: "250px" }}
-          helperText="Please enter carpet area"
-          value={propertyData.carpetArea}
+          helperText="Please enter Length"
+          value={propertyData.dimensionLength}
           onChange={handleInputs}
         />
         <TextField
           size="small"
           spellCheck="false"
           type="number"
-          name="totalBalconies"
-          label="Total Balconies"
+          name="dimensionBreadth"
+          label="Breath"
           sx={{ width: "250px" }}
-          helperText="Please enter total balconies"
-          value={propertyData.totalBalconies}
-          onChange={handleInputs}
-        />
-        <TextField
-          size="small"
-          spellCheck="false"
-          type="number"
-          name="totalFloors"
-          label="Total Floors"
-          sx={{ width: "250px" }}
-          helperText="Please enter total floors"
+          helperText="Please enter breadth"
           value={propertyData.totalFloors}
           onChange={handleInputs}
         />
@@ -362,10 +396,10 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           size="small"
           spellCheck="false"
           type="number"
-          name="floorNo"
-          label="Floor Number"
+          name="plotSize"
+          label="Plot Size"
           sx={{ width: "250px" }}
-          helperText="Please enter floor number"
+          helperText="Please enter plot size"
           value={propertyData.floorNo}
           onChange={handleInputs}
         />
@@ -373,30 +407,14 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
           size="small"
           spellCheck="false"
           type="number"
-          name="totalLifts"
-          label="Total Lifts"
+          name="boundary"
+          label="Boundary"
           sx={{ width: "250px" }}
-          helperText="Please enter total lifts"
-          value={propertyData.totalLifts}
+          helperText="Please enter boundary"
+          value={propertyData.boundary}
           onChange={handleInputs}
         />
-        <TextField
-          select
-          size="small"
-          spellCheck="false"
-          name="sellerType"
-          label="Seller Type"
-          sx={{ width: "250px" }}
-          helperText="Please select seller type"
-          value={propertyData.sellerType}
-          onChange={handleInputs}
-        >
-          {sellerType.map((i) => (
-            <MenuItem key={i.value} value={i.value}>
-              {i.label}
-            </MenuItem>
-          ))}
-        </TextField>
+
         <TextField
           select
           size="small"
@@ -414,23 +432,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             </MenuItem>
           ))}
         </TextField>
-        <TextField
-          select
-          size="small"
-          spellCheck="false"
-          name="furnishing"
-          label="Furnishing"
-          sx={{ width: "250px" }}
-          helperText="Please select furnishing"
-          value={propertyData.furnishing}
-          onChange={handleInputs}
-        >
-          {furnishing.map((i) => (
-            <MenuItem key={i.value} value={i.value}>
-              {i.label}
-            </MenuItem>
-          ))}
-        </TextField>
+
         <TextField
           select
           size="small"
