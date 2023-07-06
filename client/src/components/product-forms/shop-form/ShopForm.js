@@ -485,6 +485,7 @@ const ShopForm = ({ auth, setAuth }) => {
             images={images}
             aminities={aminities}
             additionalDetails={additionalDetails}
+            whyInvest={whyInvest}
             handleClose={handleClose}
             handleUploadImages={handleUploadImages}
           />
