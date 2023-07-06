@@ -71,7 +71,7 @@ const ResortForm = ({ auth, setAuth }) => {
     propertyId: "",
     propertyAge: "",
     area: "",
-    floorNo: "",
+    noOfRooms: "",
     possessionStatus: "",
     totalFloors: "",
     totalLifts: "",
@@ -485,6 +485,7 @@ const ResortForm = ({ auth, setAuth }) => {
             images={images}
             aminities={aminities}
             additionalDetails={additionalDetails}
+            whyInvest={whyInvest}
             handleClose={handleClose}
             handleUploadImages={handleUploadImages}
           />

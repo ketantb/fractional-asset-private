@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdLocationPin } from "react-icons/md";
 import { ImCross } from "react-icons/im";
-import './real-estate-previewpage.css'
+import "./real-estate-previewpage.css";
 import overviewIcon from "../../../assets/overview_icon.svg";
 import facilityIcon from "../../../assets/towel-rack.png";
 import MoreDetails from "./more-details/MoreDetails";
@@ -17,11 +17,13 @@ const RealEstatePreviewPage = ({
   additionalDetails,
   handleClose,
   handleUploadImages,
-  propertyType
 }) => {
-
   const [currentImg, setCurrentImg] = useState(images[0]);
-  const [imgArr, setImgArr] = useState(images);
+  const [imgArr, setImgArr] = useState([]);
+
+  useEffect(() => {
+    setImgArr(images);
+  }, []);
 
   return (
     <div className="villa-details-container">
@@ -99,10 +101,18 @@ const RealEstatePreviewPage = ({
             </thead>
             <tbody>
               <tr>
-                <td propertyData-label="Seller">{propertyData.sellerType || "---"}</td>
-                <td propertyData-label="Seller Type">{propertyData.sellerType || "---"}</td>
-                <td propertyData-label="Posted On">{propertyData.postedOn || "---"}</td>
-                <td propertyData-label="Total Shares">{propertyData.totalShares || "---"}</td>
+                <td propertyData-label="Seller">
+                  {propertyData.sellerType || "---"}
+                </td>
+                <td propertyData-label="Seller Type">
+                  {propertyData.sellerType || "---"}
+                </td>
+                <td propertyData-label="Posted On">
+                  {propertyData.postedOn || "---"}
+                </td>
+                <td propertyData-label="Total Shares">
+                  {propertyData.totalShares || "---"}
+                </td>
                 <td propertyData-label="Available Shares">
                   {propertyData.availableShares || "---"}
                 </td>
@@ -116,7 +126,7 @@ const RealEstatePreviewPage = ({
 
         {/* details table in mobile view ends */}
       </section>
-      {images.length > 0 ?
+      {images.length > 0 ? (
         <section className="villa-details-r2">
           <div className="villa-corousel-current-img">
             <img src={URL.createObjectURL(currentImg)} alt="" />
@@ -137,12 +147,13 @@ const RealEstatePreviewPage = ({
             })}
           </div>
         </section>
-        : null}
+      ) : null}
 
       <MoreDetails
         propertyData={propertyData}
         additionalRooms={additionalRooms}
-        approvals={approvals} />
+        approvals={approvals}
+      />
       <section className="villa-details-r3">
         <div className="overview">
           <h4>
@@ -197,15 +208,15 @@ const RealEstatePreviewPage = ({
           </span>
           Why Invest Here?
         </h4>
-        {whyInvest.length > 0 ?
+        {whyInvest.length > 0 ? (
           <ul className="why-invest-here-ul">
             {whyInvest.map((el) => {
-              return (
-                <li>{el}</li>
-              )
+              return <li>{el}</li>;
             })}
           </ul>
-          : <p>---</p>}
+        ) : (
+          <p>---</p>
+        )}
       </section>
 
       {/* map location */}
