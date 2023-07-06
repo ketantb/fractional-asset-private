@@ -116,26 +116,29 @@ const RealEstatePreviewPage = ({
 
         {/* details table in mobile view ends */}
       </section>
-      <section className="villa-details-r2">
-        <div className="villa-corousel-current-img">
-          <img src={URL.createObjectURL(currentImg)} alt="" />
-        </div>
-        <div className="villa-corousel-all-img">
-          {imgArr.map((image) => {
-            return (
-              <>
-                <img
-                  src={URL.createObjectURL(image)}
-                  alt="loading..."
-                  onClick={() => {
-                    setCurrentImg(image);
-                  }}
-                />
-              </>
-            );
-          })}
-        </div>
-      </section>
+      {images.length > 0 ?
+        <section className="villa-details-r2">
+          <div className="villa-corousel-current-img">
+            <img src={URL.createObjectURL(currentImg)} alt="" />
+          </div>
+          <div className="villa-corousel-all-img">
+            {imgArr.map((image) => {
+              return (
+                <>
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="loading..."
+                    onClick={() => {
+                      setCurrentImg(image);
+                    }}
+                  />
+                </>
+              );
+            })}
+          </div>
+        </section>
+        : null}
+
       <MoreDetails
         propertyData={propertyData}
         additionalRooms={additionalRooms}
