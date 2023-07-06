@@ -8,6 +8,7 @@ import PreLoader from "../../../pre-loaders/PreLoader";
 import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
 import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
 import landSticker from "../../../assets/location-pin.png";
+import HowFractionalLandWorksVideo from "./how-it-works-video/how-it-works";
 
 const LandPage = () => {
   const navigate = useNavigate();
@@ -84,7 +85,7 @@ const LandPage = () => {
           </section>
         ) : null}
       </div>
-
+      <HowFractionalLandWorksVideo/>
       <HowItWorksSteps />
     </>
   );

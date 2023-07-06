@@ -147,6 +147,12 @@ const AppNavbar = ({
         >
           About Us
         </div>
+        <div
+          className="subcol2-3 navbar-item"
+          onClick={() => navigate("/channel-partner")}
+        >
+          Channel Partner
+        </div>
         <div className="subcol2-4 navbar-item" onClick={() => navigate("/faq")}>
           Faq
         </div>
