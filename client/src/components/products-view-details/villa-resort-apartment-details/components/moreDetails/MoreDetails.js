@@ -96,6 +96,20 @@ const MoreDetails = ({ data }) => {
             <p>Water Availability</p>
             <p>{data.waterAvailability || "---"}</p>
           </div>
+          {
+            data?.additionalRooms?.length > 0 ?
+              <div>
+                <p>Additional Rooms</p>
+                <ul className="array-ul">
+                  {data.additionalRooms.map((el) => {
+                    return (
+                      <li>{el}</li>
+                    )
+                  })}
+                </ul>
+              </div>
+              : null
+          }
           <div>
             <p>Possession Status</p>
             <p>{data.possessionStatus || "---"}</p>
@@ -104,6 +118,20 @@ const MoreDetails = ({ data }) => {
             <p>Ownership Type </p>
             <p>{data.typeOfOwnership || "---"}</p>
           </div>
+          {
+            data.approvals?.length > 0 ?
+              <div>
+                <p>Approvals</p>
+                <ul className="array-ul">
+                  {data.approvals.map((el) => {
+                    return (
+                      <li>{el}</li>
+                    )
+                  })}
+                </ul>
+              </div>
+              : null
+          }
         </div>
       )}
       <p className="description">
