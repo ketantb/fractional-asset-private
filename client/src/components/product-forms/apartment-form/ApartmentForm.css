@@ -29,12 +29,6 @@
     margin-bottom: 10px;
 }
 
-/* MUI Styling */
-
-/* .MuiButtonBase-root.MuiAccordionSummary-root.css-uvvswg-MuiButtonBase-root-MuiAccordionSummary-root {
-  background-color: green;
-} */
-
 /* Form Steps */
 
 .form-steps.property-details {
@@ -64,6 +58,36 @@
     display: flex;
     gap: 25px 50px;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1200px) {
+    .apartment-form-wrapper {
+        height: auto;
+    }
+
+    .apartment-form-container {
+        padding: 0;
+        box-shadow: none;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: fit-content;
+    }
+
+    .apartment-form-container>section:first-child {
+        margin-left: 5px;
+    }
+
+    .form-steps .inputs-section {
+        gap: 15px 0;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .form-steps.property-details {
+        height: auto;
+        padding-top: 5px;
+        overflow-y: auto;
+    }
 }
 
 /* Aminities */

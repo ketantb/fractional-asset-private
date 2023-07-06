@@ -1,4 +1,5 @@
 import React from "react";
+import { TextField } from "@mui/material";
 
 const AdditionalInfo = ({
   additionalDetails,
@@ -17,18 +18,14 @@ const AdditionalInfo = ({
           Size should not be greater than 1000 words{" "}
         </p>
       ) : null}
-      <textarea
-        style={{
-          minHeight: "5rem",
-          minWidth: "22rem",
-          maxHeight: "30rem",
-          maxWidth: "100%",
-          outline: "none",
-          border: "1px solid #94a3b8",
-          borderRadius: "5px",
-          padding: "5px",
-        }}
+      <TextField
+        size="small"
+        spellCheck="false"
         name="additionalDetails"
+        multiline
+        rows={2}
+        sx={{ width: { xs: "325px", md: "100%" } }}
+        inputProps={{ style: { fontSize: 15 } }}
         value={additionalDetails}
         onChange={handleInputs}
       />

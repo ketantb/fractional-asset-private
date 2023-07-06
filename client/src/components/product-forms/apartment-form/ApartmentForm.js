@@ -29,7 +29,6 @@ const Accordion = styled((props) => (
 ))(({ theme }) => ({
   "&:before": {
     display: "none",
-    backgroundColor: "transparent",
   },
 }));
 const AccordionSummary = styled((props) => (
@@ -45,11 +44,15 @@ const AccordionSummary = styled((props) => (
   "& .MuiAccordionSummary-content": {
     marginLeft: theme.spacing(1),
   },
-  backgroundColor: "transparent",
+  [theme.breakpoints.down("md")]: {
+    width: "350px",
+  },
 }));
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
-  backgroundColor: "transparent",
+  [theme.breakpoints.down("md")]: {
+    width: "350px",
+  },
 }));
 
 const ApartmentForm = () => {
@@ -407,7 +410,7 @@ const ApartmentForm = () => {
               aria-controls="panel8a-content"
               id="panel8a-header"
             >
-              <Typography>Upload 360degree View Image</Typography>
+              <Typography>Upload 360&deg; View Image</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <div className="upload-image-form-wrapper">

@@ -34,11 +34,11 @@ const propertyAge = [
 const furnishing = [
   {
     value: "fully-furnished",
-    label: "Fully Furnished",
+    label: "Fully furnished",
   },
   {
     value: "semi-furnished",
-    label: "Semi Furnished",
+    label: "Semi furnished",
   },
   {
     value: "unfurnished",
@@ -63,10 +63,6 @@ const statusOfElectricity = [
   {
     value: "rare powercut",
     label: "Rare powercut",
-  },
-  {
-    value: "builder",
-    label: "Builder",
   },
 ];
 const typeOfOwnership = [
@@ -198,7 +194,7 @@ const facing = [
   },
   {
     value: "north-east",
-    label: "North-East",
+    label: "North East",
   },
   {
     value: "east",
