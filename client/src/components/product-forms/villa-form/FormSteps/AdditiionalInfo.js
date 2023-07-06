@@ -23,6 +23,10 @@ const AdditionalInfo = ({
           minWidth: "22rem",
           maxHeight: "30rem",
           maxWidth: "100%",
+          outline: "none",
+          border: "1px solid #94a3b8",
+          borderRadius: "5px",
+          padding: "5px",
         }}
         name="additionalDetails"
         value={additionalDetails}

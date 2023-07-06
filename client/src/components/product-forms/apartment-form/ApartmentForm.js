@@ -52,7 +52,14 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   backgroundColor: "transparent",
 }));
 
-const ApartmentForm = () => {
+const ApartmentForm = ({ auth, setAuth }) => {
+  // message to login
+  const [loginMsg, setLoginMsg] = useState(false);
+  // store token
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    setAuth(token);
+  }, []);
   // {{{{{{{{{{ HOOKS START
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -131,8 +138,6 @@ const ApartmentForm = () => {
   const handleFile360Change = (e) => {
     setView360images([...view360images, ...e.target.files]);
   };
-  //HANDLE SUBMIT
-  const token = localStorage.getItem("token");
   //HANDLE SUBMIT
   const handleUploadImages = async (e) => {
     e.preventDefault();
@@ -253,6 +258,18 @@ const ApartmentForm = () => {
         <main className="apartment-form-container">
           <section>
             <span>Sell or Buy Property for Free</span>
+            <br />
+            {!auth ? (
+              <span
+                style={{
+                  fontSize: "1rem",
+                  color: "red",
+                  letterSpacing: ".2rem",
+                }}
+              >
+                Please login to your seller account to list property.
+              </span>
+            ) : null}
           </section>
           <Accordion
             expanded={expanded === "panel1"}
