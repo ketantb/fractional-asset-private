@@ -10,46 +10,9 @@ import { TiDelete } from "react-icons/ti";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import apartmentimg from "../../../assets/buildings.png";
+import { sellerType, propertyAge, furnishing } from "../data";
 
-const sellerType = [
-  {
-    value: "owner",
-    label: "Owner",
-  },
-  {
-    value: "broker",
-    label: "Broker",
-  },
-  {
-    value: "builder",
-    label: "Builder",
-  },
-];
-const propertyAge = [
-  {
-    value: "New",
-  },
-  {
-    value: "1-2years",
-  },
-  {
-    value: "2-4years",
-  },
-];
-const furnishing = [
-  {
-    value: "fully-furnished",
-    label: "Fully-furnished",
-  },
-  {
-    value: "semi-furnished",
-    label: "Semi-furnished",
-  },
-  {
-    value: "unfurnished",
-    label: "Unfurnished",
-  },
-];
 const ApartmentEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -97,11 +60,15 @@ const ApartmentEdit = () => {
         totalLifts: data.totalLifts,
         possessionStatus: data.possessionStatus,
         furnishing: data.furnishing,
+        overlooking: data.overlooking,
+        facing: data.facing,
+        flooringType: data.flooringType,
         street: data.street,
         landmark: data.landmark,
         city: data.city,
         state: data.state,
         pin: data.pin,
+        nearbyPlaces: data.nearbyPlaces,
         rentPrice: data.rentPrice,
         totalShares: data.totalShare,
         availableShares: data.availableShares,
@@ -209,11 +176,14 @@ const ApartmentEdit = () => {
       floorNo: edit.floorNo,
       totalLifts: edit.totalLifts,
       furnishing: edit.furnishing,
+      overlooking: edit.overlooking,
+      facing: edit.facing,
       street: edit.street,
       landmark: edit.landmark,
       city: edit.city,
       state: edit.state,
       pin: edit.pin,
+      nearbyPlaces: edit.nearbyPlaces,
       rentPrice: edit.rentPrice,
       totalShares: edit.totalShare,
       availableShares: edit.availableShares,
@@ -245,7 +215,14 @@ const ApartmentEdit = () => {
   return (
     <div className="edit-form-wrap container">
       <div className="row1">
-        <h5>EDIT {data.propertyType} DATA</h5>
+        <div>
+          <img src={apartmentimg} alt="" />
+        </div>
+        <h6>
+          Hello {data.sellerName}
+          <br />
+          Update your {data.propertyType} data
+        </h6>
       </div>
       <div className="form-row">
         <h4>Details</h4>
@@ -471,6 +448,16 @@ const ApartmentEdit = () => {
             sx={{ width: "250px" }}
             helperText="Please enter pincode"
             value={edit.pin}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="text"
+            name="nearbyPlaces"
+            sx={{ width: "250px" }}
+            helperText="Please enter nearbyPlaces"
+            value={edit.nearbyPlaces}
             onChange={handleInputs}
           />
         </section>
