@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import "./stylesheet/Aminities.css";
 import { Button, TextField, Typography } from "@mui/material";
 
-const WhyInvestInThisApartment = ({
+const WhyInvestInThisResort = ({
   whyInvestFactors,
   setWhyInvestFactors,
   whyInvest,
@@ -47,4 +47,4 @@ const WhyInvestInThisApartment = ({
   );
 };
 
-export default WhyInvestInThisApartment;
+export default WhyInvestInThisResort;

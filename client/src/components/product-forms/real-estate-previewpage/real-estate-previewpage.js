@@ -19,7 +19,7 @@ const RealEstatePreviewPage = ({
   handleUploadImages,
   propertyType
 }) => {
-
+  console.log(whyInvest)
   const [currentImg, setCurrentImg] = useState(images[0]);
   const [imgArr, setImgArr] = useState(images);
 
@@ -197,7 +197,7 @@ const RealEstatePreviewPage = ({
           </span>
           Why Invest Here?
         </h4>
-        {whyInvest.length > 0 ?
+        {/* {whyInvest.length > 0 ?
           <ul className="why-invest-here-ul">
             {whyInvest.map((el) => {
               return (
@@ -205,7 +205,7 @@ const RealEstatePreviewPage = ({
               )
             })}
           </ul>
-          : <p>---</p>}
+          : <p>---</p>} */}
       </section>
 
       {/* map location */}
