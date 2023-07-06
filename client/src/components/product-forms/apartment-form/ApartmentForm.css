@@ -32,9 +32,11 @@
 /* Form Steps */
 
 .form-steps.property-details {
-    height: 154px;
-    padding-top: 5px;
+    padding: 5px;
+    height: 160px;
     overflow-y: scroll;
+    border-radius: 5px;
+    border: 1px solid rgba(3, 102, 214, 0.3);
 }
 
 .form-steps.property-details::-webkit-scrollbar {
@@ -85,6 +87,7 @@
 
     .form-steps.property-details {
         height: auto;
+        border: none;
         padding-top: 5px;
         overflow-y: auto;
     }
