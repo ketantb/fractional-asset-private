@@ -17,16 +17,6 @@
   padding: 2rem 1rem;
 }
 
-.edit-form-wrap .form-row:nth-child(3) section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.edit-form-wrap .form-row:nth-child(3) section p {
-  padding: 0.5rem;
-}
-
 .edit-form-wrap .update-btn {
   display: flex;
   justify-content: center;
