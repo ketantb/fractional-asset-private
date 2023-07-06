@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "../../../helpers/axios";
 import PreLoader from "../../../pre-loaders/PreLoader";
 import { Button } from "@mui/material";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import { TextField } from "@mui/material";
+import { TextField, MenuItem } from "@mui/material";
 import "../allFormsCommonCSS.css";
 import "./Apartment.css";
 import { TiDelete } from "react-icons/ti";
@@ -13,6 +11,45 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
+const sellerType = [
+  {
+    value: "owner",
+    label: "Owner",
+  },
+  {
+    value: "broker",
+    label: "Broker",
+  },
+  {
+    value: "builder",
+    label: "Builder",
+  },
+];
+const propertyAge = [
+  {
+    value: "New",
+  },
+  {
+    value: "1-2years",
+  },
+  {
+    value: "2-4years",
+  },
+];
+const furnishing = [
+  {
+    value: "fully-furnished",
+    label: "Fully-furnished",
+  },
+  {
+    value: "semi-furnished",
+    label: "Semi-furnished",
+  },
+  {
+    value: "unfurnished",
+    label: "Unfurnished",
+  },
+];
 const ApartmentEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -25,15 +62,17 @@ const ApartmentEdit = () => {
   const [imgUrl, setImgUrl] = useState(false);
   const [images, setImages] = useState("");
   const [imgArr, setImgArr] = useState([]);
+  const [img360Arr, setImg360Arr] = useState([]);
 
   //get data
   const getData = async () => {
     try {
       const response = await axios.get(`/property-data/${id}`);
-      // console.log(response.data.propertyData);
+      console.log(response.data.propertyData);
       setData(response.data.propertyData);
       setAminityArr(response?.data?.propertyData?.aminities);
       setImgArr(response?.data?.propertyData?.imgArr);
+      setImg360Arr(response?.data?.propertyData?.view360ImgArr);
     } catch (err) {}
   };
   useEffect(() => {
@@ -43,8 +82,20 @@ const ApartmentEdit = () => {
   useEffect(() => {
     if (data) {
       const editData = {
+        sellerType: data.sellerType,
+        sellerName: data.sellerName,
+        reraId: data.reraId,
         propertyAge: data.propertyAge,
+        apartmentName: data.apartmentName,
         area: data.area,
+        carpetArea: data.carpetArea,
+        bedroom: data.bedroom,
+        bathroom: data.bathroom,
+        totalBalconies: data.totalBalconies,
+        totalFloors: data.totalFloors,
+        floorNo: data.floorNo,
+        totalLifts: data.totalLifts,
+        possessionStatus: data.possessionStatus,
         furnishing: data.furnishing,
         street: data.street,
         landmark: data.landmark,
@@ -119,7 +170,7 @@ const ApartmentEdit = () => {
       await axios
         .post(process.env.REACT_APP_CLOUDINARY_URL, imgData)
         .then((resp) => {
-          // console.log(resp);
+          console.log(resp);
           arr.push(resp.data.secure_url);
         })
         .catch((err) => console.log(err));
@@ -145,8 +196,18 @@ const ApartmentEdit = () => {
   const handleUpdateData = async () => {
     const updatedImgArr = imgArr;
     const editData = {
+      sellerType: edit.sellerType,
+      sellerName: edit.sellerName,
+      reraId: edit.reraId,
       propertyAge: edit.propertyAge,
       area: edit.area,
+      carpetArea: edit.carpetArea,
+      bedroom: edit.bedroom,
+      bathroom: edit.bathroom,
+      totalBalconies: edit.totalBalconies,
+      totalFloors: edit.totalFloors,
+      floorNo: edit.floorNo,
+      totalLifts: edit.totalLifts,
       furnishing: edit.furnishing,
       street: edit.street,
       landmark: edit.landmark,
@@ -188,165 +249,233 @@ const ApartmentEdit = () => {
       </div>
       <div className="form-row">
         <h4>Details</h4>
+        {/* property details */}
         <section>
-          <FormControl className="form-field">
-            <FormLabel className="">Proporty Age</FormLabel>
-            <select
-              name="propertyAge"
-              value={edit.propertyAge}
-              onChange={handleInputs}
-            >
-              <option value="">Select</option>
-              <option value="New">New</option>
-              <option value="1-2years">1-2years</option>
-              <option value="2-4years">2-4years</option>
-            </select>
-          </FormControl>
-          <FormControl className="form-field">
-            <label>Property Area</label>
-            <TextField
-              type="number"
-              id="standard-basic"
-              variant="standard"
-              name="area"
-              value={edit.area}
-              onChange={handleInputs}
-            />
-          </FormControl>
-
-          <FormControl className="form-field">
-            <FormLabel className="">Furnishing</FormLabel>
-            <select
-              name="furnishing"
-              value={edit.furnishing}
-              onChange={handleInputs}
-            >
-              <option value="">Select</option>
-              <option value="fully-furnished">Fully furnished</option>
-              <option value="semi-furnished">Semi furnished</option>
-              <option value="unfurnished">Unfurnished</option>
-            </select>
-          </FormControl>
-          <FormControl className="form-field">
-            <label>Bedrooms</label>
-            <TextField
-              type="number"
-              id="standard-basic"
-              variant="standard"
-              name="bedroom"
-              value={edit.bedroom}
-              onChange={handleInputs}
-            />
-          </FormControl>
-          <FormControl className="form-field">
-            <label>Bathrooms</label>
-            <TextField
-              type="number"
-              id="standard-basic"
-              variant="standard"
-              name="bathroom"
-              value={edit.bathroom}
-              onChange={handleInputs}
-            />
-          </FormControl>
-
+          <TextField
+            select
+            size="small"
+            spellCheck="false"
+            name="sellerType"
+            sx={{ width: "250px" }}
+            helperText="Please select seller type"
+            value={edit.sellerType}
+            onChange={handleInputs}
+          >
+            {sellerType.map((i) => (
+              <MenuItem key={i.value} value={i.value}>
+                {i.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            size="small"
+            spellCheck="false"
+            name="sellerName"
+            sx={{ width: "250px" }}
+            helperText="Please enter seller name"
+            value={edit.sellerName}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="area"
+            sx={{ width: "250px" }}
+            helperText="Please enter property area"
+            value={edit.area}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="bedroom"
+            sx={{ width: "250px" }}
+            helperText="Please enter bedrooms"
+            value={edit.bedroom}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="bathroom"
+            sx={{ width: "250px" }}
+            helperText="Please enter bathrooms"
+            value={edit.bathroom}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="carpetArea"
+            sx={{ width: "250px" }}
+            helperText="Please enter carpet area"
+            value={edit.carpetArea}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="totalBalconies"
+            sx={{ width: "250px" }}
+            helperText="Please enter total balconies"
+            value={edit.totalBalconies}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="totalFloors"
+            sx={{ width: "250px" }}
+            helperText="Please enter total floors"
+            value={edit.totalFloors}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="floorNo"
+            sx={{ width: "250px" }}
+            helperText="Please enter floor number"
+            value={edit.floorNo}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="totalLifts"
+            sx={{ width: "250px" }}
+            helperText="Please enter total lifts"
+            value={edit.totalLifts}
+            onChange={handleInputs}
+          />
+          <TextField
+            select
+            size="small"
+            spellCheck="false"
+            name="furnishing"
+            sx={{ width: "250px" }}
+            helperText="Please select furnishing"
+            value={edit.furnishing}
+            onChange={handleInputs}
+          >
+            {furnishing.map((i) => (
+              <MenuItem key={i.value} value={i.value}>
+                {i.label}
+              </MenuItem>
+            ))}
+          </TextField>
           {data.propertyAdType === "rent" ? (
-            <FormControl className="form-field">
-              <label>Rent Price</label>
-              <TextField
-                type="number"
-                id="standard-basic"
-                variant="standard"
-                name="rentPrice"
-                value={edit.rentPrice}
-                onChange={handleInputs}
-              />
-            </FormControl>
+            <TextField
+              size="small"
+              spellCheck="false"
+              type="number"
+              name="rentPrice"
+              sx={{ width: "250px" }}
+              helperText="Please enter rent price / month"
+              value={edit.rentPrice}
+              onChange={handleInputs}
+            />
           ) : (
             <>
-              <FormControl className="form-field">
-                <label>Total Shares</label>
-                <TextField
-                  type="number"
-                  id="standard-basic"
-                  variant="standard"
-                  name="totalShares"
-                  value={edit.totalShares}
-                  onChange={handleInputs}
-                />
-              </FormControl>
-              <FormControl className="form-field">
-                <label>Available Shares</label>
-                <TextField
-                  type="number"
-                  id="standard-basic"
-                  variant="standard"
-                  name="availableShares"
-                  value={edit.availableShares}
-                  onChange={handleInputs}
-                />
-              </FormControl>
-              <FormControl className="form-field">
-                <label>Price per share</label>
-                <TextField
-                  type="number"
-                  id="standard-basic"
-                  variant="standard"
-                  name="perSharePrice"
-                  value={edit.perSharePrice}
-                  onChange={handleInputs}
-                />
-              </FormControl>
+              <TextField
+                size="small"
+                spellCheck="false"
+                type="number"
+                name="totalShares"
+                sx={{ width: "250px" }}
+                helperText="Please enter total shares"
+                value={edit.totalShares}
+                onChange={handleInputs}
+              />
+              <TextField
+                size="small"
+                spellCheck="false"
+                type="number"
+                name="availableShares"
+                sx={{ width: "250px" }}
+                helperText="Please enter available shares"
+                value={edit.availableShares}
+                onChange={handleInputs}
+              />
+              <TextField
+                size="small"
+                spellCheck="false"
+                type="number"
+                name="perSharePrice"
+                sx={{ width: "250px" }}
+                helperText="Please enter per share price"
+                value={edit.perSharePrice}
+                onChange={handleInputs}
+              />
             </>
           )}
         </section>
       </div>
+      {/* location details */}
       <div className="form-row">
         <h4>Location details</h4>
         <section>
-          <FormControl className="form-field">
-            <label>Street</label>
-            <TextField
-              id="standard-basic"
-              variant="standard"
-              name="street"
-              value={edit.street}
-              onChange={handleInputs}
-            />
-          </FormControl>
-          <FormControl className="form-field">
-            <label>Landmark</label>
-            <TextField
-              id="standard-basic"
-              variant="standard"
-              name="landmark"
-              value={edit.landmark}
-              onChange={handleInputs}
-            />
-          </FormControl>
-          <FormControl className="form-field">
-            <label>City</label>
-            <TextField
-              id="standard-basic"
-              variant="standard"
-              name="city"
-              value={edit.city}
-              onChange={handleInputs}
-            />
-          </FormControl>
-          <FormControl className="form-field">
-            <label>State</label>
-            <TextField
-              id="standard-basic"
-              variant="standard"
-              name="state"
-              value={edit.state}
-              onChange={handleInputs}
-            />
-          </FormControl>
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="text"
+            name="street"
+            sx={{ width: "250px" }}
+            helperText="Please enter street"
+            value={edit.street}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="text"
+            name="landmark"
+            sx={{ width: "250px" }}
+            helperText="Please enter landmark"
+            value={edit.landmark}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="text"
+            name="city"
+            sx={{ width: "250px" }}
+            helperText="Please enter city"
+            value={edit.city}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="text"
+            name="state"
+            sx={{ width: "250px" }}
+            helperText="Please enter state"
+            value={edit.state}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="text"
+            name="pin"
+            sx={{ width: "250px" }}
+            helperText="Please enter pincode"
+            value={edit.pin}
+            onChange={handleInputs}
+          />
         </section>
       </div>
-
+      {/* aminities */}
       <div className="form-row">
         <h4>Aminities</h4>
         <section>
@@ -370,16 +499,33 @@ const ApartmentEdit = () => {
             size="small"
             name="aminity"
             value={aminity}
-            label="Add New Aminity"
             onChange={(e) => setAminity(e.target.value)}
           />
           <Button onClick={handleAminityArr}>Add</Button>
         </div>
       </div>
-
+      {/* images */}
       <div className="images-wrap">
         <h4>Images</h4>
         <section>
+          {imgArr?.map((img, i) => {
+            return (
+              <div>
+                <div className="imgwrap">
+                  <img src={img} alt=""></img>
+                  <RiDeleteBin6Fill
+                    className="icon"
+                    style={{
+                      width: "2rem",
+                      height: "2rem",
+                      color: "#FFC300 ",
+                    }}
+                    onClick={() => handleDeleteImg(i)}
+                  />
+                </div>
+              </div>
+            );
+          })}
           {imgArr?.map((img, i) => {
             return (
               <div>

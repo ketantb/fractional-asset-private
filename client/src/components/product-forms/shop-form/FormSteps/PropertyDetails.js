@@ -275,10 +275,10 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
         <TextField
           size="small"
           spellCheck="false"
-          name="villaName"
-          label="Villa Name"
+          name="shopName"
+          label="Shop Name"
           sx={{ width: "250px" }}
-          helperText="Please enter villa name"
+          helperText="Please enter shop name"
           value={propertyData.apartmentName}
           onChange={handleInputs}
         />

@@ -1,8 +1,8 @@
+import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { nanoid } from "nanoid";
 import { toast } from "react-hot-toast";
 import axios from "../../../helpers/axios";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { styled } from "@mui/material/styles";
@@ -13,7 +13,7 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 
-import "./ApartmentForm.css";
+import "./VillaForm.css";
 import Locality from "./FormSteps/Locality";
 import Amenities from "./FormSteps/Aminities";
 import WhyInvest from "./FormSteps/WhyInvest";
@@ -52,7 +52,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   backgroundColor: "transparent",
 }));
 
-const ApartmentForm = ({ auth, setAuth }) => {
+const VillaForm = ({ auth, setAuth }) => {
   // message to login
   const [loginMsg, setLoginMsg] = useState(false);
   // store token
@@ -66,7 +66,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
   const [expanded, setExpanded] = useState("panel1");
   //PROPERTY DETAILS
   const [propertyData, setPropertyData] = useState({
-    apartmentName: "",
+    villaName: "",
     propertyAdType: "sell",
     propertyId: "",
     propertyAge: "",
@@ -202,7 +202,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
     console.log("data before posting", data);
     try {
       toast.loading("Uploading images. Please wait");
-      const response = await axios.post("/apartment-form", data, {
+      const response = await axios.post("/villa-form", data, {
         headers: {
           authorization: token,
         },
@@ -254,8 +254,8 @@ const ApartmentForm = ({ auth, setAuth }) => {
 
   return (
     <>
-      <main className="apartment-form-wrapper">
-        <main className="apartment-form-container">
+      <main className="villa-form-wrapper">
+        <main className="villa-form-container">
           <section>
             <span>Sell or Buy Property for Free</span>
             <br />
@@ -279,7 +279,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
               aria-controls="panel1d-content"
               id="panel1d-header"
             >
-              <Typography>Apartment Details</Typography>
+              <Typography>Villa Details</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <PropertyDetails
@@ -494,4 +494,4 @@ const ApartmentForm = ({ auth, setAuth }) => {
   );
 };
 
-export default ApartmentForm;
+export default VillaForm;

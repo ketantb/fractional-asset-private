@@ -143,10 +143,22 @@ function App() {
             <Route path="/car-form" element={<Carform />}></Route>
             <Route path="/art-form" element={<Artform />}></Route>
             <Route path="/jewellery-form" element={<Jewelryform />}></Route>
-            <Route path="/land-form" element={<Landform />}></Route>
-            <Route path="/resort-form" element={<ResortForm />}></Route>
-            <Route path="/villa-form" element={<VillaForm />}></Route>
-            <Route path="/shop-form" element={<ShopForm />}></Route>
+            <Route
+              path="/land-form"
+              element={<Landform auth={auth} setAuth={setAuth} />}
+            ></Route>
+            <Route
+              path="/resort-form"
+              element={<ResortForm auth={auth} setAuth={setAuth} />}
+            ></Route>
+            <Route
+              path="/villa-form"
+              element={<VillaForm auth={auth} setAuth={setAuth} />}
+            ></Route>
+            <Route
+              path="/shop-form"
+              element={<ShopForm auth={auth} setAuth={setAuth} />}
+            ></Route>
             {/* </Route> */}
             {/* Product Form Routes end*/}
 
