@@ -152,6 +152,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
       toast.error("Add 360degree view image of property !");
       return;
     }
+    toast.loading("Uploading images. Please wait");
     let arr = [];
     for (let i = 0; i < images.length; i++) {
       const imgData = new FormData();
@@ -183,6 +184,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
     }
     console.log(images360arr);
     setFinal360ImgArr(images360arr);
+    toast.dismiss();
     if (arr.length !== 0) {
       setImgUrl(true);
       setImg360Url(true);
@@ -204,7 +206,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
     };
     console.log("data before posting", data);
     try {
-      toast.loading("Uploading images. Please wait");
+      toast.loading("Posting data. Please wait");
       const response = await axios.post("/apartment-form", data, {
         headers: {
           authorization: token,
@@ -233,6 +235,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
     } catch (err) {
       console.log(err);
     }
+    setImgUrl(false);
   };
   useEffect(() => {
     if (imgUrl) {
