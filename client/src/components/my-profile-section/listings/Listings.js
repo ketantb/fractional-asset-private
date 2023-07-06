@@ -40,14 +40,13 @@ const Listings = () => {
       {/* section 1 sell/fractional */}
       <div className="header-row1">
         <h5>FRACTIONAL PROPERTIES</h5>
-        <p>
-          Results<span>1</span>
-        </p>
+        <p></p>
       </div>
       <div className="table-wrap">
         <table>
           <thead>
             <tr>
+              <th scope="col">Status</th>
               <th scope="col">Posted On</th>
               <th scope="col">Type</th>
               <th scope="col">Total Shares</th>
@@ -72,7 +71,7 @@ const Listings = () => {
       {/* section 1 ends */}
 
       {/* section 2 rent */}
-      <div className="header-row2">
+      {/* <div className="header-row2">
         <h5>RENTAL PROPERTIES</h5>
         <p>
           Results<span>1</span>
@@ -100,7 +99,7 @@ const Listings = () => {
               })}
           </tbody>
         </table>
-      </div>
+      </div> */}
       {/* section 2 ends */}
     </div>
   );
