@@ -1,23 +1,30 @@
-import "./real-estate-previewpage.css";
-import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { MdLocationPin } from "react-icons/md";
 import { ImCross } from "react-icons/im";
+import './real-estate-previewpage.css'
+import overviewIcon from "../../../assets/overview_icon.svg";
 import facilityIcon from "../../../assets/towel-rack.png";
-import AdditionalInfo from "../apartment-form/FormSteps/AdditiionalInfo";
+import MoreDetails from "./more-details/MoreDetails";
 
 const RealEstatePreviewPage = ({
   propertyData,
   locality,
   images,
   aminities,
+  approvals,
+  additionalRooms,
+  whyInvest,
   additionalDetails,
   handleClose,
   handleUploadImages,
+  propertyType
 }) => {
+
   const [currentImg, setCurrentImg] = useState(images[0]);
+  const [imgArr, setImgArr] = useState(images);
+
   return (
-    <div className="real-estate-form-preview-wrapper">
+    <div className="villa-details-container">
       <header className="real-estate-form-preview-header">
         <h2>Preview Property</h2>
         <h2>
@@ -26,66 +33,101 @@ const RealEstatePreviewPage = ({
           </button>
         </h2>
       </header>
-      <h4>
-        <span>
-          <MdLocationPin />
-        </span>
-        {locality?.street}, {locality?.landmark}, {locality?.city},{" "}
-        {locality?.pin}, {locality?.state}
-      </h4>
-      <div className="villa-details-table">
-        <section>
-          <p>Seller</p>
-          <p className="villa-details-table-value">Mane</p>
-        </section>
-        <div className="villa-details-table-dummy-border"></div>
-        <section>
-          <p>Property Age</p>
-          <p className="villa-details-table-value">
-            {propertyData.propertyAge}
-          </p>
-        </section>
-        <p className="villa-details-table-dummy-border"></p>
-        <section>
-          <p>Property Area</p>
-          <p className="villa-details-table-value">{propertyData.area} sq ft</p>
-        </section>
-        <p className="villa-details-table-dummy-border"></p>
-        <section>
-          <p>Total Shares</p>
-          <p className="villa-details-table-value">
-            {propertyData.totalShares}
-          </p>
-        </section>
-        <p className="villa-details-table-dummy-border"></p>
-        <section>
-          <p>Available Shares</p>
-          <p className="villa-details-table-value">
-            {propertyData.availableShares}
-          </p>
-        </section>
-        <p className="villa-details-table-dummy-border"></p>
-        <section>
-          <p>Price Per Share</p>
-          <p className="villa-details-table-value">
-            {propertyData.perSharePrice}
-          </p>
-        </section>
-      </div>
+      <section className="villa-details-r1">
+        <h4>
+          <span>
+            <MdLocationPin />
+          </span>
+          {locality.landmark}, {locality.city}, {locality.state}, {locality.pin}
+        </h4>
+        <div className="villa-details-table">
+          <section>
+            <p>Seller Type</p>
+            <p className="villa-details-table-value">
+              {propertyData.sellerType || "---"}
+            </p>
+          </section>
+          <div className="villa-details-table-dummy-border"></div>
+          <section>
+            <p>Seller Name</p>
+            <p className="villa-details-table-value">
+              {propertyData.sellerName || "---"}
+            </p>
+          </section>
+          <p className="villa-details-table-dummy-border"></p>
+          <section>
+            <p>Posted On</p>
+            <p className="villa-details-table-value">
+              {propertyData.postedOn || "---"}
+            </p>
+          </section>
+          <p className="villa-details-table-dummy-border"></p>
+          <section>
+            <p>Total Shares</p>
+            <p className="villa-details-table-value">
+              {propertyData.totalShares || "---"}
+            </p>
+          </section>
+          <p className="villa-details-table-dummy-border"></p>
+          <section>
+            <p>Available Shares</p>
+            <p className="villa-details-table-value">
+              {propertyData.availableShares || "---"}
+            </p>
+          </section>
+          <p className="villa-details-table-dummy-border"></p>
+          <section>
+            <p>Price Per Share</p>
+            <p className="villa-details-table-value">
+              {propertyData.perSharePrice || "---"}
+            </p>
+          </section>
+        </div>
 
-      {/* image-corousal */}
-      {images.length > 0 ? (
+        {/* details table in mobile view */}
+        <div className="villa-details-mobile-table">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Seller Type</th>
+                <th scope="col">Seller Name</th>
+                <th scope="col">Posted On</th>
+                <th scope="col">Total Shares</th>
+                <th scope="col">Available Shares</th>
+                <th scope="col">Price Per Share</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td propertyData-label="Seller">{propertyData.sellerType || "---"}</td>
+                <td propertyData-label="Seller Type">{propertyData.sellerType || "---"}</td>
+                <td propertyData-label="Posted On">{propertyData.postedOn || "---"}</td>
+                <td propertyData-label="Total Shares">{propertyData.totalShares || "---"}</td>
+                <td propertyData-label="Available Shares">
+                  {propertyData.availableShares || "---"}
+                </td>
+                <td propertyData-label="Price Per Share">
+                  {propertyData.perSharePrice || "---"}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* details table in mobile view ends */}
+      </section>
+      {images.length > 0 ?
         <section className="villa-details-r2">
           <div className="villa-corousel-current-img">
-            <img src={URL.createObjectURL(currentImg)} alt="property-img" />
+            <img src={URL.createObjectURL(currentImg)} alt="" />
           </div>
           <div className="villa-corousel-all-img">
-            {images.map((image) => {
+            {imgArr.map((image) => {
               return (
                 <>
                   <img
                     src={URL.createObjectURL(image)}
-                    alt="property-img"
+                    alt="loading..."
                     onClick={() => {
                       setCurrentImg(image);
                     }}
@@ -95,50 +137,98 @@ const RealEstatePreviewPage = ({
             })}
           </div>
         </section>
-      ) : null}
+        : null}
 
-      <div className="property-form-preview-property-details">
-        <h4>Property Details</h4>
-        <p>RERA ID: {propertyData.reraId}</p>
-        {/* <p>Property ID: {propertyData.propertyId}</p> */}
-        <p>Total Bedrooms: {propertyData.bedroom}</p>
-        <p>Total Bathrooms: {propertyData.bathroom}</p>
-      </div>
-
-      <div className="property-form-preview-property-additional-info">
-        <h4>About Property</h4>
-        <p>{additionalDetails}</p>
-      </div>
-
-      <div className="property-form-preview-aminities">
-        {aminities.length > 0 ? (
-          <div className="facility-outer-wrap">
-            <h4>
-              <span>
-                <img src={facilityIcon} alt="overview-img-icon" />
-              </span>
-              Aminities
-            </h4>
-            <div className="facility-inner-wrap">
-              {aminities.map((aminity, i) => {
-                return (
-                  <section>
-                    <h6>{aminity}</h6>
-                  </section>
-                );
-              })}
-            </div>
+      <MoreDetails
+        propertyData={propertyData}
+        additionalRooms={additionalRooms}
+        approvals={approvals} />
+      <section className="villa-details-r3">
+        <div className="overview">
+          <h4>
+            <span>
+              <img src={overviewIcon} alt="overview-img-icon" />
+            </span>
+            About Property
+          </h4>
+          {additionalDetails ? (
+            <p>{additionalDetails}</p>
+          ) : (
+            <p>
+              An excellent opportunity that features a French multinational
+              brand 'Mane' as a tenant, occupying the space since 2016. The
+              asset features an office space and a research lab that caters to
+              prominent FMCG players like Unilever, P&G and more. Their
+              infrastructure gives an obvious indication of the stickiness of
+              the tenant. Mane, a global leader of the Fragrance and Flavour
+              sector, is headquartered in France with a 1.6 billion dollar
+              turnover as of 2020. The asset is in a commercial building,
+              Imperium located in Andheri, near the metro and airport. The entry
+              yield for this property is 10.04% annually, and the targeted IRR
+              is 16.33%. The lease agreement term is for five years and the
+              lock-in period is for three years.
+            </p>
+          )}
+        </div>
+        {/* facilities & aminities */}
+        <div className="facility-outer-wrap">
+          <h4>
+            <span>
+              <img src={facilityIcon} alt="overview-img-icon" />
+            </span>
+            Facilities
+          </h4>
+          <div className="facility-inner-wrap">
+            {aminities.map((aminity, i) => {
+              return (
+                <section>
+                  <h6>{aminity}</h6>
+                </section>
+              );
+            })}
           </div>
-        ) : null}
-      </div>
-      <div className="preview-property-post-btn-wrapper">
+        </div>
+      </section>
+      {/* why invest here */}
+      <section className="villa-details-r3">
+        <h4>
+          <span>
+            <img src={overviewIcon} alt="overview-img-icon" />
+          </span>
+          Why Invest Here?
+        </h4>
+        {whyInvest.length > 0 ?
+          <ul className="why-invest-here-ul">
+            {whyInvest.map((el) => {
+              return (
+                <li>{el}</li>
+              )
+            })}
+          </ul>
+          : <p>---</p>}
+      </section>
+
+      {/* map location */}
+      <section>
+        <section className="map-wrapper">
+          <h5>Locate on map</h5>
+          <iframe
+            id="mapIframe"
+            src={`https://maps.google.com/maps?q=${locality.street},${locality.landmark},${locality.city}, ${locality.state}&hl=es;&output=embed`}
+            title="locationOnMap"
+          ></iframe>
+        </section>
+      </section>
+
+      {/* post button */}
+      <section className="preview-property-post-btn-wrapper">
         <button
           className="preview-property-post-btn"
           onClick={handleUploadImages}
         >
           POST
         </button>
-      </div>
+      </section>
     </div>
   );
 };
