@@ -73,7 +73,7 @@ const ApartmentEdit = () => {
         pin: data.pin,
         nearbyPlaces: data.nearbyPlaces,
         rentPrice: data.rentPrice,
-        totalShares: data.totalShare,
+        totalShares: data.totalShares,
         availableShares: data.availableShares,
         perSharePrice: data.perSharePrice,
         whyInvestHere: data.whyInvestHere,
@@ -211,7 +211,7 @@ const ApartmentEdit = () => {
       pin: edit.pin,
       nearbyPlaces: edit.nearbyPlaces,
       rentPrice: edit.rentPrice,
-      totalShares: edit.totalShare,
+      totalShares: edit.totalShares,
       availableShares: edit.availableShares,
       perSharePrice: edit.perSharePrice,
       whyInvestHere: edit.whyInvestHere,
@@ -585,6 +585,28 @@ const ApartmentEdit = () => {
               </div>
             );
           })}
+        </section>
+        <div
+          className="upload-image-form-wrapper"
+          style={{ marginTop: "1rem" }}
+        >
+          <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
+          <form>
+            <input
+              type="file"
+              name="images"
+              onChange={handleFileChange}
+              multiple
+            />
+          </form>
+        </div>
+      </div>
+
+      {/* 360degree view images */}
+      {/* images */}
+      <div className="images-wrap">
+        <h4>360 View Images</h4>
+        <section>
           {img360Arr?.map((img, i) => {
             return (
               <div>
@@ -608,7 +630,7 @@ const ApartmentEdit = () => {
           className="upload-image-form-wrapper"
           style={{ marginTop: "1rem" }}
         >
-          <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
+          {/* <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p> */}
           <form>
             <input
               type="file"

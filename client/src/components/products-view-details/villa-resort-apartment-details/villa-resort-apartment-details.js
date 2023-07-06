@@ -31,8 +31,9 @@ const ResortVillaApartmentDetails = () => {
 
   const [data, setData] = useState([]);
   const [currentImg, setCurrentImg] = useState("");
-  const [imgArr, setImgArr] = useState([]);
   const [aminityArr, setAminityArr] = useState([]);
+  const [imgArr, setImgArr] = useState([]);
+  const [img360Arr, setImg360Arr] = useState([]);
 
   //get data
   const getData = async () => {
@@ -45,6 +46,7 @@ const ResortVillaApartmentDetails = () => {
       setCurrentImg(response.data.data.imgArr[0]);
       setImgArr(response.data.data.imgArr);
       setAminityArr(response.data.data.aminities);
+      setImg360Arr(response.data.data.view360ImgArr);
     } catch (err) {
       console.log(err);
     }
@@ -214,7 +216,25 @@ const ResortVillaApartmentDetails = () => {
           </span>
           Why Invest Here?
         </h4>
-        <p>{data.whyInvestHere || "---"}</p>
+        {/* <ul>
+          {data?.whyInvestHere.map((point, i) => {
+            return <li>{point}</li>;
+          })}
+        </ul> */}
+      </section>
+
+      {/* 360 degree view image */}
+      <section className="img360-wrap">
+        <h6>360 View Images Of Property</h6>
+        <div>
+          {img360Arr.map((img, i) => {
+            return (
+              <div>
+                <img src={img} alt="" />
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       {/* map location */}
