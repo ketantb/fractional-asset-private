@@ -42,7 +42,7 @@
   align-items: center;
 }
 
-.app-navbar-wrap .col1>button {
+.app-navbar-wrap .col1 > button {
   border: 0;
   outline: none;
   color: white;
@@ -52,7 +52,7 @@
   background-color: transparent;
 }
 
-.app-navbar-wrap .col1>button:hover {
+.app-navbar-wrap .col1 > button:hover {
   background-color: var(--hover-bg);
 }
 
@@ -63,7 +63,7 @@
   width: 15rem;
 }
 
-.app-navbar-wrap .col1 .landing-page-submenu li>span {
+.app-navbar-wrap .col1 .landing-page-submenu li > span {
   border-bottom: var(--border);
 }
 
@@ -131,4 +131,5 @@
 }
 
 /* col2 ends */
-@media only screen and (max-width: 680px) {}
+@media only screen and (max-width: 680px) {
+}
