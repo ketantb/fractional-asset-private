@@ -16,13 +16,13 @@ import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import "./ResortForm.css";
 import Locality from "./FormSteps/Locality";
 import Amenities from "./FormSteps/Aminities";
-import WhyInvest from "./FormSteps/WhyInvest";
 import Approvals from "./FormSteps/Approvals";
 import AdditionalInfo from "./FormSteps/AdditiionalInfo";
 import PropertyDetails from "./FormSteps/PropertyDetails";
 import AdditionalRooms from "./FormSteps/AdditionalRooms";
 
 import RealEstatePreviewPage from "../real-estate-previewpage/real-estate-previewpage";
+import WhyInvestInThisResort from "./FormSteps/WhyInvest";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -332,7 +332,7 @@ const ResortForm = ({ auth, setAuth }) => {
               <Typography>Why Invest</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <WhyInvest
+              <WhyInvestInThisResort
                 whyInvest={whyInvest}
                 setWhyInvest={setWhyInvest}
                 whyInvestFactors={whyInvestFactors}
@@ -484,8 +484,8 @@ const ResortForm = ({ auth, setAuth }) => {
             locality={locality}
             images={images}
             aminities={aminities}
-            additionalDetails={additionalDetails}
             whyInvest={whyInvest}
+            additionalDetails={additionalDetails}
             handleClose={handleClose}
             handleUploadImages={handleUploadImages}
           />

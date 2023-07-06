@@ -21,7 +21,7 @@ const BecomeAChannelPartner = () => {
     let cpFormButton = false
 
     const [cpForm, setCPForm] = useState({
-        name: '', phno: '', email: '', city: '', state: 'Andaman and Nicobar Island',
+        name: '', phno: '', email: '', city: '', state: 'Andaman and Nicobar Island', reraId: '',
         zipcode: '', agentType: 'EXP Agent'
     })
 
@@ -33,7 +33,7 @@ const BecomeAChannelPartner = () => {
     })
 
     const [err, setErr] = useState({
-        name: '', phno: '', email: '', city: '', zipcode: '', cpImage: '',
+        name: '', phno: '', email: '', city: '', zipcode: '', cpImage: '', reraId: '',
         panImage: '', aadharCardFrontImage: '', aadharCardBackImage: '', checkbox: ''
     })
 
@@ -143,6 +143,7 @@ const BecomeAChannelPartner = () => {
     const postCPForm = async (e) => {
         // console.log(cpFormImages)
         const data = { ...cpFormImages, ...cpForm }
+        console.log(data)
         await axios.post('/channel-partner-contact', data)
             .then((res) => {
                 // console.log(res)
@@ -207,6 +208,10 @@ const BecomeAChannelPartner = () => {
                         <option>EXP Agent</option>
                         <option>Individual Agent</option>
                     </select>
+                </section>
+                <section>
+                    <input name='reraId' className='cp-form-input-text' placeholder="Agent RERA ID" onChange={handleCPForm} />
+                    {err.reraId ? <p className='validation-err'>Please enter Agent RERA ID</p> : null}
                 </section>
                 <section className='cp-form-input-type-file-wrapper'>
                     <div>
