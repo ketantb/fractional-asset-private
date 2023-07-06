@@ -484,6 +484,7 @@ const VillaForm = ({ auth, setAuth }) => {
             locality={locality}
             images={images}
             aminities={aminities}
+            whyInvest={whyInvest}
             additionalDetails={additionalDetails}
             handleClose={handleClose}
             handleUploadImages={handleUploadImages}

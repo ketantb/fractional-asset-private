@@ -40,7 +40,7 @@ const LandPage = () => {
     <>
       <div className="land-page-container">
         <div className="bg-image">
-        <div className="content" data-aos="fade-up">
+          <div className="content" data-aos="fade-up">
             <h4>
               <div>
                 <img src={landSticker} alt="" />

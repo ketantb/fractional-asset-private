@@ -47,6 +47,7 @@ const ResortEdit = () => {
       const editData = {
         propertyAge: data.propertyAge,
         area: data.area,
+        noOfRooms: data.noOfRooms,
         furnishing: data.furnishing,
         street: data.street,
         landmark: data.landmark,
@@ -154,8 +155,7 @@ const ResortEdit = () => {
       apartmentName: data.apartmentName,
       area: data.area,
       carpetArea: data.carpetArea,
-      bedroom: data.bedroom,
-      bathroom: data.bathroom,
+      noOfRooms: data.noOfRooms,
       totalBalconies: data.totalBalconies,
       totalFloors: data.totalFloors,
       floorNo: data.floorNo,
@@ -252,72 +252,13 @@ const ResortEdit = () => {
             size="small"
             spellCheck="false"
             type="number"
-            name="bedroom"
+            name="noOfRooms"
             sx={{ width: "250px" }}
-            helperText="Please enter bedrooms"
-            value={edit.bedroom}
+            helperText="Number resort "
+            value={edit.noOfRooms}
             onChange={handleInputs}
           />
-          <TextField
-            size="small"
-            spellCheck="false"
-            type="number"
-            name="bathroom"
-            sx={{ width: "250px" }}
-            helperText="Please enter bathrooms"
-            value={edit.bathroom}
-            onChange={handleInputs}
-          />
-          <TextField
-            size="small"
-            spellCheck="false"
-            type="number"
-            name="carpetArea"
-            sx={{ width: "250px" }}
-            helperText="Please enter carpet area"
-            value={edit.carpetArea}
-            onChange={handleInputs}
-          />
-          <TextField
-            size="small"
-            spellCheck="false"
-            type="number"
-            name="totalBalconies"
-            sx={{ width: "250px" }}
-            helperText="Please enter total balconies"
-            value={edit.totalBalconies}
-            onChange={handleInputs}
-          />
-          <TextField
-            size="small"
-            spellCheck="false"
-            type="number"
-            name="totalFloors"
-            sx={{ width: "250px" }}
-            helperText="Please enter total floors"
-            value={edit.totalFloors}
-            onChange={handleInputs}
-          />
-          <TextField
-            size="small"
-            spellCheck="false"
-            type="number"
-            name="floorNo"
-            sx={{ width: "250px" }}
-            helperText="Please enter floor number"
-            value={edit.floorNo}
-            onChange={handleInputs}
-          />
-          <TextField
-            size="small"
-            spellCheck="false"
-            type="number"
-            name="totalLifts"
-            sx={{ width: "250px" }}
-            helperText="Please enter total lifts"
-            value={edit.totalLifts}
-            onChange={handleInputs}
-          />
+
           <TextField
             select
             size="small"

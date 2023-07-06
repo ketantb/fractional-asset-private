@@ -71,7 +71,7 @@ const ResortForm = ({ auth, setAuth }) => {
     propertyId: "",
     propertyAge: "",
     area: "",
-    floorNo: "",
+    noOfRooms: "",
     possessionStatus: "",
     totalFloors: "",
     totalLifts: "",
