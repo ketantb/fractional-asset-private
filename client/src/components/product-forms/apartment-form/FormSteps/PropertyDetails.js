@@ -147,8 +147,8 @@ const waterAvailability = [
     label: "14 hours",
   },
   {
-    value: "`15`",
-    label: "`15` hours",
+    value: "15",
+    label: "15 hours",
   },
   {
     value: "16",
@@ -529,12 +529,22 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             </MenuItem>
           ))}
         </TextField>
-
+        <TextField
+          size="small"
+          spellCheck="false"
+          name="overlooking"
+          label="Property Overlooking"
+          sx={{ width: "250px" }}
+          helperText="Property Overlooking"
+          value={propertyData.overlooking}
+          onChange={handleInputs}
+        />
         {sellerTypeStatus ? (
           <TextField
             size="small"
             spellCheck="false"
             id="reraId"
+            name="reraId"
             label="Builder/Broker Rera Id"
             sx={{ width: "250px" }}
             helperText="Please enter rera id"

@@ -115,3 +115,46 @@
 .preview-property-post-btn:hover{
     background-color: rgb(33, 33, 33);
 }
+
+.why-invest-here-ul li{
+    margin-top: 15px;
+}
+
+.real-estate-form-preview-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.real-estate-form-preview-header > h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.real-estate-form-preview-header > h2 > button{
+    border: none;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.preview-property-post-btn-wrapper{
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.preview-property-post-btn{
+    border: none;
+    background-color: black;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #ffff;
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+
+.preview-property-post-btn:hover{
+    background-color: rgb(33, 33, 33);
+}

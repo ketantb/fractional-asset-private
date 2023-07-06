@@ -247,7 +247,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     height: "100vh",
-    width: "75%",
+    width: "100%",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
@@ -480,6 +480,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className="preview-form-modal"
       >
         <Box sx={style}>
           <RealEstatePreviewPage
@@ -490,6 +491,10 @@ const ApartmentForm = ({ auth, setAuth }) => {
             additionalDetails={additionalDetails}
             handleClose={handleClose}
             handleUploadImages={handleUploadImages}
+            whyInvest={whyInvest}
+            approvals={approvals}
+            additionalRooms={additionalRooms}
+            propertyType="Apartment"
           />
         </Box>
       </Modal>
