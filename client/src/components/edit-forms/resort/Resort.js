@@ -447,6 +447,7 @@ const ResortEdit = () => {
           />
         </section>
       </div>
+
       {/* aminities */}
       <div className="form-row">
         <h4>Aminities</h4>

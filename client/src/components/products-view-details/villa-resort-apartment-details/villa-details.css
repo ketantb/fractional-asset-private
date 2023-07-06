@@ -3,19 +3,20 @@
   margin: 7rem auto;
 }
 
-.villa-details-r1 {}
+.villa-details-r1 {
+}
 
-.villa-details-r1>h3 {
+.villa-details-r1 > h3 {
   color: rgb(6, 2, 86);
 }
 
-.villa-details-r1>p {
+.villa-details-r1 > p {
   color: rgb(6, 2, 86);
   font-weight: 500;
   font-size: 14px;
 }
 
-.villa-details-r1>p>span {
+.villa-details-r1 > p > span {
   font-size: 20px;
   margin-right: 5px;
 }
@@ -143,24 +144,58 @@
   /* border: 1px solid black; */
 }
 
-.villa-details-container .villa-details-r3 .facility-outer-wrap .facility-inner-wrap {
+.villa-details-container
+  .villa-details-r3
+  .facility-outer-wrap
+  .facility-inner-wrap {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-.villa-details-container .villa-details-r3 .facility-outer-wrap .facility-inner-wrap section {
+.villa-details-container
+  .villa-details-r3
+  .facility-outer-wrap
+  .facility-inner-wrap
+  section {
   padding: 0.7rem 0.5rem 0.5rem 0.5rem;
   border: 1px solid rgb(218, 225, 241);
   background-color: rgb(238, 240, 244);
 }
 
-.villa-details-container .villa-details-r3 .facility-outer-wrap .facility-inner-wrap section h6 {
+.villa-details-container
+  .villa-details-r3
+  .facility-outer-wrap
+  .facility-inner-wrap
+  section
+  h6 {
   text-transform: uppercase;
   color: rgb(3, 3, 116);
   font-size: 0.8rem;
   letter-spacing: 2px;
 }
+
+/* 360 degree images wrapper */
+.villa-details-container .img360-wrap {
+  height: 40rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0.5rem;
+}
+
+.villa-details-container .img360-wrap > div {
+  height: 100%;
+  overflow: auto;
+  border: 3px solid rgb(216, 216, 216);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+.villa-details-container .img360-wrap > div img {
+  width: 100%;
+  height: 30rem;
+  margin-top: 1rem;
+}
+
+/* 360 degree images wrapper ends */
 
 /* mobile view table */
 .villa-details-container .villa-details-mobile-table table {
@@ -216,10 +251,10 @@
 
 .book-site-visit-popup-modal {
   width: 400px;
-  margin: auto
+  margin: auto;
 }
 
-.villa-details-r2-more-details{
+.villa-details-r2-more-details {
   margin-top: 3rem;
   border: 1px solid black;
   width: 100%;
@@ -227,7 +262,7 @@
   border-radius: 7px;
 }
 
-.villa-details-r2-about-seller{
+.villa-details-r2-about-seller {
   margin-top: 3rem;
   /* border: 1px solid black; */
   width: 100%;
@@ -235,28 +270,28 @@
   border-radius: 7px;
 }
 
-.villa-details-r2-about-seller > h4{
+.villa-details-r2-about-seller > h4 {
   margin-bottom: 1rem;
 }
 
-.villa-details-r2-about-seller-table{
+.villa-details-r2-about-seller-table {
   text-transform: capitalize;
   /* border: 1px solid black; */
-  width: 100%
+  width: 100%;
 }
 
-.villa-details-r2-about-seller-table section{
+.villa-details-r2-about-seller-table section {
   display: flex;
   align-items: center;
 }
 
-.villa-details-r2-about-seller-table section p:first-child{
+.villa-details-r2-about-seller-table section p:first-child {
   /* border: 1px solid black; */
   width: 125px;
   margin-right: 25px;
 }
 
-.villa-details-r2-about-seller-table section #seller-rera-id{
+.villa-details-r2-about-seller-table section #seller-rera-id {
   background-color: rgb(152, 252, 219);
   padding: 5px 15px;
 }
@@ -269,20 +304,21 @@
     margin: 7rem auto;
   }
 
-  .villa-details-r1 {}
+  .villa-details-r1 {
+  }
 
-  .villa-details-r1>h4 {
+  .villa-details-r1 > h4 {
     color: rgb(6, 2, 86);
     padding: 0.5rem 1rem;
   }
 
-  .villa-details-r1>p {
+  .villa-details-r1 > p {
     color: rgb(6, 2, 86);
     font-weight: 500;
     font-size: 14px;
   }
 
-  .villa-details-r1>p>span {
+  .villa-details-r1 > p > span {
     font-size: 20px;
     margin-right: 5px;
   }
@@ -388,19 +424,31 @@
     /* border: 1px solid black; */
   }
 
-  .villa-details-container .villa-details-r3 .facility-outer-wrap .facility-inner-wrap {
+  .villa-details-container
+    .villa-details-r3
+    .facility-outer-wrap
+    .facility-inner-wrap {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
   }
 
-  .villa-details-container .villa-details-r3 .facility-outer-wrap .facility-inner-wrap section {
+  .villa-details-container
+    .villa-details-r3
+    .facility-outer-wrap
+    .facility-inner-wrap
+    section {
     padding: 0.7rem 0.5rem 0.5rem 0.5rem;
     border: 1px solid rgb(218, 225, 241);
     background-color: rgb(238, 240, 244);
   }
 
-  .villa-details-container .villa-details-r3 .facility-outer-wrap .facility-inner-wrap section h6 {
+  .villa-details-container
+    .villa-details-r3
+    .facility-outer-wrap
+    .facility-inner-wrap
+    section
+    h6 {
     text-transform: uppercase;
     color: rgb(3, 3, 116);
     font-size: 0.8rem;
@@ -467,7 +515,6 @@
     width: 90%;
   }
 }
-
 
 /* map wrapper */
 .villa-details-container .map-wrapper {

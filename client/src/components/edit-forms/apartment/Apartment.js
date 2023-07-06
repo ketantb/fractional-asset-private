@@ -26,6 +26,8 @@ const ApartmentEdit = () => {
   const [images, setImages] = useState("");
   const [imgArr, setImgArr] = useState([]);
   const [img360Arr, setImg360Arr] = useState([]);
+  const [additionalRooms, setAdditionalRooms] = useState([]);
+  const [newRoom, setNewRoom] = useState("");
 
   //get data
   const getData = async () => {
@@ -36,6 +38,7 @@ const ApartmentEdit = () => {
       setAminityArr(response?.data?.propertyData?.aminities);
       setImgArr(response?.data?.propertyData?.imgArr);
       setImg360Arr(response?.data?.propertyData?.view360ImgArr);
+      setAdditionalRooms(response?.data?.propertyData?.additionalRooms);
     } catch (err) {}
   };
   useEffect(() => {
@@ -70,9 +73,10 @@ const ApartmentEdit = () => {
         pin: data.pin,
         nearbyPlaces: data.nearbyPlaces,
         rentPrice: data.rentPrice,
-        totalShares: data.totalShare,
+        totalShares: data.totalShares,
         availableShares: data.availableShares,
         perSharePrice: data.perSharePrice,
+        whyInvestHere: data.whyInvestHere,
         aminities: data.aminities,
         imgArr: data.imgArr,
       };
@@ -87,7 +91,7 @@ const ApartmentEdit = () => {
 
   //handle aminity arr
   //add new aminity
-  const handleAminityArr = () => {
+  const handleAddNewAminity = () => {
     // console.log(aminityArr);
     if (aminity.length) {
       setAminityArr([...aminityArr, aminity]);
@@ -106,6 +110,28 @@ const ApartmentEdit = () => {
     setAminityArr(arr);
   };
   //handle aminity arr ends
+
+  //handle additional rooms arr
+  //add new room
+  const handleAddNewRoom = () => {
+    // console.log(aminityArr);
+    if (newRoom.length) {
+      setAdditionalRooms([...additionalRooms, newRoom]);
+      setNewRoom("");
+    }
+  };
+  //delete room
+  const deleteRoom = (i) => {
+    const arr = additionalRooms
+      .filter((room, index) => {
+        if (i !== index) {
+          return room;
+        }
+      })
+      .map((room) => room);
+    setAdditionalRooms(arr);
+  };
+  //handle additional rooms arr ends
 
   //handle img arr
   //delete aminity
@@ -161,7 +187,7 @@ const ApartmentEdit = () => {
 
   // handle Update Data
   const handleUpdateData = async () => {
-    const updatedImgArr = imgArr;
+    // const updatedImgArr = imgArr;
     const editData = {
       sellerType: edit.sellerType,
       sellerName: edit.sellerName,
@@ -185,11 +211,13 @@ const ApartmentEdit = () => {
       pin: edit.pin,
       nearbyPlaces: edit.nearbyPlaces,
       rentPrice: edit.rentPrice,
-      totalShares: edit.totalShare,
+      totalShares: edit.totalShares,
       availableShares: edit.availableShares,
       perSharePrice: edit.perSharePrice,
+      whyInvestHere: edit.whyInvestHere,
       aminities: aminityArr,
-      imgArr: updatedImgArr,
+      imgArr: imgArr,
+      additionalRooms: additionalRooms,
     };
 
     try {
@@ -224,7 +252,7 @@ const ApartmentEdit = () => {
           Update your {data.propertyType} data
         </h6>
       </div>
-      <div className="form-row">
+      <div className="form-row ">
         <h4>Details</h4>
         {/* property details */}
         <section>
@@ -396,6 +424,35 @@ const ApartmentEdit = () => {
           )}
         </section>
       </div>
+      {/* additional rooms */}
+      <div className="form-row ">
+        <h4>Additional Rooms</h4>
+        <section className="arr-wrap">
+          {additionalRooms.map((room, i) => {
+            return (
+              <p className="arr-item">
+                <span style={{ marginRight: "1rem" }}>
+                  <TiDelete
+                    style={{ width: "2rem", height: "2rem" }}
+                    onClick={() => deleteRoom(i)}
+                  />
+                </span>
+                {room}
+              </p>
+            );
+          })}
+        </section>
+        <div style={{ padding: "1rem" }}>
+          <TextField
+            type="text"
+            size="small"
+            name="newRoom"
+            value={newRoom}
+            onChange={(e) => setNewRoom(e.target.value)}
+          />
+          <Button onClick={handleAddNewRoom}>Add</Button>
+        </div>
+      </div>
       {/* location details */}
       <div className="form-row">
         <h4>Location details</h4>
@@ -462,13 +519,28 @@ const ApartmentEdit = () => {
           />
         </section>
       </div>
+      {/* why invest here */}
+      <div className="form-row">
+        <h4>Why Invest In This Property</h4>
+        <textarea
+          className="whyinvest-input"
+          size="small"
+          spellCheck="false"
+          type="text"
+          name="whyInvestHere"
+          sx={{ width: "250px" }}
+          helperText="Why should invest in this property"
+          value={edit.whyInvestHere}
+          onChange={handleInputs}
+        />
+      </div>
       {/* aminities */}
       <div className="form-row">
         <h4>Aminities</h4>
-        <section>
+        <section className="arr-wrap">
           {aminityArr.map((aminity, i) => {
             return (
-              <p>
+              <p className="arr-item">
                 <span style={{ marginRight: "1rem" }}>
                   <TiDelete
                     style={{ width: "2rem", height: "2rem" }}
@@ -488,7 +560,7 @@ const ApartmentEdit = () => {
             value={aminity}
             onChange={(e) => setAminity(e.target.value)}
           />
-          <Button onClick={handleAminityArr}>Add</Button>
+          <Button onClick={handleAddNewAminity}>Add</Button>
         </div>
       </div>
       {/* images */}
@@ -513,6 +585,28 @@ const ApartmentEdit = () => {
               </div>
             );
           })}
+        </section>
+        <div
+          className="upload-image-form-wrapper"
+          style={{ marginTop: "1rem" }}
+        >
+          <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
+          <form>
+            <input
+              type="file"
+              name="images"
+              onChange={handleFileChange}
+              multiple
+            />
+          </form>
+        </div>
+      </div>
+
+      {/* 360degree view images */}
+      {/* images */}
+      <div className="images-wrap">
+        <h4>360 View Images</h4>
+        <section>
           {img360Arr?.map((img, i) => {
             return (
               <div>
@@ -536,7 +630,7 @@ const ApartmentEdit = () => {
           className="upload-image-form-wrapper"
           style={{ marginTop: "1rem" }}
         >
-          <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
+          {/* <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p> */}
           <form>
             <input
               type="file"
