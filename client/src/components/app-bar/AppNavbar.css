@@ -55,7 +55,7 @@
 
 .hidden-nested-dropdown {
   top: 0px;
-  right: -105px;
+  right: -120px;
   position: absolute;
   background-color: rgb(0, 0, 0, 0.8);
 }
@@ -75,7 +75,7 @@
 
 .hidden-nested-dropdown-2 {
   top: 0px;
-  right: -105px;
+  right: -120px;
   position: absolute;
   background-color: rgb(0, 0, 0, 0.8);
 }
