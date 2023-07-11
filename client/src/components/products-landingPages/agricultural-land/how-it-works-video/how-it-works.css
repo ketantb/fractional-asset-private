@@ -1,0 +1,47 @@
+.how-fractional-asset-works-video-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    width: 75%;
+}
+
+.how-fractional-asset-works-video-component h2 {
+    width: 100%;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 45px;
+    font-weight: 500;
+    margin-bottom: 4rem;
+}
+
+.how-fractional-asset-works-video {
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    /* Maintain a 16:9 aspect ratio */
+}
+
+.how-fractional-asset-works-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .how-fractional-asset-works-video-component h2 {
+        font-size: 28px;
+        font-weight: 500;
+        margin-bottom: 3rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .how-fractional-asset-works-video-component {
+        margin-top: 5rem;
+        width: 100%;
+    }
+}

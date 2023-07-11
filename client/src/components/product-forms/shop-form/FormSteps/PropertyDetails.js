@@ -55,20 +55,7 @@ const possessionStatus = [
     label: "Under construction",
   },
 ];
-const statusOfElectricity = [
-  {
-    value: "no powercut",
-    label: "No powercut",
-  },
-  {
-    value: "rare powercut",
-    label: "Rare powercut",
-  },
-  {
-    value: "builder",
-    label: "Builder",
-  },
-];
+
 const typeOfOwnership = [
   {
     value: "freehold",
@@ -77,152 +64,6 @@ const typeOfOwnership = [
   {
     value: "lease",
     label: "Lease",
-  },
-];
-const flooringType = [
-  {
-    value: "marble",
-    label: "Marble",
-  },
-  {
-    value: "tiles",
-    label: "Tiles",
-  },
-];
-const waterAvailability = [
-  {
-    value: "0",
-    label: "0 hours",
-  },
-  {
-    value: "1",
-    label: "1 hours",
-  },
-  {
-    value: "2",
-    label: "2 hours",
-  },
-  {
-    value: "3",
-    label: "3 hours",
-  },
-  {
-    value: "4",
-    label: "4 hours",
-  },
-  {
-    value: "5",
-    label: "5 hours",
-  },
-  {
-    value: "6",
-    label: "6 hours",
-  },
-  {
-    value: "7",
-    label: "7 hours",
-  },
-  {
-    value: "8",
-    label: "8 hours",
-  },
-  {
-    value: "9",
-    label: "9 hours",
-  },
-  {
-    value: "10",
-    label: "10 hours",
-  },
-  {
-    value: "11",
-    label: "11 hours",
-  },
-  {
-    value: "12",
-    label: "12 hours",
-  },
-  {
-    value: "13",
-    label: "13 hours",
-  },
-  {
-    value: "14",
-    label: "14 hours",
-  },
-  {
-    value: "`15`",
-    label: "`15` hours",
-  },
-  {
-    value: "16",
-    label: "16 hours",
-  },
-  {
-    value: "17",
-    label: "17 hours",
-  },
-  {
-    value: "18",
-    label: "18 hours",
-  },
-  {
-    value: "19",
-    label: "19 hours",
-  },
-  {
-    value: "20",
-    label: "20 hours",
-  },
-  {
-    value: "21",
-    label: "21 hours",
-  },
-  {
-    value: "22",
-    label: "22 hours",
-  },
-  {
-    value: "23",
-    label: "23 hours",
-  },
-  {
-    value: "24",
-    label: "24 hours",
-  },
-];
-const facing = [
-  {
-    value: "north",
-    label: "North",
-  },
-  {
-    value: "north-east",
-    label: "North-East",
-  },
-  {
-    value: "east",
-    label: "East",
-  },
-  {
-    value: "south-east",
-    label: "South East",
-  },
-  {
-    value: "south",
-    label: "South",
-  },
-  {
-    value: "south-west",
-    label: "South West",
-  },
-  {
-    value: "west",
-    label: "West",
-  },
-  {
-    value: "north-west",
-    label: "North West",
   },
 ];
 
@@ -448,23 +289,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             </MenuItem>
           ))}
         </TextField>
-        <TextField
-          select
-          size="small"
-          spellCheck="false"
-          name="statusOfElectricity"
-          label="Electricity Status"
-          sx={{ width: "250px" }}
-          helperText="Please select electricity status"
-          value={propertyData.statusOfElectricity}
-          onChange={handleInputs}
-        >
-          {statusOfElectricity.map((i) => (
-            <MenuItem key={i.value} value={i.value}>
-              {i.label}
-            </MenuItem>
-          ))}
-        </TextField>
+
         <TextField
           select
           size="small"
@@ -482,57 +307,6 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             </MenuItem>
           ))}
         </TextField>
-        <TextField
-          select
-          size="small"
-          spellCheck="false"
-          name="flooringType"
-          label="Flooring Type"
-          sx={{ width: "250px" }}
-          helperText="Please select flooring type"
-          value={propertyData.flooringType}
-          onChange={handleInputs}
-        >
-          {flooringType.map((i) => (
-            <MenuItem key={i.value} value={i.value}>
-              {i.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          select
-          size="small"
-          spellCheck="false"
-          name="waterAvailability"
-          label="Water Availability"
-          sx={{ width: "250px" }}
-          helperText="Please select water availability"
-          value={propertyData.waterAvailability}
-          onChange={handleInputs}
-        >
-          {waterAvailability.map((i) => (
-            <MenuItem key={i.value} value={i.value}>
-              {i.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          select
-          size="small"
-          spellCheck="false"
-          name="facing"
-          label="Facing Direction"
-          sx={{ width: "250px" }}
-          helperText="Please select facing direction"
-          value={propertyData.facing}
-          onChange={handleInputs}
-        >
-          {facing.map((i) => (
-            <MenuItem key={i.value} value={i.value}>
-              {i.label}
-            </MenuItem>
-          ))}
-        </TextField>
 
         {sellerTypeStatus ? (
           <TextField
@@ -543,6 +317,7 @@ const PropertyDetails = ({ propertyData, setPropertyData }) => {
             sx={{ width: "250px" }}
             helperText="Please enter rera id"
             value={propertyData.reraId}
+            name="reraId"
             onChange={handleInputs}
           />
         ) : null}

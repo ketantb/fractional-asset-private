@@ -39,7 +39,7 @@ const SellRow = ({ data, getData }) => {
 
   //handle edit
   const handleEdit = (id, type) => {
-    console.log(id);
+    console.log(id, type);
     if (type === "apartment") {
       navigate(`/apartment-edit/${id}`);
     } else if (type === "resort") {
@@ -48,8 +48,12 @@ const SellRow = ({ data, getData }) => {
       navigate(`/car-edit/${id}`);
     } else if (type === "villa") {
       navigate(`/villa-edit/${id}`);
+    } else if (type === "farmhouse") {
+      navigate(`/farmhouse-edit/${id}`);
     } else if (type === "shop") {
       navigate(`/shop-edit/${id}`);
+    } else if (type === "land") {
+      navigate(`/land-edit/${id}`);
     }
   };
 

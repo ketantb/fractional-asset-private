@@ -18,6 +18,8 @@ import Artform from "./components/product-forms/art-form/ArtForm";
 import ResortForm from "./components/product-forms/resort-form/ResortForm";
 import VillaForm from "./components/product-forms/villa-form/VillaForm";
 import ShopForm from "./components/product-forms/shop-form/ShopForm";
+import FarmhouseForm from "./components/product-forms/farmhouse/Farmhouse";
+import AgriculturalLandForm from "./components/product-forms/agricultural-land-form/AgriculturalLandForm";
 
 //products landing pages
 import ApartmentPage from "./components/products-landingPages/apartment/Apartment";
@@ -25,6 +27,7 @@ import CarPage from "./components/products-landingPages/car/Car";
 import YachtPage from "./components/products-landingPages/yacht/Yacht";
 import ArtPage from "./components/products-landingPages/art/Art";
 import VillaPage from "./components/products-landingPages/villa/Villa";
+import FarmhousePage from "./components/products-landingPages/farmhouse/Farmhouse";
 import JewelleryPage from "./components/products-landingPages/jewellery/Jewellery";
 import ResortPage from "./components/products-landingPages/resort/ResortPage";
 import WareHousePage from "./components/products-landingPages/warehouse/Warehouse";
@@ -32,6 +35,7 @@ import ShopPage from "./components/products-landingPages/shop/Shop";
 import ParkingPage from "./components/products-landingPages/parking/Parking";
 import StartUpPage from "./components/products-landingPages/startup/Startup";
 import LandPage from "./components/products-landingPages/land/Land";
+import AgriculturalLandPage from "./components/products-landingPages/agricultural-land/Agricultural-Land";
 
 // products details page
 import ResortVillaApartmentDetails from "./components/products-view-details/villa-resort-apartment-details/villa-resort-apartment-details";
@@ -69,8 +73,10 @@ import BecomeAChannelPartner from "./components/channel-partner/become-a-channel
 //edit forms
 import ApartmentEdit from "./components/edit-forms/apartment/Apartment";
 import VillaEdit from "./components/edit-forms/villa/Villa";
+import FarmhouseEdit from "./components/edit-forms/farmhouse/Farmhouse";
 import ResortEdit from "./components/edit-forms/resort/Resort";
 import ShopEdit from "./components/edit-forms/shop/Shop";
+import LandEdit from "./components/edit-forms/land/Land";
 import CarEdit from "./components/edit-forms/car/car";
 //edit form ends
 
@@ -93,7 +99,15 @@ function App() {
 
       const realestateArr = arr
         .filter((name) =>
-          ["apartment", "villa", "shop", "resort", "land"].includes(name)
+          [
+            "apartment",
+            "villa",
+            "shop",
+            "resort",
+            "land",
+            "farmhouse",
+            "agriculture-land",
+          ].includes(name)
         )
         .sort();
       setRealEstateArr(realestateArr);
@@ -148,6 +162,10 @@ function App() {
               element={<Landform auth={auth} setAuth={setAuth} />}
             ></Route>
             <Route
+              path="/agriculture-land-form"
+              element={<AgriculturalLandForm auth={auth} setAuth={setAuth} />}
+            ></Route>
+            <Route
               path="/resort-form"
               element={<ResortForm auth={auth} setAuth={setAuth} />}
             ></Route>
@@ -159,6 +177,10 @@ function App() {
               path="/shop-form"
               element={<ShopForm auth={auth} setAuth={setAuth} />}
             ></Route>
+            <Route
+              path="/farmhouse-form"
+              element={<FarmhouseForm auth={auth} setAuth={setAuth} />}
+            ></Route>
             {/* </Route> */}
             {/* Product Form Routes end*/}
 
@@ -167,6 +189,7 @@ function App() {
             <Route path="/yacht-page" element={<YachtPage />}></Route>
             <Route path="/car-page" element={<CarPage />}></Route>
             <Route path="/villa-page" element={<VillaPage />}></Route>
+            <Route path="/farmhouse-page" element={<FarmhousePage />}></Route>
             <Route path="/art-page" element={<ArtPage />}></Route>
             <Route path="/art-page/gallery" element={<ArtGallery />}></Route>
             <Route path="/jewellery-page" element={<JewelleryPage />}></Route>
@@ -174,6 +197,7 @@ function App() {
             <Route path="/warehouse-page" element={<WareHousePage />}></Route>
             <Route path="/shop-page" element={<ShopPage />}></Route>
             <Route path="/land-page" element={<LandPage />} />
+            <Route path="/agriculture-land-page" element={<AgriculturalLandPage />} />
             <Route path="/parking-page" element={<ParkingPage />}></Route>
             <Route path="/startup-page" element={<StartUpPage />}></Route>
             {/* landing pages  end*/}
@@ -204,7 +228,7 @@ function App() {
             {/*footer componenets */}
             <Route path="/enquiry" element={<EnquirySection />} />
             <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/faqs" element={<FAQs />} />
+            <Route path="/faq" element={<FAQs />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
 
             {/*  edit forms*/}
@@ -213,8 +237,13 @@ function App() {
               element={<ApartmentEdit />}
             ></Route>
             <Route path="/villa-edit/:id" element={<VillaEdit />}></Route>
+            <Route
+              path="/farmhouse-edit/:id"
+              element={<FarmhouseEdit />}
+            ></Route>
             <Route path="/resort-edit/:id" element={<ResortEdit />}></Route>
             <Route path="/shop-edit/:id" element={<ShopEdit />}></Route>
+            <Route path="/land-edit/:id" element={<LandEdit />}></Route>
             <Route path="/car-edit/:id" element={<CarEdit />}></Route>
 
             {/*  edit forms ends*/}

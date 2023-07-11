@@ -282,6 +282,23 @@ const ApartmentEdit = () => {
             onChange={handleInputs}
           />
           <TextField
+            select
+            size="small"
+            spellCheck="false"
+            name="propertyAge"
+            label="Property Age"
+            sx={{ width: "250px" }}
+            helperText="Please select property age"
+            value={edit.propertyAge}
+            onChange={handleInputs}
+          >
+            {propertyAge.map((i) => (
+              <MenuItem key={i.value} value={i.value}>
+                {i.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
             size="small"
             spellCheck="false"
             type="number"

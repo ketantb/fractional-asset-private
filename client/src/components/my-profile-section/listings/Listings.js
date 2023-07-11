@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Listings.css";
 import SellRow from "../table-row-to-show-property-details-in-table/SellRow";
-import RentRow from "../table-row-to-show-property-details-in-table/RentRow";
 import axios from "../../../helpers/axios";
 import PreLoader from "../../../pre-loaders/PreLoader";
 
@@ -31,7 +30,7 @@ const Listings = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (!allData) {
+  if (allData.length === 0) {
     return <PreLoader />;
   }
 

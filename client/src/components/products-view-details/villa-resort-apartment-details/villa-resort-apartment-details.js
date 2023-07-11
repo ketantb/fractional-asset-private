@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { Modal, Box } from "@mui/material";
 import BookSiteVisitForm from "./book site visit/booksitevisitform";
 import MoreDetails from "./components/moreDetails/MoreDetails";
+import PreLoader from "../../../pre-loaders/PreLoader";
 
 const ResortVillaApartmentDetails = () => {
   const style = {
@@ -38,15 +39,13 @@ const ResortVillaApartmentDetails = () => {
   //get data
   const getData = async () => {
     try {
-      const response = await axios.get(
-        `/villa-resort-apartment-details/${propertyid}`
-      );
-      console.log(response.data.data);
-      setData(response.data.data);
-      setCurrentImg(response.data.data.imgArr[0]);
-      setImgArr(response.data.data.imgArr);
-      setAminityArr(response.data.data.aminities);
-      setImg360Arr(response.data.data.view360ImgArr);
+      const response = await axios.get(`/property-data/${propertyid}`);
+      console.log("resp=>", response);
+      setData(response.data.propertyData);
+      setCurrentImg(response.data.propertyData.imgArr[0]);
+      setImgArr(response.data.propertyData.imgArr);
+      setAminityArr(response.data.propertyData.aminities);
+      setImg360Arr(response.data.propertyData.view360ImgArr);
     } catch (err) {
       console.log(err);
     }
@@ -54,8 +53,13 @@ const ResortVillaApartmentDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     getData();
+    // eslint-disable-next-line
   }, []);
-  console.log("whyInvestHere => ", data.whyInvestHere)
+
+  if (!data) {
+    return <PreLoader />;
+  }
+
   return (
     <div className="villa-details-container">
       <section className="villa-details-r1">
@@ -190,41 +194,41 @@ const ResortVillaApartmentDetails = () => {
           )}
         </div>
         {/* facilities & aminities */}
-        <div className="facility-outer-wrap">
-          <h4>
-            <span>
-              <img src={facilityIcon} alt="overview-img-icon" />
-            </span>
-            Facilities
-          </h4>
-          <div className="facility-inner-wrap">
-            {aminityArr.map((aminity, i) => {
-              return (
-                <section>
-                  <h6>{aminity}</h6>
-                </section>
-              );
-            })}
+        {data.propertyType === "land" || data.propertyType === "agri-land" ? null : (
+          <div className="facility-outer-wrap">
+            <h4>
+              <span>
+                <img src={facilityIcon} alt="overview-img-icon" />
+              </span>
+              Facilities
+            </h4>
+
+            <div className="facility-inner-wrap">
+              {aminityArr.map((aminity, i) => {
+                return (
+                  <section>
+                    <h6>{aminity}</h6>
+                  </section>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </section>
       {/* why invest here */}
-      {data.whyInvestHere?.length > 0 ?
-        <section className="villa-details-r3">
-          <h4>
-            <span>
-              <img src={overviewIcon} alt="overview-img-icon" />
-            </span>
-            Why Invest Here?
-          </h4>
-          <ul className="why-invest-here-ul">
-            {data?.whyInvestHere.map((el) => {
-              return <li>{el}</li>;
-            })}
-          </ul>
-        </section>
-        : null
-      }
+      <section className="villa-details-r3">
+        <h4>
+          <span>
+            <img src={overviewIcon} alt="overview-img-icon" />
+          </span>
+          Why Invest Here?
+        </h4>
+        {/* <ul>
+          {data?.whyInvestHere.map((point, i) => {
+            return <li>{point}</li>;
+          })}
+        </ul> */}
+      </section>
 
       {/* 360 degree view image */}
       <section className="img360-wrap">

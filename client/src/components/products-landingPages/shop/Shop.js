@@ -12,7 +12,7 @@ const ShopPage = () => {
   const [apartmentData, setApartmentData] = useState([]);
   const getData = async () => {
     try {
-      const response = await axios.get("/listing-all-apartment");
+      const response = await axios.get("/listing-all-shop");
       console.log(response.data.list);
       setApartmentData(response.data.list);
     } catch (err) {}

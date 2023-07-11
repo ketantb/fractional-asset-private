@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap");
+
+.farmhouse-page-container .bg-image {
+  margin-bottom: 0;
+  position: relative;
+  background-size: cover;
+  height: calc(100vh - 5rem);
+  background-position: center center;
+  background-image: url("https://wallpaperaccess.com/full/2098394.jpg");
+}
+
+.farmhouse-page-container .bg-image .content {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  text-align: justify;
+  width: 80%;
+}
+.farmhouse-page-container .bg-image .content h4 {
+  font-size: 2rem;
+  background: -webkit-linear-gradient(rgb(253, 253, 253), rgb(239, 200, 165));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 0px 0px rgb(255, 255, 255);
+  font-family: "calibri";
+}
+
+.farmhouse-page-container section h4 {
+  color: #334155;
+  margin-left: 20px;
+  font-family: "Domine", serif;
+}
+
+.farmhouse-page-container > section {
+  margin-top: 2rem;
+}
+
+.farmhouse-card-container {
+  display: grid;
+  margin: 0 20px;
+  border-radius: 10px;
+  background-color: #f1f5f9;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width: 700px) {
+  .farmhouse-card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

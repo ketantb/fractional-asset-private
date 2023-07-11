@@ -17,16 +17,28 @@ const MoreDetails = ({ data }) => {
         </div>
         <div>
           <p>Super Area</p>
-          <p>{data.carpetArea || "---"}</p>
+          {data.propertyType === "land" ||
+            data.propertyType === "agri-land" ? (
+            <p>{data.plotSize || "---"}</p>
+          ) : (
+            <p>{data.area || "---"}</p>
+          )}
         </div>
-        <div>
-          <p>Carpet Area</p>
-          <p>{data.carpetArea || "---"}</p>
-        </div>
-        <div>
-          <p>Furnishing</p>
-          <p>{data.furnishing || "---"}</p>
-        </div>
+        {data.propertyType === "land" ||
+          data.propertyType === "agri-land" ? null : (
+          <div>
+            <p>Carpet Area</p>
+            <p>{data.carpetArea || "---"}</p>
+          </div>
+        )}
+
+        {data.propertyType === "land" ||
+          data.propertyType === "agri-land" ? null : (
+          <div>
+            <p>Furnishing</p>
+            <p>{data.furnishing || "---"}</p>
+          </div>
+        )}
       </div>
       {viewAllDetails && (
         <p
@@ -52,86 +64,95 @@ const MoreDetails = ({ data }) => {
       )}
       {viewAllDetails && (
         <div className="info">
-          <div>
-            <p>Bedrooms</p>
-            <p>{data.bedroom || "---"}</p>
-          </div>
-          <div>
-            <p>Bathrooms</p>
-            <p>{data.bathroom || "---"}</p>
-          </div>
-          <div>
-            <p>Total Floors</p>
-            <p>{data.totalFloors || "---"}</p>
-          </div>
-          <div>
-            <p>Total Floors</p>
-            <p>{data.totalFloors || "---"}</p>
-          </div>
-          <div>
-            <p>House Floor</p>
-            <p>{data.floorNo || "---"}</p>
-          </div>
-          <div>
-            <p>Facing</p>
-            <p>{data.facing || "---"}</p>
-          </div>
-          <div>
-            <p>Overlooking</p>
-            <p>{data.overlooking || "---"}</p>
-          </div>
-          <div>
-            <p>Flooring Type</p>
-            <p>{data.flooringType || "---"}</p>
-          </div>
-          <div>
-            <p>Total Balconies</p>
-            <p>{data.totalBalconies || "---"}</p>
-          </div>
-          <div>
-            <p>Total Lifts</p>
-            <p>{data.totalLifts || "---"}</p>
-          </div>
-          <div>
-            <p>Water Availability</p>
-            <p>{data.waterAvailability || "---"}</p>
-          </div>
-          {
-            data?.additionalRooms?.length > 0 ?
+          {data.propertyType === "land" ||
+            data.propertyType === "agri-land" ? (
+            <>
               <div>
-                <p>Additional Rooms</p>
-                <ul className="array-ul">
-                  {data.additionalRooms.map((el) => {
-                    return (
-                      <li>{el}</li>
-                    )
-                  })}
-                </ul>
+                <p>Length</p>
+                <p>{data.dimensionLength || "---"}</p>
               </div>
-              : null
-          }
-          <div>
-            <p>Possession Status</p>
-            <p>{data.possessionStatus || "---"}</p>
-          </div>
+              <div>
+                <p>Breadth</p>
+                <p>{data.dimensionBreadth || "---"}</p>
+              </div>
+              <div>
+                <p>Soil Texture</p>
+                <p>{data.soilTexture || "---"}</p>
+              </div>
+              <div>
+                <p>Soil PH value</p>
+                <p>{data.soilPHValue || "---"}</p>
+              </div>
+              <div>
+                <p>Soil Organic Matter Content</p>
+                <p>{data.organicMatterContent || "---"}</p>
+              </div>
+            </>
+          ) : (
+            <>
+              {data.propertyType === "shop" ? null : (
+                <>
+                  <div>
+                    <p>Bedrooms</p>
+                    <p>{data.bedroom || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Bathrooms</p>
+                    <p>{data.bathroom || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Total Floors</p>
+                    <p>{data.totalFloors || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Floor No</p>
+                    <p>{data.totalFloors || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Facing</p>
+                    <p>{data.facing || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Overlooking</p>
+                    <p>{data.overlooking || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Flooring Type</p>
+                    <p>{data.flooringType || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Total Balconies</p>
+                    <p>{data.totalBalconies || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Total Lifts</p>
+                    <p>{data.totalLifts || "---"}</p>
+                  </div>
+                  <div>
+                    <p>Water Availability</p>
+                    <p>{data.waterAvailability || "---"}</p>
+                  </div>
+                </>
+              )}
+            </>
+          )}
+          {data.propertyType === "land" ||
+            data.propertyType === "agri-land" ? (
+            <div>
+              <p>Possession Status</p>
+              <p>Under Constrution</p>
+            </div>
+          ) : (
+            <div>
+              <p>Possession Status</p>
+              <p>{data.possessionStatus || "---"}</p>
+            </div>
+          )}
+
           <div>
             <p>Ownership Type </p>
             <p>{data.typeOfOwnership || "---"}</p>
           </div>
-          {
-            data.approvals?.length > 0 ?
-              <div>
-                <p>Approvals</p>
-                <ul className="array-ul">
-                  {data.approvals.map((el) => {
-                    return (
-                      <li>{el}</li>
-                    )
-                  })}
-                </ul>
-              </div>
-              : null
-          }
         </div>
       )}
       <p className="description">

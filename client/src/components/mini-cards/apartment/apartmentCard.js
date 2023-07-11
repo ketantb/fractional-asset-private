@@ -126,7 +126,7 @@ const ApartmentCard = ({ apartment, getData }) => {
       {/* reserve share modal */}
       <Modal open={open} onClose={handleCloseModal} center id="modal">
         <ReserveShares
-          getData = {getData}
+          getData={getData}
           totalShares={apartment.totalShares}
           availableShares={apartment.availableShares}
           perSharePrice={apartment.perSharePrice}

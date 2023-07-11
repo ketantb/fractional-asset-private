@@ -487,6 +487,7 @@ const ApartmentForm = ({ auth, setAuth }) => {
       >
         <Box sx={style}>
           <RealEstatePreviewPage
+            property_type="apartment"
             propertyData={propertyData}
             locality={locality}
             images={images}

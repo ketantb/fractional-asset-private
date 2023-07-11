@@ -15,13 +15,16 @@ export const sellerType = [
 
 export const propertyAge = [
   {
-    value: "New",
+    value: "new",
+    lable: "New",
   },
   {
     value: "1-2years",
+    lable: "1-2years",
   },
   {
     value: "2-4years",
+    lable: "2-4years",
   },
 ];
 

@@ -8,7 +8,8 @@
   display: grid;
   user-select: none;
   place-items: center;
-  height: calc(100vh - 5rem);
+  height: calc(110vh - 5rem);
+  /* border: 1px solid black; */
 }
 
 .shop-form-container {
@@ -29,18 +30,14 @@
   margin-bottom: 10px;
 }
 
-/* MUI Styling */
-
-/* .MuiButtonBase-root.MuiAccordionSummary-root.css-uvvswg-MuiButtonBase-root-MuiAccordionSummary-root {
-  background-color: green;
-} */
-
 /* Form Steps */
 
 .form-steps.property-details {
-  height: 154px;
-  padding-top: 5px;
+  padding: 5px;
+  height: 160px;
   overflow-y: scroll;
+  border-radius: 5px;
+  border: 1px solid rgba(3, 102, 214, 0.3);
 }
 
 .form-steps.property-details::-webkit-scrollbar {
@@ -64,6 +61,37 @@
   display: flex;
   gap: 25px 50px;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1200px) {
+  .shop-form-wrapper {
+    height: auto;
+  }
+
+  .shop-form-container {
+    padding: 0;
+    box-shadow: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: fit-content;
+  }
+
+  .shop-form-container > section:first-child {
+    margin-left: 5px;
+  }
+
+  .form-steps .inputs-section {
+    gap: 15px 0;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .form-steps.property-details {
+    height: auto;
+    border: none;
+    padding-top: 5px;
+    overflow-y: auto;
+  }
 }
 
 /* Aminities */
@@ -117,4 +145,15 @@
   border-radius: 5px;
   background-color: white;
   border: 2px solid rgba(3, 102, 214, 0.3);
+}
+
+.preview-form-modal {
+  width: 75%;
+  margin: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .preview-form-modal {
+    width: 90%;
+  }
 }

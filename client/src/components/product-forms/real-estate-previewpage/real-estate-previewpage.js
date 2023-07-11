@@ -7,6 +7,7 @@ import facilityIcon from "../../../assets/towel-rack.png";
 import MoreDetails from "./more-details/MoreDetails";
 
 const RealEstatePreviewPage = ({
+  property_type,
   propertyData,
   locality,
   images,
@@ -150,6 +151,7 @@ const RealEstatePreviewPage = ({
       ) : null}
 
       <MoreDetails
+        property_type={property_type}
         propertyData={propertyData}
         additionalRooms={additionalRooms}
         approvals={approvals}

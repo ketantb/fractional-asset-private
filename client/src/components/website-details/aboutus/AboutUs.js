@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './Aboutus.css'
+import ChannelPartner from '../../channel-partner/channel-partner'
 
 
 function AboutUs() {
@@ -48,6 +49,7 @@ function AboutUs() {
                     {/* <img src={aboutusimg} alt='aboutusimg'/> */}
                 </div>
             </section>
+            <ChannelPartner/>
         </div>
     );
 }

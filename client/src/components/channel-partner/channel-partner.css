@@ -45,7 +45,7 @@
 .channel-partner-search-bar section:nth-child(2) {}
 
 .channel-partner-ub {
-    border-bottom: 1px solid rgb(164, 164, 164);
+    /* border-bottom: 1px solid rgb(164, 164, 164); */
 }
 
 .become-channel-partner-btn-container {
