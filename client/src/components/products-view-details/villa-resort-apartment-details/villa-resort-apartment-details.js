@@ -55,7 +55,7 @@ const ResortVillaApartmentDetails = () => {
     window.scrollTo(0, 0);
     getData();
   }, []);
-
+  console.log("whyInvestHere => ", data.whyInvestHere)
   return (
     <div className="villa-details-container">
       <section className="villa-details-r1">
@@ -209,19 +209,22 @@ const ResortVillaApartmentDetails = () => {
         </div>
       </section>
       {/* why invest here */}
-      <section className="villa-details-r3">
-        <h4>
-          <span>
-            <img src={overviewIcon} alt="overview-img-icon" />
-          </span>
-          Why Invest Here?
-        </h4>
-        {/* <ul>
-          {data?.whyInvestHere.map((point, i) => {
-            return <li>{point}</li>;
-          })}
-        </ul> */}
-      </section>
+      {data.whyInvestHere?.length > 0 ?
+        <section className="villa-details-r3">
+          <h4>
+            <span>
+              <img src={overviewIcon} alt="overview-img-icon" />
+            </span>
+            Why Invest Here?
+          </h4>
+          <ul className="why-invest-here-ul">
+            {data?.whyInvestHere.map((el) => {
+              return <li>{el}</li>;
+            })}
+          </ul>
+        </section>
+        : null
+      }
 
       {/* 360 degree view image */}
       <section className="img360-wrap">
