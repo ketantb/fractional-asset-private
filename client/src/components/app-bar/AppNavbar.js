@@ -3,6 +3,14 @@ import "./AppNavbar.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 
 const AppNavbar = ({
   auth,
@@ -87,47 +95,59 @@ const AppNavbar = ({
     };
   }, []);
   //close post property dropdown on clicking anywhere window ends
+
   return (
     <div className="app-navbar-wrap">
       {/* LANDING PAGE DROPDOWN */}
       <div className="col1" ref={landingDropdownRef}>
-        <button onClick={() => setShowLandingDropdown(!showLandingDropdown)}>
-          <span>
-            Fractional Properties
-            <MdKeyboardArrowDown />
-          </span>
-        </button>
+        <Button
+          onClick={() => setShowLandingDropdown(!showLandingDropdown)}
+          variant="outlined"
+          endIcon={<MdKeyboardArrowDown />}
+        >
+          Fractional Properties
+        </Button>
         {showLandingDropdown && (
-          <ul className="landing-page-submenu">
-            <li
-              onClick={() =>
-                setShowNestedLandingDropdown(!showNestedLandingDropdown)
-              }
-            >
-              <span>
-                Real Estate
-                <MdKeyboardArrowRight />
-              </span>
+          <div className="hidden-dropdown">
+            <List>
+              <ListItem disablePadding>
+                <ListItemButton
+                  onClick={() =>
+                    setShowNestedLandingDropdown(!showNestedLandingDropdown)
+                  }
+                >
+                  <ListItemText primary="Real Estate" />
+                  <ListItemIcon>
+                    <MdKeyboardArrowRight className="text-white" />
+                  </ListItemIcon>
+                </ListItemButton>
+              </ListItem>
               {showNestedLandingDropdown && (
-                <ul className="landing-page-nested-submenu">
-                  {realEstateArr.map((name, i) => {
-                    return (
-                      <li onClick={() => naviagteToRealEstatePages(name)}>
-                        {name}
-                      </li>
-                    );
-                  })}
-                </ul>
+                <div className="hidden-nested-dropdown">
+                  <List>
+                    {realEstateArr.map((name, i) => (
+                      <ListItem disablePadding>
+                        <ListItemButton
+                          onClick={() => naviagteToRealEstatePages(name)}
+                        >
+                          <ListItemText primary={name} />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </div>
               )}
-            </li>
-            {otherCategoryArr.map((name, i) => {
-              return (
-                <li onClick={() => naviagteToNonRealEstatePages(name)}>
-                  {name}
-                </li>
-              );
-            })}
-          </ul>
+              {otherCategoryArr.map((name, i) => (
+                <ListItem disablePadding>
+                  <ListItemButton
+                    onClick={() => naviagteToNonRealEstatePages(name)}
+                  >
+                    <ListItemText primary={name} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </div>
         )}
       </div>
       {/* LANDING PAGE DROPDOWN ENDS */}
@@ -153,39 +173,53 @@ const AppNavbar = ({
         >
           Channel Partner
         </div>
-        <div className="subcol2-4 navbar-item" onClick={() => navigate("/faq")}>
-          Faq
-        </div>
-        <div className="subcol2-5 navbar-item" style={{ marginTop: "1rem" }}>
-          <p onClick={() => setShowDropdown(!showDropdown)}>
+        <div className="subcol2-5 navbar-item">
+          <Button
+            onClick={() => setShowDropdown(!showDropdown)}
+            variant="outlined"
+            endIcon={<MdKeyboardArrowDown />}
+          >
             Post Property
-            <MdKeyboardArrowDown />
-          </p>
+          </Button>
           {showDropdown && (
-            <ul className="submenu">
-              <li onClick={() => setShowNestedDropdown(!showNestedDropdown)}>
-                <span style={{ borderBottom: "1px solid lightgrey" }}>
-                  REAL ESTATE
-                  <MdKeyboardArrowRight />
-                </span>
+            <div className="hidden-dropdown-2">
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton
+                    onClick={() => setShowNestedDropdown(!showNestedDropdown)}
+                  >
+                    <ListItemText primary="Real Estate" />
+                    <ListItemIcon>
+                      <MdKeyboardArrowRight className="text-white" />
+                    </ListItemIcon>
+                  </ListItemButton>
+                </ListItem>
                 {showNestedDropdown && (
-                  <ul className="nested-submenu">
-                    {realEstateArr.map((name, i) => {
-                      return (
-                        <li onClick={() => handleRealEstateForm(name)}>
-                          {name}
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <div className="hidden-nested-dropdown-2">
+                    <List>
+                      {realEstateArr.map((name, i) => (
+                        <ListItem disablePadding>
+                          <ListItemButton
+                            onClick={() => handleRealEstateForm(name)}
+                          >
+                            <ListItemText primary={name} />
+                          </ListItemButton>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </div>
                 )}
-              </li>
-              {otherCategoryArr.map((name, i) => {
-                return (
-                  <li onClick={() => handleNonRealEstateForms(name)}>{name}</li>
-                );
-              })}
-            </ul>
+                {otherCategoryArr.map((name, i) => (
+                  <ListItem disablePadding>
+                    <ListItemButton
+                      onClick={() => handleNonRealEstateForms(name)}
+                    >
+                      <ListItemText primary={name} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </div>
           )}
         </div>
         {auth ? (
