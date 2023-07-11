@@ -16,7 +16,7 @@ const LandPage = () => {
   const [landData, setLandData] = useState([]);
   const getData = async () => {
     try {
-      const response = await axios.get("/listing-all-apartment");
+      const response = await axios.get("/listing-all-lands");
       console.log(response.data.list);
       setLandData(response.data.list);
     } catch (err) {}
@@ -85,7 +85,7 @@ const LandPage = () => {
           </section>
         ) : null}
       </div>
-      <HowFractionalLandWorksVideo/>
+      <HowFractionalLandWorksVideo />
       <HowItWorksSteps />
     </>
   );

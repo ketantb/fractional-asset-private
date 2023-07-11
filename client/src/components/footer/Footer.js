@@ -19,6 +19,7 @@ const Footer = () => {
         <Box className='col1'>
           <Typography onClick={() => navigate('/enquiry')} className='btn'>CONTACT US</Typography>
           <Typography onClick={() => navigate('/how-it-works')} className='btn'>HOW IT WORKS</Typography>
+          <Typography onClick={() => navigate('/faq')} className='btn'>FAQ</Typography>
         </Box>
       </div>
 

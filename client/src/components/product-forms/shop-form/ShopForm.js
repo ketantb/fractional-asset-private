@@ -73,18 +73,10 @@ const ShopForm = ({ auth, setAuth }) => {
     area: "",
     floorNo: "",
     possessionStatus: "",
-    totalFloors: "",
-    totalLifts: "",
     facing: "",
     overlooking: "",
     carpetArea: "",
     flooringType: "",
-    waterAvailability: "",
-    statusOfElectricity: "",
-    totalBalconies: "",
-    typeOfOwnership: "",
-    bedroom: 0,
-    bathroom: 0,
     rentPrice: 0,
     totalShares: 0,
     availableShares: 0,
@@ -480,6 +472,7 @@ const ShopForm = ({ auth, setAuth }) => {
       >
         <Box sx={style}>
           <RealEstatePreviewPage
+            property_type="shop"
             propertyData={propertyData}
             locality={locality}
             images={images}

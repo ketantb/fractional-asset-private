@@ -147,7 +147,7 @@ const BecomeAChannelPartner = () => {
         await axios.post('/channel-partner-contact', data)
             .then((res) => {
                 // console.log(res)
-                if(res.data.success){
+                if (res.data.success) {
                     toast.dismiss();
                     toast.success('request sent successfully')
                     cpFormButton = false;
@@ -164,6 +164,7 @@ const BecomeAChannelPartner = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         // console.log('useEffectRan')
         if (postCPFormStatus) {
             postCPForm()

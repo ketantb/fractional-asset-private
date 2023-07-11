@@ -13,7 +13,6 @@ const ReserveShares = ({
   details,
   getData,
 }) => {
-
   // console.log("grandchild => ", getData)
   const navigate = useNavigate();
 
@@ -23,7 +22,9 @@ const ReserveShares = ({
     email: "",
     contact: "",
     noOfShares: 1,
-    type: details.productType,
+    propertyType: details.propertyType,
+    sellerName: details.sellerName,
+    sellerId: details.sellerId,
   });
   const [total, setTotal] = useState(perSharePrice);
 
@@ -36,20 +37,22 @@ const ReserveShares = ({
   const updateShares = async (id) => {
     const sharesData = { noOfShares: formData.noOfShares };
     console.log(formData.noOfShares);
-    await axios.patch(`/update-shares/${id}`, sharesData)
+    await axios
+      .patch(`/update-shares/${id}`, sharesData)
       .then((response) => {
-        console.log("response => ", response)
-        getData()
-      })
-      .catch((err) => {
-        console.log("err => ", err)
+        console.log("response => ", response);
         getData();
       })
+      .catch((err) => {
+        console.log("err => ", err);
+        getData();
+      });
   };
 
   //handle submit
   const handleSubmit = async (e, id) => {
     e.preventDefault();
+    console.log(formData);
     try {
       toast.loading("Reserving your shares");
 
@@ -61,6 +64,7 @@ const ReserveShares = ({
         updateShares(id);
         navigate("/apartment-page");
         handleCloseModal();
+        getData();
         toast.success("Thank you! Your shares are reserved");
       } else {
         const errors = response.data.errors;

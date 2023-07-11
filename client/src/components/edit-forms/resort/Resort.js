@@ -10,7 +10,7 @@ import { TiDelete } from "react-icons/ti";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import resortImg from "../../../assets/hotel-resort.png";
+import apartmentimg from "../../../assets/buildings.png";
 import { sellerType, propertyAge, furnishing } from "../data";
 
 const ResortEdit = () => {
@@ -26,16 +26,19 @@ const ResortEdit = () => {
   const [images, setImages] = useState("");
   const [imgArr, setImgArr] = useState([]);
   const [img360Arr, setImg360Arr] = useState([]);
+  const [additionalRooms, setAdditionalRooms] = useState([]);
+  const [newRoom, setNewRoom] = useState("");
 
   //get data
   const getData = async () => {
     try {
       const response = await axios.get(`/property-data/${id}`);
-      // console.log(response.data.propertyData);
+      console.log(response.data.propertyData);
       setData(response.data.propertyData);
       setAminityArr(response?.data?.propertyData?.aminities);
       setImgArr(response?.data?.propertyData?.imgArr);
       setImg360Arr(response?.data?.propertyData?.view360ImgArr);
+      setAdditionalRooms(response?.data?.propertyData?.additionalRooms);
     } catch (err) {}
   };
   useEffect(() => {
@@ -45,19 +48,35 @@ const ResortEdit = () => {
   useEffect(() => {
     if (data) {
       const editData = {
+        sellerType: data.sellerType,
+        sellerName: data.sellerName,
+        reraId: data.reraId,
         propertyAge: data.propertyAge,
+        apartmentName: data.apartmentName,
         area: data.area,
-        noOfRooms: data.noOfRooms,
+        carpetArea: data.carpetArea,
+        bedroom: data.bedroom,
+        bathroom: data.bathroom,
+        totalBalconies: data.totalBalconies,
+        totalFloors: data.totalFloors,
+        floorNo: data.floorNo,
+        totalLifts: data.totalLifts,
+        possessionStatus: data.possessionStatus,
         furnishing: data.furnishing,
+        overlooking: data.overlooking,
+        facing: data.facing,
+        flooringType: data.flooringType,
         street: data.street,
         landmark: data.landmark,
         city: data.city,
         state: data.state,
         pin: data.pin,
+        nearbyPlaces: data.nearbyPlaces,
         rentPrice: data.rentPrice,
-        totalShares: data.totalShare,
+        totalShares: data.totalShares,
         availableShares: data.availableShares,
         perSharePrice: data.perSharePrice,
+        whyInvestHere: data.whyInvestHere,
         aminities: data.aminities,
         imgArr: data.imgArr,
       };
@@ -72,7 +91,7 @@ const ResortEdit = () => {
 
   //handle aminity arr
   //add new aminity
-  const handleAminityArr = () => {
+  const handleAddNewAminity = () => {
     // console.log(aminityArr);
     if (aminity.length) {
       setAminityArr([...aminityArr, aminity]);
@@ -91,6 +110,28 @@ const ResortEdit = () => {
     setAminityArr(arr);
   };
   //handle aminity arr ends
+
+  //handle additional rooms arr
+  //add new room
+  const handleAddNewRoom = () => {
+    // console.log(aminityArr);
+    if (newRoom.length) {
+      setAdditionalRooms([...additionalRooms, newRoom]);
+      setNewRoom("");
+    }
+  };
+  //delete room
+  const deleteRoom = (i) => {
+    const arr = additionalRooms
+      .filter((room, index) => {
+        if (i !== index) {
+          return room;
+        }
+      })
+      .map((room) => room);
+    setAdditionalRooms(arr);
+  };
+  //handle additional rooms arr ends
 
   //handle img arr
   //delete aminity
@@ -122,7 +163,7 @@ const ResortEdit = () => {
       await axios
         .post(process.env.REACT_APP_CLOUDINARY_URL, imgData)
         .then((resp) => {
-          // console.log(resp);
+          console.log(resp);
           arr.push(resp.data.secure_url);
         })
         .catch((err) => console.log(err));
@@ -146,42 +187,44 @@ const ResortEdit = () => {
 
   // handle Update Data
   const handleUpdateData = async () => {
-    const updatedImgArr = imgArr;
+    // const updatedImgArr = imgArr;
     const editData = {
-      sellerType: data.sellerType,
-      sellerName: data.sellerName,
-      reraId: data.reraId,
-      propertyAge: data.propertyAge,
-      apartmentName: data.apartmentName,
-      area: data.area,
-      carpetArea: data.carpetArea,
-      noOfRooms: data.noOfRooms,
-      totalBalconies: data.totalBalconies,
-      totalFloors: data.totalFloors,
-      floorNo: data.floorNo,
-      totalLifts: data.totalLifts,
-      possessionStatus: data.possessionStatus,
-      furnishing: data.furnishing,
-      overlooking: data.overlooking,
-      facing: data.facing,
-      flooringType: data.flooringType,
-      street: data.street,
-      landmark: data.landmark,
-      city: data.city,
-      state: data.state,
-      pin: data.pin,
-      nearbyPlaces: data.nearbyPlaces,
-      rentPrice: data.rentPrice,
-      totalShares: data.totalShare,
-      availableShares: data.availableShares,
-      perSharePrice: data.perSharePrice,
+      sellerType: edit.sellerType,
+      sellerName: edit.sellerName,
+      reraId: edit.reraId,
+      propertyAge: edit.propertyAge,
+      area: edit.area,
+      carpetArea: edit.carpetArea,
+      bedroom: edit.bedroom,
+      bathroom: edit.bathroom,
+      totalBalconies: edit.totalBalconies,
+      totalFloors: edit.totalFloors,
+      floorNo: edit.floorNo,
+      totalLifts: edit.totalLifts,
+      furnishing: edit.furnishing,
+      overlooking: edit.overlooking,
+      facing: edit.facing,
+      street: edit.street,
+      landmark: edit.landmark,
+      city: edit.city,
+      state: edit.state,
+      pin: edit.pin,
+      nearbyPlaces: edit.nearbyPlaces,
+      rentPrice: edit.rentPrice,
+      totalShares: edit.totalShares,
+      availableShares: edit.availableShares,
+      perSharePrice: edit.perSharePrice,
+      whyInvestHere: edit.whyInvestHere,
       aminities: aminityArr,
-      imgArr: updatedImgArr,
+      imgArr: imgArr,
+      additionalRooms: additionalRooms,
     };
 
     try {
       toast.loading("Uploading Images..");
+
       const response = await axios.put(`/edit/${id}`, editData);
+
       if (response.data.success) {
         console.log(response);
         toast.dismiss();
@@ -201,7 +244,7 @@ const ResortEdit = () => {
     <div className="edit-form-wrap container">
       <div className="row1">
         <div>
-          <img src={resortImg} alt="" />
+          <img src={apartmentimg} alt="" />
         </div>
         <h6>
           Hello {data.sellerName}
@@ -209,7 +252,7 @@ const ResortEdit = () => {
           Update your {data.propertyType} data
         </h6>
       </div>
-      <div className="form-row">
+      <div className="form-row ">
         <h4>Details</h4>
         {/* property details */}
         <section>
@@ -239,6 +282,23 @@ const ResortEdit = () => {
             onChange={handleInputs}
           />
           <TextField
+            select
+            size="small"
+            spellCheck="false"
+            name="propertyAge"
+            label="Property Age"
+            sx={{ width: "250px" }}
+            helperText="Please select property age"
+            value={edit.propertyAge}
+            onChange={handleInputs}
+          >
+            {propertyAge.map((i) => (
+              <MenuItem key={i.value} value={i.value}>
+                {i.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
             size="small"
             spellCheck="false"
             type="number"
@@ -252,29 +312,91 @@ const ResortEdit = () => {
             size="small"
             spellCheck="false"
             type="number"
-            name="noOfRooms"
+            name="bedroom"
             sx={{ width: "250px" }}
-            helperText="Number resort "
-            value={edit.noOfRooms}
+            helperText="Please enter bedrooms"
+            value={edit.bedroom}
             onChange={handleInputs}
           />
-
           <TextField
-            select
             size="small"
             spellCheck="false"
-            name="furnishing"
+            type="number"
+            name="bathroom"
             sx={{ width: "250px" }}
-            helperText="Please select furnishing"
-            value={edit.furnishing}
+            helperText="Please enter bathrooms"
+            value={edit.bathroom}
             onChange={handleInputs}
-          >
-            {furnishing.map((i) => (
-              <MenuItem key={i.value} value={i.value}>
-                {i.label}
-              </MenuItem>
-            ))}
-          </TextField>
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="carpetArea"
+            sx={{ width: "250px" }}
+            helperText="Please enter carpet area"
+            value={edit.carpetArea}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="totalBalconies"
+            sx={{ width: "250px" }}
+            helperText="Please enter total balconies"
+            value={edit.totalBalconies}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="totalFloors"
+            sx={{ width: "250px" }}
+            helperText="Please enter total floors"
+            value={edit.totalFloors}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="floorNo"
+            sx={{ width: "250px" }}
+            helperText="Please enter floor number"
+            value={edit.floorNo}
+            onChange={handleInputs}
+          />
+          <TextField
+            size="small"
+            spellCheck="false"
+            type="number"
+            name="totalLifts"
+            sx={{ width: "250px" }}
+            helperText="Please enter total lifts"
+            value={edit.totalLifts}
+            onChange={handleInputs}
+          />
+          {data.propertyType === "apartment" || data.propertyType === "shop" ? (
+            <TextField
+              select
+              size="small"
+              spellCheck="false"
+              name="furnishing"
+              sx={{ width: "250px" }}
+              helperText="Please select furnishing"
+              value={edit.furnishing}
+              onChange={handleInputs}
+            >
+              {furnishing.map((i) => (
+                <MenuItem key={i.value} value={i.value}>
+                  {i.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          ) : null}
+
           {data.propertyAdType === "rent" ? (
             <TextField
               size="small"
@@ -321,6 +443,37 @@ const ResortEdit = () => {
             </>
           )}
         </section>
+      </div>
+      {/* additional rooms */}
+      <div className="form-row ">
+        <h4>Additional Rooms</h4>
+        <section className="arr-wrap">
+          {data.propertyType === "apartment"
+            ? additionalRooms.map((room, i) => {
+                return (
+                  <p className="arr-item">
+                    <span style={{ marginRight: "1rem" }}>
+                      <TiDelete
+                        style={{ width: "2rem", height: "2rem" }}
+                        onClick={() => deleteRoom(i)}
+                      />
+                    </span>
+                    {room}
+                  </p>
+                );
+              })
+            : null}
+        </section>
+        <div style={{ padding: "1rem" }}>
+          <TextField
+            type="text"
+            size="small"
+            name="newRoom"
+            value={newRoom}
+            onChange={(e) => setNewRoom(e.target.value)}
+          />
+          <Button onClick={handleAddNewRoom}>Add</Button>
+        </div>
       </div>
       {/* location details */}
       <div className="form-row">
@@ -388,14 +541,28 @@ const ResortEdit = () => {
           />
         </section>
       </div>
-
+      {/* why invest here */}
+      <div className="form-row">
+        <h4>Why Invest In This Property</h4>
+        <textarea
+          className="whyinvest-input"
+          size="small"
+          spellCheck="false"
+          type="text"
+          name="whyInvestHere"
+          sx={{ width: "250px" }}
+          helperText="Why should invest in this property"
+          value={edit.whyInvestHere}
+          onChange={handleInputs}
+        />
+      </div>
       {/* aminities */}
       <div className="form-row">
         <h4>Aminities</h4>
-        <section>
+        <section className="arr-wrap">
           {aminityArr.map((aminity, i) => {
             return (
-              <p>
+              <p className="arr-item">
                 <span style={{ marginRight: "1rem" }}>
                   <TiDelete
                     style={{ width: "2rem", height: "2rem" }}
@@ -415,7 +582,7 @@ const ResortEdit = () => {
             value={aminity}
             onChange={(e) => setAminity(e.target.value)}
           />
-          <Button onClick={handleAminityArr}>Add</Button>
+          <Button onClick={handleAddNewAminity}>Add</Button>
         </div>
       </div>
       {/* images */}
@@ -440,6 +607,28 @@ const ResortEdit = () => {
               </div>
             );
           })}
+        </section>
+        <div
+          className="upload-image-form-wrapper"
+          style={{ marginTop: "1rem" }}
+        >
+          <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
+          <form>
+            <input
+              type="file"
+              name="images"
+              onChange={handleFileChange}
+              multiple
+            />
+          </form>
+        </div>
+      </div>
+
+      {/* 360degree view images */}
+      {/* images */}
+      <div className="images-wrap">
+        <h4>360 View Images</h4>
+        <section>
           {img360Arr?.map((img, i) => {
             return (
               <div>
@@ -463,7 +652,7 @@ const ResortEdit = () => {
           className="upload-image-form-wrapper"
           style={{ marginTop: "1rem" }}
         >
-          <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p>
+          {/* <p style={{ opacity: "0.6" }}>You can upload upto 8 images only</p> */}
           <form>
             <input
               type="file"

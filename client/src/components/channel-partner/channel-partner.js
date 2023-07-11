@@ -8,7 +8,7 @@ const ChannelPartner = () => {
         <div className="channel-partner-wrapper">
             <section className="channel-partner-ub">
                 <h2>Connect With Your Agent Today</h2>
-                <div className="channel-partner-search-bar">
+                {/* <div className="channel-partner-search-bar">
                     <section>
                         <div>
                             <label>Search by Name</label>
@@ -27,7 +27,7 @@ const ChannelPartner = () => {
                             </select>
                         </div>
                     </section>
-                </div>
+                </div> */}
             </section>
             <section className="channel-partner-lb">
                 <div className="channel-partner-slider">

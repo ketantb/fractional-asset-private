@@ -13,7 +13,7 @@ const ResortPage = () => {
   const [apartmentData, setApartmentData] = useState([]);
   const getData = async () => {
     try {
-      const response = await axios.get("/listing-all-apartment");
+      const response = await axios.get("/listing-all-resort");
       console.log(response.data.list);
       setApartmentData(response.data.list);
     } catch (err) {}
@@ -32,7 +32,7 @@ const ResortPage = () => {
     <>
       <div className="resort-page-container">
         <div className="bg-image">
-        <div className="content" data-aos="fade-up">
+          <div className="content" data-aos="fade-up">
             <h4>
               <div>
                 <img src={hotelresortlogo} alt="" />
@@ -45,7 +45,6 @@ const ResortPage = () => {
             </h4>
           </div>
         </div>
-
         <div className="home-content">
           <div
             className="content-wrapper"
@@ -60,41 +59,25 @@ const ResortPage = () => {
             </h4>
           </div>
         </div>
+        <section>
+          <h4>FRACTIONAL RESORTS</h4>
+          <div className="resort-card-container">
+            {apartmentData
+              .filter((apartment) => {
+                if (apartment.propertyAdType === "sell") {
+                  return apartment;
+                }
+              })
+              .map((apartment) => {
+                return <ResortCard apartment={apartment} />;
+              })}
+          </div>
 
-        {apartmentData.length !== 0 ? (
-          <section>
-            <h4>FRACTIONAL RESORTS</h4>
-            <div className="resort-card-container">
-              {apartmentData
-                .filter((apartment) => {
-                  if (apartment.propertyAdType === "sell") {
-                    return apartment;
-                  }
-                })
-                .map((apartment) => {
-                  return <ResortCard apartment={apartment} />;
-                })}
-            </div>
+          <DLBrochure />
 
-            <DLBrochure />
-
-            <h4>Manage RESORTS</h4>
-            <div className="resort-card-container">
-              {apartmentData
-                .filter((apartment) => {
-                  if (apartment.propertyAdType === "rent") {
-                    return apartment;
-                  }
-                })
-                .map((apartment) => {
-                  return <ResortCard apartment={apartment} />;
-                })}
-            </div>
-          </section>
-        ) : null}
+          <HowItWorksSteps />
+        </section>
       </div>
-
-      <HowItWorksSteps />
     </>
   );
 };

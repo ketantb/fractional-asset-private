@@ -3,6 +3,8 @@ import "./AppNavbar.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { ImMenu3 } from "react-icons/im"; //down
+import { ImMenu4 } from "react-icons/im"; //up
 
 const AppNavbar = ({
   auth,
@@ -25,12 +27,14 @@ const AppNavbar = ({
   const handleNonRealEstateForms = (name) => {
     navigate(`${name}-form`); // Replace "/next-page" with the actual route you want to navigate to
     setShowDropdown(false);
+    setOpenMobileNav(false);
   };
   const handleRealEstateForm = (name) => {
     // navigate(`/nested-next-page/${option}`); // Replace "/nested-next-page" with the actual route for the nested dropdown option
     navigate(`${name}-form`); // Replace "/nested-next-page" with the actual route for the nested dropdown option
     setShowDropdown(false);
     setShowNestedDropdown(false);
+    setOpenMobileNav(false);
   };
   //FORM DROPDOWN ENDS
 
@@ -87,6 +91,11 @@ const AppNavbar = ({
     };
   }, []);
   //close post property dropdown on clicking anywhere window ends
+
+  // mobile view navbar
+  const [openMobileNav, setOpenMobileNav] = useState(false);
+  // mobile view navbar ends
+
   return (
     <div className="app-navbar-wrap">
       {/* LANDING PAGE DROPDOWN */}
@@ -130,35 +139,53 @@ const AppNavbar = ({
           </ul>
         )}
       </div>
+
+      {/* DESKTOP VIEW */}
       {/* LANDING PAGE DROPDOWN ENDS */}
       <div className="col2" ref={dropdownRef}>
-        <div className="subcol2-1 navbar-item" onClick={() => navigate("/")}>
+        <div
+          className="subcol2-1 navbar-item"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           Home
         </div>
         <div
           className="subcol2-2 navbar-item"
-          onClick={() => navigate("/how-it-works")}
+          onClick={() => {
+            navigate("/how-it-works");
+          }}
         >
           How It Works
         </div>
         <div
           className="subcol2-3 navbar-item"
-          onClick={() => navigate("/aboutus")}
+          onClick={() => {
+            navigate("/aboutus");
+          }}
         >
           About Us
         </div>
-        <div
+        {/* <div
           className="subcol2-3 navbar-item"
-          onClick={() => navigate("/channel-partner")}
+          onClick={() => {
+            navigate("/channel-partner");
+          }}
         >
           Channel Partner
-        </div>
-        <div className="subcol2-4 navbar-item" onClick={() => navigate("/faq")}>
+        </div> */}
+        {/* <div
+          className="subcol2-4 navbar-item"
+          onClick={() => {
+            navigate("/faq");
+          }}
+        >
           Faq
-        </div>
+        </div> */}
         <div className="subcol2-5 navbar-item" style={{ marginTop: "1rem" }}>
           <p onClick={() => setShowDropdown(!showDropdown)}>
-            Post Property
+            List Property
             <MdKeyboardArrowDown />
           </p>
           {showDropdown && (
@@ -191,7 +218,9 @@ const AppNavbar = ({
         {auth ? (
           <div
             className="subcol2-6 navbar-item"
-            onClick={() => navigate("/my-profile")}
+            onClick={() => {
+              navigate("/my-profile");
+            }}
           >
             My Profile
           </div>
@@ -209,12 +238,153 @@ const AppNavbar = ({
         ) : (
           <div
             className="subcol2-7 navbar-item"
-            onClick={() => navigate("/signin")}
+            onClick={() => {
+              navigate("/signin");
+            }}
           >
             Login
           </div>
         )}
       </div>
+      {/* DESKTOP VIEW ENDS*/}
+
+      {/* mobile view col2 */}
+      <div className="mobile-view-navbar">
+        {!openMobileNav ? (
+          <section className="menu-icon">
+            <ImMenu3
+              className="hamburger-menu"
+              onClick={() => setOpenMobileNav(true)}
+            />
+          </section>
+        ) : (
+          <section className="menu-icon">
+            <ImMenu4
+              className="hamburger-menu"
+              onClick={() => setOpenMobileNav(false)}
+            />
+          </section>
+        )}
+
+        {openMobileNav && (
+          <section className="mobile-navbar">
+            <div ref={dropdownRef}>
+              {auth ? (
+                <div
+                  className="subcol2-7 mob-navbar-item"
+                  onClick={() => {
+                    localStorage.clear();
+                    navigate("/");
+                    setOpenMobileNav(false);
+                  }}
+                >
+                  Logout
+                </div>
+              ) : (
+                <div
+                  className="subcol2-7 mob-navbar-item"
+                  onClick={() => {
+                    navigate("/signin");
+                    setOpenMobileNav(false);
+                  }}
+                >
+                  Login
+                </div>
+              )}
+              <div
+                className="subcol2-1 mob-navbar-item"
+                onClick={() => {
+                  navigate("/");
+                  setOpenMobileNav(false);
+                }}
+              >
+                Home
+              </div>
+              <div
+                className="subcol2-2 mob-navbar-item"
+                onClick={() => {
+                  navigate("/how-it-works");
+                  setOpenMobileNav(false);
+                }}
+              >
+                How It Works
+              </div>
+              <div
+                className="subcol2-3 mob-navbar-item"
+                onClick={() => {
+                  navigate("/aboutus");
+                  setOpenMobileNav(false);
+                }}
+              >
+                About Us
+              </div>
+              <div
+                className="subcol2-3 mob-navbar-item"
+                onClick={() => {
+                  navigate("/channel-partner");
+                  setOpenMobileNav(false);
+                }}
+              >
+                Channel Partner
+              </div>
+              <div
+                className="subcol2-4 mob-navbar-item"
+                onClick={() => {
+                  navigate("/faq");
+                  setOpenMobileNav(false);
+                }}
+              >
+                Faq
+              </div>
+              <div className="subcol2-5 mob-navbar-item">
+                <p onClick={() => setShowDropdown(!showDropdown)}>
+                  Post Property
+                  <MdKeyboardArrowDown />
+                </p>
+                {showDropdown && (
+                  <ul className="mob-submenu">
+                    <li
+                      onClick={() => setShowNestedDropdown(!showNestedDropdown)}
+                    >
+                      <span style={{ borderBottom: "1px solid lightgrey" }}>
+                        REAL ESTATE
+                        <MdKeyboardArrowRight />
+                      </span>
+                      {showNestedDropdown && (
+                        <ul className="mob-nested-submenu">
+                          {realEstateArr.map((name, i) => {
+                            return (
+                              <li onClick={() => handleRealEstateForm(name)}>
+                                {name}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                    {otherCategoryArr.map((name, i) => {
+                      return (
+                        <li onClick={() => handleNonRealEstateForms(name)}>
+                          {name}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+              {auth ? (
+                <div
+                  className="subcol2-6 mob-navbar-item"
+                  onClick={() => navigate("/my-profile")}
+                >
+                  My Profile
+                </div>
+              ) : null}
+            </div>
+          </section>
+        )}
+      </div>
+      {/* mobile view menu items */}
     </div>
   );
 };

@@ -53,6 +53,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 const LandForm = ({ auth, setAuth }) => {
+  //set property type
   // message to login
   const [loginMsg, setLoginMsg] = useState(false);
   // store token
@@ -76,8 +77,6 @@ const LandForm = ({ auth, setAuth }) => {
     area: "",
     typeOfOwnership: "",
     dimensionsUnit: "",
-    lotSize: "",
-    lotSizeUnit: "",
     zoning: "",
     utilities: "",
     roadAccess: "",
@@ -475,6 +474,7 @@ const LandForm = ({ auth, setAuth }) => {
       >
         <Box sx={style}>
           <RealEstatePreviewPage
+            property_type="land"
             propertyData={propertyData}
             locality={locality}
             images={images}

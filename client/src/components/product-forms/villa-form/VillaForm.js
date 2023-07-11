@@ -480,6 +480,7 @@ const VillaForm = ({ auth, setAuth }) => {
       >
         <Box sx={style}>
           <RealEstatePreviewPage
+            property_type="villa"
             propertyData={propertyData}
             locality={locality}
             images={images}
