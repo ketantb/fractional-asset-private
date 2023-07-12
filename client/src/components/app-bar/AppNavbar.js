@@ -11,6 +11,8 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import { CiMenuBurger } from "react-icons/ci";
+import MobileNav from "./MobileNav";
 
 const AppNavbar = ({
   auth,
@@ -249,6 +251,12 @@ const AppNavbar = ({
           </div>
         )}
       </div>
+      {/* mobile view navigation */}
+      <div className="mobile-nav-wrap">
+        <MobileNav icon={CiMenuBurger} />
+      </div>
+
+      {/* mobile view navigation ends */}
     </div>
   );
 };
