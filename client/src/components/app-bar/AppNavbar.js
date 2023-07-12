@@ -98,6 +98,9 @@ const AppNavbar = ({
   }, []);
   //close post property dropdown on clicking anywhere window ends
 
+  // mobile nav
+  const [openMobileNav, setOpenMobileNav] = useState(false);
+
   return (
     <div className="app-navbar-wrap">
       {/* LANDING PAGE DROPDOWN */}
@@ -253,7 +256,22 @@ const AppNavbar = ({
       </div>
       {/* mobile view navigation */}
       <div className="mobile-nav-wrap">
-        <MobileNav icon={CiMenuBurger} />
+        <div>
+          <CiMenuBurger
+            onClick={() => {
+              setOpenMobileNav(!openMobileNav);
+            }}
+          />
+        </div>
+        {openMobileNav ? (
+          <MobileNav
+            auth={auth}
+            setAuth={setAuth}
+            realEstateArr={realEstateArr}
+            otherCategoryArr={otherCategoryArr}
+            collectionNames={collectionNames}
+          />
+        ) : null}
       </div>
 
       {/* mobile view navigation ends */}
