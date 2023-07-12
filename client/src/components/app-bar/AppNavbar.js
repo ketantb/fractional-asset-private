@@ -152,34 +152,13 @@ const AppNavbar = ({
       </div>
       {/* LANDING PAGE DROPDOWN ENDS */}
       <div className="col2" ref={dropdownRef}>
-        <div className="subcol2-1 navbar-item" onClick={() => navigate("/")}>
-          Home
-        </div>
-        <div
-          className="subcol2-2 navbar-item"
-          onClick={() => navigate("/how-it-works")}
-        >
-          How It Works
-        </div>
-        <div
-          className="subcol2-3 navbar-item"
-          onClick={() => navigate("/aboutus")}
-        >
-          About Us
-        </div>
-        <div
-          className="subcol2-3 navbar-item"
-          onClick={() => navigate("/channel-partner")}
-        >
-          Channel Partner
-        </div>
         <div className="subcol2-5 navbar-item">
           <Button
             onClick={() => setShowDropdown(!showDropdown)}
             variant="outlined"
             endIcon={<MdKeyboardArrowDown />}
           >
-            Post Property
+            List Property
           </Button>
           {showDropdown && (
             <div className="hidden-dropdown-2">
@@ -221,6 +200,27 @@ const AppNavbar = ({
               </List>
             </div>
           )}
+        </div>
+        <div className="subcol2-1 navbar-item" onClick={() => navigate("/")}>
+          Home
+        </div>
+        <div
+          className="subcol2-2 navbar-item"
+          onClick={() => navigate("/how-it-works")}
+        >
+          How It Works
+        </div>
+        <div
+          className="subcol2-3 navbar-item"
+          onClick={() => navigate("/aboutus")}
+        >
+          About Us
+        </div>
+        <div
+          className="subcol2-3 navbar-item"
+          onClick={() => navigate("/channel-partner")}
+        >
+          Channel Partner
         </div>
         {auth ? (
           <div

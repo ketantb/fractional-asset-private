@@ -1,49 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap");
 
-.apartment-page-container .bg-image {
-  margin-bottom: 0;
+.apartment-page-container * {
+  font-family: "Montserrat", sans-serif;
+}
+.apartment-page-container .banner {
+  display: flex;
+  height: 40rem;
   position: relative;
-  background-size: cover;
-  height: calc(100vh - 5rem);
-  background-position: center center;
-  background-image: url("https://hbits.co/assets/images/home-banner.webp?auto=format&fit=max&w=1920");
 }
-
-.apartment-page-container .bg-image .content {
+.apartment-page-container .banner div:first-child {
   position: absolute;
-  top: 50%;
-  left: 5%;
-  text-align: justify;
-  width: 80%;
-}
-.apartment-page-container .bg-image .content h4 {
-  font-size: 2rem;
-  background: -webkit-linear-gradient(rgb(253, 253, 253), rgb(239, 200, 165));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 0px rgb(0, 0, 0);
-  font-family: "calibri";
-}
-
-.apartment-page-container section h4 {
-  color: #334155;
-  margin-left: 20px;
-  font-family: 'Domine', serif;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    black,
+    rgb(32, 32, 32),
+    rgb(79, 79, 79),
+    rgb(116, 116, 116)
+  );
 }
 
-.apartment-page-container>section {
+.apartment-page-container .banner div:first-child img {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 100%;
+}
+
+.apartment-page-container .banner div:nth-child(2) {
+  position: absolute;
+  width: 20%;
+  height: 45%;
+  top: 30%;
+  left: 0;
+}
+
+.apartment-page-container .banner div:nth-child(2) img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.apartment-page-container .banner div:nth-child(3) {
+  display: none;
+}
+
+.apartment-page-container .banner div:last-child {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.apartment-page-container .banner div:last-child > p {
+  position: absolute;
+  bottom: 1%;
+  right: 0;
+  padding: 0.5rem 1rem;
+  line-height: 1.5rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.apartment-page-container .outer-wrap {
   margin-top: 2rem;
+}
+
+.apartment-page-container .outer-wrap > h4 {
+  margin-left: 2rem;
 }
 
 .apartment-card-container {
   display: grid;
-  margin: 0 20px;
+  margin: 0 30px;
   border-radius: 10px;
   background-color: #f1f5f9;
   grid-template-columns: repeat(2, 1fr);
 }
 
 @media screen and (max-width: 700px) {
+  .apartment-page-container .banner {
+    display: flex;
+    height: 20rem;
+    position: relative;
+    background-color: transparent;
+  }
+  .apartment-page-container .banner div:first-child {
+    display: none;
+  }
+
+  .apartment-page-container .banner div:nth-child(2) {
+    display: none;
+  }
+
+  .apartment-page-container .banner div:last-child {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+  }
+
+  .apartment-page-container .banner div:last-child > p {
+    position: absolute;
+    padding: 0.5rem 1rem;
+    line-height: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: "calibri";
+  }
+
+  .apartment-page-container .outer-wrap {
+    margin-top: 2rem;
+  }
+
+  .apartment-page-container .outer-wrap > h4 {
+    margin-left: 2rem;
+  }
   .apartment-card-container {
     grid-template-columns: repeat(1, 1fr);
   }
