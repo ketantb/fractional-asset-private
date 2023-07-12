@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
 
 :root {
   --background: black;
@@ -26,7 +26,7 @@
 }
 
 .app-navbar-wrap * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .app-navbar-wrap .col2 {
@@ -36,7 +36,7 @@
   align-items: center;
 }
 
-.app-navbar-wrap .col2>*:hover {
+.app-navbar-wrap .col2 > *:hover {
   cursor: pointer;
 }
 
@@ -78,4 +78,11 @@
   right: -120px;
   position: absolute;
   background-color: rgb(0, 0, 0, 0.8);
+}
+
+@media only screen and (max-width: 680px) {
+  .app-navbar-wrap .col2 {
+    gap: 30px;
+    display: none;
+  }
 }
