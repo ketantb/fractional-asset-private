@@ -137,7 +137,7 @@ const AppNavbar = ({
                   </List>
                 </div>
               )}
-              {otherCategoryArr.map((name, i) => (
+              {/* {otherCategoryArr.map((name, i) => (
                 <ListItem disablePadding>
                   <ListItemButton
                     onClick={() => naviagteToNonRealEstatePages(name)}
@@ -145,7 +145,7 @@ const AppNavbar = ({
                     <ListItemText primary={name} />
                   </ListItemButton>
                 </ListItem>
-              ))}
+              ))} */}
             </List>
           </div>
         )}
@@ -209,7 +209,7 @@ const AppNavbar = ({
                     </List>
                   </div>
                 )}
-                {otherCategoryArr.map((name, i) => (
+                {/* {otherCategoryArr.map((name, i) => (
                   <ListItem disablePadding>
                     <ListItemButton
                       onClick={() => handleNonRealEstateForms(name)}
@@ -217,7 +217,7 @@ const AppNavbar = ({
                       <ListItemText primary={name} />
                     </ListItemButton>
                   </ListItem>
-                ))}
+                ))} */}
               </List>
             </div>
           )}
