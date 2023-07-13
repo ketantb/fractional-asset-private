@@ -1,19 +1,90 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&display=swap");
 
 /* auto slider */
-#carouselExampleIndicators ol {
-    list-style-type: none;
-}
 
 #carouselExampleIndicators {
-    height: 100%;
+  height: 100%;
+}
+#carouselExampleIndicators ol {
+  list-style-type: none;
 }
 
 #carouselExampleIndicators .carousel-item .slideImg {
-    position: relative;
+  position: relative;
 }
 
 #carouselExampleIndicators .carousel-item .slideImg .content h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgb(233, 232, 232);
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 5rem;
+  background-color: rgb(0, 0, 0, 0.4);
+  letter-spacing: 3px;
+  padding: 15rem 30rem 10rem 10rem;
+}
+
+#carouselExampleIndicators .carousel-item .slideImg .content h2 span {
+  display: block;
+  text-transform: none;
+  font-size: 24px;
+  margin-top: 25px;
+  color: orangered;
+}
+
+/* auto slider ends */
+
+.featured-category-header {
+  width: 100%;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.featured-category-header h2 {
+  font-size: 45px;
+  font-weight: 500;
+}
+
+/* .home-banner {
+    width: 100vw !important;
+    height: 100vh !important;
+} */
+
+.home-steps {
+  height: calc(100vh);
+}
+
+.home-whyus {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-testimonial {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  /* auto slider */
+  #carouselExampleIndicators {
+    height: 40rem;
+  }
+  #carouselExampleIndicators img {
+    height: 40rem;
+  }
+
+  #carouselExampleIndicators .carousel-item .slideImg .content h2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -24,129 +95,24 @@
     text-align: left;
     text-transform: capitalize;
     font-weight: 500;
-    font-size: 70px;
-    line-height: 5rem;
-    background-color: rgb(0, 0, 0, 0.2);
+    font-size: 30px;
+    line-height: 2rem;
+    background-color: rgb(0, 0, 0, 0.4);
     letter-spacing: 3px;
-    padding: 15rem 30rem 10rem 10rem;
-}
+    padding: 15rem 2rem 5rem 5rem;
+  }
 
-#carouselExampleIndicators .carousel-item .slideImg .content h2 span {
+  #carouselExampleIndicators .carousel-item .slideImg .content h2 span {
     display: block;
     text-transform: none;
     font-size: 24px;
     margin-top: 25px;
     color: orangered;
-}
+  }
 
-/* auto slider ends */
-
-.home-banner h2 {
-    position: absolute;
-    top: 30%;
-    left: 10%;
-    color: #ffff;
-    text-shadow: rgb(0, 0, 0) 1px 0 10px;
-    width: 40%;
-    text-align: left;
-    text-transform: capitalize;
+  /* auto slider ends */
+  .featured-category-header h2 {
+    font-size: 28px;
     font-weight: 500;
-    font-size: 54px;
-    line-height: 4rem;
-}
-
-.home-banner h2 span {
-    display: block;
-    text-transform: none;
-    font-size: 24px;
-    margin-top: 25px;
-}
-
-.featured-category-header {
-    width: 100%;
-    text-align: center;
-    margin-top: 5rem;
-}
-
-.featured-category-header h2 {
-    font-size: 45px;
-    font-weight: 500;
-}
-
-/* hide full page watermark */
-.fp-warning,
-.fp-watermark {
-    display: none;
-}
-
-@media screen and (max-width: 600px) {
-    .home-banner img {
-        height: 75vh;
-        width: 100%;
-    }
-
-    .home-banner h2 {
-        font-weight: 500;
-        font-size: 36px;
-        line-height: 3rem;
-        width: 70%;
-    }
-
-    .home-banner h2 span {
-        font-size: 22px;
-        margin-top: 25px;
-    }
-
-    .featured-category-header h2 {
-        font-size: 28px;
-        font-weight: 500;
-    }
-}
-
-/* Bootstrap Carousel */
-.carousel.slide {}
-
-.carousel-item {
-    width: 100vw !important;
-    height: 100vh !important;
-}
-
-.carousel-inner {
-    /* background-color: aqua; */
-}
-
-
-/* All Home Pages */
-
-.home-slider1 {
-    height: 100vh;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-}
-
-.home-whyus {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.home-testimonial {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.home-calculator {
-    height: 100vh;
-}
-
-.home-steps {
-    height: calc(100vh);
-}
-
-.home-footer {
-    height: 100vh;
+  }
 }
