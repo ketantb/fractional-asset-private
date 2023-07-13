@@ -33,7 +33,16 @@ const LandingPage = () => {
       scrollOverflow={true}
       scrollHorizontally={true}
       keyboardScrolling={true}
-      sectionsColor={["#dbeafe", "#dbeafe", "#dbeafe"]}
+      sectionsColor={[
+        "#ffffff",
+        "#fffbeb",
+        "#ffffff",
+        "#ffffff",
+        "red",
+        "green",
+        "#ffffff",
+        "yellow",
+      ]}
       onLeave={(origin, destination, direction) => {
         console.log("onLeave event", { origin, destination, direction });
       }}
@@ -131,6 +140,28 @@ const LandingPage = () => {
               <div className="home-whyus">
                 <WhyUs />
               </div>
+            </div>
+
+            {/* 5th Page */}
+            <div className="section">
+              <div className="home-testimonial"></div>
+            </div>
+
+            {/* 6th Page */}
+            <div className="section">
+              <div className="home-calculator"></div>
+            </div>
+
+            {/* 7th Page */}
+            <div className="section">
+              <div className="home-steps">
+                <Steps />
+              </div>
+            </div>
+
+            {/* 8th Page */}
+            <div className="section">
+              <div className="home-footer"></div>
             </div>
           </div>
         );
