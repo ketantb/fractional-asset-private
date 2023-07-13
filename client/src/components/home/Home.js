@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import "./Home.css";
 import WhyUs from "../website-details/why-us/WhyUs";
 import Steps from "../Steps/steps";
-// import TestimonialSlider from "../testimonial/testimonial";
 import ReactFullpage from "@fullpage/react-fullpage";
 import HomeSliderSection3 from "./components/section3/Slider";
+import Testimonial from "./components/testimonial/Testimonial";
 
 const LandingPage = () => {
   const anchors = ["1", "2", "3", "4"];
@@ -140,8 +140,7 @@ const LandingPage = () => {
             </div>
             <div className="section">
               <div className="home-testimonial">
-                {/* <TestimonialSlider /> */}
-                TestimonialSlider
+                <Testimonial />
               </div>
             </div>
             <div className="section">
