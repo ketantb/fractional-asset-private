@@ -6,7 +6,6 @@ import PreLoader from "../../pre-loaders/PreLoader";
 import WhyUs from "../website-details/why-us/WhyUs";
 import Steps from "../Steps/steps";
 import TestimonialSlider from "../testimonial/testimonial";
-import BannerSlider from "../website-details/BannerSlider/BannerSlider";
 import ReactFullpage from "@fullpage/react-fullpage";
 import HomeBannerImg from "../../assets/HomeBannerImg.jpg";
 
