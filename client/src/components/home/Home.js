@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import "./Home.css";
 import WhyUs from "../website-details/why-us/WhyUs";
 import Steps from "../Steps/steps";
-import HomeVideo from "../HomeVideo/HomeVideo";
+// import TestimonialSlider from "../testimonial/testimonial";
 import ReactFullpage from "@fullpage/react-fullpage";
-import HomeBannerImg from "../../assets/HomeBannerImg.jpg";
-import HomeSlider1 from "../website-details/HomeSlider1/HomeSlider1";
 
 const LandingPage = () => {
-  const anchors = ["1", "2", "3", "4", "5", "6", "7", "8"];
+  const anchors = ["1", "2", "3", "4"];
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -35,16 +33,7 @@ const LandingPage = () => {
       scrollOverflow={true}
       scrollHorizontally={true}
       keyboardScrolling={true}
-      sectionsColor={[
-        "#ffffff",
-        "#fffbeb",
-        "#ffffff",
-        "#ffffff",
-        "red",
-        "green",
-        "blue",
-        "yellow",
-      ]}
+      sectionsColor={["#dbeafe", "#dbeafe", "#dbeafe"]}
       onLeave={(origin, destination, direction) => {
         console.log("onLeave event", { origin, destination, direction });
       }}
@@ -108,11 +97,11 @@ const LandingPage = () => {
                   role="button"
                   data-slide="prev"
                 >
-                  <span
+                  {/* <span
                     className="carousel-control-prev-icon"
                     aria-hidden="true"
                   ></span>
-                  <span className="sr-only">Previous</span>
+                  <span className="sr-only">Previous</span> */}
                 </a>
                 <a
                   className="carousel-control-next"
@@ -120,54 +109,28 @@ const LandingPage = () => {
                   role="button"
                   data-slide="next"
                 >
-                  <span
+                  {/* <span
                     className="carousel-control-next-icon"
                     aria-hidden="true"
                   ></span>
-                  <span className="sr-only">Next</span>
+                  <span className="sr-only">Next</span> */}
                 </a>
               </div>
             </div>
-
-            {/* 2nd Page */}
+            <div className="section">
+              <div className="home-steps">
+                <Steps />
+              </div>
+            </div>
             <div className="section">
               <div className="home-testimonial">
-                <HomeVideo />
+                {/* <TestimonialSlider /> */}
               </div>
             </div>
-
-            {/* 3rd Page */}
-            <div className="section">
-              <div className="home-slider1">
-                <HomeSlider1 />
-              </div>
-            </div>
-
-            {/* 4th Page */}
             <div className="section">
               <div className="home-whyus">
                 <WhyUs />
               </div>
-            </div>
-
-            {/* 5th Page */}
-            <div className="section">
-              <div className="home-testimonial"></div>
-            </div>
-
-            {/* 6th Page */}
-            <div className="section">
-              <div className="home-calculator"></div>
-            </div>
-
-            {/* 7th Page */}
-            <div className="section">
-              <div className="home-steps"></div>
-            </div>
-
-            {/* 8th Page */}
-            <div className="section">
-              <div className="home-footer"></div>
             </div>
           </div>
         );
@@ -177,3 +140,5 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+
+// ReactDOM.render(<LandingPage />, document.getElementById("react-root"));
