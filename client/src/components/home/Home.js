@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import ReactFullpage from "@fullpage/react-fullpage";
+
 import "./Home.css";
 import WhyUs from "../website-details/why-us/WhyUs";
 import Steps from "../Steps/steps";
+import HomeVideo from "../HomeVideo/HomeVideo";
 // import TestimonialSlider from "../testimonial/testimonial";
-import ReactFullpage from "@fullpage/react-fullpage";
 
 const LandingPage = () => {
   const anchors = ["1", "2", "3", "4"];
@@ -126,9 +128,11 @@ const LandingPage = () => {
                 </a>
               </div>
             </div>
+
+            {/* 2nd Page */}
             <div className="section">
               <div className="home-steps">
-                <Steps />
+                <HomeVideo />
               </div>
             </div>
             <div className="section">
