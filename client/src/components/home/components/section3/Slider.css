@@ -10,12 +10,14 @@
 
 .section-slider header {
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 5rem;
   /* background-color: yellow; */
 }
+
 .section-slider .img-slider {
   margin-top: 4rem;
 }
+
 .section-slider .slider-wrap {
   width: 95%;
   height: 25rem;
@@ -34,7 +36,7 @@
   text-align: center;
 }
 
-.section-slider .slider-wrap .card > div {
+.section-slider .slider-wrap .card>div {
   border: 1px solid lightgrey;
   border-radius: 2rem;
   padding: 3rem 1rem;

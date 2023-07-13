@@ -5,11 +5,14 @@
 #carouselExampleIndicators {
   height: 100%;
 }
+
 #carouselExampleIndicators ol {
   list-style-type: none;
 }
 
 #carouselExampleIndicators .carousel-item .slideImg {
+  width: 100vw;
+  height: 100vh;
   position: relative;
 }
 
@@ -52,15 +55,22 @@
   font-weight: 500;
 }
 
-/* .home-banner {
-    width: 100vw !important;
-    height: 100vh !important;
-} */
-
-.home-steps {
-  height: calc(100vh);
+/* Section 1 */
+.home-banner {
+  height: 100vh;
 }
 
+/* Section 2 */
+.home-play {
+  height: 100vh;
+}
+
+/* Section 3 */
+.home-slider {
+  height: 100vh;
+}
+
+/* Section 4 */
 .home-whyus {
   height: 100vh;
   display: flex;
@@ -75,11 +85,24 @@
   justify-content: center;
 }
 
+.home-calculator {
+  height: 100vh;
+}
+
+.home-footer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
 @media screen and (max-width: 600px) {
+
   /* auto slider */
   #carouselExampleIndicators {
     height: 40rem;
   }
+
   #carouselExampleIndicators img {
     height: 40rem;
   }
