@@ -49,7 +49,7 @@ const LandingPage = () => {
         console.log("onLeave event", { origin, destination, direction });
       }}
       render={({ state, fullpageApi }) => {
-        console.log("render prop change", state, fullpageApi);
+        // console.log("render prop change", state, fullpageApi);
 
         return (
           <div>
