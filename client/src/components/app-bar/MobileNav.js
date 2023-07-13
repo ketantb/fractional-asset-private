@@ -1,8 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./AppNavbar.css";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import {
   Button,
   List,
@@ -11,10 +7,11 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { CiMenuBurger } from "react-icons/ci";
-import MobileNav from "./MobileNav";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
-const AppNavbar = ({
+const MobileNav = ({
   auth,
   setAuth,
   realEstateArr,
@@ -97,9 +94,6 @@ const AppNavbar = ({
     };
   }, []);
   //close post property dropdown on clicking anywhere window ends
-
-  // mobile nav
-  const [openMobileNav, setOpenMobileNav] = useState(false);
 
   return (
     <div className="app-navbar-wrap">
@@ -254,29 +248,8 @@ const AppNavbar = ({
           </div>
         )}
       </div>
-      {/* mobile view navigation */}
-      <div className="mobile-nav-wrap">
-        <div>
-          <CiMenuBurger
-            onClick={() => {
-              setOpenMobileNav(!openMobileNav);
-            }}
-          />
-        </div>
-        {openMobileNav ? (
-          <MobileNav
-            auth={auth}
-            setAuth={setAuth}
-            realEstateArr={realEstateArr}
-            otherCategoryArr={otherCategoryArr}
-            collectionNames={collectionNames}
-          />
-        ) : null}
-      </div>
-
-      {/* mobile view navigation ends */}
     </div>
   );
 };
 
-export default AppNavbar;
+export default MobileNav;

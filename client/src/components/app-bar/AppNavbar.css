@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
 
 :root {
   --background: black;
@@ -15,7 +15,6 @@
   display: flex;
   position: fixed;
   padding: 0 50px;
-  padding-right: 60px;
   margin-bottom: 0;
   color: #f1f5f9;
   font-weight: 300;
@@ -27,7 +26,7 @@
 }
 
 .app-navbar-wrap * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .app-navbar-wrap .col2 {
@@ -37,7 +36,7 @@
   align-items: center;
 }
 
-.app-navbar-wrap .col2>*:hover {
+.app-navbar-wrap .col2 > *:hover {
   cursor: pointer;
 }
 
@@ -79,4 +78,56 @@
   right: -120px;
   position: absolute;
   background-color: rgb(0, 0, 0, 0.8);
+}
+
+/* mobile nav */
+.mobile-nav-wrap {
+  display: none;
+}
+/* mobile nav  ends*/
+
+@media only screen and (max-width: 680px) {
+  .app-navbar-wrap {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .app-navbar-wrap .col2 {
+    gap: 30px;
+    display: none;
+  }
+
+  .app-navbar-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Fractional Properties */
+
+  .hidden-dropdown {
+    width: 80%;
+    right: 20%;
+    top: 40px;
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.8);
+  }
+
+  .hidden-nested-dropdown {
+    top: 50px;
+    right: 0px;
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.8);
+  }
+
+  /* mobile nav */
+  .mobile-nav-wrap {
+    display: block;
+  }
+  .mobile-nav-wrap .menu-icon {
+    width: 3rem;
+    height: 2.5rem;
+    color: #1976d2;
+  }
+
+  /* mobile nav  ends*/
 }

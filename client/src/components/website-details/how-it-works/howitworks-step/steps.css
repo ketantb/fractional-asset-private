@@ -1,106 +1,115 @@
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap");
 
 .howitworks-step-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 0px auto;
-    /* border: 1px solid red; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0px auto;
+  /* border: 1px solid red; */
 }
 
 .howitworks-header {
-    margin-top: 3rem;
-    text-align: center;
-    margin-bottom: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .howitworks-header h2 {
-    font-size: 50px;
-    color: #334155;
-    font-family: 'Domine', serif;
+  font-size: 50px;
+  color: #334155;
+  font-family: "Domine", serif;
 }
 
 .howitworks-header p {
-    width: 1000px;
-    font-size: 20px;
-    margin-top: 1rem;
-    padding: 0px 25px;
-    font-weight: 500px;
+  width: 1000px;
+  font-size: 20px;
+  margin-top: 1rem;
+  padding: 0px 25px;
+  font-weight: 500px;
 }
 
 .steps-container {
-    width: 80%;
-    flex-wrap: wrap;
-    display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  display: flex;
 }
 
 .step {
-    width: 350px;
-    height: 250px;
-    display: flex;
-    padding-top: 0px;
-    text-align: center;
-    border-radius: 5px;
-    padding-right: 15px;
-    flex-direction: column;
-    background-color: #f1f5f9;
+  width: 18rem;
+  height: 15rem;
+  display: flex;
+  padding-top: 0px;
+  text-align: center;
+  padding-right: 15px;
+  flex-direction: column;
+  /* background-color: #021b43; */
+  background: linear-gradient(to top, #667b9d, #3b5d93, #606e88, #021b43);
+  position: relative;
+  box-shadow: 20px 2px 20px 2px rgb(206, 206, 206);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
 }
 
-.step-icon {
-    font-size: 55px;
-    margin-bottom: 25px;
-    color: goldenrod;
-    /* border: 1px solid black; */
+.step-content {
+  /* border: 1px solid white; */
+  padding-bottom: 1rem;
 }
-
 .step-title {
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 10px;
-    text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  color: aliceblue;
 }
 
 .step-description {
-    color: #888;
-    font-size: 16px;
-    text-align: center;
+  color: #000000;
+  font-size: 16px;
+  text-align: center;
+}
+
+.step .step-icon {
+  position: absolute;
+  left: 40%;
+  top: 10%;
 }
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 1000px) {
-    .steps-container {
-        width: 100%;
-        justify-content: center;
-    }
+  .steps-container {
+    width: 100%;
+    justify-content: center;
+  }
 
-    .step {
-        margin: 10px;
-    }
+  .step {
+    margin: 10px;
+  }
 
-    .howitworks-header {
-        margin-bottom: 1rem;
-    }
-    
-    .howitworks-header h2 {
-        font-size: 40px;
-    }
+  .howitworks-header {
+    margin-bottom: 1rem;
+  }
 
-    .howitworks-header p {
-        width: 90%;
-        margin: 0 auto;
-        font-size: 15px;
-        padding: 0px 0px;
-    }
+  .howitworks-header h2 {
+    font-size: 40px;
+  }
+
+  .howitworks-header p {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 15px;
+    padding: 0px 0px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .steps-container {
-        flex-direction: column;
-    }
+  .steps-container {
+    flex-direction: column;
+  }
 
-    .step {
-        width: 95%;
-    }
+  .step {
+    width: 95%;
+  }
 }
