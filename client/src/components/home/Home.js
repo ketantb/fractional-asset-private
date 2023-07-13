@@ -7,9 +7,10 @@ import Steps from "../Steps/steps";
 import HomeVideo from "../HomeVideo/HomeVideo";
 // import TestimonialSlider from "../testimonial/testimonial";
 import HomeSliderSection3 from "./components/section3/Slider";
+import Footer from "../../components/footer/Footer";
 
 const LandingPage = () => {
-  const anchors = ["1", "2", "3", "4"];
+  const anchors = ["1", "2", "3", "4", "5", "6", "7"];
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -43,7 +44,6 @@ const LandingPage = () => {
         "#ffffff",
         "red",
         "green",
-        "#ffffff",
         "yellow",
       ]}
       onLeave={(origin, destination, direction) => {
@@ -60,6 +60,7 @@ const LandingPage = () => {
                 // className="carousel" we need to comment this class to take full size of image
                 data-ride="carousel"
                 data-interval="1800"
+                className="home-banner"
               >
                 <ol className="carousel-indicators">
                   <li
@@ -130,50 +131,42 @@ const LandingPage = () => {
               </div>
             </div>
 
-            {/* 2nd Page */}
+            {/* Section 2 */}
             <div className="section">
-              <div className="home-steps">
+              <div className="home-play">
                 <HomeVideo />
               </div>
             </div>
-            {/* section 3 */}
+            {/* Section 3 */}
             <div className="section">
-              <div>
+              <div className="home-slider">
                 <HomeSliderSection3 />
               </div>
             </div>
+            {/* Section 4 */}
+            <div className="section">
+              <div className="home-whyus">
+                <WhyUs />
+              </div>
+            </div>
+            {/* Section 5 */}
             <div className="section">
               <div className="home-testimonial">
                 {/* <TestimonialSlider /> */}
                 TestimonialSlider
               </div>
             </div>
+            {/* Section 6 */}
             <div className="section">
-              <div className="home-whyus">
-                <WhyUs />
+              <div className="home-calculator">Calculator</div>
+            </div>
+            {/* Section 7 */}
+            <div className="section">
+              <div className="home-footer">
+                <div>
+                  <Footer />
+                </div>
               </div>
-            </div>
-
-            {/* 5th Page */}
-            <div className="section">
-              <div className="home-testimonial"></div>
-            </div>
-
-            {/* 6th Page */}
-            <div className="section">
-              <div className="home-calculator"></div>
-            </div>
-
-            {/* 7th Page */}
-            <div className="section">
-              <div className="home-steps">
-                <Steps />
-              </div>
-            </div>
-
-            {/* 8th Page */}
-            <div className="section">
-              <div className="home-footer"></div>
             </div>
           </div>
         );
@@ -183,5 +176,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-
-// ReactDOM.render(<LandingPage />, document.getElementById("react-root"));
