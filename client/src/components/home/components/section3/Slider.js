@@ -10,7 +10,7 @@ const HomeSliderSection3 = () => {
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
-        <MdOutlineArrowForwardIos />
+        <MdOutlineArrowForwardIos style={{ color: "lightcoral" }} />
       </div>
     );
   };
@@ -18,7 +18,7 @@ const HomeSliderSection3 = () => {
   const PrevArrow = ({ onClick }) => {
     return (
       <div className="arrow prev" onClick={onClick}>
-        <MdOutlineArrowBackIos />
+        <MdOutlineArrowBackIos style={{ color: "lightcoral" }} />
       </div>
     );
   };
