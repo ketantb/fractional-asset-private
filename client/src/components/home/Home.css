@@ -42,29 +42,6 @@
     font-weight: 500;
 }
 
-/* .home-banner {
-    width: 100vw !important;
-    height: 100vh !important;
-} */
-
-.home-steps {
-    height: calc(100vh);
-}
-
-.home-whyus {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.home-testimonial {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 @media screen and (max-width: 600px) {
     .home-banner img {
         height: 75vh;
@@ -87,17 +64,40 @@
         font-size: 28px;
         font-weight: 500;
     }
-
 }
 
-/* Bootstrap Carousel */
-.carousel.slide {}
 
-.carousel-item {
-    width: 100vw !important;
-    height: 100vh !important;
+/* All Home Pages */
+
+.home-slider1 {
+    height: 100vh;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
 }
 
-.carousel-inner {
-    /* background-color: aqua; */
+.home-whyus {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-testimonial {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-calculator {
+    height: 100vh;
+}
+
+.home-steps {
+    height: calc(100vh);
+}
+
+.home-footer {
+    height: 100vh;
 }
