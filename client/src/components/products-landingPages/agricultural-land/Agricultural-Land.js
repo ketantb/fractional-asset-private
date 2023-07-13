@@ -9,6 +9,7 @@ import DLBrochure from "../../website-details/DLBrochure/DLBrochure";
 import HowItWorksSteps from "../../website-details/how-it-works/howitworks-step/steps";
 import landSticker from "../../../assets/location-pin.png";
 import HowFractionalLandWorksVideo from "./how-it-works-video/how-it-works";
+import apartmentStikcer from "../../../assets/buildings.png";
 
 const AgriculturalLandPage = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const AgriculturalLandPage = () => {
   return (
     <>
       <div className="land-page-container">
-        <div className="bg-image">
+        {/* <div className="bg-image">
           <div className="content" data-aos="fade-up">
             <h4>
               <div>
@@ -51,10 +52,44 @@ const AgriculturalLandPage = () => {
               to meet your needs and aspirations.
             </h4>
           </div>
+        </div> */}
+        <div className="banner">
+          <div>
+            <img
+              data-aos="fade-down"
+              src="https://im.proptiger.com/1/640985/6/the-corridors-images-for-elevation-of-ireo-the-corridors-708110.jpeg"
+              alt=""
+            />
+          </div>
+          <div
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1200"
+          >
+            <img
+              src="https://images.pexels.com/photos/259580/pexels-photo-259580.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt=""
+            />
+          </div>
+          <div>
+            <img src={landSticker} alt="" />
+          </div>
+          <div
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1200"
+          >
+            <p>
+              New way of experiencing luxury real estate ownership. Join our
+              community of like-minded individuals who appreciate the benefits
+              of fractional ownership and embark on a journey of unforgettable
+              experiences.
+            </p>
+          </div>
         </div>
 
         {landData.length !== 0 ? (
-          <section>
+          <section className="outer-wrap">
             <h4>FRACTIONAL LAND</h4>
             <div className="land-card-container">
               {landData

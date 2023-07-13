@@ -42,7 +42,7 @@ const LandingPage = () => {
         "#ffffff",
         "red",
         "green",
-        "blue",
+        "#ffffff",
         "yellow",
       ]}
       onLeave={(origin, destination, direction) => {
@@ -162,7 +162,9 @@ const LandingPage = () => {
 
             {/* 7th Page */}
             <div className="section">
-              <div className="home-steps"></div>
+              <div className="home-steps">
+                <Steps />
+              </div>
             </div>
 
             {/* 8th Page */}
