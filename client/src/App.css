@@ -16,3 +16,8 @@ a {
 .component-wraps > * {
   font-family: "Helvetica", Arial, sans-serif;
 }
+
+.fp-warning,
+.fp-watermark {
+  display: none;
+}
