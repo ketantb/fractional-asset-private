@@ -1,15 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&display=swap');
 
-
-.home-wrapper {
-    background-color: rgb(228, 244, 255);
-}
-
-.home-banner {}
+.home-wrapper {}
 
 .home-banner img {
     width: 100%;
-    height: calc(100vh - 5rem);
+    height: calc(100vh);
 }
 
 .home-banner h2 {
@@ -47,6 +42,29 @@
     font-weight: 500;
 }
 
+/* .home-banner {
+    width: 100vw !important;
+    height: 100vh !important;
+} */
+
+.home-steps {
+    height: calc(100vh);
+}
+
+.home-whyus {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-testimonial {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 @media screen and (max-width: 600px) {
     .home-banner img {
         height: 75vh;
@@ -70,4 +88,16 @@
         font-weight: 500;
     }
 
+}
+
+/* Bootstrap Carousel */
+.carousel.slide {}
+
+.carousel-item {
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+.carousel-inner {
+    /* background-color: aqua; */
 }

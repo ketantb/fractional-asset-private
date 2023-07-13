@@ -2,10 +2,10 @@
 
 .whyus-wrapper {
     /* background-color: red; */
-    padding: 1rem;
-    padding-bottom: 2.5rem;
+    /* padding: 1rem; */
+    /* padding-bottom: 2.5rem; */
     /* background-color: rgb(228, 240, 244); */
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
 }
 
 .whyus-wrapper h2 {
@@ -140,7 +140,7 @@
         border: none;
     }
 
-    .whyus-wrapper .card-wrapper-inner .card:last-child{
+    .whyus-wrapper .card-wrapper-inner .card:last-child {
         margin-top: 2rem;
     }
 
@@ -192,7 +192,7 @@
     }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
     .whyus-wrapper h2 {
         font-size: 28px;
         margin-bottom: 3rem;

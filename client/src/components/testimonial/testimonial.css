@@ -3,8 +3,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2rem auto;
+  margin: 0rem auto;
   width: 75%;
+  height: 100%;
 }
 
 .testimonial-slider h2 {
@@ -13,22 +14,24 @@
   font-family: 'Playfair Display', serif;
   font-size: 45px;
   font-weight: 500;
-  margin-bottom: 4rem;
+  margin-top: 5rem;
+  margin-bottom: -1rem;
 }
 
 .video-container {
   width: 100%;
-  position: relative;
-  padding-bottom: 56.25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: relative; */
+  /* padding-bottom: 56.25%; */
   /* Maintain a 16:9 aspect ratio */
 }
 
 .video-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  /* position: absolute; */
+  width: 90%;
+  height: 90%;
 }
 
 .slider-nav {
@@ -51,7 +54,7 @@
   background-color: #000;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
   .testimonial-slider h2 {
     font-size: 28px;
     font-weight: 500;
@@ -59,9 +62,9 @@
   }
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
   .testimonial-slider {
     margin-top: 5rem;
-     width: 100%;
+    width: 100%;
   }
 }
