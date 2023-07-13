@@ -94,6 +94,12 @@
   justify-content: center;
 }
 
+/* hide full page watermark */
+.fp-warning,
+.fp-watermark {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .home-banner img {
     height: 75vh;
