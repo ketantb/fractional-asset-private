@@ -6,6 +6,7 @@ import WhyUs from "../website-details/why-us/WhyUs";
 import Steps from "../Steps/steps";
 import HomeVideo from "../HomeVideo/HomeVideo";
 // import TestimonialSlider from "../testimonial/testimonial";
+import HomeSliderSection3 from "./components/section3/Slider";
 
 const LandingPage = () => {
   const anchors = ["1", "2", "3", "4"];
@@ -135,9 +136,16 @@ const LandingPage = () => {
                 <HomeVideo />
               </div>
             </div>
+            {/* section 3 */}
+            <div className="section">
+              <div>
+                <HomeSliderSection3 />
+              </div>
+            </div>
             <div className="section">
               <div className="home-testimonial">
                 {/* <TestimonialSlider /> */}
+                TestimonialSlider
               </div>
             </div>
             <div className="section">
