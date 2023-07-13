@@ -12,3 +12,7 @@ a {
   /* margin-top: 5rem; */
   margin-bottom: 0rem;
 }
+
+.component-wraps > * {
+  font-family: "Helvetica", Arial, sans-serif;
+}
