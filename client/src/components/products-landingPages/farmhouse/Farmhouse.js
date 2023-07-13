@@ -30,24 +30,45 @@ const FarmhousePage = () => {
   return (
     <>
       <div className="farmhouse-page-container">
-        <div className="bg-image">
-          <div className="content" data-aos="fade-up">
-            <h4>
-              <div>
-                <img src={villaStikcer} alt="" />
-              </div>
+        <div className="banner">
+          <div>
+            <img
+              data-aos="fade-down"
+              src="https://wallpaperaccess.com/full/2098394.jpg"
+              alt=""
+            />
+          </div>
+          <div
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1200"
+          >
+            <img
+              src="https://images.pexels.com/photos/259580/pexels-photo-259580.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt=""
+            />
+          </div>
+          <div>
+            <img src={villaStikcer} alt="" />
+          </div>
+          <div
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1200"
+          >
+            <p>
               Escape to a world of opulence and tranquility at Fractional
               farmhouses. Nestled in the breathtaking surroundings, our
               exclusive farmhouse offers an extraordinary retreat for those
               seeking the pinnacle of luxury and privacy. With impeccable
               design, lavish amenities, and breathtaking views, immerse yourself
-              in a truly exceptional living experience
-            </h4>
+              in a truly exceptional living experience.
+            </p>
           </div>
         </div>
 
         {farmhouseData.length !== 0 ? (
-          <section>
+          <section className="outer-wrap">
             <h4>FRACTIONAL FARMHOUSE</h4>
             <div className="farmhouse-card-container">
               {farmhouseData

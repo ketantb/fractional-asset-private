@@ -40,19 +40,6 @@ const AgriculturalLandPage = () => {
   return (
     <>
       <div className="land-page-container">
-        {/* <div className="bg-image">
-          <div className="content" data-aos="fade-up">
-            <h4>
-              <div>
-                <img src={landSticker} alt="" />
-              </div>
-              Looking to invest in your future? Don't miss this incredible
-              opportunity to own your own piece of land! We have a wide
-              selection of premium real estate land for sale, perfectly suited
-              to meet your needs and aspirations.
-            </h4>
-          </div>
-        </div> */}
         <div className="banner">
           <div>
             <img
@@ -80,10 +67,10 @@ const AgriculturalLandPage = () => {
             data-aos-duration="1200"
           >
             <p>
-              New way of experiencing luxury real estate ownership. Join our
-              community of like-minded individuals who appreciate the benefits
-              of fractional ownership and embark on a journey of unforgettable
-              experiences.
+              Looking to invest in your future? Don't miss this incredible
+              opportunity to own your own piece of land! We have a wide
+              selection of premium real estate land for sale, perfectly suited
+              to meet your needs and aspirations.
             </p>
           </div>
         </div>

@@ -39,22 +39,43 @@ const LandPage = () => {
   return (
     <>
       <div className="land-page-container">
-        <div className="bg-image">
-          <div className="content" data-aos="fade-up">
-            <h4>
-              <div>
-                <img src={landSticker} alt="" />
-              </div>
+        <div className="banner">
+          <div>
+            <img
+              data-aos="fade-down"
+              src="https://images.pexels.com/photos/636342/pexels-photo-636342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt=""
+            />
+          </div>
+          <div
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1200"
+          >
+            <img
+              src="https://images.pexels.com/photos/259580/pexels-photo-259580.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt=""
+            />
+          </div>
+          <div>
+            <img src={landSticker} alt="" />
+          </div>
+          <div
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1200"
+          >
+            <p>
               Looking to invest in your future? Don't miss this incredible
               opportunity to own your own piece of land! We have a wide
               selection of premium real estate land for sale, perfectly suited
               to meet your needs and aspirations.
-            </h4>
+            </p>
           </div>
         </div>
 
         {landData.length !== 0 ? (
-          <section>
+          <section className="outer-wrap">
             <h4>FRACTIONAL LAND</h4>
             <div className="land-card-container">
               {landData

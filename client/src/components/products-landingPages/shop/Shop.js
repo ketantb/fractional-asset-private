@@ -30,10 +30,43 @@ const ShopPage = () => {
   return (
     <>
       <div className="shop-page-container">
-        <div className="bg-image"></div>
+        <div className="banner">
+          <div>
+            <img
+              data-aos="fade-down"
+              src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt=""
+            />
+          </div>
+          <div
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1200"
+          >
+            <img
+              src="https://images.pexels.com/photos/259580/pexels-photo-259580.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt=""
+            />
+          </div>
+          <div>
+            <img src={""} alt="" />
+          </div>
+          <div
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1200"
+          >
+            <p>
+              New way of experiencing luxury real estate ownership. Join our
+              community of like-minded individuals who appreciate the benefits
+              of fractional ownership and embark on a journey of unforgettable
+              experiences.
+            </p>
+          </div>
+        </div>
 
         {apartmentData.length !== 0 ? (
-          <section>
+          <section className="outer-wrap">
             <h4>FRACTIONAL SHOPS</h4>
             <div className="shop-card-container">
               {apartmentData
