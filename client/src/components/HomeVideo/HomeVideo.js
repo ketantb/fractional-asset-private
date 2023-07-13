@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./testimonial.css";
+import "./HomeVideo.css";
 import fractionalOwnershipExplained from "../../assets/Fractional Ownership Explained -.mp4";
 
-const TestimonialSlider = () => {
+const HomeVideo = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const testimonials = [
@@ -25,7 +25,7 @@ const TestimonialSlider = () => {
   };
 
   return (
-    <div className="testimonial-slider">
+    <div className="home-video">
       <h2>Food For Thoughts</h2>
       <div className="video-container">
         {/* <video src={testimonials[activeIndex].videoUrl} controls autoPlay loop /> */}
@@ -44,4 +44,4 @@ const TestimonialSlider = () => {
   );
 };
 
-export default TestimonialSlider;
+export default HomeVideo;
