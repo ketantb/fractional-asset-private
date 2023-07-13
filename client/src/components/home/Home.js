@@ -41,7 +41,7 @@ const LandingPage = () => {
         "#fffbeb",
         "#ffffff",
         "#ffffff",
-        "red",
+        "#ffffff",
         "green",
         "yellow",
       ]}

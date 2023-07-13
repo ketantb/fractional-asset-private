@@ -7,7 +7,7 @@
 .testimonial-wrapper {
   height: 85%;
   margin-top: 5rem;
-  border: var(--border);
+  /* border: var(--border); */
   display: flex;
   overflow: hidden;
   position: relative;
