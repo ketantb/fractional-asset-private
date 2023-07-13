@@ -3,10 +3,9 @@ import ReactFullpage from "@fullpage/react-fullpage";
 
 import "./Home.css";
 import WhyUs from "../website-details/why-us/WhyUs";
-import Steps from "../Steps/steps";
-import HomeVideo from "../HomeVideo/HomeVideo";
-// import TestimonialSlider from "../testimonial/testimonial";
 import HomeSliderSection3 from "./components/section3/Slider";
+import Testimonial from "./components/testimonial/Testimonial";
+import HomeVideo from "../HomeVideo/HomeVideo";
 import Footer from "../../components/footer/Footer";
 
 const LandingPage = () => {
@@ -42,7 +41,7 @@ const LandingPage = () => {
         "#fffbeb",
         "#ffffff",
         "#ffffff",
-        "red",
+        "#ffffff",
         "green",
         "yellow",
       ]}
@@ -152,8 +151,7 @@ const LandingPage = () => {
             {/* Section 5 */}
             <div className="section">
               <div className="home-testimonial">
-                {/* <TestimonialSlider /> */}
-                TestimonialSlider
+                <Testimonial />
               </div>
             </div>
             {/* Section 6 */}
