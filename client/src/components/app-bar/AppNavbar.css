@@ -23,6 +23,7 @@
   background-color: black;
   text-transform: capitalize;
   justify-content: space-between;
+  background-color: rgb(0, 0, 0, 0.8);
 }
 
 .app-navbar-wrap * {

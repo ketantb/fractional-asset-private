@@ -5,7 +5,7 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 5rem);
+    height: calc(100vh);
 }
 
 .videoBg {
@@ -82,7 +82,7 @@
     .navlinks {
         display: none;
     }
-    
+
     .banner {
         height: 85vh;
     }
@@ -95,6 +95,7 @@
         font-size: medium;
         padding: 10px 25px;
     }
+
     .videoOverlay div button:last-child {
         font-size: medium;
         padding: 5px 7px;

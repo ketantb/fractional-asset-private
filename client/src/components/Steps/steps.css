@@ -1,9 +1,13 @@
 .step-wrapper {
-    margin-top: 5rem;
     /* border: 1px solid black; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .step-wrapper>h2 {
+    margin-top: 5rem;
     width: 100%;
     text-align: center;
     font-family: 'Playfair Display', serif;
@@ -31,7 +35,7 @@
     height: 300px;
 }
 
-.step > div > h2{
+.step>div>h2 {
     padding-top: 15px;
 }
 
