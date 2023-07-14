@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Testimonial.css";
 import { AiFillStar } from "react-icons/ai";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
