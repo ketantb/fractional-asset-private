@@ -1,6 +1,6 @@
 .investcal-wrap {
-  height: 85%;
-  margin-top: 7.5rem;
+  height: 95%;
+  margin-top: 6rem;
   /* border: 1px solid black; */
 }
 
@@ -11,16 +11,16 @@
 .investcal-wrap .container {
   display: flex;
   gap: 1rem;
-  height: 75%;
-  margin-top: 3rem;
+  height: 70%;
+  margin-top: 3.5rem;
   /* border: 1px solid rgb(235, 235, 235); */
 }
 
 /* col1 */
 .investcal-wrap .container .col1 {
-  width: 50%;
-  padding: 3rem 4rem 0rem 4rem;
-  border-radius: 1rem;
+  width: 40%;
+  padding: 2rem 2rem 0rem 2rem;
+  border-radius: 0.5rem;
   border: 1px solid rgb(219, 219, 219);
 }
 
@@ -46,43 +46,85 @@
   justify-content: space-between;
 }
 
+.investcal-wrap .container .col1 .inner-wrap .label h5:first-child {
+  opacity: 0.7;
+}
+
 /* col1 ends */
 
 /* col1 */
 
 .investcal-wrap .container .col2 {
-  width: 50%;
+  width: 55%;
   padding: 2rem;
-  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 0 2rem 0rem 2rem;
+  /* border: 1px solid rgb(219, 219, 219); */
 }
 
-.investcal-wrap .container .col2 .inner-wrap {
+.investcal-wrap .container .col2 h3 {
+  width: 72%;
+  margin: auto;
+  text-align: center;
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+.investcal-wrap .container .col2 h3 span {
+  padding: 0 0.5rem;
+  opacity: 1;
+  color: black;
+}
+
+.investcal-wrap .container .col2 .row1 {
+  border: 1px solid black;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 5rem;
+  border: 1px solid lightgrey;
+  border-radius: 0.5rem;
+}
+.investcal-wrap .container .col2 .row1 section {
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+}
+
+.investcal-wrap .container .col2 .row1 section h6:first-child span:last-child {
+  margin-left: 0.5rem;
+}
+
+.investcal-wrap .container .col2 .row1 section h6:last-child {
+  margin-left: 1.5rem;
 }
 
 /* col2 ends */
 
-@media only screen and (max-width: 680px) {
+/* chart */
+.chart-wrap {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+@media only screen and (max-width: 950px) {
   .investcal-wrap .container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    height: 75%;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
   /* col1 */
   .investcal-wrap .container .col1 {
     width: 100%;
-    padding: 3rem 1rem 0rem 1rem;
-    border-radius: 1rem;
-    border: 1px solid rgb(219, 219, 219);
+    padding: 1rem 1rem 0rem 1rem;
+  }
+
+  .investcal-wrap .container .col1 .inner-wrap .slider1,
+  .investcal-wrap .container .col1 .inner-wrap .slider2,
+  .investcal-wrap .container .col1 .inner-wrap .slider3 {
+    margin-top: 1rem;
   }
 
   /* col2 */
   .investcal-wrap .container .col2 {
     width: 100%;
-    padding: 3rem 1rem 0rem 1rem;
-    border-radius: 1rem;
-    border: 1px solid rgb(219, 219, 219);
+    padding: 1rem 1rem 0rem 1rem;
   }
 }
