@@ -51,6 +51,71 @@
   background-color: var(--bg2);
 }
 
+/* cards slider  */
+.testimonial-wrapper .col4 {
+  position: absolute;
+  left: 45%;
+  top: 10%;
+}
+
+.testimonial-wrapper .col4 .card-wrap {
+  overflow: hidden;
+  height: 20rem;
+  width: 100%;
+}
+
+.testimonial-wrapper .col4 .card-wrap .card {
+  padding: 1.5rem 2rem;
+  border: 0;
+  width: 40rem;
+  height: 20rem;
+  max-height: 30rem;
+  border-radius: 1rem;
+}
+
+.testimonial-wrapper .col4 .card-wrap .card .row1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.testimonial-wrapper .col4 .card-wrap .card .row2 {
+  margin-top: 1rem;
+}
+
+.testimonial-wrapper .col4 .card-wrap .card .row2 p {
+  opacity: 0.8;
+  height: 11rem;
+  overflow: auto;
+}
+
+.testimonial-wrapper .col4 .card-wrap .card .row3 {
+  text-align: right;
+  color: black;
+}
+
+/* cards slider ends  */
+
+/* arrow icons */
+.testimonial-wrapper .col5 {
+  position: absolute;
+  left: 75%;
+  bottom: 25%;
+  display: flex;
+  gap: 1rem;
+}
+
+.testimonial-wrapper .col5 section {
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 680px) {
   .testimonial-wrapper {
     height: 85%;
