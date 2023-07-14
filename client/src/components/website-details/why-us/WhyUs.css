@@ -61,3 +61,21 @@
 .whyus-wrapper .para {
     font-size: medium;
 }
+
+@media screen and (max-width: 1200px) {
+    .whyus-wrapper .card-wrapper-inner {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .whyus-wrapper .card-wrapper-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .whyus-wrapper .card-wrapper-inner {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
