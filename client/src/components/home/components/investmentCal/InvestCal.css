@@ -108,6 +108,8 @@
 @media only screen and (max-width: 950px) {
   .investcal-wrap .container {
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
   }
 
   /* col1 */
@@ -125,6 +127,24 @@
   /* col2 */
   .investcal-wrap .container .col2 {
     width: 100%;
-    padding: 1rem 1rem 0rem 1rem;
+    padding: 1rem 0rem 0rem 0rem;
+  }
+
+  .investcal-wrap .container .col2 h3 {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    opacity: 0.8;
+    letter-spacing: 1px;
+  }
+
+  .investcal-wrap .container .col2 .row1 {
+    border: 1px solid black;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 5rem;
+    border: 1px solid lightgrey;
+    border-radius: 0.5rem;
   }
 }
