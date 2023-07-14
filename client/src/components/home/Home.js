@@ -5,11 +5,13 @@ import "./Home.css";
 import WhyUs from "../website-details/why-us/WhyUs";
 import HomeSliderSection3 from "./components/section3/Slider";
 import Testimonial from "./components/testimonial/Testimonial";
+import InvestCal from "./components/investmentCal/InvestCal";
 import HomeVideo from "../HomeVideo/HomeVideo";
 import Footer from "../../components/footer/Footer";
 
 const LandingPage = () => {
   const anchors = ["1", "2", "3", "4", "5", "6", "7"];
+  // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const LandingPage = () => {
         "#ffffff",
         "#ffffff",
         "#ffffff",
-        "green",
+        "#ffffff",
         "yellow",
       ]}
       onLeave={(origin, destination, direction) => {
@@ -156,7 +158,9 @@ const LandingPage = () => {
             </div>
             {/* Section 6 */}
             <div className="section">
-              <div className="home-calculator">Calculator</div>
+              <div className="home-calculator">
+                <InvestCal />
+              </div>
             </div>
             {/* Section 7 */}
             <div className="section">

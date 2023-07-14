@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Testimonial.css";
 import { AiFillStar } from "react-icons/ai";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
@@ -83,12 +83,12 @@ const Testimonial = () => {
       {/* card slider ends*/}
 
       {/* arrow for slider */}
-      <div className="col5 arrow-wrap">
-        <section className="icon1" onClick={prevCard}>
+      <div className="col5 arrow-wrap" onClick={prevCard}>
+        <section className="icon1">
           <BsArrowLeft />
         </section>
-        <section className="icon2">
-          <BsArrowRight onClick={nextCard} />
+        <section className="icon2" onClick={nextCard}>
+          <BsArrowRight />
         </section>
       </div>
       {/* arrows for slider ends */}
