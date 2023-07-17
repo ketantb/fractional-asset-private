@@ -90,14 +90,13 @@
 }
 
 .home-footer {
-  height: 100vh;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: end;
 }
 
 @media screen and (max-width: 600px) {
-
   /* auto slider */
   #carouselExampleIndicators {
     height: 40rem;
