@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import "./WhyUs.css";
 import { Typography } from "@mui/material";
-import logo1 from "../../../assets/download.png";
-import logo2 from "../../../assets/download (1).png";
-import logo3 from "../../../assets/download (2).png";
-import logo4 from "../../../assets/download (3).png";
 import { FaHome } from "react-icons/fa";
 import {
   BsFillPersonXFill,
@@ -18,7 +14,7 @@ const WhyUs = () => {
   }, []);
 
   return (
-    <div className="whyus-wrapper">
+    <div className="whyus-wrapper ">
       <h2>Why Choose Us</h2>
       <div className="card-wrapper-inner">
         <div className="card">

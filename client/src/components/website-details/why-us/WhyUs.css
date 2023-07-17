@@ -1,81 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
 
 .whyus-wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.whyus-wrapper>h2 {
-    color: #4c1d95;
-    font-size: 50px;
-    font-family: serif;
-    margin-bottom: 5rem;
-    border-bottom: 1px solid #4c1d95;
+.whyus-wrapper > h2 {
+  color: #4c1d95;
+  font-size: 50px;
+  font-family: serif;
+  margin-bottom: 5rem;
+  border-bottom: 1px solid #4c1d95;
 }
 
 .whyus-wrapper .card-wrapper-inner {
-    gap: 3rem;
-    display: grid;
-    width: fit-content;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3rem;
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .whyus-wrapper .card {
-    width: 300px;
-    height: 200px;
-    background: linear-gradient(to right, rgb(137, 104, 255), rgb(175, 152, 255));
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-    color: white;
-    border: none;
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(to right, rgb(137, 104, 255), rgb(175, 152, 255));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  border: none;
 }
 
 .whyus-wrapper .card::before {
-    width: 150px;
-    height: 150px;
-    content: "";
-    background: linear-gradient(to right, rgb(142, 110, 255), rgb(208, 195, 255));
-    position: absolute;
-    z-index: 1;
-    border-radius: 50%;
-    right: -25%;
-    top: -25%;
+  width: 150px;
+  height: 150px;
+  content: "";
+  background: linear-gradient(to right, rgb(142, 110, 255), rgb(208, 195, 255));
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  right: -25%;
+  top: -25%;
 }
 
 .whyus-wrapper .card * {
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .whyus-wrapper .heading {
-    font-size: large;
-    border-bottom: 1px solid white;
+  font-size: large;
+  border-bottom: 1px solid white;
 }
 
 .whyus-wrapper .para {
-    font-size: medium;
+  font-size: medium;
 }
 
 @media screen and (max-width: 1200px) {
-    .whyus-wrapper .card-wrapper-inner {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  .whyus-wrapper {
+    padding-top: 40rem;
+  }
+
+  .whyus-wrapper .card-wrapper-inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media screen and (max-width: 1100px) {
-    .whyus-wrapper .card-wrapper-inner {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .whyus-wrapper .card-wrapper-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media screen and (max-width: 700px) {
-    .whyus-wrapper .card-wrapper-inner {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
+  .whyus-wrapper .card-wrapper-inner {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }

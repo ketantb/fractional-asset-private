@@ -40,7 +40,7 @@ const Testimonial = () => {
   return (
     <div className="testimonial-wrapper">
       <div className="col1 ">
-        <h1>
+        <h1 className="text-xl sm:text-3xl ">
           Don’t just take our
           <br />
           word for it, <br />
