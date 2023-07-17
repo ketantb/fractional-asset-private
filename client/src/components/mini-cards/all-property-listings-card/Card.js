@@ -10,7 +10,7 @@ const Card = ({ data, getData }) => {
   const navigate = useNavigate();
   //view more
   const viewMore = (propertyid) => {
-    navigate(`/villa-resort-data-details/${propertyid}`);
+    navigate(`/villa-resort-apartment-details/${propertyid}`);
   };
 
   // handle reserve shares form modal
@@ -61,7 +61,7 @@ const Card = ({ data, getData }) => {
             justifyContent: "space-between",
           }}
         >
-          <div className="capitalize ml-4 opacity-25">{data.propertyType}</div>
+          <div className="capitalize ml-4 opacity-20">{data.propertyType}</div>
           <div
             style={{
               fontFamily: "serif",

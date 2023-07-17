@@ -33,7 +33,7 @@ const AllProperties = ({ realEstateArr }) => {
   }
 
   return (
-    <div className="mt-[5rem]">
+    <div className="mt-[7rem]">
       <div className="px-4 py-4 sm:px-5 flex flex-col sm:flex-row justify-between  ">
         <TextField
           className="w-full sm:w-1/4 "
