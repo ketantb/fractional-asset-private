@@ -49,7 +49,7 @@ const HomeSliderSection3 = () => {
   return (
     <div className="section-slider">
       <header>
-        <h2> So, how will you make money?</h2>
+        <h2 className="text-[2rem]"> So, how will you make money?</h2>
         <p>
           Stake was built to empower everyone to own and build wealth through
           real estate
@@ -77,6 +77,12 @@ const HomeSliderSection3 = () => {
             );
           })}
         </Slider>
+      </div>
+
+      <div className="mt-14 flex justify-center">
+        <button className="w-1/2 sm:w-1/4 h-10 border-2 rounded-lg bg-red-800 hover:bg-red-600 text-white ">
+          EXPLORE MORE
+        </button>
       </div>
     </div>
   );
