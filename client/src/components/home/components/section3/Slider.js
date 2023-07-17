@@ -4,9 +4,12 @@ import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
+import { FaArrowRight } from "react-icons/fa";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const HomeSliderSection3 = () => {
+  const navigate = useNavigate();
+
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
@@ -80,8 +83,11 @@ const HomeSliderSection3 = () => {
       </div>
 
       <div className="mt-14 flex justify-center">
-        <button className="w-1/2 sm:w-1/4 h-10 border-2 rounded-lg bg-red-800 hover:bg-red-600 text-white ">
-          EXPLORE MORE
+        <button
+          className="w-1/2 sm:w-1/4 h-10 border-2 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 text-white hover:text-black "
+          onClick={() => navigate("/all-properties")}
+        >
+          <span>EXPLORE MORE</span>
         </button>
       </div>
     </div>

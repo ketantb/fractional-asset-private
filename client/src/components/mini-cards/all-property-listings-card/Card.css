@@ -1,38 +1,39 @@
-.apartment-card {
+.list-card {
+  width: fit-content;
   margin: 2rem;
   border-radius: 1rem;
   background-color: #ffff;
 }
 
-.apartment-card-ub {
+.list-card-ub {
   display: flex;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   justify-content: space-between;
 }
 
-.apartment-card-ub div {
+.list-card-ub div {
   margin-top: 60%;
   /* border: 1px solid red; */
   width: 100%;
 }
 
-.apartment-card-ub .details-btn-wrap {
+.list-card-ub .details-btn-wrap {
   /* border: 1px solid black; */
   display: flex;
   justify-content: flex-end;
 }
 
-.apartment-card-ub div .view-apartment-details-btn {
+.list-card-ub div .view-list-details-btn {
   width: 7rem;
   margin: 0.5rem;
 }
 
-.apartment-card-ub p img {
+.list-card-ub p img {
   width: 100%;
 }
 
-.apartment-card-ub .apartment-name {
+.list-card-ub .list-name {
   color: black;
   text-shadow: 2px 2px 2px white;
   font-size: 17px;
@@ -41,17 +42,17 @@
   margin-top: 3rem;
 }
 
-.apartment-card-ub .apartment-location {
+.list-card-ub .list-location {
   color: #ffff;
   font-size: 14px;
   font-weight: 500;
 }
 
-.apartment-card {
+.list-card {
   height: fit-content;
 }
 
-.apartment-card-lb {
+.list-card-lb {
   height: 25%;
   background-color: #ffff;
   border-bottom-left-radius: 10px;
@@ -61,7 +62,7 @@
 
 /*  */
 
-.apartment-card-lb div {
+.list-card-lb div {
   display: flex;
   margin: auto 2rem;
   font-family: serif;
@@ -69,28 +70,28 @@
   justify-content: space-between;
 }
 
-.apartment-card-lb div .dummy-vertical {
+.list-card-lb div .dummy-vertical {
   width: 1px;
   height: 75px;
   background-color: #cbd5e1;
 }
 
-.apartment-card-lb div section {
+.list-card-lb div section {
   text-align: center;
 }
 
-.apartment-card-lb div section p:first-child {
+.list-card-lb div section p:first-child {
   color: #334155;
   font-size: 0.9rem;
 }
 
 @media screen and (max-width: 700px) {
-  .apartment-card-lb div section p:first-child {
+  .list-card-lb div section p:first-child {
     font-size: small;
   }
 }
 
-.apartment-card-lb div section p:last-child {
+.list-card-lb div section p:last-child {
   color: #334155;
   margin-bottom: 0;
   font-family: serif;
@@ -98,46 +99,46 @@
 
 /*  */
 
-.apartment-card-lb div section:last-child {
+.list-card-lb div section:last-child {
   border: 0;
 }
 
-.apartment-card-lb div:last-child {
+.list-card-lb div:last-child {
   display: flex;
 }
 
-.apartment-card-lb div:last-child section {
+.list-card-lb div:last-child section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.apartment-card-lb div:last-child section .dummy-border {
+.list-card-lb div:last-child section .dummy-border {
   height: 1px;
   width: 75%;
   background-color: goldenrod;
 }
 
-.apartment-card .footer-section {
+.list-card .footer-section {
   background-color: white;
 }
 
-.apartment-card .footer-section > div {
+.list-card .footer-section > div {
   margin-top: 1rem;
 }
 
-.apartment-card .reserve-share-btn-wrap {
+.list-card .reserve-share-btn-wrap {
   width: 100%;
 }
 
-.apartment-card .reserve-share-btn-wrap button {
+.list-card .reserve-share-btn-wrap button {
   width: 100%;
 }
 
-.apartment-card .contact-btn-wrap {
+.list-card .contact-btn-wrap {
   width: 100%;
 }
 
-.apartment-card .contact-btn-wrap button {
+.list-card .contact-btn-wrap button {
   width: 100%;
 }

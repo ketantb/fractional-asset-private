@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -78,6 +78,7 @@ import ResortEdit from "./components/edit-forms/resort/Resort";
 import ShopEdit from "./components/edit-forms/shop/Shop";
 import LandEdit from "./components/edit-forms/land/Land";
 import CarEdit from "./components/edit-forms/car/car";
+import AllProperties from "./components/all-listings/Listing";
 //edit form ends
 
 function App() {
@@ -197,7 +198,10 @@ function App() {
             <Route path="/warehouse-page" element={<WareHousePage />}></Route>
             <Route path="/shop-page" element={<ShopPage />}></Route>
             <Route path="/land-page" element={<LandPage />} />
-            <Route path="/agriculture-land-page" element={<AgriculturalLandPage />} />
+            <Route
+              path="/agriculture-land-page"
+              element={<AgriculturalLandPage />}
+            />
             <Route path="/parking-page" element={<ParkingPage />}></Route>
             <Route path="/startup-page" element={<StartUpPage />}></Route>
             {/* landing pages  end*/}
@@ -247,6 +251,10 @@ function App() {
             <Route path="/car-edit/:id" element={<CarEdit />}></Route>
 
             {/*  edit forms ends*/}
+            <Route
+              path="/all-properties"
+              element={<AllProperties realEstateArr={realEstateArr} />}
+            ></Route>
           </Routes>
         </div>
         <Footer />
