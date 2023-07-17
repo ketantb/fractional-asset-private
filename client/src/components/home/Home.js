@@ -42,7 +42,7 @@ const LandingPage = () => {
         "#ffffff",
         "#fffbeb",
         "#ffffff",
-        "#ffffff",
+        "#f5f3ff",
         "#ffffff",
         "#ffffff",
         "yellow",
