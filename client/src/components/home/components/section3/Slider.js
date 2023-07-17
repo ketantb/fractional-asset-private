@@ -84,7 +84,7 @@ const HomeSliderSection3 = () => {
 
       <div className="mt-14 flex justify-center">
         <button
-          className="w-1/2 sm:w-1/4 h-16 border-2 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 text-white hover:text-black "
+          className="w-1/2 sm:w-1/2 h-16 border-2 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 text-white hover:text-black "
           onClick={() => navigate("/all-properties")}
         >
           <span>EXPLORE MORE</span>
