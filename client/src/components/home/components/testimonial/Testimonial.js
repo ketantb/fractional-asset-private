@@ -65,7 +65,7 @@ const Testimonial = () => {
               <div className="card">
                 <div className="row1">
                   <h5>{currentCard.title}</h5>
-                  <div className="star-wrap">
+                  <div className="star-wrap flex">
                     {[...Array(currentCard.stars)].map((_, i) => {
                       return <AiFillStar style={{ color: "#41CE8E" }} />;
                     })}
