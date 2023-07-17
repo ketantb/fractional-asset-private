@@ -33,10 +33,10 @@ const AllProperties = ({ realEstateArr }) => {
   }
 
   return (
-    <div className="mt-[6rem]">
-      <div className="px-4 sm:px-5 flex flex-col sm:flex-row justify-between ">
+    <div className="mt-[5rem]">
+      <div className="px-4 py-4 sm:px-5 flex flex-col sm:flex-row justify-between  ">
         <TextField
-          className="w-full sm:w-1/4"
+          className="w-full sm:w-1/4 "
           select
           size="small"
           spellCheck="false"
@@ -55,7 +55,7 @@ const AllProperties = ({ realEstateArr }) => {
           ))}
         </TextField>
         <div
-          className="mr-6 pt-4 text-sm sm:text-xl flex cursor-pointer"
+          className="mr-6 pt-2 text-sm sm:text-xl flex cursor-pointer"
           value=""
           name="type"
           onClick={() => setType("")}
