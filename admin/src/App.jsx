@@ -5,10 +5,7 @@ import Home from "./pages/Home";
 import View from "./pages/View";
 import SiteVisit from "./pages/SiteVisit";
 import SellerAccounts from "./pages/SellerAccounts";
-// routes
-// import Protected from "./routes/Protected";
-// import Public from "./routes/Public";
-
+import ReservedSharesData from "./pages/ReservedSharesData";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
@@ -22,6 +19,10 @@ const App = () => {
           <Route path="/home/view/:id" element={<View />}></Route>
           <Route path="/site-visit" element={<SiteVisit />}></Route>
           <Route path="/seller-accounts" element={<SellerAccounts />}></Route>
+          <Route
+            path="/reserved-shares"
+            element={<ReservedSharesData />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>

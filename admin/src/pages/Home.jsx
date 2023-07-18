@@ -7,10 +7,11 @@ import { BiDotsVerticalRounded, BiLogOutCircle } from "react-icons/bi";
 import { BsFillHousesFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-
+import { PiHandshakeFill } from "react-icons/pi";
 import VerifyPropertyTable from "../components/VerifyPropertyTable";
 import Cards from "../components/Cards";
 import Loading from "../components/Loading";
+import { toast } from "react-hot-toast";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -64,6 +65,15 @@ const Home = () => {
     },
     {
       icon: (
+        <PiHandshakeFill
+          onClick={() => navigate("/reserved-shares")}
+          className="text-xl text-orange-500"
+        />
+      ),
+      name: "Reserved Shares",
+    },
+    {
+      icon: (
         <TiTickOutline
           onClick={() => navigate("/home")}
           className="text-xl text-green-500"
@@ -76,18 +86,33 @@ const Home = () => {
   return (
     <>
       {isLoading ? (
-        <Loading />
+        <h1
+          style={{
+            textAlign: "center",
+            marginTop: "3rem",
+            letterSpacing: "2px",
+            color: "yellow",
+          }}
+        >
+          Please wait. Fetching Data...
+        </h1>
+      ) : null}
+
+      {isLoading ? (
+        <>
+          <Loading />
+        </>
       ) : (
         <>
-          <div className="block 2xl:xl:hidden">
+          {/* <div className="block 2xl:xl:hidden">
             <Cards data={verificationData} />
-          </div>
-          <div className="hidden 2xl:block">
+          </div> */}
+          <div /* className=" 2xl:block" code for below div*/>
             <VerifyPropertyTable data={verificationData} />
           </div>
         </>
       )}
-      <span className="fixed bottom-[31px] right-20 text-blue-500 font-serif">
+      <span className="fixed bottom-[31px] right-20 text-blue-500  font-serif">
         UNVERIFIED PROPERTIES
       </span>
       <SpeedDial

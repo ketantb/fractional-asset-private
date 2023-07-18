@@ -7,6 +7,7 @@ import { BiDotsVerticalRounded, BiLogOutCircle } from "react-icons/bi";
 import { BsFillHousesFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { PiHandshakeFill } from "react-icons/pi";
 
 import SiteVisitTable from "../components/SiteVisitTable";
 import Cards from "../components/Cards";
@@ -65,6 +66,15 @@ const SiteVisit = () => {
     },
     {
       icon: (
+        <PiHandshakeFill
+          onClick={() => navigate("/reserved-shares")}
+          className="text-xl text-orange-500"
+        />
+      ),
+      name: "Reserved Shares",
+    },
+    {
+      icon: (
         <TiTickOutline
           onClick={() => navigate("/home")}
           className="text-xl text-green-500"
@@ -80,10 +90,10 @@ const SiteVisit = () => {
         <Loading />
       ) : (
         <>
-          <div className="block 2xl:xl:hidden">
+          {/* <div className="block 2xl:xl:hidden">
             <Cards data={siteVisitData} />
-          </div>
-          <div className="hidden 2xl:block">
+          </div> */}
+          <div>
             <SiteVisitTable data={siteVisitData} />
           </div>
         </>

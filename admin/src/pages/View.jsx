@@ -10,6 +10,7 @@ import Loading from "../components/Loading";
 import Details from "../components/Details";
 import facilityIcon from "../assets/towel-rack.png";
 import overviewIcon from "../assets/overview_icon.svg";
+import { toast } from "react-hot-toast";
 
 const View = () => {
   const { id } = useParams();
@@ -22,13 +23,14 @@ const View = () => {
 
   const getData = async () => {
     await axios
-      .get(`/villa-resort-apartment-details/${id}`)
+      .get(`/property-data/${id}`)
       .then((res) => {
         setIsLoading(true);
-        setData(res.data.data);
-        setCurrentImg(res.data.data.imgArr[0]);
-        setImgArr(res.data.data.imgArr);
-        setAminityArr(res.data.data.aminities);
+        console.log(res);
+        setData(res.data.propertyData);
+        setCurrentImg(res.data.propertyData.imgArr[0]);
+        setImgArr(res.data.propertyData.imgArr);
+        setAminityArr(res.data.propertyData.aminities);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
@@ -38,10 +40,16 @@ const View = () => {
   }, []);
 
   const handleVerify = async (id) => {
+    toast.loading("Verifying Data");
+
     await axios
       .patch(`/verify-success/${id}`)
-      .then(() => getData())
+      .then(() => {
+        getData();
+        navigate("/home");
+      })
       .catch((error) => console.log(error));
+    toast.dismiss();
   };
 
   return (
@@ -94,10 +102,9 @@ const View = () => {
                   <p>{data.additionalDetails}</p>
                 ) : (
                   <p>
-                    An excellent opportunity that features a French
-                    multinational brand 'Mane' as a tenant, occupying the space
-                    since 2016. The asset features an office space and a
-                    research lab that caters to prominent FMCG players like
+                    An excellent opportunity that features a French occupying
+                    the space since 2016. The asset features an office space and
+                    a research lab that caters to prominent FMCG players like
                     Unilever, P&G and more. Their infrastructure gives an
                     obvious indication of the stickiness of the tenant. Mane, a
                     global leader of the Fragrance and Flavour sector, is
@@ -110,23 +117,26 @@ const View = () => {
                   </p>
                 )}
               </div>
-              <div className="facility-outer-wrap">
-                <h4 className="flex items-center gap-2 mb-3">
-                  <span>
-                    <img src={facilityIcon} alt="overview-img-icon" />
-                  </span>
-                  Facilities
-                </h4>
-                <div className="facility-inner-wrap">
-                  {aminityArr.map((aminity, i) => {
-                    return (
-                      <section className="rounded">
-                        <h6>{aminity}</h6>
-                      </section>
-                    );
-                  })}
+              {data.propertyType === "land" ? null : (
+                <div className="facility-outer-wrap">
+                  <h4 className="flex items-center gap-2 mb-3">
+                    <span>
+                      <img src={facilityIcon} alt="overview-img-icon" />
+                    </span>
+                    Facilities
+                  </h4>
+                  <div className="facility-inner-wrap">
+                    {aminityArr.map((aminity, i) => {
+                      return (
+                        <section className="rounded" key={i + 1}>
+                          <h6>{aminity}</h6>
+                        </section>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
+
               <h1 className="w-fit mx-auto mt-10 text-lg">
                 {`Status - ${data.isVerified ? "Verified" : "Not Verified"}`}
               </h1>
