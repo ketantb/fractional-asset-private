@@ -8,7 +8,8 @@
   display: grid;
   user-select: none;
   place-items: center;
-  height: calc(110vh - 5rem);
+  height: calc(120vh - 5rem);
+  padding-top: 12rem;
   /* border: 1px solid black; */
 }
 
@@ -138,22 +139,22 @@
 /* Preview Button */
 
 .preview-button {
-    right: 1rem;
-    bottom: 1rem;
-    width: fit-content;
-    position: absolute;
-    border-radius: 5px;
-    background-color: white;
-    border: 2px solid rgba(3, 102, 214, 0.3);
+  right: 1rem;
+  bottom: 1rem;
+  width: fit-content;
+  position: absolute;
+  border-radius: 5px;
+  background-color: white;
+  border: 2px solid rgba(3, 102, 214, 0.3);
 }
 
 .preview-form-modal {
-    width: 75%;
-    margin: auto;
+  width: 75%;
+  margin: auto;
 }
 
 @media screen and (max-width: 900px) {
-    .preview-form-modal {
-        width: 90%;
-    }
+  .preview-form-modal {
+    width: 90%;
+  }
 }
