@@ -9,28 +9,27 @@ import { TiTickOutline } from "react-icons/ti";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { PiHandshakeFill } from "react-icons/pi";
 
-import SellerAccountsTable from "../components/SellerAccountsTable";
+import ReservedSharesDataTable from "../components/ReservedSharesDataTable";
 import Cards from "../components/Cards";
 import Loading from "../components/Loading";
 
-const SellerAccounts = () => {
+const ReservedSharesData = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-  const [sellerAccounts, setSellerAccounts] = useState([]);
+  const [sharesData, setSharesData] = useState([]);
 
-  const getSellerAccountsData = async () => {
+  const getVerificationData = async () => {
     await axios
-      .get(`/seller-accounts`)
-      .then((resp) => {
-        console.log("result", resp.data);
+      .get(`/reserve-share-data`)
+      .then((data) => {
         setIsLoading(true);
-        setSellerAccounts(resp.data.list);
+        setSharesData(data.data.list);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
   };
   useEffect(() => {
-    getSellerAccountsData();
+    getVerificationData();
   }, []);
 
   const actions = [
@@ -91,15 +90,15 @@ const SellerAccounts = () => {
       ) : (
         <>
           {/* <div className="block 2xl:xl:hidden">
-            <Cards data={sellerAccounts} />
+            <Cards data={sharesData} />
           </div> */}
           <div>
-            <SellerAccountsTable data={sellerAccounts} />
+            <ReservedSharesDataTable data={sharesData} />
           </div>
         </>
       )}
       <span className="fixed bottom-[31px] right-20 text-blue-500 font-serif">
-        SELLER ACCOUNTS
+        RESERVED SHARES
       </span>
       <SpeedDial
         ariaLabel=""
@@ -118,4 +117,4 @@ const SellerAccounts = () => {
   );
 };
 
-export default SellerAccounts;
+export default ReservedSharesData;
