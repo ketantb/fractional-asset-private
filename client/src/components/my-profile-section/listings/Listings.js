@@ -30,9 +30,9 @@ const Listings = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (allData.length === 0) {
-    return <PreLoader />;
-  }
+  // if (allData.length === 0) {
+  //   return <PreLoader />;
+  // }
 
   return (
     <div className="listings-wrap">
