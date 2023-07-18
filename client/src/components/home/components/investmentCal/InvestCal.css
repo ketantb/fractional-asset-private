@@ -1,7 +1,6 @@
 .investcal-wrap {
-  height: 95%;
-  margin-top: 6rem;
-  /* border: 1px solid black; */
+  height: fit-content;
+  margin-top: 2rem;
 }
 
 .investcal-wrap h2 {
@@ -12,13 +11,14 @@
   display: flex;
   gap: 1rem;
   height: 70%;
-  margin-top: 3.5rem;
-  /* border: 1px solid rgb(235, 235, 235); */
+  padding: 0 3rem;
+  margin: auto;
+  margin-top: 4rem;
 }
 
 /* col1 */
 .investcal-wrap .container .col1 {
-  width: 40%;
+  width: 50%;
   padding: 2rem 2rem 0rem 2rem;
   border-radius: 0.5rem;
   border: 1px solid rgb(219, 219, 219);
@@ -106,10 +106,14 @@
 }
 
 @media only screen and (max-width: 950px) {
-  .investcal-wrap .container {
+  .investcal-wrap {
     margin-top: 2rem;
+    height: fit-content;
+  }
+  .investcal-wrap .container {
     display: flex;
     flex-direction: column;
+    margin-top: 2rem;
   }
 
   /* col1 */
@@ -139,12 +143,14 @@
   }
 
   .investcal-wrap .container .col2 .row1 {
-    border: 1px solid black;
+    height: 7rem;
+
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 5rem;
     border: 1px solid lightgrey;
     border-radius: 0.5rem;
+    width: 100%;
   }
 }

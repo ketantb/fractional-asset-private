@@ -60,24 +60,20 @@ const Testimonial = () => {
       {/* card slider */}
       <div className="col4">
         <div className="card-wrap">
-          {arr.map((card, index) => {
-            return (
-              <div className="card">
-                <div className="row1">
-                  <h5>{currentCard.title}</h5>
-                  <div className="star-wrap flex">
-                    {[...Array(currentCard.stars)].map((_, i) => {
-                      return <AiFillStar style={{ color: "#41CE8E" }} />;
-                    })}
-                  </div>
-                </div>
-                <div className="row2">
-                  <p>{currentCard.para}</p>
-                </div>
-                <div className="row3">{currentCard.name}</div>
+          <div className="card">
+            <div className="row1">
+              <h5>{currentCard.title}</h5>
+              <div className="star-wrap flex">
+                {[...Array(currentCard.stars)].map((_, i) => {
+                  return <AiFillStar style={{ color: "#41CE8E" }} />;
+                })}
               </div>
-            );
-          })}
+            </div>
+            <div className="row2">
+              <p>{currentCard.para}</p>
+            </div>
+            <div className="row3">{currentCard.name}</div>
+          </div>
         </div>
       </div>
       {/* card slider ends*/}

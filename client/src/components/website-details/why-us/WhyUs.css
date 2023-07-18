@@ -4,6 +4,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 8rem;
+  height: fit-content;
+  /* border: 1px solid black; */
 }
 
 .whyus-wrapper > h2 {
@@ -64,7 +67,8 @@
 
 @media screen and (max-width: 1200px) {
   .whyus-wrapper {
-    padding-top: 40rem;
+    margin-top: 13rem;
+    padding-bottom: 0;
   }
 
   .whyus-wrapper .card-wrapper-inner {

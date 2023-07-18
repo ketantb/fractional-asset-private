@@ -27,7 +27,7 @@ const InvestCal = () => {
 
   return (
     <div className="investcal-wrap">
-      <h2>Investment calculator</h2>
+      <h2 className="text-2xl sm:text-3xl">Investment calculator</h2>
       <div className="container">
         <div className="col1">
           <h4>How much do you want to invest?</h4>
@@ -73,7 +73,7 @@ const InvestCal = () => {
               />
             </Box>
             <Box className="slider3">
-              <Typography className="label">
+              <Typography className="label flex">
                 <h6>Expected annual rental yield</h6>
                 <h6>{slider3}</h6>
               </Typography>
@@ -102,31 +102,31 @@ const InvestCal = () => {
           </h3>
           <div className="row1">
             <section>
-              <h6>
+              <h6 className="flex">
                 <span>
                   <FaCircle style={{ color: "#1A202C" }} />
                 </span>
                 <span>Investment</span>
               </h6>
-              <h6>{slider1}</h6>
+              <h6 className="mt-2">{slider1}</h6>
             </section>
             <section>
-              <h6>
+              <h6 className="flex">
                 <span>
                   <FaCircle style={{ color: "#FFD147" }} />
                 </span>
                 <span>Total rental income</span>
               </h6>
-              <h6>{slider1 + slider2}</h6>
+              <h6 className="mt-2">{slider1 + slider2}</h6>
             </section>
             <section>
-              <h6>
+              <h6 className="flex">
                 <span>
                   <FaCircle style={{ color: "#41CE8E" }} />
                 </span>
                 <span>Value appreciation</span>
               </h6>
-              <h6>{slider1 + slider2 + slider3}</h6>
+              <h6 className="mt-2">{slider1 + slider2 + slider3}</h6>
             </section>
           </div>
           <div className="row2">
